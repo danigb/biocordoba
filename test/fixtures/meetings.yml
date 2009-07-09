@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  host_id: 1
+  guest_id: 1
+  date: 2009-07-09 09:15:09
+  note_host: MyText
+  note_guest: MyText
+  reason: MyText
+
+two:
+  host_id: 1
+  guest_id: 1
+  date: 2009-07-09 09:15:09
+  note_host: MyText
+  note_guest: MyText
+  reason: MyText
