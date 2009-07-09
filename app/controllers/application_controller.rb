@@ -2,7 +2,9 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
+  include ExceptionNotifiable
   include AuthenticatedSystem
+
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   before_filter :set_gettext_locale, :login_required
@@ -13,7 +15,6 @@ class ApplicationController < ActionController::Base
   def set_gettext_locale
     FastGettext.text_domain = 'app'
     FastGettext.available_locales = ['es','en'] #all you want to allow
-    # FastGettext.default_locale = 'es'
     super
   end
 end
