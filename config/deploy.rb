@@ -71,6 +71,7 @@ require 'erb'
     desc "Make symlink for database yaml, mongrel cluster"
     task :symlink do     
       run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"      
+      run "ln -nfs #{shared_path}/config/config.yml #{release_path}/config/config.yml"      
     end   
   end
  
