@@ -1,0 +1,12 @@
+development: &development
+    
+  :admin:
+    :login: admin
+    :password: eventos86
+    :email: beecoder@example.com
+        
+test:
+    <<: *development
+    
+production:
+    <<: *development

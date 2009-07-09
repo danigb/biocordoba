@@ -12,8 +12,8 @@ class CreateRoles < ActiveRecord::Migration
       Role.create :title => title
     end
 
-    user = User.create(:login => 'admin', :password => 'eventos86', 
-       :password_confirmation => 'eventos86', :email => 'dacosta@superagencia86.com')
+    user = User.create(:login => CONFIG[:admin][:login], :password => CONFIG[:admin][:password], 
+       :password_confirmation => CONFIG[:admin][:password], :email => CONFIG[:admin][:email])
     user.roles << Role.find_by_title('admin')
 
   end
