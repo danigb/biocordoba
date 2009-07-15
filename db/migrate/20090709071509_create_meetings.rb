@@ -7,7 +7,7 @@ class CreateMeetings < ActiveRecord::Migration
       t.string :state
       t.text :note_host
       t.text :note_guest
-      t.text :reason
+      t.text :cancel_reason
 
       t.timestamps
     end
