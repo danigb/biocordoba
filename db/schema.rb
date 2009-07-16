@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(:version => 20090716100322) do
     t.string   "state"
     t.text     "note_host"
     t.text     "note_guest"
-    t.text     "reason"
+    t.text     "cancel_reason"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

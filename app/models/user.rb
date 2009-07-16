@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
 
   has_and_belongs_to_many :roles
+  has_one :profile
 
   validates_presence_of     :login
   validates_length_of       :login,    :within => 3..40
@@ -25,9 +26,18 @@ class User < ActiveRecord::Base
 
   attr_accessible :login, :email, :name, :password, :password_confirmation
 
-  has_one :profile
+  #No lo hacemos de forma dinámica porque no consigo que se recargue la clase tras generar el 
+  # %w(admin exhibitor buyer).each do |r|
+  #   define_method("is_#{r.title}?") do
+  #     return self.roles.map(&:title).include?(r.title)
+  #   end
+  # end
 
-
+  def method_missing(method_sym, *args)
+    if method_sym.to_s =~ /^is_(.*)+\?$/
+      self.roles.map(&:title).include?($1)
+    end
+  end
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #
