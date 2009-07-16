@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090709081449) do
+ActiveRecord::Schema.define(:version => 20090716100322) do
 
   create_table "meetings", :force => true do |t|
     t.integer  "host_id"
@@ -32,6 +32,22 @@ ActiveRecord::Schema.define(:version => 20090709081449) do
     t.datetime "updated_at"
   end
 
+  create_table "profiles", :force => true do |t|
+    t.string   "name"
+    t.integer  "sector_id"
+    t.string   "company_name"
+    t.string   "address"
+    t.integer  "zip_code"
+    t.integer  "locality_id"
+    t.integer  "province_id"
+    t.string   "products"
+    t.string   "packages"
+    t.string   "commercial_profile"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "roles", :force => true do |t|
     t.string "title"
   end
@@ -39,6 +55,25 @@ ActiveRecord::Schema.define(:version => 20090709081449) do
   create_table "roles_users", :id => false, :force => true do |t|
     t.integer "role_id"
     t.integer "user_id"
+  end
+
+  create_table "sectors", :force => true do |t|
+    t.string   "name"
+    t.integer  "profiles_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "timeline_events", :force => true do |t|
+    t.string   "event_type"
+    t.string   "subject_type"
+    t.string   "actor_type"
+    t.string   "secondary_subject_type"
+    t.integer  "subject_id"
+    t.integer  "actor_id"
+    t.integer  "secondary_subject_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|

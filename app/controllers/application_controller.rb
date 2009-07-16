@@ -7,14 +7,9 @@ class ApplicationController < ActionController::Base
 
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
-  before_filter :set_gettext_locale, :login_required
+  before_filter :login_required
 
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password
 
-  def set_gettext_locale
-    FastGettext.text_domain = 'app'
-    FastGettext.available_locales = ['es','en'] #all you want to allow
-    super
-  end
 end

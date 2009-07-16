@@ -8,7 +8,4 @@ require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
   config.time_zone = 'Madrid'
-  config.gem "grosser-fast_gettext", :lib => 'fast_gettext', :version => '~>0.4.9', :source=>"http://gems.github.com/"
-  #only used for mo/po file generation in development, !do not load(:lib=>false)! since it will only eat 7mb ram
-  config.gem "gettext", :lib => false, :version => '>=1.9.3'
 end
