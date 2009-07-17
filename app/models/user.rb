@@ -27,11 +27,24 @@ class User < ActiveRecord::Base
   attr_accessible :login, :email, :name, :password, :password_confirmation
 
   #is_admin?, is_exhibitor?, ....
-  def method_missing(method_sym, *args)
-    if method_sym.to_s =~ /^is_(.*)+\?$/
-      self.roles.map(&:title).include?($1)
+  # def method_missing(method_sym, *args)
+  #   if method_sym.to_s =~ /^is_(.*)+\?$/
+  #     self.roles.map(&:title).include?($1)
+  #   end
+  # end
+
+  def self.question_roles_methods_for(*args)
+    attr_accessor *args
+
+    args.each do |role|
+      define_method "is_#{role}?" do
+        self.roles.map(&:title).include?(role.to_s)
+      end
     end
   end
+
+  question_roles_methods_for :admin, :exhibitor, :buyer
+
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #
