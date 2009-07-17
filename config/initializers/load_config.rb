@@ -11,7 +11,7 @@ rescue Errno::ENOENT
 end
 
 CONFIG = YAML.load(raw_config)[RAILS_ENV]
-puts "Configuración cargada en CONFIG."
+puts "Configuration loaded in CONFIG."
 
 # Método que se encarga de actualizar la base de datos con
 # el contenido de una +key+ en el fichero de configuración.
@@ -61,4 +61,4 @@ rescue
   # No existen aún las tablas
 end
 
-puts "Configuración actualizada en BD."
+puts "Configuration loaded in BD."
