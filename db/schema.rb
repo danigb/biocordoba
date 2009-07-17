@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(:version => 20090716100322) do
 
   create_table "sectors", :force => true do |t|
     t.string   "name"
-    t.integer  "profiles_count"
+    t.integer  "profiles_count", :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

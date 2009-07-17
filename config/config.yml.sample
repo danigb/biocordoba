@@ -4,6 +4,13 @@ development: &development
     :login: admin
     :password: eventos86
     :email: beecoder@example.com
+  :default_roles:
+    - admin
+    - extenda
+    - buyer
+    - exhibitor
+    - national
+    - international
         
 test:
     <<: *development

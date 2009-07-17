@@ -18,6 +18,10 @@ Role.blueprint do
   title {Sham.word}
 end
 
+Sector.blueprint do
+  name {Faker::Lorem.sentence(1)}
+end
+
 Sham.email { Faker::Internet.email }
 Sham.word { Faker::Name::first_name }
 
