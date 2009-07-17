@@ -34,7 +34,6 @@ def from_yml_to_db_for(model, key, field)
   end
 end
 
-
 # Método que se encarga de mantener actualizado el primer
 # usuario admin. Si no existe lo creará y si los datos han
 # cambiado lo actualizará.
@@ -56,7 +55,7 @@ end
 
 begin
   from_yml_to_db_for(Role, :roles, :title)
-  from_yml_to_db_for(Sector, :sectors, :name)
+  from_yml_to_db_for(Sector, :sectors, :name) if Sector.count == 0
   from_yml_to_db_user
 rescue 
   # No existen aún las tablas
