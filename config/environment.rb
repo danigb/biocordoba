@@ -8,4 +8,5 @@ require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
   config.time_zone = 'Madrid'
+  config.gem "rubyist-aasm", :lib => "aasm", :source => 'http://gems.github.com'
 end
