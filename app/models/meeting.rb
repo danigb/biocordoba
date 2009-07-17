@@ -1,7 +1,7 @@
 class Meeting < ActiveRecord::Base
   include AASM
 
-  after_create :acept_state, :if => Proc.new { |m| m.guest.is_national_buyer? } #TODO
+  # after_create :acept_state, :if => Proc.new { |m| m.guest.is_national_buyer? } #TODO
 
   belongs_to :host, :class_name => 'User'
   belongs_to :guest, :class_name => 'User'

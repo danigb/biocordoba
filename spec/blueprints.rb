@@ -3,7 +3,7 @@ require 'faker'
 require 'machinist/active_record'
 
 User.blueprint do
-  login { Sham.word }
+  login Sham.word
   password 'secret'
   password_confirmation 'secret'
   email { Sham.email }
@@ -22,7 +22,9 @@ Sector.blueprint do
   name {Faker::Lorem.sentence(1)}
 end
 
-Sham.email { Faker::Internet.email }
-Sham.word { Faker::Name::first_name }
+Sham.define do
+  email { Faker::Internet.email }
+  word { Faker::Name::first_name }
+end
 
 

@@ -10,6 +10,7 @@ end
 
 CONFIG = YAML.load(raw_config)[RAILS_ENV]
 
+<<<<<<< HEAD:config/initializers/load_config.rb
 # Create defaults roles unless exists?
 def from_yml_to_db_for(model, key, field)
   db_objects = model.all
@@ -25,6 +26,14 @@ def from_yml_to_db_for(model, key, field)
   for object in old_objects
     model.send("find_by_#{field}", object).destroy
   end
+=======
+#Create defaults roles unless exists?
+begin
+  for role in CONFIG[:default_roles]
+    Role.create(:title => role)
+  end
+rescue
+>>>>>>> 2e80944847451e272e62d7c915c81eba05a121a0:config/initializers/load_config.rb
 end
 
 def from_yml_to_db_user
