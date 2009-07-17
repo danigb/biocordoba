@@ -8,8 +8,11 @@ end
 CONFIG = YAML.load(raw_config)[RAILS_ENV]
 
 #Create defaults roles unless exists?
-for role in CONFIG[:default_roles]
-  Role.create(:title => role)
+begin
+  for role in CONFIG[:default_roles]
+    Role.create(:title => role)
+  end
+rescue
 end
 # unless User.authenticate(CONFIG[:admin][:login], CONFIG[:admin][:password])
 #   user = User.find_by_login(CONFIG[:admin][:login])
