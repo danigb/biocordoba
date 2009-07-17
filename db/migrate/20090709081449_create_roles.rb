@@ -8,14 +8,6 @@ class CreateRoles < ActiveRecord::Migration
       t.column "user_id", :integer
     end
 
-    %w(admin exhibitor buyer).each do |title|
-      Role.create :title => title
-    end
-
-    user = User.create(:login => CONFIG[:admin][:login], :password => CONFIG[:admin][:password], 
-       :password_confirmation => CONFIG[:admin][:password], :email => CONFIG[:admin][:email])
-    user.roles << Role.find_by_title('admin')
-
   end
 
   def self.down

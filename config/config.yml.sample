@@ -4,13 +4,30 @@ development: &development
     :login: admin
     :password: eventos86
     :email: beecoder@example.com
-  :default_roles:
+  :roles:
     - admin
     - extenda
     - buyer
     - exhibitor
     - national
     - international
+  :sectors:
+    - aceites
+    - aderezos y aceitunas
+    - alimentos congelados
+    - alimentos preparados
+    - bebidas no alcólicas, bebidas calientes, otras...
+    - conservas, mermeladas, mieles
+    - frutas, hortalizas y frutos secos
+    - industrias auxiliares, restauración catering y o...
+    - institucionales y otros organismos
+    - otros productos agroalimentarios
+    - pan, repostería, bollería, postres y dulces
+    - pescado y marisco
+    - productos cárnicos
+    - productos ecológicos
+    - productos lácteos
+    - vinos, vinagres y licores
         
 test:
     <<: *development
