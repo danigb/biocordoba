@@ -1,3 +1,5 @@
+# Estas variables estaban en site_keys.rb pero necesitamos que se carguen
+# en este preciso instante :-)
 REST_AUTH_SITE_KEY         = 'd2ddac55144210d406b404c1da889f3a7b30df2b'
 REST_AUTH_DIGEST_STRETCHES = 10
 
@@ -9,8 +11,13 @@ rescue Errno::ENOENT
 end
 
 CONFIG = YAML.load(raw_config)[RAILS_ENV]
+puts "Configuración cargada en CONFIG."
 
-# Create defaults roles unless exists?
+# Método que se encarga de actualizar la base de datos con
+# el contenido de una +key+ en el fichero de configuración.
+# Interactua con un +model+ sobre un +field+ concreto.
+
+# Example: from_yml_to_db_user(Role, :roles, :name)
 def from_yml_to_db_for(model, key, field)
   db_objects = model.all
   yml_objects = CONFIG[key]
@@ -27,6 +34,10 @@ def from_yml_to_db_for(model, key, field)
   end
 end
 
+
+# Método que se encarga de mantener actualizado el primer
+# usuario admin. Si no existe lo creará y si los datos han
+# cambiado lo actualizará.
 def from_yml_to_db_user
   user = User.first
   
@@ -50,3 +61,5 @@ begin
 rescue 
   # No existen aún las tablas
 end
+
+puts "Configuración actualizada en BD."
