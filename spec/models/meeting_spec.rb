@@ -3,15 +3,13 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe Meeting do
 
   before do
-    @exhibitor_role = Role.find_by_title("exhibitor")
-    @buyer_role = Role.find_by_title('buyer')
 
     @exhibitor = User.make
-    @exhibitor.roles << @exhibitor_role
+    @exhibitor.roles << Role.find_by_title("exhibitor")
     @exhibitor.save
 
     @buyer = User.make
-    @buyer.roles << @buyer_role
+    @buyer.roles << Role.find_by_title('buyer')
     @buyer.save
 
     @meeting = Meeting.make(:host => @exhibitor, :guest => @buyer)
