@@ -9,11 +9,18 @@
 <p><%= label_tag 'email' %><br/>
 <%= f.text_field :email %></p>
 
-<p><%= label_tag 'password' %><br/>
-<%= f.password_field :password %></p>
+<p><%= label_tag "auto_password", "Autogenerate password?" %>
+<%= check_box_tag :auto, :password, true, {:onClick => "$('password_div').toggle();", :tabIndex => 3} %>
+</p>
 
-<p><%= label_tag 'password_confirmation', 'Confirm Password' %><br/>
-<%= f.password_field :password_confirmation %></p>
+<div id='password_div' style='display:none'>
+  <p><%= label_tag 'password' %><br/>
+  <%= f.password_field :password %></p>
+
+  <p><%= label_tag 'password_confirmation', 'Confirm Password' %><br/>
+  <%= f.password_field :password_confirmation %></p>
+</div>
+
 
 <p><%= submit_tag 'Sign up' %></p>
 <% end -%>
