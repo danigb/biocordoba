@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
   include Authentication::ByPassword
   include Authentication::ByCookieToken
 
-  attr_accessor :role_id
 
   has_and_belongs_to_many :roles
   has_one :profile
@@ -50,14 +49,16 @@ class User < ActiveRecord::Base
     CONFIG[:location].map{|l| [l[1], l[0]]}
   end
 
-  # Get location of user
+  # Get location for user
   def location
     CONFIG[:location][self.location_id] if self.location_id
   end
 
-  def role_id=(id)
+  # Set role for user
+  attr_accessor :role_id
+  def role_id=(value)
     self.roles.destroy_all if self.roles.length > 0 # Only one role rules
-    self.roles << Role.find(id)
+    self.roles << Role.find(value)
   end
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
