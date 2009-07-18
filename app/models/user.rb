@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  question_roles_methods_for :admin, :exhibitor, :buyer
+  question_roles_methods_for :admin, :exhibitor, :buyer, :national, :international, :extensa, :extenda
 
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.

@@ -22,6 +22,12 @@ Sector.blueprint do
   name {Faker::Lorem.sentence(1)}
 end
 
+Message.blueprint do
+  sender User.make
+  receiver User.make
+  message {Faker::Lorem.sentence}
+end
+
 Sham.define do
   email { Faker::Internet.email }
   word { Faker::Name::first_name }

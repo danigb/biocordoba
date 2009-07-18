@@ -1,7 +1,7 @@
 class Meeting < ActiveRecord::Base
   include AASM
 
-  # after_create :acept_state, :if => Proc.new { |m| m.guest.is_national_buyer? } #TODO
+  after_create :acept_state, :if => Proc.new { |m| m.guest.is_national? } 
 
   belongs_to :host, :class_name => 'User'
   belongs_to :guest, :class_name => 'User'
@@ -23,11 +23,11 @@ class Meeting < ActiveRecord::Base
   aasm_state :canceled
 
   aasm_event :acept do
-    transitions :from => 'pending', :to => 'acepted'
+    transitions :from => :pending, :to => :acepted
   end
 
   aasm_event :cancel do
-    transitions :from => ['acepted', 'pending'], :to => 'canceled'
+    transitions :from => [:acepted, :pending], :to => :canceled
   end
 
   private
