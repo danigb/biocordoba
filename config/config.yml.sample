@@ -9,8 +9,9 @@ development: &development
     - extenda
     - buyer
     - exhibitor
-    - national
-    - international
+  :location:
+    1: national
+    2: international
   :sectors:
     - aceites
     - aderezos y aceitunas

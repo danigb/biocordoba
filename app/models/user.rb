@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   include Authentication::ByPassword
   include Authentication::ByCookieToken
 
+  attr_accessor :role_id
 
   has_and_belongs_to_many :roles
   has_one :profile
@@ -24,36 +25,42 @@ class User < ActiveRecord::Base
   validates_uniqueness_of   :email
   validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
 
-  
+  attr_accessible :login, :email, :name, :password, :password_confirmation, :location_id, :role_id
 
-  attr_accessible :login, :email, :name, :password, :password_confirmation
-
-  #is_admin?, is_exhibitor?, ....
-  # def method_missing(method_sym, *args)
-  #   if method_sym.to_s =~ /^is_(.*)+\?$/
-  #     self.roles.map(&:title).include?($1)
-  #   end
-  # end
-
-  def self.question_roles_methods_for(*args)
+  def self.question_methods_for(*args, &block)
     attr_accessor *args
 
-    args.each do |role|
-      define_method "is_#{role}?" do
-        self.roles.map(&:title).include?(role.to_s)
+    args.each do |arg|
+      define_method "is_#{arg}?" do
+        eval yield
       end
     end
   end
 
-  question_roles_methods_for :admin, :exhibitor, :buyer
+  question_methods_for :admin, :exhibitor, :buyer do
+    "self.roles.map(&:title).include?(arg.to_s)"
+  end
 
+  question_methods_for :national, :international do
+    "self.location == arg.to_s"
+  end
+
+  # Generate a list of locations from CONFIG for select
+  def self.locations
+    CONFIG[:location].map{|l| [l[1], l[0]]}
+  end
+
+  # Get location of user
+  def location
+    CONFIG[:location][self.location_id] if self.location_id
+  end
+
+  def role_id=(id)
+    self.roles.destroy_all if self.roles.length > 0 # Only one role rules
+    self.roles << Role.find(id)
+  end
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
-  #
-  # uff.  this is really an authorization, not authentication routine.  
-  # We really need a Dispatch Chain here or something.
-  # This will also let us return a human error message.
-  #
   def self.authenticate(login, password)
     return nil if login.blank? || password.blank?
     u = find_by_login(login.downcase) # need to get the salt
