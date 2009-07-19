@@ -4,12 +4,11 @@ describe Meeting do
 
   before do
     @exhibitor = User.make
-    @exhibitor.roles << Role.find_by_title("exhibitor")
+    @exhibitor.role = Role.find_by_title("exhibitor")
     @exhibitor.save
 
     @buyer = User.make
-    @buyer.roles << Role.find_by_title('buyer')
-    @buyer.location_id = 1
+    @buyer.role = Role.find_by_title('buyer')
     @buyer.save
 
     @meeting = Meeting.make(:host => @exhibitor, :guest => @buyer)
@@ -36,7 +35,7 @@ describe Meeting do
 
   it "A exhibitor new meeting with international buyer should have pending state" do
     @buyer = User.make
-    @buyer.roles << Role.find_by_title('buyer')
+    @buyer.role = Role.find_by_title('buyer')
     @buyer.location_id = 2
     @buyer.save
     @meeting = Meeting.make(:host => @exhibitor, :guest => @buyer)

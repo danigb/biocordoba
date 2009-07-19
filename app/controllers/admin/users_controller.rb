@@ -29,7 +29,7 @@ class Admin::UsersController < ApplicationController
       if params[:continue]
         redirect_to signup_path
       else
-        redirect_to users_path
+        redirect_to admin_users_path
       end
     else
       flash.now[:error]  = "Existen errores en el formulario."

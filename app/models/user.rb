@@ -75,6 +75,15 @@ class User < ActiveRecord::Base
     self.roles.first.id unless self.roles.empty?
   end
 
+  def role=(value)
+    self.role_id = value.id 
+  end
+
+  def role
+    self.roles.first
+  end
+
+
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   def self.authenticate(login, password)
     return nil if login.blank? || password.blank?
