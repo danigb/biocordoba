@@ -10,7 +10,8 @@
   <%= f.text_field :email %></p>
 
   <p><%= label_tag 'role_id', 'Tipo de usuario' %><br/>
-  <%= f.select :role_id, Role.all.map{|r| [r.title, r.id]}, {:include_blank => true, :selected => params[:user][:role_id].to_i} %></p>
+  <% selected = params[:user][:role_id].to_i if params[:user] && params[:user][:role_id] %>
+  <%= f.select :role_id, Role.all.map{|r| [r.title, r.id]}, {:include_blank => true, :selected => selected } %></p>
 
   <p><%= label_tag 'location_id', 'Localización' %><br/>
   <%= f.select :location_id, User.locations, :include_blank => true %></p>

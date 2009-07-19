@@ -24,6 +24,9 @@ class User < ActiveRecord::Base
   validates_uniqueness_of   :email
   validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
 
+  validates_presence_of     :location_id
+  validates_presence_of     :role_id
+
   attr_accessible :login, :email, :name, :password, :password_confirmation, :location_id, :role_id
 
   def self.question_methods_for(*args, &block)
@@ -59,6 +62,10 @@ class User < ActiveRecord::Base
   def role_id=(value)
     self.roles.destroy_all if self.roles.length > 0 # Only one role rules
     self.roles << Role.find(value)
+  end
+
+  def role_id
+    self.roles.first
   end
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
