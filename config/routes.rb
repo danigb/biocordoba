@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :preferences
+
   map.resources :sectors
 
   map.root :controller => 'main'

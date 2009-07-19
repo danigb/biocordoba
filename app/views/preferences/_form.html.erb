@@ -1,0 +1,28 @@
+<% form_for @preference do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :meetings_number %><br />
+    <%= f.text_field :meetings_number %>
+  </p>
+  <p>
+    <%= f.label :meetings_duration %><br />
+    <%= f.text_field :meetings_duration %>
+  </p>
+  <p>
+    <%= f.label :event_start_day %><br />
+    <%= f.date_select :event_start_day %>
+  </p>
+  <p>
+    <%= f.label :event_end_day %><br />
+    <%= f.date_select :event_end_day %>
+  </p>
+  <p>
+    <%= f.label :event_day_start_at %><br />
+    <%= f.datetime_select :event_day_start_at %>
+  </p>
+  <p>
+    <%= f.label :event_day_end_at %><br />
+    <%= f.datetime_select :event_day_end_at %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>
