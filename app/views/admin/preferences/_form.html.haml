@@ -1,0 +1,25 @@
+= f.error_messages 
+%p
+  = f.label :meetings_number
+  %br
+  = f.text_field :meetings_number
+%p
+  = f.label :meetings_duration
+  %br/
+  = f.text_field :meetings_duration
+%p
+  = f.label :event_start_day
+  %br/
+  = f.date_select :event_start_day 
+%p
+  = f.label :event_end_day
+  %br/
+  = f.date_select :event_end_day 
+%p
+  = f.label :event_day_start_at
+  %br/
+  = f.datetime_select :event_day_start_at 
+%p
+  = f.label :event_day_end_at 
+  = f.datetime_select :event_day_end_at 
+%p= f.submit "Submit"

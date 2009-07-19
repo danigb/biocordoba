@@ -1,0 +1,23 @@
+- title "Preferences"
+
+%table
+  %tr
+    %th Meetings Number
+    %th Meetings Duration
+    %th Event Start Day
+    %th Event End Day
+    %th Event Day Start At
+    %th Event Day End At
+  
+  - for preference in @preferences
+    %tr
+      %td=h preference.meetings_number 
+      %td=h preference.meetings_duration 
+      %td=h preference.event_start_day 
+      %td=h preference.event_end_day 
+      %td=h preference.event_day_start_at
+      %td=h preference.event_day_end_at 
+      %td= link_to "Edit", edit_admin_preference_path(preference)
+
+%p
+  = link_to "New Preference", new_admin_preference_path
