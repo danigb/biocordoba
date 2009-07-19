@@ -61,3 +61,9 @@ a {
     #errorExplanation ul li {
       font-size: 12px;
       list-style: disc; }
+
+.big_field {
+  font-size: 2em; }
+
+.login {
+  width: 300px; }

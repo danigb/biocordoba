@@ -23,10 +23,14 @@ class UsersController < ApplicationController
       # protection if visitor resubmits an earlier form using back
       # button. Uncomment if you understand the tradeoffs.
       # reset session
-      redirect_back_or_default('/')
-      # flash[:notice] = "Thanks for signing up!  We're sending you an email with your activation code."
+      flash[:notice] = "El usuario <b>#{@user.login}</b> ha sido registrado con éxito."
+      if params[:continue]
+        redirect_to signup_path
+      else
+        redirect_to users_path
+      end
     else
-      flash[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
+      flash.now[:error]  = "Existen errores en el formulario."
       render :action => 'new'
     end
   end
