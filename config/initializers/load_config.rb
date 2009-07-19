@@ -49,7 +49,7 @@ def from_yml_to_db_user
     user.location_id = 1
     user.save!
   else
-    if user.login != CONFIG[:admin][:login] || user.email != CONFIG[:admin][:email] || !user.authenticate?(CONFIG[:admin][:password])
+    if user.login != CONFIG[:admin][:login] || user.email != CONFIG[:admin][:email] || !user.authenticated?(CONFIG[:admin][:password])
       user.update_attributes(info)
     end
   end

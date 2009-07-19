@@ -8,14 +8,12 @@ class UsersController < ApplicationController
   end
  
   def create
-    logout_keeping_session!
     @user = User.new(params[:user])
     
     if params[:auto] && params[:auto][:password]
       @user.password = @user.password_confirmation = Haddock::Password.generate(10)
       @auto_password = true
     else
-      @user.password = @user.password_confirmation = ""
       @auto_password = false
     end
       
@@ -26,7 +24,7 @@ class UsersController < ApplicationController
       # button. Uncomment if you understand the tradeoffs.
       # reset session
       redirect_back_or_default('/')
-      flash[:notice] = "Thanks for signing up!  We're sending you an email with your activation code."
+      # flash[:notice] = "Thanks for signing up!  We're sending you an email with your activation code."
     else
       flash[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
       render :action => 'new'
