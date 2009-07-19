@@ -66,6 +66,7 @@ class User < ActiveRecord::Base
     end
   end
 
+  # Get role for user
   def role_id
     self.roles.first unless self.roles.empty?
   end

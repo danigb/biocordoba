@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_filter :login_required
+
   # render new.rhtml
   def new
     @user = User.new
@@ -21,5 +22,9 @@ class UsersController < ApplicationController
       flash[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
       render :action => 'new'
     end
+  end
+
+  def type
+    @users = Role.find_by_title(params[:type]).users
   end
 end

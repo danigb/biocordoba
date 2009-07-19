@@ -1,0 +1,5 @@
+%h1= "Selecciona un tipo de usuario"
+- for role in Role.all
+  %ul
+    %li
+      = link_to role.title, type_user_path(role.title)
