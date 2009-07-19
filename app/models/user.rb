@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  question_methods_for :admin, :exhibitor, :buyer do
+  question_methods_for :admin, :exhibitor, :buyer, :extenda do
     "self.roles.map(&:title).include?(arg.to_s)"
   end
 

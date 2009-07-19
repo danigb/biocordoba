@@ -10,6 +10,7 @@ describe Meeting do
 
     @buyer = User.make
     @buyer.roles << Role.find_by_title('buyer')
+    @buyer.roles << Role.find_by_title('national')
     @buyer.save
 
     @meeting = Meeting.make(:host => @exhibitor, :guest => @buyer)
@@ -30,10 +31,18 @@ describe Meeting do
     @meeting.should_not be_valid
   end
 
+  it "A exhibitor new meeting with national buyer should have acepted state" do
+    @meeting.acepted?.should be_true 
+  end
 
-  it "A exhibitor new meeting with national buyer should have acepted state"
-  it "A exhibitor new meeting with international buyer should have pending state"
-  it "A exhibitor can create a meeting with a buyer"
-  it "A exhibitor can cancel a meeting, si cancel state"
-  it "A buyer can cancel a meeting, so cancel state"
+  it "A exhibitor new meeting with international buyer should have pending state" do
+    @buyer = User.make
+    @buyer.roles << Role.find_by_title('buyer')
+    @buyer.roles << Role.find_by_title('international')
+    @buyer.save
+    @meeting = Meeting.make(:host => @exhibitor, :guest => @buyer)
+
+    @meeting.pending?.should be_true
+  end
+
 end
