@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   include Authentication::ByPassword
   include Authentication::ByCookieToken
 
+  before_create :set_master_preferences #Configuración maestra
+
 
   has_and_belongs_to_many :roles
   has_one :profile
@@ -42,6 +44,11 @@ class User < ActiveRecord::Base
 
   question_methods_for :admin, :exhibitor, :buyer, :extenda do
     "self.roles.map(&:title).include?(arg.to_s)"
+  end
+
+
+  def set_master_preferences
+    self.preference = Preference.first
   end
 
   # # Generate a list of locations from CONFIG for select

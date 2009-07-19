@@ -4,6 +4,13 @@ development: &development
     :login: admin
     :password: eventos86
     :email: beecoder@example.com
+    :preferences:
+      :meetings_number: 4
+      :meetings_duration: 15
+      :event_start_day: "2009-09-22"
+      :event_end_day: "2009-09-24"
+      :event_day_start_at: "10:00"
+      :event_day_end_at: "19:00"
   :roles:
     - admin
     - extenda
@@ -27,6 +34,7 @@ development: &development
     - productos ecológicos
     - productos lácteos
     - vinos, vinagres y licores
+
         
 test:
     <<: *development

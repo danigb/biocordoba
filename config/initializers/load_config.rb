@@ -54,10 +54,13 @@ def from_yml_to_db_user
   end
 end
 
+
 begin
   from_yml_to_db_for(Role, :roles, :title)
   from_yml_to_db_for(Sector, :sectors, :name) if Sector.count == 0
   from_yml_to_db_user
+  #Creamos la configuración maestra en el caso de que no exista
+  Preference.create(CONFIG[:admin][:preferences]) if Preference.first.nil?
 rescue ActiveRecord::StatementInvalid
   # No existen aún las tablas
 end

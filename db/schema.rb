@@ -106,7 +106,6 @@ ActiveRecord::Schema.define(:version => 20090719155923) do
     t.datetime "updated_at"
     t.string   "remember_token",            :limit => 40
     t.datetime "remember_token_expires_at"
-    t.integer  "location_id"
     t.integer  "preference_id",                            :default => 1
   end
 
