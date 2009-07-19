@@ -60,12 +60,14 @@ class User < ActiveRecord::Base
   # Set role for user
   attr_accessor :role_id
   def role_id=(value)
-    self.roles.destroy_all if self.roles.length > 0 # Only one role rules
-    self.roles << Role.find(value)
+    unless value.blank?
+      self.roles.destroy_all unless self.roles.empty? # Only one role rules
+      self.roles << Role.find(value)
+    end
   end
 
   def role_id
-    self.roles.first
+    self.roles.first unless self.roles.empty?
   end
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
