@@ -14,7 +14,7 @@
           %td= user.login
           %td= user.email
           %td
-            = link_to "Editar", user_path(user)
+            = link_to "Editar", edit_user_path(user)
             = link_to "Eliminar", user_path(user, :type => params[:type]), :confirm => '¿Estás seguro?', :method => :delete
 %p
   = link_to "Volver", users_path
