@@ -7,11 +7,9 @@ development: &development
   :roles:
     - admin
     - extenda
-    - buyer
+    - buyer_national
+    - buyer_international
     - exhibitor
-  :location:
-    1: national
-    2: international
   :sectors:
     - aceites
     - aderezos y aceitunas

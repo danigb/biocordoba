@@ -26,10 +26,9 @@ class User < ActiveRecord::Base
   validates_uniqueness_of   :email
   validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
 
-  validates_presence_of     :location_id
   validates_presence_of     :role_id
 
-  attr_accessible :login, :email, :name, :password, :password_confirmation, :location_id, :role_id
+  attr_accessible :login, :email, :name, :password, :password_confirmation, :role_id
 
   def self.question_methods_for(*args, &block)
     attr_accessor *args
@@ -45,19 +44,15 @@ class User < ActiveRecord::Base
     "self.roles.map(&:title).include?(arg.to_s)"
   end
 
-  question_methods_for :national, :international do
-    "self.location == arg.to_s"
-  end
+  # # Generate a list of locations from CONFIG for select
+  # def self.locations
+  #   CONFIG[:location].map{|l| [l[1], l[0]]}
+  # end
 
-  # Generate a list of locations from CONFIG for select
-  def self.locations
-    CONFIG[:location].map{|l| [l[1], l[0]]}
-  end
-
-  # Get location for user
-  def location
-    CONFIG[:location][self.location_id] if self.location_id
-  end
+  # # Get location for user
+  # def location
+  #   CONFIG[:location][self.location_id] if self.location_id
+  # end
 
   # Set role for user
   attr_accessor :role_id

@@ -11,15 +11,11 @@
 
   <p><%= label_tag 'role_id', 'Tipo de usuario' %><br/>
   <% selected = params[:user][:role_id].to_i if params[:user] && params[:user][:role_id] %>
-  <%= current_user.is_extenda? %>
   <% if current_user.is_extenda?
-       selected = Role.find_by_title("buyer").id
-       disabled = true
+     #  selected = Role.find_by_title("buyer").id
+     #  disabled = true
      end %>
-     <%= f.select :role_id, Role.all.map{|r| [r.title, r.id]}, {:include_blank => true, :selected => selected, :disabled => disabled } %></p>
-
-  <p><%= label_tag 'location_id', 'Localización' %><br/>
-  <%= f.select :location_id, User.locations, :include_blank => true %></p>
+     <%= f.select :role_id, Role.all.map{|r| [r.title, r.id]}, {:include_blank => true, :selected => selected } %></p>
 
   <p><%= label_tag "auto_password", "Autogenerar password?" %>
   <%= check_box_tag 'auto[password]', @auto_password, {}, {:onclick => "$('#password_div').toggle();"} %></p>

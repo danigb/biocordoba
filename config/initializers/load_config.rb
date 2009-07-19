@@ -46,7 +46,6 @@ def from_yml_to_db_user
   if user.nil?
     user = User.new(info) 
     user.roles << Role.find_by_title('admin')
-    user.location_id = 1
     user.save!
   else
     if user.login != CONFIG[:admin][:login] || user.email != CONFIG[:admin][:email] || !user.authenticated?(CONFIG[:admin][:password])
