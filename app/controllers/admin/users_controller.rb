@@ -16,6 +16,7 @@ class Admin::UsersController < ApplicationController
     else
       @auto_password = false
     end
+    @password = @user.password
 
     @extenda_valid = current_user.is_extenda? && !@user.is_buyer_international? ? false : true
 
@@ -25,6 +26,9 @@ class Admin::UsersController < ApplicationController
       # protection if visitor resubmits an earlier form using back
       # button. Uncomment if you understand the tradeoffs.
       # reset session
+
+      UserMailer.deliver_welcome_email(current_user, @user, @password)
+
       flash[:notice] = "El usuario <b>#{@user.login}</b> ha sido registrado con éxito."
       if params[:continue]
         redirect_to signup_path
