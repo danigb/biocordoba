@@ -44,8 +44,10 @@ def from_yml_to_db_user
      :password_confirmation => CONFIG[:admin][:password], :email => CONFIG[:admin][:email]}
 
   if user.nil?
-    user = User.create(info) 
+    user = User.new(info) 
     user.roles << Role.find_by_title('admin')
+    user.location_id = 1
+    user.save!
   else
     if user.login != CONFIG[:admin][:login] || user.email != CONFIG[:admin][:email] || !user.authenticate?(CONFIG[:admin][:password])
       user.update_attributes(info)
@@ -57,7 +59,7 @@ begin
   from_yml_to_db_for(Role, :roles, :title)
   from_yml_to_db_for(Sector, :sectors, :name) if Sector.count == 0
   from_yml_to_db_user
-rescue 
+rescue ActiveRecord::StatementInvalid
   # No existen aún las tablas
 end
 
