@@ -16,8 +16,10 @@ class Admin::UsersController < ApplicationController
     else
       @auto_password = false
     end
-      
-    success = @user && @user.save
+
+    @extenda_valid = current_user.is_extenda? && !@user.is_buyer_international? ? false : true
+
+    success = @user && @extenda_valid && @user.save 
     if success && @user.errors.empty?
       # Protects against session fixation attacks, causes request forgery
       # protection if visitor resubmits an earlier form using back

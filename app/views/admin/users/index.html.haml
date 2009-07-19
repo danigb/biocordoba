@@ -4,3 +4,6 @@
   - for role in Role.all
     %li
       = link_to role.title, type_users_path(role.title)
+
+%p
+  = link_to "Registra un nuevo usuario", signup_path
