@@ -7,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   map.register '/register', :controller => 'users', :action => 'create'
   map.signup '/signup', :controller => 'users', :action => 'new'
 
-  map.type_user '/users/:type', :controller => 'users', :action => 'type'
+  map.type_users '/users/type/:type', :controller => 'users', :action => 'type'
   map.resources :users
 
   map.resource :session

@@ -25,7 +25,6 @@ class UsersController < ApplicationController
       # protection if visitor resubmits an earlier form using back
       # button. Uncomment if you understand the tradeoffs.
       # reset session
-      self.current_user = @user # !! now logged in
       redirect_back_or_default('/')
       flash[:notice] = "Thanks for signing up!  We're sending you an email with your activation code."
     else
@@ -35,6 +34,22 @@ class UsersController < ApplicationController
   end
 
   def type
-    @users = Role.find_by_title(params[:type]).users
+    @role = Role.find_by_title(params[:type])
+    @users = @role.users
+  end
+
+  def destroy
+    user = User.find(params[:id])
+
+    # You should not delete yourself or first user (admin)
+    if user == current_user || user == User.first
+      render :text => current_user.login and return
+      flash[:error] = "Error. No puedes eliminar este usuario."
+    else
+      user.destroy
+      flash[:notice] = "Usuario eliminado con éxito"
+    end
+
+    redirect_to type_users_path(params[:type])
   end
 end

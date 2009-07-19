@@ -1,5 +1,6 @@
-%h1= "Selecciona un tipo de usuario"
-- for role in Role.all
-  %ul
+%h1= "Usuarios"
+%h2= "Selecciona un tipo de usuario"
+%ul
+  - for role in Role.all
     %li
-      = link_to role.title, type_user_path(role.title)
+      = link_to role.title, type_users_path(role.title)

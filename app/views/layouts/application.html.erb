@@ -4,6 +4,8 @@
     <%= javascript_include_tag :defaults %>
   </head>
   <body>
+    <%= flash[:error] %>
+    <%= flash[:notice] %>
     <%= yield%>
   </body>
 </html>
