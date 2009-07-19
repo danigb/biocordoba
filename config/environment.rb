@@ -10,4 +10,5 @@ Rails::Initializer.run do |config|
   config.time_zone = 'Madrid'
   config.gem "rubyist-aasm", :lib => "aasm", :source => 'http://gems.github.com'
   config.gem "haml"
+  config.gem "haddock"
 end

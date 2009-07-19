@@ -4,14 +4,24 @@ class UsersController < ApplicationController
   # render new.rhtml
   def new
     @user = User.new
+    @auto_password = true
   end
  
   def create
     logout_keeping_session!
     @user = User.new(params[:user])
+    
+    if params[:auto] && params[:auto][:password]
+      @user.password = @user.password_confirmation = Haddock::Password.generate(10)
+      @auto_password = true
+    else
+      @user.password = @user.password_confirmation = ""
+      @auto_password = false
+    end
+      
     success = @user && @user.save
     if success && @user.errors.empty?
-            # Protects against session fixation attacks, causes request forgery
+      # Protects against session fixation attacks, causes request forgery
       # protection if visitor resubmits an earlier form using back
       # button. Uncomment if you understand the tradeoffs.
       # reset session

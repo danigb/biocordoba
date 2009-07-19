@@ -17,9 +17,9 @@
   <%= f.select :location_id, User.locations, :include_blank => true %></p>
 
   <p><%= label_tag "auto_password", "Autogenerar password?" %>
-  <%= check_box_tag :auto, :password, true, {:onclick => "$('#password_div').toggle();"} %></p>
+  <%= check_box_tag 'auto[password]', @auto_password, {}, {:onclick => "$('#password_div').toggle();"} %></p>
 
-  <div id='password_div' style='display:none'>
+  <div id='password_div' style='<%= !@auto_password ? "": "display:none" %>'>
     <p><%= label_tag 'password' %><br/>
     <%= f.password_field :password %></p>
 
