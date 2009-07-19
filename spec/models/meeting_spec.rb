@@ -3,14 +3,13 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe Meeting do
 
   before do
-
     @exhibitor = User.make
     @exhibitor.roles << Role.find_by_title("exhibitor")
     @exhibitor.save
 
     @buyer = User.make
     @buyer.roles << Role.find_by_title('buyer')
-    @buyer.roles << Role.find_by_title('national')
+    @buyer.location_id = 1
     @buyer.save
 
     @meeting = Meeting.make(:host => @exhibitor, :guest => @buyer)
@@ -38,7 +37,7 @@ describe Meeting do
   it "A exhibitor new meeting with international buyer should have pending state" do
     @buyer = User.make
     @buyer.roles << Role.find_by_title('buyer')
-    @buyer.roles << Role.find_by_title('international')
+    @buyer.location_id = 2
     @buyer.save
     @meeting = Meeting.make(:host => @exhibitor, :guest => @buyer)
 
