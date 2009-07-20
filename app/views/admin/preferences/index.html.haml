@@ -1,23 +1,24 @@
 - title "Preferences"
 
-%table
-  %tr
-    %th Meetings Number
-    %th Meetings Duration
-    %th Event Start Day
-    %th Event End Day
-    %th Event Day Start At
-    %th Event Day End At
-  
-  - for preference in @preferences
+%table#orderable.tablesorter{:cellspacing => "1", :cellpadding => "0", :border => "0"}
+  %thead
     %tr
-      %td=h preference.meetings_number 
-      %td=h preference.meetings_duration 
-      %td=h preference.event_start_day 
-      %td=h preference.event_end_day 
-      %td=h preference.event_day_start_at
-      %td=h preference.event_day_end_at 
-      %td= link_to "Edit", edit_admin_preference_path(preference)
+      %th.header Máximo reuniones
+      %th.header Duración de la reunión
+      %th.header Fecha inicio del evento
+      %th.header Fecha final del evento
+      %th.header Hora inicio del evento
+      %th.header Hora final del evento
+  %tbody 
+    - for preference in @preferences
+      %tr
+        %td=h preference.meetings_number 
+        %td=h preference.meetings_duration 
+        %td=h preference.event_start_day 
+        %td=h preference.event_end_day 
+        %td=h preference.event_day_start_at.strftime("%H:%M")
+        %td=h preference.event_day_end_at.strftime("%H:%M")
+        %td= link_to "Editar", edit_admin_preference_path(preference)
 
 %p
-  = link_to "New Preference", new_admin_preference_path
+  = link_to "Nueva configuración", new_admin_preference_path
