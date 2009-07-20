@@ -3,7 +3,7 @@
 %ul
   - for role in @roles
     %li
-      = link_to role.title, type_users_path(role.title)
+      = link_to ROLES[role.title.to_sym], type_users_path(role.title)
       = "(#{role.users.length})"
 
 %p

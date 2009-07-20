@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   include Authentication::ByPassword
   include Authentication::ByCookieToken
 
-  before_create :set_master_preferences #Configuración maestra
+  # before_create :set_master_preferences #Configuración maestra
 
   has_and_belongs_to_many :roles
   has_one :profile
@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
 
   validates_presence_of     :role_id
 
-  attr_accessible :login, :email, :name, :password, :password_confirmation, :role_id, :profile_attributes, :preference_attributes
+  attr_accessible :login, :email, :name, :password, :password_confirmation, :role_id, :profile_attributes, :preference_attributes, :preference_id
 
   def self.question_methods_for(*args, &block)
     attr_accessor *args

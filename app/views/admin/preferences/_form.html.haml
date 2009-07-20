@@ -1,4 +1,4 @@
-#preferences{:style => 'display:none;'}
+#preferences{:style => @user.preference_id == 1 || @user.new_record? ? 'display:none' : ""}
   %p
     = f.label :meetings_number, "Número máximo de reuniones"
     %br

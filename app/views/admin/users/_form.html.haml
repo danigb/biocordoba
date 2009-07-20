@@ -8,6 +8,6 @@
   - @user.build_preference unless @user.preference
   - f.fields_for(:preference) do |pref|
     = label_tag "Utiliza la configuración por defecto"
-    = check_box_tag 'default_preferences', 1, true, {:onclick => "$('#preferences').toggle();"} 
+    = check_box_tag 'default_preferences', 1, @user.preference_id == 1 || @user.new_record?, {:onclick => "$('#preferences').toggle();"} 
     %br/
     = render :partial => 'admin/preferences/form', :locals => {:f => pref}

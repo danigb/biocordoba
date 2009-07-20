@@ -12,7 +12,6 @@ class Admin::UsersController < ApplicationController
  
   def edit
     @user = User.find(params[:id])
-    @profile = @user.profile
   end
 
   #Aquí debeactualizar profile y preference también haciendo uso de nested forms

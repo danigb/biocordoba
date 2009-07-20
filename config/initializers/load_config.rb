@@ -41,7 +41,7 @@ def from_yml_to_db_user
   user = User.first
   
   info = {:login => CONFIG[:admin][:login], :password => CONFIG[:admin][:password], 
-     :password_confirmation => CONFIG[:admin][:password], :email => CONFIG[:admin][:email]}
+     :password_confirmation => CONFIG[:admin][:password], :email => CONFIG[:admin][:email], :preference_id => 1}
 
   if user.nil?
     user = User.new(info) 
@@ -59,8 +59,10 @@ begin
   from_yml_to_db_for(Role, :roles, :title)
   from_yml_to_db_for(Sector, :sectors, :name) if Sector.count == 0
   from_yml_to_db_user
+  
   #Creamos la configuración maestra en el caso de que no exista
   Preference.create(CONFIG[:admin][:preferences]) if Preference.first.nil?
+
 rescue ActiveRecord::StatementInvalid
   # No existen aún las tablas
 end
