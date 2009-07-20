@@ -13,6 +13,16 @@ a {
   height: 0;
   overflow: hidden; }
 
+#header {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: -28px; }
+  #header a {
+    text-decoration: none;
+    font-size: 3em;
+    color: black;
+    font-weight: bolder; }
+
 #container {
   width: 75%;
   margin: 0 auto;
