@@ -1,10 +1,12 @@
-- form_for :user, :url => admin_user_path(@user), :html => {:method => :put} do |f|
+- form_for @user, :url => admin_user_path(@user), :html => {:method => :put} do |f|
   %fieldset
     %legend Información personal
+    - @user.build_profile unless @user.profile
     - f.fields_for(:profile) do |profile|
       = render :partial => 'profile', :locals => {:f => profile}
   %fieldset
     %legend Configuraciónes del usuario
+    - @user.build_preference unless @user.preference
     - f.fields_for(:preference) do |pref|
       = label_tag "Utiliza la configuración por defecto"
       = check_box_tag 'default_preferences', 1, true, {:onclick => "$('#preferences').toggle();"} 

@@ -12,6 +12,19 @@ class Admin::UsersController < ApplicationController
  
   def edit
     @user = User.find(params[:id])
+    @profile = @user.profile
+  end
+
+  #Aquí debeactualizar profile y preference también haciendo uso de nested forms
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(params[:user])
+      flash[:notice] = "Usuario modificado correctamente"
+      redirect_to admin_users_path
+    else
+      flash[:error] = "Existen errores en el formulario"
+      render :action => 'edit'
+    end
   end
 
   def create

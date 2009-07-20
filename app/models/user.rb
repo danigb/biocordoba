@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :roles
   has_one :profile
-  has_one :preference
+  belongs_to :preference
 
   has_many :messages_received, :class_name => 'Message', :foreign_key => 'receiver_id'
   has_many :messages_sent, :class_name => 'Message', :foreign_key => 'sender_id'
@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
 
   validates_presence_of     :role_id
 
-  attr_accessible :login, :email, :name, :password, :password_confirmation, :role_id
+  attr_accessible :login, :email, :name, :password, :password_confirmation, :role_id, :profile_attributes, :preference_attributes
 
   def self.question_methods_for(*args, &block)
     attr_accessor *args

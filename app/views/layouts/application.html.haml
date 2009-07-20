@@ -28,10 +28,7 @@
         - if Rails.env.development?
           %em
             = "| Modo Development: El usuario es <strong>#{current_user.role.title}</strong>"
-
-      - if show_title?
-        %h1=h yield(:title)
-      
-        
-
-      = yield
+      #content
+        - if show_title?
+          %h1=h yield(:title)
+        = yield
