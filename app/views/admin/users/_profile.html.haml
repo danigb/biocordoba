@@ -17,7 +17,7 @@
 %p
   %b
     TODO, ciudad y provincia
-- if current_user.is_exhibitor?
+- if @user.is_exhibitor?
   %p
     = f.label :products, "Productos"
     %br/
@@ -26,7 +26,8 @@
     = f.label :packages, "Envases"
     %br/
     = f.text_field :packages
-- if current_user.is_international_buyer? || current_user.is_national_buyer?
+
+- if @user.is_international_buyer? || @user.is_national_buyer?
   %p
     = f.label :commercial_profile, "Perfil comercial"
     %br/
