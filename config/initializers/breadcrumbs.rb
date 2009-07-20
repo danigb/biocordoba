@@ -10,6 +10,7 @@ Breadcrumb.configure do
   trail "admin/preferences", :index, [:admin_root]
   trail "Admin::Users", :type, [:admin_root, :admin_users]
   trail "Admin::Users", :new, [:admin_root]
+  trail "admin/users", :edit, [:admin_root, :admin_users]
   trail "admin/preferences", [:new, :edit], [:admin_root, :admin_preferences]
 
   # Specify the delimiter for the crumbs

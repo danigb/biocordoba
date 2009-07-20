@@ -1,0 +1,13 @@
+- form_for :user, :url => admin_user_path(@user), :html => {:method => :put} do |f|
+  %fieldset
+    %legend Información personal
+    - f.fields_for(:profile) do |profile|
+      = render :partial => 'profile', :locals => {:f => profile}
+  %fieldset
+    %legend Configuraciónes del usuario
+    - f.fields_for(:preference) do |pref|
+      = label_tag "Utiliza la configuración por defecto"
+      = check_box_tag 'default_preferences', true, {}, {:onclick => "$('#preferences').toggle();"} 
+      %br/
+      = render :partial => 'admin/preferences/form', :locals => {:f => pref}
+  = f.submit "Guardar"

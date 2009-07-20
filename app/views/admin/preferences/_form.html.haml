@@ -1,27 +1,26 @@
-= f.error_messages 
-%p
-  = f.label :meetings_number, "Número máximo de reuniones"
-  %br
-  = f.text_field :meetings_number, :size => 2
-%p
-  = f.label :meetings_duration, "Duración de la reunión (minutos)"
-  %br/
-  = f.text_field :meetings_duration, :size => 2
-%p
-  = f.label :event_start_day, "Fecha inicio del evento"
-  %br/
-  = f.date_select :event_start_day, :order => [:day, :month, :year] 
-%p
-  = f.label :event_end_day, "Fecha final del evento"
-  %br/
-  = f.date_select :event_end_day, :order => [:day, :month, :year]
-%p
-  = f.label :event_day_start_at, "Hora inicio del evento"
-  %br/
-  = f.time_select :event_day_start_at
-%p
-  = f.label :event_day_end_at, "Hora final del evento"
-  %br/
-  = f.time_select :event_day_end_at 
+#preferences{:style => 'display:none;'}
+  %p
+    = f.label :meetings_number, "Número máximo de reuniones"
+    %br
+    = f.text_field :meetings_number, :size => 2
+  %p
+    = f.label :meetings_duration, "Duración de la reunión (minutos)"
+    %br/
+    = f.text_field :meetings_duration, :size => 2
+  %p
+    = f.label :event_start_day, "Fecha inicio del evento"
+    %br/
+    = f.date_select :event_start_day, :order => [:day, :month, :year] 
+  %p
+    = f.label :event_end_day, "Fecha final del evento"
+    %br/
+    = f.date_select :event_end_day, :order => [:day, :month, :year]
+  %p
+    = f.label :event_day_start_at, "Hora inicio del evento"
+    %br/
+    = f.time_select :event_day_start_at
+  %p
+    = f.label :event_day_end_at, "Hora final del evento"
+    %br/
+    = f.time_select :event_day_end_at 
 
-%p= f.submit "Guardar"
