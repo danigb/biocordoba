@@ -17,18 +17,18 @@
 %p
   %b
     TODO, ciudad y provincia
-%p Productos y envases solo se muestran si es un expositor
-%p
-  = f.label :products, "Productos"
-  %br/
-  = f.text_field :products
-%p
-  = f.label :packages, "Envases"
-  %br/
-  = f.text_field :packages
-%p Perfil comercial solo si comprador
-%p
-  = f.label :commercial_profile, "Perfil comercial"
-  %br/
-  = f.text_field :commercial_profile
+- if current_user.is_exhibitor?
+  %p
+    = f.label :products, "Productos"
+    %br/
+    = f.text_field :products
+  %p
+    = f.label :packages, "Envases"
+    %br/
+    = f.text_field :packages
+- if current_user.is_international_buyer? || current_user.is_national_buyer?
+  %p
+    = f.label :commercial_profile, "Perfil comercial"
+    %br/
+    = f.text_field :commercial_profile
 

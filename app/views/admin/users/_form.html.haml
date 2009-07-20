@@ -7,7 +7,7 @@
     %legend Configuraciónes del usuario
     - f.fields_for(:preference) do |pref|
       = label_tag "Utiliza la configuración por defecto"
-      = check_box_tag 'default_preferences', true, {}, {:onclick => "$('#preferences').toggle();"} 
+      = check_box_tag 'default_preferences', 1, true, {:onclick => "$('#preferences').toggle();"} 
       %br/
       = render :partial => 'admin/preferences/form', :locals => {:f => pref}
   = f.submit "Guardar"

@@ -14,8 +14,8 @@ development: &development
   :roles:
     - admin
     - extenda
-    - buyer_national
-    - buyer_international
+    - national_buyer
+    - international_buyer
     - exhibitor
   :sectors:
     - aceites

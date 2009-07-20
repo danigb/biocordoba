@@ -1,7 +1,10 @@
 class Admin::UsersController < ApplicationController
   skip_before_filter :login_required
 
-  # render new.rhtml
+  def index
+    @roles = Role.find(:all, :include => :users)
+  end
+
   def new
     @user = User.new
     @auto_password = true
@@ -22,7 +25,7 @@ class Admin::UsersController < ApplicationController
     end
     @password = @user.password
 
-    @extenda_valid = current_user.is_extenda? && !@user.is_buyer_international? ? false : true
+    @extenda_valid = current_user.is_extenda? && !@user.is_international_buyer? ? false : true
 
     success = @user && @extenda_valid && @user.save 
     if success && @user.errors.empty?

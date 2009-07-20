@@ -13,7 +13,7 @@
     <%= label_tag 'role_id', 'Tipo de usuario' %><br/>
     <% selected = params[:user][:role_id].to_i if params[:user] && params[:user][:role_id] %>
     <% if current_user.is_extenda? %>
-      <% selected = Role.find_by_title("buyer_international").id and @disabled = true %>
+      <% selected = Role.find_by_title("international_buyer").id and @disabled = true %>
       <%= f.hidden_field :role_id, :value => selected %>
     <% end %>
       
@@ -22,7 +22,7 @@
   </p>
 
   <p><%= label_tag "auto_password", "¿Auto-generar password?" %>
-  <%= check_box_tag 'auto[password]', @auto_password, {}, {:onclick => "$('#password_div').toggle();"} %></p>
+  <%= check_box_tag 'auto[password]', 1, @auto_password, {:onclick => "$('#password_div').toggle();"} %></p>
 
   <div id='password_div' style='<%= !@auto_password ? "": "display:none" %>'>
     <p><%= label_tag 'password' %><br/>
