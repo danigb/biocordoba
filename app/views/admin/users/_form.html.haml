@@ -1,0 +1,13 @@
+%fieldset
+  %legend Información personal
+  - @user.build_profile unless @user.profile
+  - f.fields_for(:profile) do |profile|
+    = render :partial => 'profile', :locals => {:f => profile}
+%fieldset
+  %legend Configuraciónes del usuario
+  - @user.build_preference unless @user.preference
+  - f.fields_for(:preference) do |pref|
+    = label_tag "Utiliza la configuración por defecto"
+    = check_box_tag 'default_preferences', 1, @user.preference_id == 1 || @user.new_record?, {:onclick => "$('#preferences').toggle();"} 
+    %br/
+    = render :partial => 'admin/preferences/form', :locals => {:f => pref}

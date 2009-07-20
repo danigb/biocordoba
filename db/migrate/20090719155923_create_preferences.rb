@@ -7,7 +7,7 @@ class CreatePreferences < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_column :users, :preference_id, :integer, :default => 1
+    add_column :users, :preference_id, :integer
   end
   
   def self.down

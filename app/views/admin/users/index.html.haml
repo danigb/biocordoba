@@ -1,10 +1,12 @@
 - title "Administrar usuarios"
-%h1= "Usuarios"
 %h2= "Selecciona un tipo de usuario"
 %ul
-  - for role in Role.all
+  - for role in @roles
     %li
-      = link_to role.title, type_users_path(role.title)
+      = link_to ROLES[role.title.to_sym], type_users_path(role.title)
+      = "(#{role.users.length})"
 
 %p
   = link_to "Registra un nuevo usuario", signup_path
+  o
+  = link_to "Volver", admin_path

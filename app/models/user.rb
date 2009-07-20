@@ -5,15 +5,16 @@ class User < ActiveRecord::Base
   include Authentication::ByPassword
   include Authentication::ByCookieToken
 
-  before_create :set_master_preferences #Configuración maestra
-
+  # before_create :set_master_preferences #Configuración maestra
 
   has_and_belongs_to_many :roles
   has_one :profile
-  has_one :preference
+  belongs_to :preference
 
   has_many :messages_received, :class_name => 'Message', :foreign_key => 'receiver_id'
   has_many :messages_sent, :class_name => 'Message', :foreign_key => 'sender_id'
+
+  accepts_nested_attributes_for :profile, :preference
 
   validates_presence_of     :login
   validates_length_of       :login,    :within => 3..40
@@ -30,7 +31,7 @@ class User < ActiveRecord::Base
 
   validates_presence_of     :role_id
 
-  attr_accessible :login, :email, :name, :password, :password_confirmation, :role_id
+  attr_accessible :login, :email, :name, :password, :password_confirmation, :role_id, :profile_attributes, :preference_attributes, :preference_id
 
   def self.question_methods_for(*args, &block)
     attr_accessor *args
@@ -42,7 +43,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  question_methods_for :admin, :exhibitor, :buyer_national, :buyer_international, :extenda do
+  question_methods_for :admin, :exhibitor, :national_buyer, :international_buyer, :extenda do
     "self.roles.map(&:title).include?(arg.to_s)"
   end
 

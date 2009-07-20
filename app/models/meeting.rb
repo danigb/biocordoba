@@ -1,7 +1,7 @@
 class Meeting < ActiveRecord::Base
   include AASM
 
-  after_create :acept_state, :if => Proc.new { |m| m.guest.is_national? } 
+  after_create :acept_state, :if => Proc.new { |m| m.guest.is_national_buyer? } 
 
   belongs_to :host, :class_name => 'User'
   belongs_to :guest, :class_name => 'User'
@@ -11,7 +11,7 @@ class Meeting < ActiveRecord::Base
 
   def validate
     errors.add("host_id", "Usted debe ser un expositor") unless self.host && self.host.is_exhibitor?
-    errors.add("guest_id", "Debe invitar a un comprador") unless self.guest && self.guest.is_buyer?
+    errors.add("guest_id", "Debe invitar a un comprador") unless self.guest && (self.guest.is_national_buyer? || self.guest.is_international_buyer?)
   end
 
   #AASM 
