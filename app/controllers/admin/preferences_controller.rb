@@ -1,5 +1,5 @@
 class Admin::PreferencesController < ApplicationController
-  layout "admin"
+  layout "extended"
 
   def index
     @preferences = Preference.all

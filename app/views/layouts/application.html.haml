@@ -19,13 +19,7 @@
 
       #breadcrumbs
         = crumbs
-      #user-info
-        - if logged_in?
-          = "Hola, #{current_user.login}."
-          - if current_user.is_admin?
-            = link_to "Administración", admin_path 
-            | 
-          = link_to "Desloguéate", logout_path
+      = render :partial => 'sessions/user_bar'
       .clear
       = render :partial => 'shared/left_column'
       #content

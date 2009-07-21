@@ -9,7 +9,7 @@
 %p
   = f.label :sector_id, "Sector"
   %br/
-  = f.select :sector_id, Sector.all.map{|e| [e.name, e.id]}
+  = f.select :sector_id, Sector.all.map{|e| [e.name, e.id]}, :include_blank => true
 %p 
   = f.label :zip_code, "Código postal"
   %br/
