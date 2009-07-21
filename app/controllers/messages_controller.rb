@@ -30,8 +30,8 @@ class MessagesController < ApplicationController
   def create
     @message = current_user.messages_sent.build(params[:message])
     if @message.save
-      flash[:notice] = "Successfully created messages."
-      redirect_to messages_path
+      flash[:notice] = "¡ Mensaje enviado !"
+      redirect_to sent_messages_path
     else
       render :action => 'new'
     end

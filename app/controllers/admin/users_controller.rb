@@ -51,7 +51,7 @@ class Admin::UsersController < ApplicationController
     @extenda_valid = current_user.is_extenda? && !@user.is_international_buyer? ? false : true
 
     if params[:default_preferences] == "1"
-      @user.preference.delete
+      @user.preference.delete if @user.preference
       @user.preference = Preference.first
     end
 

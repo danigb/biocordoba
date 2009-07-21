@@ -2,20 +2,20 @@
 
 %p
   Ver mensajes:
-  = params[:action] == 'received' ? "Recibidos" : link_to("Recibidos", received_messages_path)
+  = message_link("received", "Recibidos")
   |
-  = params[:action] == 'sent' ? "Enviados" : link_to("Enviados", sent_messages_path)
+  = message_link("sent", "Enviados")
 
 %table#orderable.tablesorter{:cellspacing => "1", :cellpadding => "0", :border => "0"}
   %thead
     %tr
-      %th.header Remitente
+      %th.header= params[:action] == 'received' ? "Remitente" : "Receptor"
       %th.header Mensaje
       %th.header Fecha
   %tbody 
     - for message in @messages
       %tr
-        %td=link_to(message.sender.login, profile_path(message.sender)) 
+        %td=link_message_user(message, params[:action])
         %td=h message.message
         %td=h message.created_at.to_s(:short)
         %td= link_to "ver", message_path(:id => message, :type => params[:action])
