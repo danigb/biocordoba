@@ -1,0 +1,20 @@
+<% title "Messages" %>
+
+<p>
+  <strong>Sender:</strong>
+  <%=h @message.sender_id %>
+</p>
+<p>
+  <strong>Message:</strong>
+  <%=h @message.message %>
+</p>
+<p>
+  <strong>State:</strong>
+  <%=h @message.state %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_messages_path(@message) %> |
+  <%= link_to "Destroy", @message, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", messages_path %>
+</p>

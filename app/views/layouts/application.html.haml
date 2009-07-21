@@ -17,8 +17,6 @@
       - flash.each do |name, msg|
         = content_tag :div, msg, :id => "flash_#{name}"
 
-      #breadcrumbs
-        = crumbs
       = render :partial => 'sessions/user_bar'
       .clear
       = render :partial => 'shared/left_column'

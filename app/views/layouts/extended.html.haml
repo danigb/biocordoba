@@ -13,14 +13,14 @@
     #header
       = link_to "Sabor86", root_path
 
-    #container
+    #extended-container
       - flash.each do |name, msg|
         = content_tag :div, msg, :id => "flash_#{name}"
 
       #breadcrumbs
         = crumbs
       = render :partial => 'sessions/user_bar'
-      #admin-content
+      #extended-content
         - if show_title?
           %h1=h yield(:title)
         = yield

@@ -1,0 +1,21 @@
+<% title "Messages" %>
+
+<table>
+  <tr>
+    <th>Sender</th>
+    <th>Message</th>
+    <th>State</th>
+  </tr>
+  <% for message in @messages %>
+    <tr>
+      <td><%=h message.sender_id %></td>
+      <td><%=h message.message %></td>
+      <td><%=h message.state %></td>
+      <td><%= link_to "Show", message %></td>
+      <td><%= link_to "Edit", edit_message_path(message) %></td>
+      <td><%= link_to "Destroy", message, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Messages", new_message_path %></p>
