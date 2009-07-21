@@ -1,4 +1,5 @@
 class Admin::UsersController < ApplicationController
+  layout "extended"
   skip_before_filter :login_required
 
   def index
@@ -17,6 +18,16 @@ class Admin::UsersController < ApplicationController
   #Aquí debeactualizar profile y preference también haciendo uso de nested forms
   def update
     @user = User.find(params[:id])
+    if params[:default_preferences] == "1"
+      @user.preference.delete
+      @user.preference = Preference.first
+    else
+      if params[:user][:preference_attributes][:id] == "1" 
+        #Quitamos la id del hash para que no pise el master password
+        params[:user][:preference_attributes].delete("id")
+      end
+    end
+
     if @user.update_attributes(params[:user])
       flash[:notice] = "Usuario modificado correctamente"
       redirect_to admin_users_path
@@ -38,6 +49,11 @@ class Admin::UsersController < ApplicationController
     @password = @user.password
 
     @extenda_valid = current_user.is_extenda? && !@user.is_international_buyer? ? false : true
+
+    if params[:default_preferences] == "1"
+      @user.preference.delete if @user.preference
+      @user.preference = Preference.first
+    end
 
     success = @user && @extenda_valid && @user.save 
     if success && @user.errors.empty?

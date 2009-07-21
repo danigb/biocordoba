@@ -1,0 +1,24 @@
+- title "Mensajes #{MESSAGE[params[:action].to_sym]}"
+
+%p
+  Ver mensajes:
+  = message_link("received", "Recibidos")
+  |
+  = message_link("sent", "Enviados")
+
+%table#orderable.tablesorter{:cellspacing => "1", :cellpadding => "0", :border => "0"}
+  %thead
+    %tr
+      %th.header= params[:action] == 'received' ? "Remitente" : "Receptor"
+      %th.header Mensaje
+      %th.header Fecha
+  %tbody 
+    - for message in @messages
+      %tr
+        %td=link_message_user(message, params[:action])
+        %td=h message.message
+        %td=h message.created_at.to_s(:short)
+        %td= link_to "ver", message_path(:id => message, :type => params[:action])
+        %td= link_to "Eliminar", message, :confirm => '¿Estás seguro?', :method => :delete
+
+%p= link_to "Nuevo Mensaje", new_message_path

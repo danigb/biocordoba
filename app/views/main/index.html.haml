@@ -1,5 +1,2 @@
-%p
-  - if current_user.is_admin? || current_user.is_extenda?
-    = link_to "Ir a la administración", admin_path
-  - else
-    = render :partial => 'meetings/my_meetings'
+- title "Agenda virtual Andalucía Sabor"
+= render :partial => 'sessions/new'

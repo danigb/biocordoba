@@ -13,4 +13,18 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password
 
+
+  # Redirecciona a la zona concreta dependiendo del rol
+  def redirect_to_zone
+    if current_user
+      if current_user.is_admin?
+        redirect_to admin_path
+      elsif current_user.is_extenda?
+        redirect_to extenda_path
+      else
+        redirect_to home_path
+      end
+    end
+  end
+
 end

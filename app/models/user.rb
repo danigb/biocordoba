@@ -11,8 +11,8 @@ class User < ActiveRecord::Base
   has_one :profile
   belongs_to :preference
 
-  has_many :messages_received, :class_name => 'Message', :foreign_key => 'receiver_id'
-  has_many :messages_sent, :class_name => 'Message', :foreign_key => 'sender_id'
+  has_many :messages_received, :class_name => 'Message', :foreign_key => 'receiver_id', :order => 'created_at desc'
+  has_many :messages_sent, :class_name => 'Message', :foreign_key => 'sender_id', :order => 'created_at desc'
 
   accepts_nested_attributes_for :profile, :preference
 

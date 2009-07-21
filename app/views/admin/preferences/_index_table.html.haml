@@ -1,0 +1,23 @@
+%table#orderable.tablesorter{:cellspacing => "1", :cellpadding => "0", :border => "0"}
+  %thead
+    %tr
+      %th.header Usuario
+      %th.header Nº Max reuniones
+      %th.header Duración reunión
+      %th.header Fecha inicio 
+      %th.header Fecha final 
+      %th.header Hora inicio 
+      %th.header Hora final 
+  %tbody 
+    - for preference in preferences
+      %tr
+        %td= preference.id == 1 ? 'Master' : preference.users.map{|e| link_to(e.login, edit_admin_user_path(e)) + " "}
+        %td=h preference.meetings_number 
+        %td=h preference.meetings_duration 
+        %td=h preference.event_start_day 
+        %td=h preference.event_end_day 
+        %td=h preference.event_day_start_at.strftime("%H:%M")
+        %td=h preference.event_day_end_at.strftime("%H:%M")
+        %td= link_to "Editar", edit_admin_preference_path(preference)
+        %td= link_to "Eliminar", admin_preference_path(preference), :method => 'delete' unless preference.id == 1
+

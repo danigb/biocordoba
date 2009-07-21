@@ -23,13 +23,17 @@ a {
     color: black;
     font-weight: bolder; }
 
-#container {
-  width: 75%;
+#extended-container, #container {
+  width: 960px;
   margin: 0 auto;
   background: #fff;
-  padding: 20px 40px;
+  padding: 20px 10px;
   border: solid 1px black;
   margin-top: 20px; }
+
+#container {
+  background: inherit;
+  border: none; }
 
 #flash_notice,
 #flash_error {
@@ -79,10 +83,28 @@ a {
   width: 300px; }
 
 #user-info {
-  float: right; }
+  float: right;
+  margin-right: 10px;
+  padding: 5px; }
 
 #breadcrumbs {
-  float: left; }
+  float: left;
+  margin-left: 5px; }
 
 #content {
-  margin-top: 50px; }
+  float: left;
+  width: 465px;
+  margin: 10px 0;
+  padding: 5px; }
+
+#left-column, #right-column {
+  float: left;
+  width: 210px;
+  margin: 10px 5px;
+  padding: 10px; }
+
+#left-column, #right-column, #content, #user-info {
+  background: #FFF; }
+
+.clear {
+  clear: both; }
