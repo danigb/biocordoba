@@ -5,6 +5,4 @@
 %h2 Configuración de los usuarios
 = render :partial => 'index_table', :locals => {:preferences => @preferences[1..-1]}
 %p
-  = link_to "Nueva configuración", new_admin_preference_path
-  o
   = link_to "Volver", admin_path

@@ -11,13 +11,13 @@
     %tr
       %th.header Remitente
       %th.header Mensaje
-      %th.header State
+      %th.header Fecha
   %tbody 
     - for message in @messages
       %tr
         %td=link_to(message.sender.login, profile_path(message.sender)) 
         %td=h message.message
-        %td=h message.state
+        %td=h message.created_at.to_s(:short)
         %td= link_to "ver", message_path(:id => message, :type => params[:action])
         %td= link_to "Eliminar", message, :confirm => '¿Estás seguro?', :method => :delete
 

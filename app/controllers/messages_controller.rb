@@ -17,7 +17,8 @@ class MessagesController < ApplicationController
   def show
     begin
       @message = eval("current_user.messages_#{params[:type]}.find(params[:id])")
-    rescue NoMethodError
+    rescue NoMethodError # Comprobamos que no han alterado el parámetro
+      flash[:error] = "Acceso denegado"
       redirect_to messages_path
     end
   end
