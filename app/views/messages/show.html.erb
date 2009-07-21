@@ -1,4 +1,4 @@
-<% title "Messages" %>
+<% title "Mensaje" %>
 
 <p>
   <strong>Sender:</strong>
@@ -14,7 +14,6 @@
 </p>
 
 <p>
-  <%= link_to "Edit", edit_messages_path(@message) %> |
-  <%= link_to "Destroy", @message, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", messages_path %>
+  <%= link_to "Eliminar", @message, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "Volver", eval("#{params[:type]}_messages_path") %>
 </p>

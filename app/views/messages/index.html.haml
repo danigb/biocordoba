@@ -1,4 +1,10 @@
-- title "Mensajes Recibidos"
+- title "Mensajes #{MESSAGE[params[:action].to_sym]}"
+
+%p
+  Ver mensajes:
+  = params[:action] == 'received' ? "Recibidos" : link_to("Recibidos", received_messages_path)
+  |
+  = params[:action] == 'sent' ? "Enviados" : link_to("Enviados", sent_messages_path)
 
 %table#orderable.tablesorter{:cellspacing => "1", :cellpadding => "0", :border => "0"}
   %thead
@@ -12,7 +18,7 @@
         %td=link_to(message.sender.login, profile_path(message.sender)) 
         %td=h message.message
         %td=h message.state
-        %td= link_to "ver", message
+        %td= link_to "ver", message_path(:id => message, :type => params[:action])
         %td= link_to "Eliminar", message, :confirm => '¿Estás seguro?', :method => :delete
 
 %p= link_to "Nuevo Mensaje", new_message_path
