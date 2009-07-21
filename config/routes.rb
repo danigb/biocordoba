@@ -16,6 +16,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :sectors
   map.resource :session
   map.resources :messages
+  map.resources :profiles
 
   map.namespace :admin do |admin|
     admin.resources :preferences

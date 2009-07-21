@@ -99,9 +99,9 @@ a {
 
 #left-column, #right-column {
   float: left;
-  width: 220px;
+  width: 210px;
   margin: 10px 5px;
-  padding: 5px; }
+  padding: 10px; }
 
 #left-column, #right-column, #content, #user-info {
   background: #FFF; }

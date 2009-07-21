@@ -1,0 +1,13 @@
+- form_for @message do |f|
+  = f.error_messages
+  %p
+    = f.label :receiver_id, "Receptor"
+    %br/
+    = f.select :receiver_id, User.all.map{|e| [e.login, e.id]}
+
+  %p
+    = f.label :message
+    %br/
+    = f.text_area :message
+
+  %p= f.submit "Submit" 

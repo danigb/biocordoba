@@ -1,0 +1,18 @@
+- title "Mensajes Recibidos"
+
+%table#orderable.tablesorter{:cellspacing => "1", :cellpadding => "0", :border => "0"}
+  %thead
+    %tr
+      %th.header Remitente
+      %th.header Mensaje
+      %th.header State
+  %tbody 
+    - for message in @messages
+      %tr
+        %td=link_to(message.sender.login, profile_path(message.sender)) 
+        %td=h message.message
+        %td=h message.state
+        %td= link_to "ver", message
+        %td= link_to "Eliminar", message, :confirm => '¿Estás seguro?', :method => :delete
+
+%p= link_to "Nuevo Mensaje", new_message_path
