@@ -26,11 +26,7 @@
             = link_to "Administración", admin_path 
             | 
           = link_to "Desloguéate", logout_path
-      .clear
-      = render :partial => 'shared/left_column'
-      #content
+      #admin-content
         - if show_title?
           %h1=h yield(:title)
         = yield
-      = render :partial => 'shared/right_column'
-      .clear
