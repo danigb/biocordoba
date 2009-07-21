@@ -30,4 +30,14 @@ class Admin::PreferencesController < ApplicationController
       render :action => 'new'
     end
   end
+
+  def destroy
+    @preference = Preference.find(params[:id])
+    if @preference.destroy
+      flash[:notice] = "Configuración eliminada"
+    else
+      flash[:error] = "Error al borrar la configuración"
+    end
+    redirect_to admin_preferences_path
+  end
 end
