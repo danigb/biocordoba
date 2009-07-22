@@ -6,7 +6,8 @@ module WeeklyHelper
     date = options[:date] || Time.now
     start_date = Date.new(date.year, date.month, date.day)
     end_date = Date.new(date.year, date.month, date.day) + (options[:days] - 1 || 2)
-    concat(tag("div", :id => "week"))
+    week = (options[:days]) == 1 ? "mini_week" : "week"
+    concat(tag("div", :id => week))
       yield WeeklyBuilder.new(objects || [], self, options, start_date, end_date)
     concat("</div>")
     if options[:include_24_hours] == true
@@ -30,28 +31,26 @@ module WeeklyHelper
       raise ArgumentError, "WeeklyBuilder expects an Array but found a #{objects.inspect}" unless objects.is_a? Array
       @objects, @template, @options, @start_date, @end_date = objects, template, options, start_date, end_date
     
-      if options[:business_hours] == "true" or options[:business_hours].blank?
-        @hours = ["10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00"]
+      @hours = ["10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00"]
+      @start_hour = 10 
+      @end_hour = 19
+
+      if options[:days] > 1
         @header_row = "header_row"
         @day_row = "day_row"
         @grid = "grid"
-        @start_hour = 6
-        @end_hour = 20
       else
-        @hours = ["1am","2am","3am","4am","5am","6am","7am","8am","9am","10am","11am","12pm","1pm","2pm","3pm","4pm","5pm","6pm","7pm","8pm","9pm","10pm","11pm","12am"]
-        @header_row = "full_header_row"
-        @day_row = "full_day_row"
-        @grid = "full_grid"
-        @start_hour = 1
-        @end_hour = 24
+        @header_row = "mini_header_row"
+        @day_row = "mini_day_row"
+        @grid = "mini_grid"
       end
     end
 
     def week(options = {})      
-      hours_column #list hours on right column
+      hours_column(options[:without_days]) if options[:without_hours].blank?
       
       concat(tag("div", :id => "hours"))
-        days #list each day on top row
+        days if options[:without_days].blank?
         
         concat(tag("div", :id => @grid))
           @hours.each do |h|
@@ -86,9 +85,9 @@ module WeeklyHelper
       concat("</div>")      
     end
     
-    def hours_column
+    def hours_column(without_days = false)
       concat(tag("div", :id => "days")) #id = @header_row
-        concat(content_tag("div", "&nbsp;", :id => "placeholder"))
+        concat(content_tag("div", "&nbsp;", :id => "placeholder")) unless without_days
         for hour in @hours
           concat(content_tag("div", "<b>#{hour}</b>", :id => "day")) # id = header_box
         end
