@@ -9,6 +9,7 @@ class MainController < ApplicationController
   def home
     @date = Time.parse("22-09-2009 19:00")
     @start_date = Date.new(@date.year, @date.month, @date.day) 
-    @events = Meeting.find(:all, :conditions => ['starts_at between ? and ?', @start_date, @start_date + 7])
+    @days = 3
+    @events = current_user.meetings_for(@start_date, @days)
   end
 end

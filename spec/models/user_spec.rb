@@ -3,6 +3,14 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe User do
   before(:each) do
     @user = User.make
+
+    meeting = Meeting.make
+    meeting.host = @user
+    meeting.save
+
+    meeting = Meeting.make
+    meeting.guest = @user
+    meeting.save
   end
 
   it "Should create a profile after create" do
@@ -26,4 +34,7 @@ describe User do
     @user.should_not be_is_international
   end
 
+  it "should have two meetings (like a host and like a guest)" do
+    @user.meetings.length.should equal(2)
+  end
 end

@@ -33,6 +33,10 @@ class User < ActiveRecord::Base
 
   attr_accessible :login, :email, :name, :password, :password_confirmation, :role_id, :profile_attributes, :preference_attributes, :preference_id
 
+  def set_master_preferences
+    self.preference = Preference.first
+  end
+
   def self.question_methods_for(*args, &block)
     attr_accessor *args
 
@@ -46,21 +50,6 @@ class User < ActiveRecord::Base
   question_methods_for :admin, :exhibitor, :national_buyer, :international_buyer, :extenda do
     "self.roles.map(&:title).include?(arg.to_s)"
   end
-
-
-  def set_master_preferences
-    self.preference = Preference.first
-  end
-
-  # # Generate a list of locations from CONFIG for select
-  # def self.locations
-  #   CONFIG[:location].map{|l| [l[1], l[0]]}
-  # end
-
-  # # Get location for user
-  # def location
-  #   CONFIG[:location][self.location_id] if self.location_id
-  # end
 
   # Set role for user
   attr_accessor :role_id
@@ -84,6 +73,11 @@ class User < ActiveRecord::Base
     self.roles.first
   end
 
+  def meetings_for(date, days = 1)
+    Meeting.find(:all, 
+      :conditions => ['host_id = ? and guest_id = ? and starts_at between ? and ?', 
+        self.id, self.id, date, date + days])
+  end
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   def self.authenticate(login, password)
