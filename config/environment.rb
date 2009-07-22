@@ -11,5 +11,6 @@ Rails::Initializer.run do |config|
   config.gem "rubyist-aasm", :lib => "aasm", :source => 'http://gems.github.com'
   config.gem "haml"
   config.gem "haddock"
-
+  
+  config.i18n.default_locale = :es 
 end

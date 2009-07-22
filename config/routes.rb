@@ -16,6 +16,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :session
   map.resources :messages, :collection => {:received => :get, :sent => :get}
   map.resources :profiles
+  map.resources :meetings
 
   map.namespace :admin do |admin|
     admin.resources :preferences

@@ -5,7 +5,7 @@ module WeeklyHelper
     options = args.last.is_a?(Hash) ? args.pop : {}
     date = options[:date] || Time.now
     start_date = Date.new(date.year, date.month, date.day)
-    end_date = Date.new(date.year, date.month, date.day) + 2
+    end_date = Date.new(date.year, date.month, date.day) + (options[:days] - 1 || 2)
     concat(tag("div", :id => "week"))
       yield WeeklyBuilder.new(objects || [], self, options, start_date, end_date)
     concat("</div>")
@@ -80,7 +80,7 @@ module WeeklyHelper
           concat(tag("div", :id => "header_box")) # id = "day"
           # concat(content_tag("b", day.strftime('%A')))
           # concat(tag("br"))
-          concat(day.strftime('%A %d'))
+          concat(I18n.localize(day, :format => '%A %d'))
           concat("</div>")
         end
       concat("</div>")      
