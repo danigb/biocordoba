@@ -96,6 +96,19 @@ a {
   width: 495px;
   margin: 10px 0;
   padding: 5px; }
+  #content #schedules {
+    width: 360px;
+    margin: 0 auto; }
+    #content #schedules .date {
+      text-align: center;
+      margin: 20px;
+      font-size: 2em; }
+    #content #schedules .schedule {
+      float: left; }
+      #content #schedules .schedule .user {
+        text-align: center;
+        margin: 0px 0px 10px 0px;
+        font-weight: bolder; }
 
 #left-column, #right-column {
   float: left;

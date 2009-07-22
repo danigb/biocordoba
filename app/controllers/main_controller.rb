@@ -8,8 +8,7 @@ class MainController < ApplicationController
 
   def home
     @date = Time.parse("22-09-2009 19:00")
-    @start_date = Date.new(@date.year, @date.month, @date.day) 
     @days = 3
-    @events = current_user.meetings_for(@start_date, @days)
+    @events = current_user.meetings(@date, @days)
   end
 end

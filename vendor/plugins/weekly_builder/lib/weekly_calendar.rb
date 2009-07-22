@@ -7,12 +7,10 @@ module WeeklyHelper
     start_date = Date.new(date.year, date.month, date.day)
     end_date = Date.new(date.year, date.month, date.day) + (options[:days] - 1 || 2)
     week = (options[:days]) == 1 ? "mini_week" : "week"
+    week = "mini_without_hour_week" unless options[:without_hours].blank?
     concat(tag("div", :id => week))
       yield WeeklyBuilder.new(objects || [], self, options, start_date, end_date)
     concat("</div>")
-    if options[:include_24_hours] == true
-      concat("<b><a href='?business_hours=true&start_date=#{start_date}'>Business Hours</a> | <a href='?business_hours=false&start_date=#{start_date}'>24-Hours</a></b>")
-    end
   end
   
   def weekly_links(options)
@@ -47,10 +45,10 @@ module WeeklyHelper
     end
 
     def week(options = {})      
-      hours_column(options[:without_days]) if options[:without_hours].blank?
+      hours_column(@options[:without_days]) if @options[:without_hours].blank?
       
       concat(tag("div", :id => "hours"))
-        days if options[:without_days].blank?
+        days if @options[:without_days].blank?
         
         concat(tag("div", :id => @grid))
           @hours.each do |h|

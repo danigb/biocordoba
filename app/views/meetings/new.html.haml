@@ -1,0 +1,18 @@
+#schedules
+  .date
+    ="< Martes 22 >"
+
+  .schedule
+    .user
+      Tus citas
+
+    - weekly_calendar(@host.meetings(@date), :date => @date, :days => @days, :without_days => true) do |w|
+      - w.week(:clickable_hours => true) do |event,truncate|
+        =  link_to truncate(event.name,truncate), meeting_path(event) 
+  .schedule
+    .user
+      = @guest.login
+
+    - weekly_calendar(@guest.meetings(@date), :date => @date, :days => @days, :without_days => true, :without_hours => true) do |w|
+      - w.week(:clickable_hours => true) do |event,truncate|
+        =  link_to truncate(event.name,truncate), meeting_path(event) 

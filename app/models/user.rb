@@ -73,10 +73,11 @@ class User < ActiveRecord::Base
     self.roles.first
   end
 
-  def meetings_for(date, days = 1)
+  def meetings(date, days = 1)
+    start_date = Date.new(date.year, date.month, date.day) 
     Meeting.find(:all, 
       :conditions => ['host_id = ? and guest_id = ? and starts_at between ? and ?', 
-        self.id, self.id, date, date + days])
+        self.id, self.id, start_date, start_date + days])
   end
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
