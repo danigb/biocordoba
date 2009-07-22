@@ -1,1 +1,5 @@
+- weekly_calendar(@events, :date => @date) do |w|
+  - w.week(:business_hours => params[:business_hours], :clickable_hours => true) do |event,truncate|
+    =  link_to truncate(event.name,truncate), event_path(event) 
+
 

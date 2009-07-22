@@ -9,18 +9,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090719155923) do
+ActiveRecord::Schema.define(:version => 20090722092841) do
 
   create_table "meetings", :force => true do |t|
     t.integer  "host_id"
     t.integer  "guest_id"
-    t.datetime "date"
     t.string   "state"
     t.text     "note_host"
     t.text     "note_guest"
     t.text     "cancel_reason"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.string   "name"
   end
 
   create_table "messages", :force => true do |t|
@@ -106,7 +108,7 @@ ActiveRecord::Schema.define(:version => 20090719155923) do
     t.datetime "updated_at"
     t.string   "remember_token",            :limit => 40
     t.datetime "remember_token_expires_at"
-    t.integer  "preference_id"
+    t.integer  "preference_id",                            :default => 1
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
