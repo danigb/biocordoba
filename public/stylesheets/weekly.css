@@ -23,8 +23,8 @@
 #mini_week {width:210px}
 #mini_without_hour_week{width:145px;}
 #mini_day_row{width:145px;height:55px;position:relative;}
-#mini_day_row #week_event{background:#CD8AA4;float:left;position:absolute;height:66px;color:#000;padding:4px;border-left:4px solid #5A484F;opacity:0.90;filter:alpha(opacity=90);cursor:pointer;margin-top:1px;}
-#mini_day_row #week_event a{color:#000;}
+#mini_day_row #week_event{background:#ff87c1;float:left;position:absolute;height:66px;color:#000;border-left:4px solid #d40067;opacity:0.90;filter:alpha(opacity=90);cursor:pointer;padding-top:1px;}
+#mini_day_row #week_event a{color:#000;border-bottom:1px dashed #000000; text-decoration:none; font-weight: bolder;font-size:0.8em; padding-left: 3px;}
 #mini_day_row #week_event:hover{background:#E097B3;}
 #mini_header_row{width:143px;height:30px;background-color:#487a09;color:white; margin-bottom:1px;text-align:center;}
 #header_box{height:36px;width:123px;border-right:1px solid #cfe6ec;padding:7px 8px 0px 11px;float:left;}

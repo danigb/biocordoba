@@ -1,13 +1,13 @@
 class Meeting < ActiveRecord::Base
   include AASM
 
-  after_create :acept_state, :if => Proc.new { |m| m.guest.is_national_buyer? } 
+  after_create :accept_state, :if => Proc.new { |m| m.guest.is_national_buyer? } 
 
   belongs_to :host, :class_name => 'User'
   belongs_to :guest, :class_name => 'User'
 
   validates_presence_of :host_id, :guest_id
-  validates_uniqueness_of :host_id, :scope => [:guest_id, :state]
+  validates_uniqueness_of :host_id, :scope => [:guest_id, :state], :message => "Ya tienes una cita con este comprador."
 
   def validate
     errors.add("host_id", "Usted debe ser un expositor") unless self.host && self.host.is_exhibitor?
@@ -33,7 +33,7 @@ class Meeting < ActiveRecord::Base
   private
   
     #El meting se acepta automáticamente si el invitado es un comprador nacional
-    def acept_state
+    def accept_state
       self.acept!
     end
 

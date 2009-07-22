@@ -6,13 +6,30 @@
     .user
       Tus citas
 
-    - weekly_calendar(@host.meetings(@date), :date => @date, :days => @days, :without_days => true) do |w|
+    - weekly_calendar(@host.meetings(@date), :date => @date, :without_days => true) do |w|
       - w.week(:clickable_hours => true) do |event,truncate|
         =  link_to truncate(event.name,truncate), meeting_path(event) 
   .schedule
     .user
       = @guest.login
 
-    - weekly_calendar(@guest.meetings(@date), :date => @date, :days => @days, :without_days => true, :without_hours => true) do |w|
+    - weekly_calendar(@guest.meetings(@date), :date => @date, :without_days => true, :without_hours => true) do |w|
       - w.week(:clickable_hours => true) do |event,truncate|
         =  link_to truncate(event.name,truncate), meeting_path(event) 
+
+- content_for(:right_column) do
+  %h2 Crear una cita
+  
+  %center
+    La duración de la cita será de
+    %strong
+      = current_user.preference.meetings_duration
+    minutos
+
+    .form
+      - form_for @meeting do |f|
+        = f.time_select :starts_at
+        = f.hidden_field :guest_id, :value => @guest.id
+        %br/
+        = submit_tag "Crear"
+

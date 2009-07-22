@@ -4,8 +4,9 @@ module WeeklyHelper
   def weekly_calendar(objects, *args)
     options = args.last.is_a?(Hash) ? args.pop : {}
     date = options[:date] || Time.now
+    options[:days] ||= 1
     start_date = Date.new(date.year, date.month, date.day)
-    end_date = Date.new(date.year, date.month, date.day) + (options[:days] - 1 || 2)
+    end_date = Date.new(date.year, date.month, date.day) + (options[:days] - 1)
     week = (options[:days]) == 1 ? "mini_week" : "week"
     week = "mini_without_hour_week" unless options[:without_hours].blank?
     concat(tag("div", :id => week))
@@ -57,10 +58,12 @@ module WeeklyHelper
                 for event in @objects
                   if event.starts_at.strftime('%j').to_s == day.strftime('%j').to_s
                     if event.starts_at.strftime('%k').to_i == h.to_i
-                      concat(tag("div", :id => "week_event", :style =>"left:#{143 * index};top:#{left(event.starts_at,options[:business_hours])}px;width:138px;height:#{width(event.starts_at,event.ends_at)}px;", :onclick => "location.href='/events/#{event.id}';"))
+                      concat(tag("div", :id => "week_event", :style =>"left:#{143 * index}px;top:#{left(event.starts_at,options[:business_hours])}px;width:138px;height:#{width(event.starts_at,event.ends_at)}px;", :onclick => "location.href='/events/#{event.id}';"))
                       truncate = width(event.starts_at,event.ends_at)
                       yield(event,truncate)
                       concat("</div>")
+
+                      @objects.delete(event)
                     end
                   end
                 end
