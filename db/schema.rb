@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(:version => 20090722092841) do
     t.datetime "updated_at"
     t.datetime "starts_at"
     t.datetime "ends_at"
-    t.string   "name"
   end
 
   create_table "messages", :force => true do |t|

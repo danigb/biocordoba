@@ -15,6 +15,23 @@ class MeetingsController < ApplicationController
     @meeting.ends_at = @meeting.starts_at + current_user.preference.meetings_duration.minutes
     @meeting.host = current_user
 
-    @meeting.save!
+    if @meeting.save
+      flash[:notice] = "La cita se ha guardado con éxito."
+      redirect_to home_path
+    else
+      flash.now[:error] = "No se ha guardado la cita. Ya tienes un cita con este comprador."
+
+      # Reloading vars
+      params[:host_id] = current_user.id
+      params[:guest_id] = params[:meeting][:guest_id]
+      new
+
+      render :action => 'new'
+    end
+  end
+
+  def index
+    @international_buyers = Role.find_by_title('international_buyer').users
+    @national_buyers = Role.find_by_title('national_buyer').users
   end
 end

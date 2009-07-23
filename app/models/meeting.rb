@@ -30,6 +30,10 @@ class Meeting < ActiveRecord::Base
     transitions :from => [:acepted, :pending], :to => :canceled
   end
 
+  def name(user)
+    self.host_id == user.id ? guest.login : host.login 
+  end
+
   private
   
     #El meting se acepta automáticamente si el invitado es un comprador nacional

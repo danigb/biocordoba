@@ -1,0 +1,17 @@
+%h2
+  Compradores
+
+%h3
+  Internacionales
+
+%ul
+  - for buyer in @international_buyers
+    %li= link_to buyer.login, meeting_into_and_path(current_user.id, buyer.id)
+
+%h3
+  Nacionales
+
+%ul
+  - for buyer in @national_buyers
+    %li= link_to buyer.login, meeting_into_and_path(current_user.id, buyer.id)
+
