@@ -1,0 +1,4 @@
+cebolla
+patata
+zanahoria
+pepino

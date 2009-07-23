@@ -14,3 +14,6 @@ Rails::Initializer.run do |config|
   
   config.i18n.default_locale = :es 
 end
+
+Haddock::Password.diction = File.join(Rails.root, "config", "dictonary.txt")
+
