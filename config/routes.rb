@@ -7,6 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   map.signup '/admin/users/registro', :controller => 'admin/users', :action => 'new'
   map.type_users '/admin/users/type/:type', :controller => 'admin/users', :action => 'type'
   map.meeting_into_and '/meetings/into/:host_id/and/:guest_id', :controller => 'meetings', :action => 'new'
+  map.development '/development', :controller => 'development'
 
   map.admin '/admin', :controller => 'admin/main', :action => 'show'
   map.extenda "/extenda", :controller => 'extenda/main', :action => 'show'
