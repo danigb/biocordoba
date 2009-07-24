@@ -28,4 +28,5 @@
       .clear
 
     #footer
-      = link_to "Changelog", development_path
+      - if Rails.env.development?
+        = link_to "Changelog", development_path

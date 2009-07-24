@@ -109,19 +109,6 @@ a {
         text-align: center;
         margin: 0px 0px 10px 0px;
         font-weight: bolder; }
-  #content #changelog ul {
-    list-style-type: none; }
-    #content #changelog ul li {
-      font-size: 0.9em; }
-    #content #changelog ul span {
-      font-weight: bolder;
-      font-size: 0.7em; }
-      #content #changelog ul span.new {
-        color: #66AA00; }
-      #content #changelog ul span.update {
-        color: #ff0078; }
-      #content #changelog ul span.todo {
-        color: #627ffd; }
 
 #left-column, #right-column {
   float: left;
@@ -131,6 +118,20 @@ a {
 
 #left-column, #right-column, #content, #user-info {
   background: #FFF; }
+
+#changelog ul {
+  list-style-type: none; }
+  #changelog ul li {
+    font-size: 0.9em; }
+  #changelog ul span {
+    font-weight: bolder;
+    font-size: 0.7em; }
+    #changelog ul span.new {
+      color: #66AA00; }
+    #changelog ul span.update {
+      color: #ff0078; }
+    #changelog ul span.todo {
+      color: #627ffd; }
 
 #footer {
   text-align: center; }
