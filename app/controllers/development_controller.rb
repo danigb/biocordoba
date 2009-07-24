@@ -1,5 +1,5 @@
 class DevelopmentController < ApplicationController
   layout 'extended'
-  def index
+  def changelog
   end
 end
