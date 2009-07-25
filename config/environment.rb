@@ -10,7 +10,6 @@ Rails::Initializer.run do |config|
   config.time_zone = 'Madrid'
   config.gem "rubyist-aasm", :lib => "aasm", :source => 'http://gems.github.com'
   config.gem "binarylogic-searchlogic", :lib => "searchlogic", :source => 'http://gems.github.com'
-  config.gem "justinfrench-formtastic", :lib => "formtastic", :source => 'http://gems.github.com'
   config.gem "haml"
   config.gem "haddock"
   

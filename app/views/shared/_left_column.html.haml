@@ -1,7 +1,5 @@
 #left-column
   %ul
     %li= link_to "Mis mensajes", received_messages_path
-    %li Información sobre empresas visitantes
-    - if current_user.is_exhibitor?
-      %li= link_to "Solicitar citas", meetings_path
+    %li= link_to "Información sobre empresas visitantes", search_users_path
     %li= link_to "Mi agenda", home_path

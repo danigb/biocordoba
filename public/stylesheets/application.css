@@ -109,6 +109,10 @@ a {
         text-align: center;
         margin: 0px 0px 10px 0px;
         font-weight: bolder; }
+  #content #search {
+    margin-left: 30px; }
+    #content #search div {
+      margin: 10px; }
 
 #left-column, #right-column {
   float: left;

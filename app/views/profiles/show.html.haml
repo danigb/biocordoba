@@ -1,2 +1,6 @@
 - title "Ficha del usuario"
 %p Aquí aparecerá la información del perfil del usuario
+
+%p
+  - if logged_in?
+    = link_to "Solicitar cita", meeting_into_and_path(current_user, @user)
