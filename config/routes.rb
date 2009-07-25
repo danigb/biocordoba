@@ -12,11 +12,10 @@ ActionController::Routing::Routes.draw do |map|
   map.admin '/admin', :controller => 'admin/main', :action => 'show'
   map.extenda "/extenda", :controller => 'extenda/main', :action => 'show'
 
-  map.resources :sectors
+  map.resources :sectors, :profiles, :meetings
   map.resource :session
   map.resources :messages, :collection => {:received => :get, :sent => :get}
-  map.resources :profiles
-  map.resources :meetings
+  map.resources :users, :collection => {:search => :any, :result => :get}
 
   map.namespace :admin do |admin|
     admin.resources :preferences

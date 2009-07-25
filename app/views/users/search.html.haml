@@ -1,0 +1,10 @@
+%h1 Buscador
+
+- form_for :search, :url => search_users_path do |f|
+  = f.text_field :profile_company_name_like
+  = f.select :profile_sector_id_equals, Sector.all.map{|s| [s.name, s.id]}, :include_blank => true
+  = f.submit "Buscar"
+
+- if @users
+  = @users.length
+
