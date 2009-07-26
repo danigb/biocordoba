@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password
 
 
+  private
   # Redirecciona a la zona concreta dependiendo del rol
   def redirect_to_zone
     if current_user
@@ -26,5 +27,12 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
+  def redirect_back_or(path)
+    redirect_to :back
+  rescue ActionController::RedirectBackError
+    redirect_to path
+  end
+
 
 end

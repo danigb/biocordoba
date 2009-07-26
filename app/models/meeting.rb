@@ -34,6 +34,15 @@ class Meeting < ActiveRecord::Base
     self.host_id == user.id ? guest.login : host.login 
   end
 
+  # Return meeting between into host and guest or return new meeting
+  def self.between(host, guest)
+    if meeting = find_by_host_id_and_guest_id(host, guest)
+      return meeting
+    end
+
+    new
+  end
+
   private
   
     #El meting se acepta automáticamente si el invitado es un comprador nacional
