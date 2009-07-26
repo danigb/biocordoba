@@ -2,6 +2,7 @@
 class SessionsController < ApplicationController
   layout "extended"
   skip_before_filter :login_required
+  before_filter :redirect_to_zone, :only => :new
 
   # render new.rhtml
   def new

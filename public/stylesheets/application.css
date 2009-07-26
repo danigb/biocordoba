@@ -31,6 +31,20 @@ a {
   border: solid 1px black;
   margin-top: 20px; }
 
+#extended-content {
+  width: 80%;
+  margin: 0 auto; }
+  #extended-content #login {
+    margin: 0 auto; }
+    #extended-content #login .info {
+      margin: 10px;
+      font-size: 0.9em;
+      float: left;
+      width: 400px; }
+    #extended-content #login .access {
+      margin: 10px;
+      float: left; }
+
 #container {
   background: inherit;
   border: none; }

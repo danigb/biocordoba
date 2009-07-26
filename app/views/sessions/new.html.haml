@@ -1,3 +1,42 @@
-- title "Acceso"
+- title "Acceso a la agenda virtual"
 
-= render :partial => 'new'
+#login
+  .info
+    %p
+      Bienvenido a la Agenda Virtual de Andalucía Sabor.
+
+    %p
+      A través de esta aplicación, podrá gestionar y consultar su calendario de citas comerciales durante la feria.
+
+    %p
+      Además, podrá recibir y emitir mensajes al resto de participantes en Andalucía Sabor.
+
+    %p
+      Si su empresa no está registrada en la Agenda Virtual pero va a acudir a la feria, puede también utilizar esta aplicación. Solicite su usuario y contraseña, contactando con nosotros:
+
+    %p
+      %strong
+        T. 955 555 433
+        %br/
+        = link_to "agendavirtual@andaluciasabor.es", "mailto:agendavirtual@andaluciasabor.es"
+
+
+  .access
+    %h2 Acceso a la agenda virtual
+
+    - form_tag session_path do
+      %p
+        = label_tag 'Nombre de usuario'
+        %br/
+        = text_field_tag 'login', @login
+      %p
+        = label_tag 'Contraseña'
+        %br/
+        = password_field_tag 'password', nil 
+      %p
+        = label_tag 'remember_me', 'Recuerdame'
+        = check_box_tag 'remember_me', '1', @remember_me 
+      %p
+        = submit_tag 'Acceso'
+
+.clear
