@@ -1,13 +1,16 @@
 %p
   = f.label :company_name, "Nombre de la compañia"
+  %span.required= "*"
   %br/
   = f.text_field :company_name
 %p
   = f.label :address, "Dirección"
+  %span.required= "*"
   %br/
   = f.text_field :address
 %p
   = f.label :sector_id, "Sector"
+  %span.required= "*"
   %br/
   = f.select :sector_id, Sector.all.map{|e| [e.name, e.id]}, :include_blank => true
 %p 
@@ -15,8 +18,8 @@
   %br/
   = f.text_field :zip_code
 %p
-  %b
-    TODO, ciudad y provincia
+  %strong.highlight
+    ToDo: Ciudad y provincia
 
 #exhibitor{:style => @user.is_exhibitor? ? '' : 'display:none'}
   %p

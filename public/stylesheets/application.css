@@ -32,6 +32,7 @@ a {
   margin-top: 20px; }
 
 #extended-content {
+  margin: 10px;
   width: 80%;
   margin: 0 auto; }
   #extended-content #login {
@@ -156,3 +157,9 @@ a {
 
 .clear {
   clear: both; }
+
+.highlight {
+  background-color: yellow; }
+
+.required {
+  color: #ff0000; }

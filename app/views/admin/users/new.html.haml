@@ -7,16 +7,19 @@
     %legend Información de acceso
     %p
       = label_tag 'login'
+      %span.required= "*"
       %br/
       = f.text_field :login, :class => 'big_field login'
 
     %p
       = label_tag 'email'
+      %span.required= "*"
       %br/
       = f.text_field :email 
 
     %p
       = label_tag 'role_id', 'Tipo de usuario' 
+      %span.required= "*"
       %br/
       - selected = params[:user][:role_id].to_i if params[:user] && params[:user][:role_id] 
       - if current_user.is_extenda? 
@@ -45,3 +48,7 @@
   %p
     = submit_tag 'Dar de alta' 
     = submit_tag 'Dar de alta y seguir registrando', :name => "continue" 
+
+  %p
+    %span.required= "*"
+    Campo requerido
