@@ -21,7 +21,7 @@ class MeetingsController < ApplicationController
     @meeting.ends_at = @meeting.starts_at + current_user.preference.meetings_duration.minutes
     @meeting.host = current_user
 
-    if @meeting.save
+    if @meeting.accept!
       flash[:notice] = "La cita se ha guardado con éxito."
       redirect_to home_path
     else
