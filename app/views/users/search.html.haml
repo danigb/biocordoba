@@ -18,10 +18,14 @@
 
 - if @users
   %ul
-    - for user in @users
-      %li
-        = user.profile.company_name
-        = link_to "Ver ficha", profile_path(user)
-        = link_to "Solicitar cita", meeting_into_and_path(current_user, user)
+    - @users_by_sector.each do |sector_name, users|
+      %h3
+        = sector_name.capitalize
+
+      - for user in users
+        %li
+          = user.profile.company_name
+          = link_to "Ver ficha", profile_path(user)
+          = link_to "Solicitar cita", meeting_into_and_path(current_user, user)
 
 
