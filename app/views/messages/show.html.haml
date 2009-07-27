@@ -6,5 +6,5 @@
   =h @message.message
 
 %p
-  = link_to "Eliminar", @message, :confirm => 'Are you sure?', :method => :delete
+  = link_to "Eliminar", message_path(:id => @message.id, :type => params[:type]), :confirm => 'Are you sure?', :method => :delete
   = link_to "Volver", eval("#{params[:type]}_messages_path")

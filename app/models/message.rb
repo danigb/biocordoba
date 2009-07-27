@@ -18,8 +18,11 @@ class Message < ActiveRecord::Base
   # named_scope :unread, :conditions => {:state => 'unread'}, :order => 'created_at desc'
 
   def receivers_string=(string)
-    string.split(", ").each do |company_name|
-      self.receivers << Profile.find_by_company_name(company_name).user 
+    string.split(", ").uniq.each do |company_name|
+      profile = Profile.find_by_company_name(company_name)
+      if profile
+        self.receivers << profile.user 
+      end
     end
   end
 end

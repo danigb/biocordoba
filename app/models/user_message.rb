@@ -1,6 +1,9 @@
 class UserMessage < ActiveRecord::Base
   include AASM
 
+  validates_uniqueness_of :receiver_id, :scope => :message_id
+  validates_presence_of :receiver_id, :message_id
+
   belongs_to :receiver, :class_name => 'User'
   belongs_to :message
   
