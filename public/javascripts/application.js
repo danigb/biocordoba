@@ -23,15 +23,16 @@ $(document).ready(function() {
 
   //Nuevo mensaje, selector de receptores
   $("#receivers input").click(function(e){
-    $("#message_receiver_id").val(" ");
+    var text_field = $("#message_receivers_string");
+    text_field.val("");
     $("#receivers input").each(function(i){
       if(this.checked==true){
-        $("#message_receiver_id").val(
-          $("#message_receiver_id").val() + this.value + ", "
+        text_field.val(
+          text_field.val() + this.value + ", "
         );
       }
     });
-    $("#message_receiver_id").effect("highlight"); 
+    text_field.effect("highlight"); 
   });
 
 

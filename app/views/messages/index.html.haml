@@ -15,7 +15,7 @@
   %tbody 
     - for message in @messages
       %tr
-        %td=link_message_user(message, params[:action])
+        %td=truncate(link_message_user(message, params[:action]), :length => 40)
         %td=h message.message
         %td=h message.created_at.to_s(:short)
         %td= link_to "ver", message_path(:id => message, :type => params[:action])
