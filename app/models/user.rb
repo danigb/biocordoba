@@ -11,7 +11,9 @@ class User < ActiveRecord::Base
   has_one :profile
   belongs_to :preference
 
-  has_many :messages_received, :class_name => 'Message', :foreign_key => 'receiver_id', :order => 'created_at desc'
+  has_many :user_messages, :foreign_key => 'receiver_id'
+  has_many :messages_received, :class_name => 'Message', :order => 'created_at desc', :source => :message,
+    :through => :user_messages
   has_many :messages_sent, :class_name => 'Message', :foreign_key => 'sender_id', :order => 'created_at desc'
 
   accepts_nested_attributes_for :profile, :preference
@@ -31,8 +33,10 @@ class User < ActiveRecord::Base
 
   validates_presence_of     :role_id
 
-  named_scope :buyers, lambda { {:joins => :roles, :conditions => ["roles.title = 'national_buyer' OR roles.title = 'international_buyer'"] } }
-  named_scope :exhibitors, lambda { {:joins => :roles, :conditions => ["roles.title = 'exhibitor'"] } }
+  named_scope :buyers, lambda { {:joins => :roles, :include => :profile, 
+    :conditions => ["roles.title = 'national_buyer' OR roles.title = 'international_buyer'"] } }
+  named_scope :exhibitors, lambda { {:joins => :roles, :include => :profile, 
+    :conditions => ["roles.title = 'exhibitor'"] } }
 
   attr_accessible :login, :email, :name, :password, :password_confirmation, :role_id, :profile_attributes, :preference_attributes, :preference_id
 

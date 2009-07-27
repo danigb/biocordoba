@@ -31,11 +31,21 @@ module ApplicationHelper
   # Mostramos el usuario emisor o receptor según el tipo de mensajes que estemos viendo
   def link_message_user(message, type)
     user = {:received => 'sender', :sent => 'receiver'}
-    eval("link_to(message.#{user[type.to_sym]}.login, profile_path(message.#{user[type.to_sym]}))") 
+    if type == "received"
+      link_to(message.sender.profile.company_name, profile_path(message.sender))
+    else
+      message.receiver
+    end
   end
 
   # Link de acceso a recibidos y enviados
   def message_link(type, msg)
     params[:action] == type ? msg : eval("link_to('#{msg}', #{type}_messages_path)")
+  end
+
+  def message_class(message, type)
+    if(type == "received")
+      message.user_messages.find_by_receiver_id(current_user.id).state
+    end
   end
 end
