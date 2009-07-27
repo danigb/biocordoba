@@ -16,6 +16,10 @@ class Meeting < ActiveRecord::Base
     if new_record? && Meeting.find_by_host_id_and_guest_id_and_state(self.host, self.guest, "accepted")
       errors.add("guest_id", "Ya tienes una cita con este comprador") 
     end
+
+    unless Meeting.valid_date?(self.starts_at)
+      errors.add("start_at", "Fecha fuera de evento")
+    end
   end
 
   #AASM 
@@ -45,6 +49,16 @@ class Meeting < ActiveRecord::Base
     end
 
     new
+  end
+
+  def self.valid_date?(date)
+    date = Date.parse(date) unless date.class == Date || date.class == ActiveSupport::TimeWithZone
+    preferences = CONFIG[:admin][:preferences]
+    if date < Date.parse(preferences[:event_start_day]) || date > Date.parse(preferences[:event_end_day])
+      return false
+    end
+
+    true
   end
 
   private

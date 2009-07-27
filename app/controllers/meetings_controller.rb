@@ -7,9 +7,10 @@ class MeetingsController < ApplicationController
   end
 
   def new
-    @date = Date.parse(CONFIG[:admin][:preferences][:event_start_day])
+    @date = params[:date].present? ? Date.parse(params[:date]) : Date.parse(CONFIG[:admin][:preferences][:event_start_day])
     @host = User.find(params[:host_id])
     @guest = User.find(params[:guest_id])
+    valid_date?(@date)
     valid_host_and_guest?(@host, @guest)
 
     @meeting = Meeting.between(@host, @guest)
@@ -17,7 +18,7 @@ class MeetingsController < ApplicationController
 
   def create 
     @meeting = Meeting.new(params[:meeting])
-    @meeting.starts_at = Time.parse("2009-09-22 #{@meeting.starts_at.strftime("%k:%M")}")
+    @meeting.starts_at = Time.parse("#{params[:date][:start]} #{@meeting.starts_at.strftime("%k:%M")}")
     @meeting.ends_at = @meeting.starts_at + current_user.preference.meetings_duration.minutes
     @meeting.host = current_user
 
@@ -50,6 +51,13 @@ class MeetingsController < ApplicationController
   end
 
   protected
+  def valid_date?(date)
+    unless Meeting.valid_date?(date)
+      flash[:error] = "Fecha fuera de evento."
+      redirect_back_or("/")
+    end
+  end
+
   def valid_host_and_guest?(host, guest)
     if host.id == guest.id
       flash[:error] = "No puede solicitarse una cita a si mismo."
