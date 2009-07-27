@@ -1,6 +1,8 @@
 #schedules
   .date
-    ="< Martes 22 >"
+    = back_link(@date)
+    =" #{I18n.localize(@date, :format => '%A %d')} "
+    = foward_link(@date)
 
   .schedule
     .user
@@ -30,6 +32,7 @@
       .form
         - form_for @meeting do |f|
           = f.time_select :starts_at
+          = hidden_field_tag "date[start]", :value => @date
           = f.hidden_field :guest_id, :value => @guest.id
           %br/
           = submit_tag "Crear"

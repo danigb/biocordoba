@@ -4,6 +4,22 @@ module ApplicationHelper
     "<span class='#{label}'>#{label}</span>"
   end
 
+  def back_link(date)
+    if date > Date.parse(CONFIG[:admin][:preferences][:event_start_day])
+      link_to "«", "?date=#{@date - 1.day}"
+    else
+      "«"
+    end
+  end
+
+  def foward_link(date)
+    if date < Date.parse(CONFIG[:admin][:preferences][:event_end_day])
+      link_to "»", "?date=#{@date + 1.day}"
+    else
+      "»"
+    end
+  end
+
   def current_url(params={})
     url_for :only_path=>false, :overwrite_params=>params
   end
