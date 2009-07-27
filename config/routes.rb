@@ -14,7 +14,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :sectors, :profiles, :meetings
   map.resource :session
-  map.resources :messages, :collection => {:received => :get, :sent => :get}
+  map.resources :messages, :collection => {:received => :get, :sent => :get, 
+    :auto_complete_for_profile_company_name => :get}
   map.resources :users, :collection => {:search => :any, :result => :get}
 
   map.namespace :admin do |admin|

@@ -36,6 +36,10 @@ $(document).ready(function() {
   });
 
 
+  //Message Autocomplete
+  $("input#message_receivers_string").autocomplete("auto_complete_for_profile_company_name", 
+      {multiple:true})
+
 });
 
 
