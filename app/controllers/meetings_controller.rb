@@ -10,7 +10,7 @@ class MeetingsController < ApplicationController
     @date = params[:date].present? ? Date.parse(params[:date]) : Date.parse(CONFIG[:admin][:preferences][:event_start_day])
     @host = User.find(params[:host_id])
     @guest = User.find(params[:guest_id])
-    valid_date?(@date)
+    valid_event_date?(@date)
     valid_host_and_guest?(@host, @guest)
 
     @meeting = Meeting.between(@host, @guest)
@@ -18,7 +18,7 @@ class MeetingsController < ApplicationController
 
   def create 
     @meeting = Meeting.new(params[:meeting])
-    @meeting.starts_at = Time.parse("#{params[:date][:start]} #{@meeting.starts_at.strftime("%k:%M")}")
+    @meeting.starts_at = Time.parse("#{params[:date]} #{@meeting.starts_at.strftime("%k:%M")}")
     @meeting.ends_at = @meeting.starts_at + current_user.preference.meetings_duration.minutes
     @meeting.host = current_user
 
@@ -26,7 +26,11 @@ class MeetingsController < ApplicationController
       flash[:notice] = "La cita se ha guardado con éxito."
       redirect_to home_path
     else
-      flash.now[:error] = "No se ha guardado la cita. Ya tienes un cita con este comprador."
+      if @meeting.errors[:starts_at]
+        flash.now[:error] = "No se ha guardado la cita. La fecha ya está reservada."
+      else
+        flash.now[:error] = "No se ha guardado la cita. Ya tienes un cita con este comprador."
+      end
 
       # Reloading vars
       params[:host_id] = current_user.id
@@ -51,8 +55,8 @@ class MeetingsController < ApplicationController
   end
 
   protected
-  def valid_date?(date)
-    unless Meeting.valid_date?(date)
+  def valid_event_date?(date)
+    unless Meeting.valid_event_date?(date)
       flash[:error] = "Fecha fuera de evento."
       redirect_back_or("/")
     end

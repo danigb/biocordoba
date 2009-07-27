@@ -17,8 +17,12 @@ class Meeting < ActiveRecord::Base
       errors.add("guest_id", "Ya tienes una cita con este comprador") 
     end
 
-    unless Meeting.valid_date?(self.starts_at)
-      errors.add("start_at", "Fecha fuera de evento")
+    unless Meeting.valid_event_date?(self.starts_at)
+      errors.add("starts_at", "Fecha fuera de evento")
+    end
+
+    if new_record? && !Meeting.valid_date?(self.host, self.guest, self.starts_at)
+      errors.add("starts_at", "Fecha ya reservada") 
     end
   end
 
@@ -51,13 +55,24 @@ class Meeting < ActiveRecord::Base
     new
   end
 
-  def self.valid_date?(date)
+  # Check that a +date+ belongs to defined event calendar 
+  def self.valid_event_date?(date)
     date = Date.parse(date) unless date.class == Date || date.class == ActiveSupport::TimeWithZone
     preferences = CONFIG[:admin][:preferences]
     if date < Date.parse(preferences[:event_start_day]) || date > Date.parse(preferences[:event_end_day])
       return false
     end
 
+    true
+  end
+
+  def self.valid_date?(host, guest, date)
+    waps = lambda do |user, date| 
+      Meeting.find(:first, 
+        :conditions => ["(host_id = ? OR guest_id = ?) AND starts_at <= ? AND ends_at >= ?", user, user, date, date])
+    end
+    
+    return false if waps.call(host, date).present? || waps.call(guest, date)
     true
   end
 

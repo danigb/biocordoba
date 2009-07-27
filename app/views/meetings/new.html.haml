@@ -32,10 +32,10 @@
       .form
         - form_for @meeting do |f|
           = f.time_select :starts_at
-          = hidden_field_tag "date[start]", :value => @date
+          = hidden_field_tag "date", @date
           = f.hidden_field :guest_id, :value => @guest.id
-          %br/
-          = submit_tag "Crear"
+          %p
+            = submit_tag "Crear"
     - else
       Ya tienes una cita con este comprador
       
