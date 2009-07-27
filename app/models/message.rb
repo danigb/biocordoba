@@ -12,7 +12,8 @@ class Message < ActiveRecord::Base
   end
 
   def receiver
-    self.receivers.inject(""){|res, e| res += "#{e.profile.company_name} " }
+    self.receivers.inject(""){|res, e| res += "#{e.profile.company_name}, " }.gsub(/, $/,"")
+
   end
 
   # named_scope :unread, :conditions => {:state => 'unread'}, :order => 'created_at desc'
