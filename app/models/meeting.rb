@@ -16,6 +16,8 @@ class Meeting < ActiveRecord::Base
     if new_record? && Meeting.find_by_host_id_and_guest_id_and_state(self.host, self.guest, "accepted")
       errors.add("guest_id", "Ya tienes una cita con este comprador") 
     end
+
+    errors.add("starts_at", "La cita está fuera de fecha") if self.starts_at < self.host.preference.event_day_start_at
   end
 
   #AASM 

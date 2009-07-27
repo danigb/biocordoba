@@ -21,6 +21,20 @@ $(document).ready(function() {
   });
 
 
+  //Nuevo mensaje, selector de receptores
+  $("#receivers input").click(function(e){
+    $("#message_receiver_id").val(" ");
+    $("#receivers input").each(function(i){
+      if(this.checked==true){
+        $("#message_receiver_id").val(
+          $("#message_receiver_id").val() + this.value + ", "
+        );
+      }
+    });
+    $("#message_receiver_id").effect("highlight"); 
+  });
+
+
 });
 
 
