@@ -8,7 +8,7 @@ class Message < ActiveRecord::Base
   validates_presence_of :sender_id, :message
 
   def validate
-    # errors.add(:sender_id, "No te puedes enviar el mensaje a ti mismo") if self.receivers.map(&:receiver_id).include?(sender_id)
+    errors.add(:sender_id, "Debes introducir un receptor válido") if self.receivers.blank?
   end
 
   def receiver
@@ -25,4 +25,5 @@ class Message < ActiveRecord::Base
       end
     end
   end
+
 end
