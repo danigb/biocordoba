@@ -48,4 +48,8 @@ module ApplicationHelper
       message.user_messages.find_by_receiver_id(current_user.id).state
     end
   end
+
+  def messages_count
+    current_user.user_messages.count(:all, :conditions => {:state => 'unread'})
+  end
 end
