@@ -32,6 +32,7 @@ class User < ActiveRecord::Base
   validates_presence_of     :role_id
 
   named_scope :buyers, lambda { {:joins => :roles, :conditions => ["roles.title = 'national_buyer' OR roles.title = 'international_buyer'"] } }
+  named_scope :exhibitors, lambda { {:joins => :roles, :conditions => ["roles.title = 'exhibitor'"] } }
 
   attr_accessible :login, :email, :name, :password, :password_confirmation, :role_id, :profile_attributes, :preference_attributes, :preference_id
 
