@@ -1,0 +1,10 @@
+- title "Ver mensaje"
+
+%p
+  %strong=h @message.sender.profile.company_name
+%p
+  =h @message.message
+
+%p
+  = link_to "Eliminar", @message, :confirm => 'Are you sure?', :method => :delete
+  = link_to "Volver", eval("#{params[:type]}_messages_path")

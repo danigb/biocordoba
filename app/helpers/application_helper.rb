@@ -42,4 +42,10 @@ module ApplicationHelper
   def message_link(type, msg)
     params[:action] == type ? msg : eval("link_to('#{msg}', #{type}_messages_path)")
   end
+
+  def message_class(message, type)
+    if(type == "received")
+      message.user_messages.find_by_receiver_id(current_user.id).state
+    end
+  end
 end

@@ -9,16 +9,16 @@
 %table#orderable.tablesorter{:cellspacing => "1", :cellpadding => "0", :border => "0"}
   %thead
     %tr
-      %th.header= params[:action] == 'received' ? "Remitente" : "Receptor"
+      %th.header= params[:action] == 'received' ? "Remitente" : "Receptores"
       %th.header Mensaje
       %th.header Fecha
   %tbody 
     - for message in @messages
-      %tr
+      %tr{:class => message_class(message, params[:action])}
         %td=truncate(link_message_user(message, params[:action]), :length => 40)
         %td=h message.message
         %td=h message.created_at.to_s(:short)
         %td= link_to "ver", message_path(:id => message, :type => params[:action])
-        %td= link_to "Eliminar", message, :confirm => '¿Estás seguro?', :method => :delete
+        %td= link_to "Eliminar", message_path(:id => message, :type => params[:action]), :confirm => '¿Estás seguro?', :method => :delete
 
 %p= link_to "Nuevo Mensaje", new_message_path

@@ -1,13 +1,15 @@
 class ChangeMessagesHabtm < ActiveRecord::Migration
   def self.up
-    create_table :messages_users, :id => false do |t|
+    create_table :user_messages do |t|
       t.integer :receiver_id, :message_id, :null => false
+      t.string :state
     end
-    remove_column :messages, :receiver_id
+    remove_column :messages, :receiver_id, :state
   end
 
   def self.down
-    drop_table :messages_users
+    drop_table :user_messages
     add_column :messages, :receiver_id, :integer
+    add_column :messages, :state, :string
   end
 end

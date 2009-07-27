@@ -168,3 +168,9 @@ a {
   float: left;
   width: 230px;
   margin: 5px; }
+
+.unread td {
+  background: #FCC !important; }
+
+.read td {
+  background-color: #CFC !important; }
