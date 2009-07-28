@@ -47,4 +47,7 @@ $(document).ready(function() {
 
 });
 
+function load_town(province_id, f){
+  $.get('/ajax/towns', {'province_id': province_id, 'f': f}, null, "script" ); return false;
+}
 
