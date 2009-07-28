@@ -167,6 +167,9 @@ a {
 .strike {
   text-decoration: line-through; }
 
+span.info {
+  font-size: 0.7em; }
+
 #new-message #exhibitors, #new-message #buyers {
   float: left;
   width: 230px;

@@ -17,4 +17,4 @@ Rails::Initializer.run do |config|
 end
 
 Haddock::Password.diction = File.join(Rails.root, "config", "dictionary.txt")
-
+require 'markdown'

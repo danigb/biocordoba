@@ -1,19 +1,27 @@
 - content_for :head do
   = javascript_include_tag 'jquery.autocomplete.min'
   = stylesheet_link_tag 'jquery.autocomplete'
+
 - title "Nuevo Mensaje"
 #new-message
   - form_for @message do |f|
     = f.error_messages
     %p
-      = f.label :receivers_string, "Receptores del mensaje (Separados por comas o selecciona debajo)"
+      = f.label :receivers_string, "Receptores del mensaje "
+      %br/
+      %span.info= "(separados por comas, también puedes seleccionarlos debajo)"
+
       %br/
       = f.text_field :receivers_string, :size => 53, :autocomplete =>"off", :value => params[:receiver]
 
     %p
       = f.label :message, "Mensaje"
       %br/
-      = f.text_area :message, :size => "67x5"
+      = f.text_area :message, :size => "46x6"
+      %br/
+      %span.info= "Formato: **<strong>negrita</strong>** _<em>cursiva</em>_ [Un ejemplo](http://ejemplo.net/)" 
+
+
     %b FIXME: ¿Este listado lo verá solo el administrador?
     #receivers
       #exhibitors
