@@ -15,7 +15,9 @@ class User < ActiveRecord::Base
   has_many :messages_received, :class_name => 'Message', :order => 'created_at desc', :source => :message,
     :through => :user_messages
   has_many :messages_sent, :class_name => 'Message', :foreign_key => 'sender_id', :order => 'created_at desc'
-  has_many :timeline_events, :as => 'actor', :limit => 10, :order => 'created_at desc'
+  # DEPRECATED, ver método que lo ha reescrito
+  # has_many :timeline_events, :as => 'actor', :limit => 10, :order => 'created_at desc'
+
 
   accepts_nested_attributes_for :profile, :preference
 
@@ -42,6 +44,20 @@ class User < ActiveRecord::Base
     :conditions => ["roles.title != 'admin' && roles.title != 'extenda'"] } }
 
   attr_accessible :login, :email, :name, :password, :password_confirmation, :role_id, :profile_attributes, :preference_attributes, :preference_id
+
+  #TimeLine Event
+  fires :new_user_created, :on => :create, :secondary_subject => :main_role,
+    :if => lambda { |user| !user.is_admin? && !user.is_extenda? }
+
+  #Devuelve los eventos comunes, es decir no tienen actor a quien se dirige y los eventos concretos hacia él
+  def timeline_events
+    TimelineEvent.find(:all, :conditions => ["(actor_type = 'User' AND actor_id = ?) OR actor_type IS NULL", self.id],
+      :limit => 10, :order => 'created_at desc')
+  end
+  
+  def main_role
+    self.roles.first
+  end
 
   def unread_messages_count
     self.user_messages.count(:all, :conditions => {:state => 'unread'})
