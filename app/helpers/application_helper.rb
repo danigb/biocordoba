@@ -49,4 +49,11 @@ module ApplicationHelper
     end
   end
 
+  def print_event(event)
+    case(event.event_type)
+    when("new_received_message")
+      "#{event.created_at.to_s(:short)} #{link_to 'Mensaje', message_path(:id => event.subject, :type => 'received')} recibido de 
+      #{link_to event.secondary_subject.company_name, profile_path(event.subject.sender)}"
+    end
+  end
 end

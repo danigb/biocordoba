@@ -18,6 +18,11 @@ $(document).ready(function() {
     }else if(value == 5 ){
       $("#exhibitor").show();
     }
+    if(value == 1 || value == 2){
+      $("#new-user-profile").hide();
+    }else{
+      $("#new-user-profile").show();
+    }
   });
 
 

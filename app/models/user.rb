@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   has_many :messages_received, :class_name => 'Message', :order => 'created_at desc', :source => :message,
     :through => :user_messages
   has_many :messages_sent, :class_name => 'Message', :foreign_key => 'sender_id', :order => 'created_at desc'
+  has_many :timeline_events, :as => 'actor', :limit => 10, :order => 'created_at desc'
 
   accepts_nested_attributes_for :profile, :preference
 

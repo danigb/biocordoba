@@ -1,4 +1,4 @@
-%fieldset
+%fieldset{:id => 'new-user-profile'}
   %legend Información personal
   - @user.build_profile unless @user.profile
   - f.fields_for(:profile) do |profile|
