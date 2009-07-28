@@ -32,7 +32,7 @@ module ApplicationHelper
   def link_message_user(message, type)
     user = {:received => 'sender', :sent => 'receiver'}
     if type == "received"
-      link_to(message.sender.profile.company_name, profile_path(message.sender))
+      link_to(message.sender.profile.company_name, profile_path(message.sender.profile))
     else
       message.receiver
     end
@@ -54,11 +54,15 @@ module ApplicationHelper
     case(event.event_type)
     when("new_received_message")
       text += "#{link_to '<b>Mensaje', message_path(:id => event.subject, :type => 'received')} recibido</b> de 
-      #{link_to event.secondary_subject.company_name, profile_path(event.subject.sender)}"
+      #{link_to event.secondary_subject.company_name, profile_path(event.secondary_subject)}"
     when("new_user_created")
       text += "Nuevo <b>#{ROLES[event.secondary_subject.title.to_sym]}</b> registrado,
-      #{link_to event.subject.profile.company_name, profile_path(event.subject)}"
+      #{link_to event.subject.profile.company_name, profile_path(event.subject.profile)}"
     end
     text
+  end
+
+  def profile_value(value)
+    value || "No definido"
   end
 end

@@ -25,7 +25,7 @@
       - for user in users
         %li
           = user.profile.company_name
-          = link_to "Ver ficha", profile_path(user)
+          = link_to "Ver ficha", profile_path(user.profile)
           = link_to "Solicitar cita", meeting_into_and_path(current_user, user)
 
 
