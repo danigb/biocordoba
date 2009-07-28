@@ -1,7 +1,9 @@
 #right-column
   - if yield(:right_column).nil?
-    %ul
-      - for event in current_user.timeline_events 
-        %li= print_event(event)
+    Últimos eventos 
+    %hr/
+    - for event in current_user.timeline_events 
+      %span.info= print_event(event)
+      %hr/
   - else
     = yield(:right_column)

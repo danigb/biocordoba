@@ -50,14 +50,15 @@ module ApplicationHelper
   end
 
   def print_event(event)
-    timestamp = event.created_at.to_s(:short)
+    text = "[#{event.created_at.to_s(:short)}] "
     case(event.event_type)
     when("new_received_message")
-      "#{timestamp} #{link_to 'Mensaje', message_path(:id => event.subject, :type => 'received')} recibido de 
+      text += "#{link_to '<b>Mensaje', message_path(:id => event.subject, :type => 'received')} recibido</b> de 
       #{link_to event.secondary_subject.company_name, profile_path(event.subject.sender)}"
     when("new_user_created")
-      "#{timestamp} Nuevo #{ROLES[event.secondary_subject.title.to_sym]} registrado,
+      text += "Nuevo <b>#{ROLES[event.secondary_subject.title.to_sym]}</b> registrado,
       #{link_to event.subject.profile.company_name, profile_path(event.subject)}"
     end
+    text
   end
 end
