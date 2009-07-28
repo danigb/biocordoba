@@ -49,7 +49,4 @@ module ApplicationHelper
     end
   end
 
-  def messages_count
-    current_user.user_messages.count(:all, :conditions => {:state => 'unread'})
-  end
 end

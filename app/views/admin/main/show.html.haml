@@ -1,7 +1,8 @@
 - title "Zona de administración"
 %ul
+  %h2 Gestión del sistema
   %li= link_to "Gestión de usuarios", admin_users_path
   %li= link_to "Configuración del sistema", admin_preferences_path
-  %li
-    = "Monitorización"
-    \# ToDo
+  %h2 Monitorización
+  %li= link_to "Mensajes leidos de los usuarios", messages_admin_monitors_path 
+  %li #TODO Niveles de ocupación de compradores

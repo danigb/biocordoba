@@ -37,8 +37,14 @@ class User < ActiveRecord::Base
     :conditions => ["roles.title = 'national_buyer' OR roles.title = 'international_buyer'"] } }
   named_scope :exhibitors, lambda { {:joins => :roles, :include => :profile, 
     :conditions => ["roles.title = 'exhibitor'"] } }
+  named_scope :no_admins, lambda { {:joins => :roles, :include => :profile, 
+    :conditions => ["roles.title != 'admin' && roles.title != 'extenda'"] } }
 
   attr_accessible :login, :email, :name, :password, :password_confirmation, :role_id, :profile_attributes, :preference_attributes, :preference_id
+
+  def unread_messages_count
+    self.user_messages.count(:all, :conditions => {:state => 'unread'})
+  end
 
   def set_master_preferences
     self.preference = Preference.first
