@@ -1,0 +1,6 @@
+= label_tag 'user[profile_attributes][town_id]', "Localidad"
+%br/
+- if defined?(f)
+  = f.select :town_id, towns.collect {|t| [t.name, t.id]}, {:include_blank => "--"}
+- else
+  = select 'user[profile_attributes]', :town_id, towns.collect {|t| [t.name, t.id]}, {:include_blank => "--"}

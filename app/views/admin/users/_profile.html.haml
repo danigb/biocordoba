@@ -20,6 +20,14 @@
 %p
   %strong.highlight
     ToDo: Ciudad y provincia
+  %br/
+  = f.label :province_id, "Provincia"
+  %br/
+  = f.select :province_id, Province.all.collect {|t| [t.name, t.id]}, {:include_blank => "--"}, {:onchange => "load_town(this.options[this.selectedIndex].value)"}
+  #town
+    - if @user.profile.province_id
+      = render :partial => 'ajax/town', :locals => {:towns => Town.find_all_by_province_id(@user.profile.province_id), :f => f}
+  
 
 #exhibitor{:style => @user.is_exhibitor? ? '' : 'display:none'}
   %p
