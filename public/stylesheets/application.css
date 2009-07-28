@@ -164,6 +164,9 @@ a {
 .required {
   color: #ff0000; }
 
+.strike {
+  text-decoration: line-through; }
+
 #new-message #exhibitors, #new-message #buyers {
   float: left;
   width: 230px;

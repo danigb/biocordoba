@@ -10,9 +10,8 @@ class MeetingsController < ApplicationController
     @date = params[:date].present? ? Date.parse(params[:date]) : Date.parse(CONFIG[:admin][:preferences][:event_start_day])
     @host = User.find(params[:host_id])
     @guest = User.find(params[:guest_id])
-    valid_event_date?(@date)
-    valid_host_and_guest?(@host, @guest)
 
+    !valid_host_and_guest?(@host, @guest) || !valid_event_date?(@date) || !valid_guest?(@guest)
     @meeting = Meeting.between(@host, @guest)
   end
 
@@ -55,17 +54,27 @@ class MeetingsController < ApplicationController
   end
 
   protected
+  def valid_guest?(guest)
+    unless guest.is_national_buyer? || guest.is_international_buyer?
+      flash[:error] = "Empresa no valida."
+      redirect_back_or("/") 
+      return false
+    end  
+  end
+
   def valid_event_date?(date)
     unless Meeting.valid_event_date?(date)
       flash[:error] = "Fecha fuera de evento."
-      redirect_back_or("/")
+      redirect_back_or("/") 
+      return false
     end
   end
 
   def valid_host_and_guest?(host, guest)
     if host.id == guest.id
       flash[:error] = "No puede solicitarse una cita a si mismo."
-      redirect_back_or("/")
+      redirect_back_or("/") 
+      return false
     end
   end
 end

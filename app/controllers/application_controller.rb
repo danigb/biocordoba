@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
       elsif current_user.is_extenda?
         redirect_to extenda_path
       else
-        redirect_to home_path
+        redirect_to root_path
       end
     end
   end
