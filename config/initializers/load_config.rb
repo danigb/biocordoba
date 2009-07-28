@@ -47,6 +47,7 @@ def from_yml_to_db_user
     user = User.new(info) 
     user.roles << Role.find_by_title('admin')
     user.save!
+    Profile.create!(:sector_id => 1, :company_name => "Andalucía Sabor", :user_id => user.id)
   else
     if user.login != CONFIG[:admin][:login] || user.email != CONFIG[:admin][:email] || !user.authenticated?(CONFIG[:admin][:password])
       user.update_attributes(info)

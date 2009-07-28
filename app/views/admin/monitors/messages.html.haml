@@ -1,0 +1,19 @@
+-title "Listado de usuarios según número de mensajes sin leer"
+
+%table#orderable.tablesorter{:cellspacing => "1", :cellpadding => "0", :border => "0"}
+  %thead
+    %tr
+      %th.header= "Empresa"
+      %th.header= "Mensajes sin leer"
+      %th.header= "Opciones"
+  %tbody
+    - for user in @users
+      %tr{:class => "#{cycle('odd', 'even')}"}
+        %td= link_to user.company_name, profile_path(user.profile_id)
+        %td= user.unread
+        %td
+          = link_to "Ver perfil", profile_path(user.profile_id)
+          |
+          Mandar Mensaje #TODO
+
+= link_to "Volver", admin_path

@@ -1,5 +1,5 @@
 #left-column
   %ul
-    %li= link_to "Mis mensajes (#{messages_count})", received_messages_path
+    %li= link_to "Mis mensajes (#{current_user.unread_messages_count})", received_messages_path
     %li= link_to "Información sobre empresas visitantes", search_path
     %li= link_to "Mi agenda", root_path

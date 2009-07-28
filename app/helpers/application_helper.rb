@@ -49,7 +49,15 @@ module ApplicationHelper
     end
   end
 
-  def messages_count
-    current_user.user_messages.count(:all, :conditions => {:state => 'unread'})
+  def print_event(event)
+    timestamp = event.created_at.to_s(:short)
+    case(event.event_type)
+    when("new_received_message")
+      "#{timestamp} #{link_to 'Mensaje', message_path(:id => event.subject, :type => 'received')} recibido de 
+      #{link_to event.secondary_subject.company_name, profile_path(event.subject.sender)}"
+    when("new_user_created")
+      "#{timestamp} Nuevo #{ROLES[event.secondary_subject.title.to_sym]} registrado,
+      #{link_to event.subject.profile.company_name, profile_path(event.subject)}"
+    end
   end
 end

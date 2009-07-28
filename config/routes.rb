@@ -23,6 +23,7 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace :admin do |admin|
     admin.resources :preferences, :as => 'preferencias'
     admin.resources :users, :as => 'usuarios'
+    admin.resources :monitors, :as => 'monitores', :collection => {:messages => :get}
   end
 
   map.connect ':controller/:action/:id'

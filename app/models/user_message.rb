@@ -17,4 +17,13 @@ class UserMessage < ActiveRecord::Base
     transitions :from => :unread, :to => :read
   end
 
+  fires :new_received_message, :on => :create,
+                     :actor => :receiver,
+                     :subject => :message,
+                     :secondary_subject => :sender_profile
+
+  def sender_profile
+    self.message.sender.profile
+  end
+
 end

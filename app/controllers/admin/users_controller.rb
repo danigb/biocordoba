@@ -55,13 +55,12 @@ class Admin::UsersController < ApplicationController
       @user.preference = Preference.first
     end
 
+    if %w(1 2).include?(params[:user][:role_id])
+      @user.profile.build(:company_name => @user.login, :sector_id => 1)
+    end
+
     success = @user && @extenda_valid && @user.save 
     if success && @user.errors.empty?
-      # Protects against session fixation attacks, causes request forgery
-      # protection if visitor resubmits an earlier form using back
-      # button. Uncomment if you understand the tradeoffs.
-      # reset session
-
       UserMailer.deliver_welcome_email(current_user, @user, @password)
 
       flash[:notice] = "El usuario <b>#{@user.login}</b> ha sido registrado con éxito."
