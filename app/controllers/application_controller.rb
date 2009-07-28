@@ -22,8 +22,6 @@ class ApplicationController < ActionController::Base
         redirect_to admin_path
       elsif current_user.is_extenda?
         redirect_to extenda_path
-      else
-        redirect_to root_path
       end
     end
   end

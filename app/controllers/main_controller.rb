@@ -1,4 +1,5 @@
 class MainController < ApplicationController
+  before_filter :redirect_to_zone
 
   def home
     @date = Time.parse("2009-09-22 19:00")

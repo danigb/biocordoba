@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/admin/usuarios/registro', :controller => 'admin/users', :action => 'create'
-  map.signup '/admin/usuarios/registro', :controller => 'admin/users', :action => 'new'
+  map.signup '/admin/usuarios/nuevo', :controller => 'admin/users', :action => 'new'
   map.type_users '/admin/usuarios/tipo/:type', :controller => 'admin/users', :action => 'type'
   map.meeting_into_and '/citas/entre/:host_id/y/:guest_id', :controller => 'meetings', :action => 'new'
   map.search '/buscador', :controller => 'users', :action => 'search'
