@@ -7,7 +7,7 @@ class Profile < ActiveRecord::Base
 
 
   validates_presence_of :company_name, :sector_id
-  validates_numericality_of :phone, :fax
-  validates_url_format_of :website, :message => "Formato de página web incorrecto"
+  validates_numericality_of :phone, :fax, :allow_blank => true
+  validates_url_format_of :website, :message => "Formato de página web incorrecto", :allow_blank => true
 
 end
