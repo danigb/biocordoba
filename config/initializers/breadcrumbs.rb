@@ -12,6 +12,7 @@ Breadcrumb.configure do
   trail "admin/users", :new, [:admin_root, :admin_users]
   trail "admin/users", :edit, [:admin_root, :admin_users]
   trail "admin/preferences", [:new, :edit], [:admin_root, :admin_preferences]
+  trail :messages, [:received, :sent, :new], [:admin_root], :if => :current_user_is_admin?
 
   # Specify the delimiter for the crumbs
   delimit_with " - "

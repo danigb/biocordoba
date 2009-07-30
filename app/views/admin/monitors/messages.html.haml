@@ -9,7 +9,7 @@
   %tbody
     - for user in @users
       %tr{:class => "#{cycle('odd', 'even')}"}
-        %td= link_to user.company_name, profile_path(user.profile_id), :class => 'profile-link', :id => user.profile_id
+        %td= link_to user.company_name, profile_path(user.profile_id)
         %td= user.unread
         %td
           = link_to "Ver perfil", profile_path(user.profile_id)

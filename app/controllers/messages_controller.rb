@@ -11,19 +11,21 @@ class MessagesController < ApplicationController
 
   def received
     @messages = current_user.messages_received
-    render :action => 'index'
+    render :action => 'index', :layout => select_layout
   end
 
   def sent
     @messages = current_user.messages_sent
-    render :action => 'index'
+    render :action => 'index', :layout => select_layout
   end
   
   def show
+    render :layout => select_layout
   end
   
   def new
     @message = Message.new
+    render :layout => select_layout
   end
   
   def create
@@ -57,4 +59,5 @@ class MessagesController < ApplicationController
     @message_user = @message.user_messages.find_by_receiver_id(current_user.id)
     @message_user.mark_as_read! if @message_user && @message_user.unread?
   end
+
 end

@@ -85,6 +85,10 @@ class User < ActiveRecord::Base
     self.is_national_buyer? or self.is_international_buyer?
   end
 
+  def is_admin_or_extenda?
+    self.is_admin? or self.is_extenda?
+  end
+
   # Set role for user
   attr_accessor :role_id
   def role_id=(value)

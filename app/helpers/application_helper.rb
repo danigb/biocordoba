@@ -69,4 +69,9 @@ module ApplicationHelper
   def link_to_profile(profile, message = profile.company_name)
     link_to message, profile_path(profile), :class => 'profile-link', :id => profile.id
   end
+
+  #Usado en los breadcrumbs
+  def current_user_is_admin?
+    current_user.is_admin?
+  end
 end
