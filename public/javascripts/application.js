@@ -49,10 +49,10 @@ $(document).ready(function() {
 
   //Profile dialog
   $(".profile-link").click(function(e){
-    $('<div />').appendTo('body').dialog({modal:true, position: ['center', 50]})
-    .load("/perfiles/" + this.id);
+    $('<div />').appendTo('body').append("<img src='/images/loader.gif'/> Cargando...").dialog({modal:true, position: ['center', 50]}).load("/perfiles/" + this.id);
     return false;
   });
+
 });
 
 function load_town(province_id, f){
