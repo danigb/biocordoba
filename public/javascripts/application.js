@@ -40,14 +40,27 @@ $(document).ready(function() {
     text_field.effect("highlight"); 
   });
 
+ //Message Autocomplete
+  if($("input#message_receivers_string").length > 0){
+    $("input#message_receivers_string").autocomplete("auto_complete_for_profile_company_name", 
+      {multiple:true});
+  }
 
-  //Message Autocomplete
-  $("input#message_receivers_string").autocomplete("auto_complete_for_profile_company_name", 
-      {multiple:true})
 
+  //Profile dialog
+  $(".profile-link").click(function(e){
+    $('<div />').appendTo('body').dialog({modal:true, position: ['center', 50]})
+    .load("/perfiles/" + this.id);
+    return false;
+  });
 });
 
 function load_town(province_id, f){
   $.get('/ajax/towns', {'province_id': province_id, 'f': f}, null, "script" ); return false;
 }
 
+// All ajax requests will trigger the format.xml block
+// of +respond_to do |format|+ declarations
+$.ajaxSetup({
+  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
+});
