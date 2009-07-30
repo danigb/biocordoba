@@ -32,6 +32,6 @@
           = "[#{ROLES[user.roles.first.title.to_sym]}]"
           = user.profile.company_name
           = link_to_profile(user.profile, "Ver ficha")
-          = link_to "Solicitar cita", meeting_into_and_path(current_user, user) if user.is_international_buyer? || user.is_national_buyer?
+          = link_to "Solicitar cita", meeting_into_and_path(current_user, user) if user.is_buyer? && !user == current_user
 
 

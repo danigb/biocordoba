@@ -21,6 +21,21 @@
 %p 
   Sector:
   = @profile.sector.name
+- if @user.is_exhibitor?
+  %p 
+    Productos:
+    = profile_value(@profile.products)
+  %p 
+    Envases:
+    = profile_value(@profile.packages)
+- elsif @user.is_buyer?
+  %p 
+    Perfil comercial:
+    = profile_value(@profile.commercial_profile)
+  %p 
+    Productos:
+    = profile_value(@profile.products)
+  
 %p 
   Email:
   = @user.email

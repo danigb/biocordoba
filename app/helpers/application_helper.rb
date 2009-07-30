@@ -63,7 +63,7 @@ module ApplicationHelper
   end
 
   def profile_value(value)
-    value || "No definido"
+    value.blank? ? "No definido" : value
   end
 
   def link_to_profile(profile, message = profile.company_name)

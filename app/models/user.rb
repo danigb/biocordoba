@@ -81,6 +81,10 @@ class User < ActiveRecord::Base
     "self.roles.map(&:title).include?(arg.to_s)"
   end
 
+  def is_buyer?
+    self.is_national_buyer? or self.is_international_buyer?
+  end
+
   # Set role for user
   attr_accessor :role_id
   def role_id=(value)
