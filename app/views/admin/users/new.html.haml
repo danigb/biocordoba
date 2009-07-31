@@ -1,21 +1,9 @@
 - title "Registra un nuevo usuario"
-- @user.password = @user.password_confirmation = nil
 
 = error_messages_for :user
 - form_for @user, :url => admin_users_path do |f|
   %fieldset
     %legend Información de acceso
-    %p
-      = label_tag 'login'
-      %span.required= "*"
-      %br/
-      = f.text_field :login, :class => 'big_field login'
-
-    %p
-      = label_tag 'email'
-      %span.required= "*"
-      %br/
-      = f.text_field :email 
 
     %p
       = label_tag 'role_id', 'Tipo de usuario' 
@@ -28,21 +16,6 @@
         
       = f.select :role_id, Role.all.map{|r| [ROLES[r.title.to_sym], r.id]}, {:include_blank => true, :selected => selected}, |
       {:disabled => @disabled} |
-
-    %p
-      = label_tag "auto_password", "¿Auto-generar password?" 
-      = check_box_tag 'auto[password]', 1, @auto_password, {:onclick => "$('#password_div').toggle();"} 
-
-    #password_div{:style => "#{!@auto_password ? '': 'display:none'}"}
-      %p
-        = label_tag 'password'
-        %br/
-        = f.password_field :password 
-
-      %p
-        = label_tag 'password_confirmation', 'Confirma Password' 
-        %br/
-        = f.password_field :password_confirmation
 
   = render :partial => 'form', :locals => {:f => f}
   %p

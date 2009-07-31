@@ -14,7 +14,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  #Aquí debeactualizar profile y preference también haciendo uso de nested forms
+  # Aquí debe actualizar profile y preference también haciendo uso de nested forms
   def update
     @user = User.find(params[:id])
     if params[:default_preferences] == "1"
@@ -22,7 +22,7 @@ class Admin::UsersController < ApplicationController
       @user.preference = Preference.first
     else
       if params[:user][:preference_attributes][:id] == "1" 
-        #Quitamos la id del hash para que no pise el master password
+        # Quitamos la id del hash para que no pise el master password
         params[:user][:preference_attributes].delete("id")
       end
     end
@@ -38,15 +38,9 @@ class Admin::UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    
-    if params[:auto] && params[:auto][:password]
-      @user.password = @user.password_confirmation = Haddock::Password.generate(10)
-      @auto_password = true
-    else
-      @auto_password = false
-    end
-    @password = @user.password
+    @user.password = Haddock::Password.generate(10)
 
+    # Check that user extenda only can create international buyer
     @extenda_valid = current_user.is_extenda? && !@user.is_international_buyer? ? false : true
 
     if params[:default_preferences] == "1"
