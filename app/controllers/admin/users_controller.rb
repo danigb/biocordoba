@@ -7,11 +7,61 @@ class Admin::UsersController < ApplicationController
 
   def new
     @user = User.new
-    @auto_password = true
+  end
+
+  def new_admin_extenda
+    @user = User.new
   end
  
   def edit
     @user = User.find(params[:id])
+  end
+
+  def create
+    @user = User.new(params[:user])
+    @user.password = Haddock::Password.generate(10)
+
+    # Check that user extenda only can create international buyer
+    @extenda_valid = current_user.is_extenda? && !@user.is_international_buyer? ? false : true
+
+    if params[:default_preferences] == "1"
+      @user.preference.delete if @user.preference
+      @user.preference = Preference.first
+    end
+
+    success = @user && @extenda_valid && @user.save 
+    if success && @user.errors.empty?
+      UserMailer.deliver_welcome_email(current_user, @user)
+
+      flash[:notice] = "El usuario <b>#{@user.login}</b> ha sido registrado con éxito."
+      if params[:continue]
+        redirect_to signup_path
+      else
+        redirect_to admin_users_path
+      end
+    else
+      flash.now[:error]  = "Existen errores en el formulario."
+      render :action => 'new'
+    end
+  end
+
+  def create_admin_extenda
+    @user = User.new(params[:user])
+    @user.password = Haddock::Password.generate(10)
+
+    unless @user.login.blank?
+      @user.build_profile(:company_name => @user.login, :sector_id => 1)
+    end
+
+    if @user.save
+      UserMailer.deliver_welcome_email(current_user, @user)
+
+      flash[:notice] = "El usuario <b></b> ha sido creado con éxito."
+      redirect_to admin_users_path
+    else
+      flash.now[:error] = "Existen errores en el formulario."
+      render :action => 'new_admin_extenda'
+    end
   end
 
   # Aquí debe actualizar profile y preference también haciendo uso de nested forms
@@ -36,37 +86,6 @@ class Admin::UsersController < ApplicationController
     end
   end
 
-  def create
-    @user = User.new(params[:user])
-    @user.password = Haddock::Password.generate(10)
-
-    # Check that user extenda only can create international buyer
-    @extenda_valid = current_user.is_extenda? && !@user.is_international_buyer? ? false : true
-
-    if params[:default_preferences] == "1"
-      @user.preference.delete if @user.preference
-      @user.preference = Preference.first
-    end
-
-    if %w(1 2).include?(params[:user][:role_id])
-      @user.profile.build(:company_name => @user.login, :sector_id => 1)
-    end
-
-    success = @user && @extenda_valid && @user.save 
-    if success && @user.errors.empty?
-      UserMailer.deliver_welcome_email(current_user, @user, @password)
-
-      flash[:notice] = "El usuario <b>#{@user.login}</b> ha sido registrado con éxito."
-      if params[:continue]
-        redirect_to signup_path
-      else
-        redirect_to admin_users_path
-      end
-    else
-      flash.now[:error]  = "Existen errores en el formulario."
-      render :action => 'new'
-    end
-  end
 
   def type
     @role = Role.find_by_title(params[:type])
