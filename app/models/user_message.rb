@@ -12,9 +12,14 @@ class UserMessage < ActiveRecord::Base
 
   aasm_state :unread
   aasm_state :read
+  aasm_state :deleted
 
   aasm_event :mark_as_read do
     transitions :from => :unread, :to => :read
+  end
+
+  aasm_event :delete_message do
+    transitions :from => [:unread, :read], :to => :deleted
   end
 
   fires :new_received_message, :on => :create,
@@ -26,9 +31,6 @@ class UserMessage < ActiveRecord::Base
     self.message.sender.profile
   end
 
-  #Eliminamos su timeline event
-  def before_destroy
-    TimelineEvent.find(:first, :conditions => {:event_type => 'new_received_message', :actor_id => self.receiver.id, :subject_id => self.id}).destroy
-  end
+
 
 end
