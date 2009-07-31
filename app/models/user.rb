@@ -21,6 +21,12 @@ class User < ActiveRecord::Base
   validates_uniqueness_of   :login
   validates_format_of       :login,    :with => Authentication.login_regex, :message => Authentication.bad_login_message
 
+  validates_presence_of     :email, :if => Proc.new{|u| u.is_admin_or_extenda?}
+  validates_length_of       :email,    :within => 6..100, :if => Proc.new{|u| u.is_admin_or_extenda?} #r@a.wk
+  validates_uniqueness_of   :email, :if => Proc.new{|u| u.is_admin_or_extenda?}
+  validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message, :if => Proc.new{|u| u.is_admin_or_extenda?}
+  
+
   validates_presence_of     :role_id
 
   named_scope :buyers, lambda { {:joins => :roles, :include => :profile, 

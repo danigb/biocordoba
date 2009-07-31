@@ -1,0 +1,25 @@
+= error_messages_for :user
+- form_for @user, :url => register_admin_path do |f|
+  %p
+    Seleccione el tipo de administrador:
+    %br/
+    = f.radio_button(:role_id, 1)
+    Admin
+
+    %br/
+    = f.radio_button(:role_id, 2)
+    Extenda
+
+
+  %p
+    = f.label :login
+    %br/
+    = f.text_field :login, :class => 'big_field login'
+
+  %p
+    = f.label :email
+    %br/
+    = f.text_field :email
+
+  %p
+    = submit_tag 'Dar de alta' 
