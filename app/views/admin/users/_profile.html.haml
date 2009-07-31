@@ -9,7 +9,6 @@
   %br/
   = f.select :sector_id, Sector.all.map{|e| [e.name, e.id]}, :include_blank => true
 %p
-  %strong.highlight
   = f.label :province_id, "Provincia"
   %br/
   = f.select :province_id, Province.all.collect {|t| [t.name, t.id]}, {:include_blank => "--"}, {:onchange => "load_town(this.options[this.selectedIndex].value)"}
