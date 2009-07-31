@@ -30,14 +30,14 @@
         - for exhibitor in User.exhibitors
           %p
             = check_box_tag "receivers[ids][]", exhibitor.profile.company_name
-            = link_to exhibitor.profile.company_name, profile_path(exhibitor)
+            = link_to_profile exhibitor.profile
       #buyers
         Compradores
         %hr/
         - for buyer in User.buyers
           %p
             = check_box_tag "receivers[ids][]", buyer.profile.company_name
-            = link_to buyer.profile.company_name, profile_path(buyer)
+            = link_to_profile buyer.profile
 
     .clear
     %p= f.submit "Enviar" 

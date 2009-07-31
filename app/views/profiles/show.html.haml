@@ -1,7 +1,52 @@
 - title "Ficha del usuario"
-%p Aquí aparecerá la información del perfil del usuario
+%h2= h @profile.company_name
+%p 
+  Dirección:
+  = h profile_value(@profile.address)
+%p 
+  C.P:
+  = h profile_value(@profile.zip_code)
+%p 
+  Localidad:
+  = !@profile.town.nil? ? @profile.town.name : "No definido"
+%p 
+  Provincia:
+  = !@profile.province.nil? ? @profile.province.name : "No definido"
+%p 
+  Teléfono:
+  = profile_value(@profile.phone)
+%p 
+  Fax:
+  = profile_value(@profile.fax)
+%p 
+  Sector:
+  = @profile.sector.name
+- if @user.is_exhibitor?
+  %p 
+    Productos:
+    = profile_value(@profile.products)
+  %p 
+    Envases:
+    = profile_value(@profile.packages)
+- elsif @user.is_buyer?
+  %p 
+    Perfil comercial:
+    = profile_value(@profile.commercial_profile)
+  %p 
+    Productos:
+    = profile_value(@profile.products)
+  
+%p 
+  Email:
+  = @user.email
+%p 
+  Web:
+  = profile_value(@profile.website)
+%p 
+  Stand de Andalucía Sabor:
+  = profile_value(@profile.stand)
 
 %p
   - if logged_in?
     = link_to "Solicitar cita", meeting_into_and_path(current_user, @user)
-    = link_to "Enviar Mensaje", new_message_path(:receiver => @user.profile.company_name)
+    = link_to "Enviar Mensaje", new_message_path(:receiver => @profile.company_name)

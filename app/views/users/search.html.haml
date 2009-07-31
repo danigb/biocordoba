@@ -1,5 +1,5 @@
-%h1
-  Buscador
+- title "Buscador de empresas"
+%h1 Buscador de empresas
 
 #search
   - form_for :search, :url => search_path do |f|
@@ -11,7 +11,12 @@
     %div
       = f.label 'profile_sector_id_equals', "Sector"
       %br/
-      = f.select :profile_sector_id_equals, Sector.all.map{|s| [s.name, s.id]}, :include_blank => true
+      = f.select :profile_sector_id_equals, Sector.all.map{|s| [s.name, s.id]}, :include_blank => "Todos"
+
+    %div
+      = f.label 'roles_id_equals', "Tipo de usuario"
+      %br/
+      = f.select :roles_id_equals, Role.public_roles.map{|r| [ROLES[r.title.to_sym], r.id]}, :include_blank => "Todos"
 
     %div
       = f.submit "Buscar"
@@ -24,8 +29,9 @@
 
       - for user in users
         %li
+          = "[#{ROLES[user.roles.first.title.to_sym]}]"
           = user.profile.company_name
-          = link_to "Ver ficha", profile_path(user)
-          = link_to "Solicitar cita", meeting_into_and_path(current_user, user)
+          = link_to_profile(user.profile, "Ver ficha")
+          = link_to "Solicitar cita", meeting_into_and_path(current_user, user) if user.is_buyer? && !user == current_user
 
 

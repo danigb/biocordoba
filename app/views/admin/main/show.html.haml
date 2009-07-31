@@ -1,5 +1,9 @@
 - title "Zona de administración"
 %ul
+  %h2 Mensajería
+  %li= link_to "Mensajes Recibidos", received_messages_path 
+  %li= link_to "Mensajes Enviados", sent_messages_path 
+  %li= link_to "Nuevo Mensaje", new_message_path 
   %h2 Gestión del sistema
   %li= link_to "Gestión de usuarios", admin_users_path
   %li= link_to "Configuración del sistema", admin_preferences_path

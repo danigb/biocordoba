@@ -2,21 +2,12 @@
   = f.label :company_name, "Nombre de la compañia"
   %span.required= "*"
   %br/
-  = f.text_field :company_name
-%p
-  = f.label :address, "Dirección"
-  %span.required= "*"
-  %br/
-  = f.text_field :address
+  = f.text_field :company_name, :size => 15
 %p
   = f.label :sector_id, "Sector"
   %span.required= "*"
   %br/
   = f.select :sector_id, Sector.all.map{|e| [e.name, e.id]}, :include_blank => true
-%p 
-  = f.label :zip_code, "Código postal"
-  %br/
-  = f.text_field :zip_code
 %p
   = f.label :province_id, "Provincia"
   %br/
@@ -24,6 +15,30 @@
   #town
     - if @user.profile.province_id
       = render :partial => 'ajax/town', :locals => {:towns => Town.find_all_by_province_id(@user.profile.province_id), :f => f}
+%p
+  = f.label :address, "Dirección"
+  %br/
+  = f.text_field :address
+%p 
+  = f.label :zip_code, "Código postal"
+  %br/
+  = f.text_field :zip_code, :size => 5
+%p 
+  = f.label :phone, "Teléfono"
+  %br/
+  = f.text_field :phone, :size => 10
+%p 
+  = f.label :fax, "Fax"
+  %br/
+  = f.text_field :fax, :size => 10
+%p 
+  = f.label :website, "Página web"
+  %br/
+  = f.text_field :website, :size => 20
+%p 
+  = f.label :stand, "Stand Andalucía sabor"
+  %br/
+  = f.text_field :stand, :size => 10
   
 
 #exhibitor{:style => @user.is_exhibitor? ? '' : 'display:none'}

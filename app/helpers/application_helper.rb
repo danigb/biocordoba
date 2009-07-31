@@ -32,7 +32,7 @@ module ApplicationHelper
   def link_message_user(message, type)
     user = {:received => 'sender', :sent => 'receiver'}
     if type == "received"
-      link_to(message.sender.profile.company_name, profile_path(message.sender))
+      link_to_profile(message.sender.profile)
     else
       message.receiver
     end
@@ -50,14 +50,28 @@ module ApplicationHelper
   end
 
   def print_event(event)
-    timestamp = event.created_at.to_s(:short)
+    text = "[#{event.created_at.to_s(:short)}] "
     case(event.event_type)
     when("new_received_message")
-      "#{timestamp} #{link_to 'Mensaje', message_path(:id => event.subject, :type => 'received')} recibido de 
-      #{link_to event.secondary_subject.company_name, profile_path(event.subject.sender)}"
+      text += "#{link_to '<b>Mensaje', message_path(:id => event.subject, :type => 'received')} recibido</b> de 
+      #{link_to_profile(event.secondary_subject)}"
     when("new_user_created")
-      "#{timestamp} Nuevo #{ROLES[event.secondary_subject.title.to_sym]} registrado,
-      #{link_to event.subject.profile.company_name, profile_path(event.subject)}"
+      text += "Nuevo <b>#{ROLES[event.secondary_subject.title.to_sym]}</b> registrado,
+      #{link_to_profile(event.subject.profile)}"
     end
+    text
+  end
+
+  def profile_value(value)
+    value.blank? ? "No definido" : value
+  end
+
+  def link_to_profile(profile, message = profile.company_name)
+    link_to message, profile_path(profile), :class => 'profile-link', :id => profile.id
+  end
+
+  #Usado en los breadcrumbs
+  def current_user_is_admin?
+    current_user.is_admin?
   end
 end

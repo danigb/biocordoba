@@ -32,5 +32,8 @@ class ApplicationController < ActionController::Base
     redirect_to path
   end
 
+  def select_layout
+    current_user.is_admin_or_extenda? ? 'extended' : 'application'
+  end
 
 end
