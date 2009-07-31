@@ -1,5 +1,5 @@
 class Message < ActiveRecord::Base
-  attr_accessor :receivers_string
+  attr_accessor :receivers_string, :send_all
 
   belongs_to :sender, :class_name => 'User'
   has_many :user_messages
@@ -16,7 +16,9 @@ class Message < ActiveRecord::Base
 
   end
 
-  # named_scope :unread, :conditions => {:state => 'unread'}, :order => 'created_at desc'
+  def send_all=(boolean)
+    self.receivers = boolean == "1" ? User.no_admins : []
+  end
 
   def receivers_string=(string)
     string.split(", ").uniq.each do |company_name|

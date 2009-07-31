@@ -29,12 +29,23 @@ $(document).ready(function() {
   //Nuevo mensaje, selector de receptores
   $("#receivers select").change(function(e){
     var text_field = $("#message_receivers_string");
-    text_field.val(
-      text_field.val() + this.value + ", "
-    );
-    $("#receivers span").text("Destinatario añadido").show().effect("highlight",null, 2000).fadeOut(1000)
-    text_field.effect("highlight", null, 2000); 
+    if(this.value != ''){
+      text_field.val(
+        text_field.val() + this.value + ", "
+      );
+      $("#receivers span").text("Destinatario añadido").show().effect("highlight",null, 2000).fadeOut(1000)
+      text_field.effect("highlight", null, 2000); 
+    }
   });
+
+  //Seleccionar todos
+  $("#message_send_all").click(function(e){
+    if(this.checked == true){
+      $("#receivers").slideUp();
+    }else{
+      $("#receivers").slideDown();
+    } 
+  })
   // $("#receivers input").click(function(e){
   //   var text_field = $("#message_receivers_string");
   //   text_field.val("");

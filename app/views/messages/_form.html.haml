@@ -17,6 +17,10 @@
       %br/
       %span.info= "Formato: **<strong>negrita</strong>** _<em>cursiva</em>_ [Un ejemplo](http://ejemplo.net/)" 
 
+      %p
+        - restrict_to "admin | extenda" do
+          = f.label :send_all, "Enviar a todos"
+          = f.check_box :send_all
     #receivers
       %p
         = label_tag :receivers_select, "Elegir destinatarios"
