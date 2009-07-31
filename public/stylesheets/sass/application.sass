@@ -1,64 +1,97 @@
 !primary_color = #4B7399
-
 body
-  :background-color = !primary_color
-  :font
-    :family Verdana, Helvetica, Arial
-    :size 14px
+
+  :background #191918 url('/images/body-bg.jpg') center top no-repeat
+  :color #fff
+  :font-family Arial, sans-serif
+  :font-size 11px
+  :font-variant normal
+  :font-style normal
+  :font-weight normal
+  :line-height 1.5em
+
+*
+  :margin 0
+  :padding 0
+
+  html .clearfix
+    :height 1%
+
+
+.accesible
+  :display none
 
 a
-  :color #0000FF
+  :color #666
+
+  &:hover
+    :color #666
+
   img
     :border none
 
-.clear
-  :clear both
-  :height 0
+
+.wrapper
+  :width 961px
+  :margin 0 auto
+  :height 1%
+  :position relative
   :overflow hidden
 
-#header
-  :width 80%
-  :margin 0 auto
-  :margin-bottom -28px
-
-  a
-    :text-decoration none
-    :font-size 3em
-    :color black
-    :font-weight bolder
+.separata
+  :clear both
 
 
-#extended-container, #container
-  :width 960px
-  :margin 0 auto
-  :background #fff
-  :padding 20px 10px
-  :border solid 1px black
-  :margin-top 20px
+.clearfix
+  :display inline-block
 
-#extended-content
-  :margin 10px
-  :width 80%
-  :margin 0 auto
+  &:after
+    :content "."
+    :display block
+    :height 0
+    :clear both
+    :visibility hidden
 
-  #login
-    :margin 0 auto
-
-    .info
-      :margin 10px
-      :font-size 0.9em
-      :float left
-      :width 400px
-
-    .access
-      :margin 10px
-      :float left
-  
+p.button
+  :margin-top 15px
+  :padding 5px
+  :text-align right
 
 #container
-  :background inherit
-  :border none
+  #login
+    :margin 0 auto
+    :padding-left 229px
 
+    .info
+      :font-size 11px
+      :float left
+      :width 476px
+
+    .access
+      :float left
+      :width 229px
+  
+#header
+  .wrapper h1
+    :float left
+    :font-size x-small
+    :margin 0
+    :padding-top 0.2em
+    a
+      :background transparent url('/images/logo.jpg') no-repeat left top
+      :display block
+      :height 210px
+      :width 229px
+      :text-decoration none
+      span
+        :display none
+  h2.claim
+    :background url('/images/header-claim-es.jpg') no-repeat
+    :float left 
+    :height 210px
+    :width 477px
+    span
+      :display none
 #flash_notice,
 #flash_error
   :padding 5px 8px
@@ -114,12 +147,15 @@ a
   :float left
   :margin-left 5px
 #content
-  :float left
-  :width 495px
-  :margin 10px 0
-  :padding 5px
-
-
+  .main_content_extended
+    :margin-left 229px
+    :float left
+    :overflow hidden
+    :width 476px
+  .main_content
+    :float left
+    :overflow hidden
+    :width 476px
   #schedules
     :width 360px
     :margin 0 auto
@@ -144,12 +180,8 @@ a
 
 #left-column, #right-column
   :float left
-  :width 195px
-  :margin 10px 5px
-  :padding 10px
+  :width 229px
 
-#left-column, #right-column, #content, #user-info
-  :background #FFF
 
 #changelog
   ul
@@ -170,10 +202,7 @@ a
         :color #627ffd
 
 #footer
-  :text-align center
 
-.clear
-  :clear both
 
 .highlight
   :background-color yellow

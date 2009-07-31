@@ -10,17 +10,24 @@
     = yield(:head)
   
   %body
-    #extended-container
+    #container
       #header
-        = link_to "AGENDA VIRTUAL", root_path
-        = render :partial => 'sessions/user_bar'
+        .wrapper
+          %h1
+            - link_to(root_path) do
+              %span "AGENDA VIRTUAL. ANDALUCÍA SABOR"
+          %h2.claim
+            %span
+              del 22 al 24 de Septiembre - Andalucía Sabor, International Fine Food Exhibition
+          = render :partial => 'sessions/user_bar'
 
-      #extended-content
-        #breadcrumbs
-          = crumbs
-        - flash.each do |name, msg|
-          = content_tag :div, msg, :id => "flash_#{name}"
-        = yield
+      #content
+        .wrapper
+          - flash.each do |name, msg|
+            = content_tag :div, msg, :id => "flash_#{name}"
+            
+          = yield
 
       #footer
-        = link_to "Changelog", development_path
+        .wrapper
+          = link_to "Changelog", development_path
