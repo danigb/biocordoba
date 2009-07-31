@@ -11,21 +11,19 @@ class MessagesController < ApplicationController
 
   def received
     @messages = current_user.messages_received
-    render :action => 'index', :layout => select_layout
+    render :action => 'index'
   end
 
   def sent
     @messages = current_user.messages_sent
-    render :action => 'index', :layout => select_layout
+    render :action => 'index'
   end
   
   def show
-    render :layout => select_layout
   end
   
   def new
     @message = Message.new
-    render :layout => select_layout
   end
   
   def create
