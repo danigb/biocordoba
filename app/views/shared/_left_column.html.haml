@@ -1,23 +1,30 @@
 #left-column
-  - if current_user.is_admin?
-    
+  - restrict_to 'admin' do
+    Dev - Admin
+    %hr/
     %ul
       %li= "Poner aquí las secciones"
 
-  - elsif current_user.is_exhibitor?
-   
+  - restrict_to 'exhibitor' do
+    Dev - Expositor
+    %hr/
     %ul
       %li= link_to "Mis mensajes (#{current_user.unread_messages_count})", received_messages_path
       %li= link_to "Información sobre empresas visitantes", search_path
+      %li Solicitar Citas
       %li= link_to "Mi agenda", root_path
 
-  - elsif current_user.is_extenda?
-
+  - restrict_to "national_buyer | internation_buyer" do
+    Dev - Comprador
+    %hr/
     %ul
-      %li= "Poner aquí las secciones"
+      %li= link_to "Mis mensajes (#{current_user.unread_messages_count})", received_messages_path
+      %li= link_to "Información sobre expositores", search_path
+      %li= link_to "Mi agenda", root_path
 
-  - elsif current_user.is_national_buyer? || is_international_buyer?
-
+  - restrict_to 'extenda' do
+    Dev - Extenda
+    %hr/
     %ul
       %li= "Poner aquí las secciones"
 

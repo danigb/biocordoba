@@ -13,10 +13,10 @@
       %br/
       = f.select :profile_sector_id_equals, Sector.all.map{|s| [s.name, s.id]}, :include_blank => "Todos"
 
-    %div
-      = f.label 'roles_id_equals', "Tipo de usuario"
-      %br/
-      = f.select :roles_id_equals, Role.public_roles.map{|r| [ROLES[r.title.to_sym], r.id]}, :include_blank => "Todos"
+    -# %div
+    -#   = f.label 'roles_id_equals', "Tipo de usuario"
+    -#   %br/
+    -#   = f.select :roles_id_equals, Role.public_roles.map{|r| [ROLES[r.title.to_sym], r.id]}, :include_blank => "Todos"
 
     %div
       = f.submit "Buscar"
