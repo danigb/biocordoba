@@ -26,4 +26,9 @@ class UserMessage < ActiveRecord::Base
     self.message.sender.profile
   end
 
+  #Eliminamos su timeline event
+  def before_destroy
+    TimelineEvent.find(:first, :conditions => {:event_type => 'new_received_message', :actor_id => self.receiver.id, :subject_id => self.id}).destroy
+  end
+
 end

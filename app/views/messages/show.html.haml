@@ -12,7 +12,7 @@
     - else
       = current_user.profile.company_name
 %p
-  = Markdown.new(h(@message.message)).to_html
+  = h @message.message
 
 %p
   = link_to "Responder", new_message_path(:receiver => @message.sender.profile.company_name) if params[:type] == "received"

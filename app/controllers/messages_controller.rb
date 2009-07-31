@@ -40,7 +40,7 @@ class MessagesController < ApplicationController
   end
   
   def destroy
-    @message.destroy
+    @message.user_messages.find(:first, :conditions => {:receiver_id => current_user.id}).destroy
     flash[:notice] = "Mensaje eliminado"
     redirect_to eval("#{params[:type]}_messages_path")
   end

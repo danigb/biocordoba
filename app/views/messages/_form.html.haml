@@ -30,7 +30,7 @@
         %span.info= "(separados por comas)"
 
         %br/
-        = f.text_field :receivers_string, :size => 50, :autocomplete =>"off", :value => params[:receiver]
+        = f.text_field :receivers_string, :size => 50, :autocomplete =>"off", :value => (params[:receiver] ? "#{params[:receiver]}, " : "")
 
 
     .clear
