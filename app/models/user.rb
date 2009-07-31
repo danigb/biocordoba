@@ -120,7 +120,7 @@ class User < ActiveRecord::Base
   end
 
   def password=(value)
-    write_attribute :password, (value ? value.downcase : nil)
+    write_attribute :passwor, (value ? value.downcase : nil)
   end
 
 end
