@@ -5,7 +5,7 @@ class Message < ActiveRecord::Base
   has_many :user_messages
   has_many :receivers, :class_name => 'User', :through => :user_messages
 
-  validates_presence_of :sender_id, :message
+  validates_presence_of :sender_id, :message, :subject
 
   def validate
     errors.add(:sender_id, "Debes introducir un receptor válido") if self.receivers.blank?

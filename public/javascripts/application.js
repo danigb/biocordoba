@@ -27,18 +27,26 @@ $(document).ready(function() {
 
 
   //Nuevo mensaje, selector de receptores
-  $("#receivers input").click(function(e){
+  $("#receivers select").change(function(e){
     var text_field = $("#message_receivers_string");
-    text_field.val("");
-    $("#receivers input").each(function(i){
-      if(this.checked==true){
-        text_field.val(
-          text_field.val() + this.value + ", "
-        );
-      }
-    });
-    text_field.effect("highlight"); 
+    text_field.val(
+      text_field.val() + this.value + ", "
+    );
+    $("#receivers span").text("Destinatario añadido").show().effect("highlight",null, 2000).fadeOut(1000)
+    text_field.effect("highlight", null, 2000); 
   });
+  // $("#receivers input").click(function(e){
+  //   var text_field = $("#message_receivers_string");
+  //   text_field.val("");
+  //   $("#receivers input").each(function(i){
+  //     if(this.checked==true){
+  //       text_field.val(
+  //         text_field.val() + this.value + ", "
+  //       );
+  //     }
+  //   });
+  //   text_field.effect("highlight"); 
+  // });
 
  //Message Autocomplete
   if($("input#message_receivers_string").length > 0){
@@ -50,7 +58,7 @@ $(document).ready(function() {
   //Profile dialog
   $(".profile-link").click(function(e){
     $('<div />').appendTo('body').append("<img src='/images/loader.gif'/> Cargando...").dialog({modal:true, position: ['center', 50]}).load("/perfiles/" + this.id);
-    return false;
+    e.preventDefault();
   });
 
 });

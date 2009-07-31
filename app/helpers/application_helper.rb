@@ -74,4 +74,17 @@ module ApplicationHelper
   def current_user_is_admin?
     current_user.is_admin?
   end
+
+  #Devuelve las opciones necesarias para el select de selección de destinatarios
+  def select_options_buyers_exhibitors
+    html = ""
+    User.no_admins.group_by{|e| e.role.title}.each do |role, users|
+      html += "<optgroup label='#{ROLES[role.to_sym]}'>"
+      for user in users
+        html += "<option>#{user.profile.company_name}</option>"
+      end
+      html += "</optgroup>"
+    end
+    html
+  end
 end

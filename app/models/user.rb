@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   named_scope :exhibitors, lambda { {:joins => :roles, :include => :profile, 
     :conditions => ["roles.title = 'exhibitor'"] } }
   named_scope :no_admins, lambda { {:joins => :roles, :include => :profile, 
-    :conditions => ["roles.title != 'admin' && roles.title != 'extenda'"] } }
+    :conditions => ["roles.title != 'admin' && roles.title != 'extenda'"], :order => 'profiles.company_name' } }
 
   attr_accessible :login, :email, :name, :password, :password_confirmation, :role_id, :profile_attributes, :preference_attributes, :preference_id
 
@@ -120,7 +120,7 @@ class User < ActiveRecord::Base
   end
 
   def password=(value)
-    write_attribute :passwor, (value ? value.downcase : nil)
+    write_attribute :password, (value ? value.downcase : nil)
   end
 
 end

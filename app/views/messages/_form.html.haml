@@ -7,37 +7,27 @@
   - form_for @message do |f|
     = f.error_messages
     %p
-      = f.label :receivers_string, "Receptores del mensaje "
+      = f.label :subject, "Asunto:"
       %br/
-      %span.info= "(separados por comas, también puedes seleccionarlos debajo)"
-
-      %br/
-      = f.text_field :receivers_string, :size => 53, :autocomplete =>"off", :value => params[:receiver]
-
+      = f.text_field :subject, :size => 50
     %p
       = f.label :message, "Mensaje"
       %br/
-      = f.text_area :message, :size => "46x6"
+      = f.text_area :message, :size => "64x6"
       %br/
       %span.info= "Formato: **<strong>negrita</strong>** _<em>cursiva</em>_ [Un ejemplo](http://ejemplo.net/)" 
 
-
-    %b FIXME: ¿Este listado lo verá solo el administrador?
     #receivers
-      #exhibitors
-        Expositores
-        %hr/
-        - for exhibitor in User.exhibitors
-          %p
-            = check_box_tag "receivers[ids][]", exhibitor.profile.company_name
-            = link_to_profile exhibitor.profile
-      #buyers
-        Compradores
-        %hr/
-        - for buyer in User.buyers
-          %p
-            = check_box_tag "receivers[ids][]", buyer.profile.company_name
-            = link_to_profile buyer.profile
+      %p
+        = label_tag :receivers_select, "Elegir destinatarios"
+        = select_tag :receivers_select, select_options_buyers_exhibitors
+      %p
+        = f.label :receivers_string, "Destinatarios del mensaje "
+        %span.info= "(separados por comas)"
+
+        %br/
+        = f.text_field :receivers_string, :size => 50, :autocomplete =>"off", :value => params[:receiver]
+
 
     .clear
     %p= f.submit "Enviar" 

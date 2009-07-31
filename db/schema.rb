@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090731105330) do
+ActiveRecord::Schema.define(:version => 20090731150432) do
 
   create_table "meetings", :force => true do |t|
     t.integer  "host_id"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20090731105330) do
     t.text     "message"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "subject"
   end
 
   create_table "preferences", :force => true do |t|
