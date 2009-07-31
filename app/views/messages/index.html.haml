@@ -19,6 +19,7 @@
         %td=h message.subject
         %td=h message.created_at.to_s(:short)
         %td= link_to "ver", message_path(:id => message, :type => params[:action])
-        %td= link_to "Eliminar", message_path(:id => message, :type => params[:action]), :confirm => '¿Estás seguro?', :method => :delete
+        - if params[:action] == "received"
+          %td= link_to "Eliminar", message_path(:id => message, :type => params[:action]), :confirm => '¿Estás seguro?', :method => :delete
 
 %p= link_to "Nuevo Mensaje", new_message_path
