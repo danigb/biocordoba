@@ -21,7 +21,7 @@
   - if %w(1 2).include? @role.id.to_s
     = link_to "Crear nuevo usuario", new_admin_path
   - else
-    = link_to "Crear nuevo usuario", signup_path("user[role_id]" => @role.id)
+    = link_to "Crear nuevo usuario", signup_path
   o
   = link_to "Volver", admin_users_path
 

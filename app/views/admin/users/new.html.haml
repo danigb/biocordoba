@@ -14,7 +14,7 @@
         - selected = Role.find_by_title("international_buyer").id and @disabled = true 
         = f.hidden_field :role_id, :value => selected 
         
-      = f.select :role_id, Role.all.map{|r| [ROLES[r.title.to_sym], r.id]}, {:include_blank => true, :selected => selected}, |
+      = f.select :role_id, Role.all.select{|r| r.id != 1 && r.id != 2}.map{|r| [ROLES[r.title.to_sym], r.id]}, {:include_blank => true, :selected => selected}, |
       {:disabled => @disabled} |
 
   = render :partial => 'form', :locals => {:f => f}
