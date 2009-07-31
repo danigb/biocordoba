@@ -1,7 +1,23 @@
 #left-column
-  Secciones
-  %hr/
-  %ul
-    %li= link_to "Mis mensajes (#{current_user.unread_messages_count})", received_messages_path
-    %li= link_to "Información sobre empresas visitantes", search_path
-    %li= link_to "Mi agenda", root_path
+  - if current_user.is_admin?
+    
+    %ul
+      %li= "Poner aquí las secciones"
+
+  - elsif current_user.is_exhibitor?
+   
+    %ul
+      %li= link_to "Mis mensajes (#{current_user.unread_messages_count})", received_messages_path
+      %li= link_to "Información sobre empresas visitantes", search_path
+      %li= link_to "Mi agenda", root_path
+
+  - elsif current_user.is_extenda?
+
+    %ul
+      %li= "Poner aquí las secciones"
+
+  - elsif current_user.is_national_buyer? || is_international_buyer?
+
+    %ul
+      %li= "Poner aquí las secciones"
+

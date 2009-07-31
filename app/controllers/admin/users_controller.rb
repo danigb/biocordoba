@@ -1,5 +1,4 @@
 class Admin::UsersController < ApplicationController
-  layout "extended"
   skip_before_filter :login_required
 
   def index
