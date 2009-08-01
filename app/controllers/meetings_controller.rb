@@ -60,9 +60,10 @@ class MeetingsController < ApplicationController
   end
 
   def for_user
+    @user = User.find(params[:user][:id]) rescue redirect_back_or("/") and return
+
     @date = Time.parse("#{CONFIG[:admin][:preferences][:event_start_day]} #{CONFIG[:admin][:preferences][:event_day_start_at]}")
     @days = 3
-    @user = User.find(params[:user][:id])
     @meetings = @user.meetings(@date, @days)
   end
 

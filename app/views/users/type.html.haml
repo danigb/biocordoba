@@ -9,11 +9,13 @@
         %tr
           %th.header= "Login"
           %th.header= "Email"
+          %th.header= "Password"
       %tbody
         - for user in @users
           %tr{:class => "#{cycle('odd', 'even')}"}
             %td= user.login
             %td= user.email
+            %td= user.password
             %td
               = link_to "Editar", edit_user_path(user)
               = link_to "Eliminar", user_path(user, :type => params[:type]), :confirm => '¿Estás seguro?', :method => :delete

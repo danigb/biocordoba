@@ -1,5 +1,5 @@
 - title "Edición de usuario"
-- form_for @user, :url => admin_user_path(@user), :html => {:method => :put} do |f|
+- form_for @user, :url => user_path(@user), :html => {:method => :put} do |f|
   = render :partial => 'form', :locals => {:f => f}
   = f.submit "Guardar"
 %p
