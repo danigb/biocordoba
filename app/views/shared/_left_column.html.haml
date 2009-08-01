@@ -27,13 +27,26 @@
           Dé de alta, de baja o edite información sobre expositores y empresas.
 
   - restrict_to 'exhibitor' do
-    Dev - Expositor
-    %hr/
     %ul
-      %li= link_to "Mis mensajes (#{current_user.unread_messages_count})", received_messages_path
-      %li= link_to "Información sobre empresas visitantes", search_path
-      %li Solicitar Citas
-      %li= link_to "Mi agenda", root_path
+      %li
+        = link_to "Mis mensajes (#{current_user.unread_messages_count} sin leer)", received_messages_path
+        %p
+          Envíe y reciba mensajes de empresas, expositores y administradores.
+     
+      %li
+        = link_to "Información sobre empresas visitantes", search_path
+        %p
+          Acceda a la información sobre las empresas compradoras.
+      
+      %li 
+        = link_to "Solicitar Citas"
+        %p
+          Seleccione empresas de su interés y solicite citas con ellas.
+      
+      %li
+        = link_to "Mi agenda", root_path
+        %p
+          Recuerde citas, cancele encuentros o imprima su agenda de citas comerciales.
 
   - restrict_to "national_buyer | internation_buyer" do
     Dev - Comprador
