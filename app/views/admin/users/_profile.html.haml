@@ -3,11 +3,15 @@
   %span.required= "*"
   %br/
   = f.text_field :company_name, :size => 15
-- f.fields_for(:user) do |u|
+
+- fields_for(:user) do |u|
   %p
     = label_tag 'email'
     %br/
     = u.text_field :email 
+    %br/
+    %span.info
+      Facilitando el email podrá recibir notificaciones de las citas y de los mensajes que reciba de otras empresas.
 %p
   = f.label :sector_id, "Sector"
   %span.required= "*"

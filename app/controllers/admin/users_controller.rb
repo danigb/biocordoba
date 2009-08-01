@@ -21,6 +21,10 @@ class Admin::UsersController < ApplicationController
     @user = User.new(params[:user])
     @user.password = Haddock::Password.generate(10)
 
+    unless @user.profile.company_name.blank?
+      @user.login = @user.profile.company_name.normalize 
+    end
+    
     # Check that user extenda only can create international buyer
     @extenda_valid = current_user.is_extenda? && !@user.is_international_buyer? ? false : true
 
