@@ -1,17 +1,17 @@
 %h2
-  Compradores
+  Solicitar citas
+%br/
 
-%h3
-  Internacionales
+%p
+  Como expositor de Andalucía Sabor, tiene la oportunidad de solicitar hasta un máximo de 4 citas al día con los compradores nacionales e internacionales presentes en la feria.
+%br/
+%p
+  Para la optimización de este servicio de gestión de citas, le rogamos lea atentamente la ficha de cada comprador para asegurarse de que se adecua a su perfil comercial:
+%br/
 
-%ul
-  - for buyer in @international_buyers
-    %li= link_to buyer.login, meeting_into_and_path(current_user.id, buyer.id)
+%p
+  SECTOR
+  %br/
+  = select :sector, :id, Sector.all.map{|s| [s.name, s.id]}, {:include_blank => true}, {:onchange => 'load_buyers(this.options[this.selectedIndex].value)'}
 
-%h3
-  Nacionales
-
-%ul
-  - for buyer in @national_buyers
-    %li= link_to buyer.login, meeting_into_and_path(current_user.id, buyer.id)
-
+  #buyers

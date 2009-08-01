@@ -9,4 +9,19 @@ class AjaxController < ApplicationController
       }
     end
   end
+
+  def buyers
+    @buyers = User.buyers.find(:all, :include => :profile, :conditions => ["profiles.sector_id = ?", params[:sector_id]] )
+    respond_to do |format|
+      format.js {
+        render :update do |page|
+          page["buyers"].replace_html(:partial => "buyers", :locals => {:buyers => @buyers})
+        end
+      }
+    end
+  end
+
+  def to_meeting
+    redirect_to meeting_into_and_path(params[:host][:id], params[:guest][:id])
+  end
 end

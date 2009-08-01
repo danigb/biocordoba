@@ -1,0 +1,12 @@
+COMPRADORES
+%br/
+- if buyers.blank?
+  No existen compradores en este sector
+- else
+  - form_tag '/ajax/to_meeting' do
+    %p
+      = select :guest, :id, buyers.map{|b| [b.profile.company_name, b.id]}, :include_blank => true
+      = hidden_field :host, :id, :value => current_user.id
+    %p
+      %br/
+      = submit_tag "Solicitar cita"

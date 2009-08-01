@@ -4,24 +4,22 @@
 #search
   - form_for :search, :url => search_path do |f|
     %div
-      = f.label 'profile_company_name_like', "Compañia"
+      = f.label 'profile_company_name_like', "NOMBRE EMPRESA"
       %br/
       = f.text_field :profile_company_name_like
 
     %div
-      = f.label 'profile_sector_id_equals', "Sector"
+      = f.label 'profile_sector_id_equals', "SECTOR"
       %br/
       = f.select :profile_sector_id_equals, Sector.all.map{|s| [s.name, s.id]}, :include_blank => "Todos"
-
-    -# %div
-    -#   = f.label 'roles_id_equals', "Tipo de usuario"
-    -#   %br/
-    -#   = f.select :roles_id_equals, Role.public_roles.map{|r| [ROLES[r.title.to_sym], r.id]}, :include_blank => "Todos"
 
     %div
       = f.submit "Buscar"
 
 - if @users
+  %p
+    Se han encontrado los siguientes resultados:
+
   %ul
     - @users_by_sector.each do |sector_name, users|
       %h3
@@ -29,9 +27,7 @@
 
       - for user in users
         %li
-          = "[#{ROLES[user.roles.first.title.to_sym]}]"
-          = user.profile.company_name
-          = link_to_profile(user.profile, "Ver ficha")
+          = link_to_profile(user.profile, user.profile.company_name)
           = link_to "Solicitar cita", meeting_into_and_path(current_user, user) if user.is_buyer? && !user == current_user
 
 

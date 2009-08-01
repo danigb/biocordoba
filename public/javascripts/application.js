@@ -71,11 +71,16 @@ $(document).ready(function() {
     $('<div />').appendTo('body').append("<img src='/images/loader.gif'/> Cargando...").dialog({modal:true, position: ['center', 50]}).load("/perfiles/" + this.id);
     e.preventDefault();
   });
+    
 
 });
 
 function load_town(province_id, f){
   $.get('/ajax/towns', {'province_id': province_id, 'f': f}, null, "script" ); return false;
+}
+
+function load_buyers(sector_id){
+  $.get('/ajax/buyers', {'sector_id': sector_id}, null, "script" ); return false;
 }
 
 // All ajax requests will trigger the format.xml block
