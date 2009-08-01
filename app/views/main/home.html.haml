@@ -1,3 +1,13 @@
-- title "Mi agenda"
+- unless current_user.is_admin_or_extenda?
+  - title "Mi agenda"
 
-= render :partial => 'meetings/my_meetings'
+  = render :partial => 'meetings/my_meetings'
+
+- else
+  - title "Versión administrador"
+
+  = "&nbsp"
+
+  - content_for(:right_column) do
+    %p
+      Últimos mensajes

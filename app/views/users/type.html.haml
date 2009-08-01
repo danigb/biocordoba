@@ -15,13 +15,13 @@
             %td= user.login
             %td= user.email
             %td
-              = link_to "Editar", edit_admin_user_path(user)
-              = link_to "Eliminar", admin_user_path(user, :type => params[:type]), :confirm => '¿Estás seguro?', :method => :delete
+              = link_to "Editar", edit_user_path(user)
+              = link_to "Eliminar", user_path(user, :type => params[:type]), :confirm => '¿Estás seguro?', :method => :delete
 %p
   - if %w(1 2).include? @role.id.to_s
     = link_to "Crear nuevo usuario", new_admin_path
   - else
     = link_to "Crear nuevo usuario", signup_path
   o
-  = link_to "Volver", admin_users_path
+  = link_to "Volver", users_path
 
