@@ -1,0 +1,10 @@
+= render :partial => 'meetings/my_meetings'
+
+- content_for(:right_column) do
+  %p
+    Ver agenda de:
+  - form_for :user, :url => meetings_for_path, :html => {:method => :get} do |f|
+    %p
+      = f.select :id, User.type(@user.role.title).map{|u| [u.profile.company_name, u.id]}, :include_blank => true
+    %p
+      = submit_tag "Ver"

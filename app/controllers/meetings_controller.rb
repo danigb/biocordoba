@@ -21,9 +21,9 @@ class MeetingsController < ApplicationController
     @meeting.ends_at = @meeting.starts_at + current_user.preference.meetings_duration.minutes
     @meeting.host = current_user
 
-    if @meeting.accept!
+    if @meeting.save
       flash[:notice] = "La cita se ha guardado con éxito."
-      redirect_to home_path
+      redirect_to root_path
     else
       if @meeting.errors[:starts_at]
         flash.now[:error] = "No se ha guardado la cita. La fecha ya está reservada."
@@ -51,6 +51,19 @@ class MeetingsController < ApplicationController
     end
 
     redirect_back_or("/")
+  end
+
+  def type
+    @name = params[:type].chop # exhibitors -> exhibitor
+    meetings = @name == "exhibitor" ? Meeting.all : Meeting.for(@name)
+    @meetings_by_day = meetings.group_by{|m| I18n.localize(m.starts_at, :format => '%A %d')}
+  end
+
+  def for_user
+    @date = Time.parse("#{CONFIG[:admin][:preferences][:event_start_day]} #{CONFIG[:admin][:preferences][:event_day_start_at]}")
+    @days = 3
+    @user = User.find(params[:user][:id])
+    @meetings = @user.meetings(@date, @days)
   end
 
   protected

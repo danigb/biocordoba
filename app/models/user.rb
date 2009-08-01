@@ -36,6 +36,9 @@ class User < ActiveRecord::Base
   named_scope :no_admins, lambda { {:joins => :roles, :include => :profile, 
     :conditions => ["roles.title != 'admin' && roles.title != 'extenda'"], :order => 'profiles.company_name' } }
 
+  named_scope :type, lambda {|type| {:joins => :roles, :include => :profile, 
+    :conditions => ["roles.title = ?", type] } }
+
   attr_accessible :login, :email, :name, :password, :password_confirmation, :role_id, :profile_attributes, :preference_attributes, :preference_id
 
   # TimeLine Event

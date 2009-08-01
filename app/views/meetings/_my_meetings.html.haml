@@ -1,3 +1,3 @@
-- weekly_calendar(@events, :date => @date, :days => @days) do |w|
+- weekly_calendar(@meetings, :date => @date, :days => @days) do |w|
   - w.week(:clickable_hours => true) do |event,truncate|
     =  link_to event.name(current_user), meeting_path(event) 

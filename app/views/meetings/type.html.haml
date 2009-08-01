@@ -1,0 +1,23 @@
+- unless @meetings_by_day.blank?
+  - @meetings_by_day.each do |day, meetings|
+    %h2= day
+    - for meeting in meetings
+      %ul
+        %li
+          El expositor
+          %strong
+            = meeting.host.profile.company_name
+          con el comprador
+          %strong
+            = meeting.guest.profile.company_name
+- else
+  No existen citas.
+
+- content_for(:right_column) do 
+  %p
+    Ver agenda de:
+  - form_for :user, :url => meetings_for_path, :html => {:method => :get} do |f|
+    %p
+      = f.select :id, User.type(@name).map{|u| [u.profile.company_name, u.id]}, :include_blank => true
+    %p
+      = submit_tag "Ver"

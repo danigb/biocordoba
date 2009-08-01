@@ -9,7 +9,13 @@ ActionController::Routing::Routes.draw do |map|
   map.register_admin '/usuarios/registro/administrador', :controller => 'users', :action => 'create_admin_extenda'
 
   map.type_users '/usuarios/tipo/:type', :controller => 'users', :action => 'type'
+  
+  # Citas
   map.meeting_into_and '/citas/entre/:host_id/y/:guest_id', :controller => 'meetings', :action => 'new'
+  map.meetings_type '/citas/:type', :controller => 'meetings', :action => 'type', 
+    :requirements => {:type => /exhibitors|international_buyers|national_buyers/}
+  map.meetings_for '/citas/para/:id', :controller => 'meetings', :action => 'for_user'
+
   map.search '/buscador', :controller => 'users', :action => 'search'
   map.development '/changelog', :controller => 'development', :action => 'changelog'
 

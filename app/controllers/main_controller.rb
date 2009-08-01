@@ -1,9 +1,9 @@
 class MainController < ApplicationController
   def home
     unless current_user.is_admin_or_extenda?
-      @date = Time.parse("2009-09-22 19:00")
+      @date = Time.parse("#{CONFIG[:admin][:preferences][:event_start_day]} #{CONFIG[:admin][:preferences][:event_day_start_at]}")
       @days = 3
-      @events = current_user.meetings(@date, @days)
+      @meetings = current_user.meetings(@date, @days)
     end
   end
 end
