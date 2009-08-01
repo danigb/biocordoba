@@ -4,12 +4,13 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />  
   </head>  
   <body>  
-    <h1>Bienvenido!, <%=h @user.login %></h1>  
-    
+    <h1>Nueva alta de usuario</h1>  
+
+    <p>Los credenciales para acceder al sistema son:</p>
+
+    <p>
+    Nombre de usuario: <b><%=h @user.login %></b><br/>
+    Contraseña: <b><%= @user.password %></b>
     <p>  
-    Tu contraseña para acceder al sistema es: <b><%= @password %></b>
-    </p>  
-      
-    <p>¡Que tenga un buen día!</p>
   </body> 
 </html> 
