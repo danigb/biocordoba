@@ -15,8 +15,9 @@
   = h @message.message
 
 %p
-  = link_to "Responder", new_message_path(:receiver => @message.sender.profile.company_name) if params[:type] == "received"
-  |
-  = link_to "Eliminar", message_path(:id => @message.id, :type => params[:type]), :confirm => '¿Estás seguro?', :method => :delete
-  |
+  - if params[:type] == "received"
+    = link_to "Responder", new_message_path(:receiver => @message.sender.profile.company_name) if params[:type] == "received"
+    |
+    = link_to "Eliminar", message_path(:id => @message.id, :type => params[:type]), :confirm => '¿Estás seguro?', :method => :delete
+    |
   = link_to "Volver", eval("#{params[:type]}_messages_path")

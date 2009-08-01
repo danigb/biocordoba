@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_one :profile
   belongs_to :preference
 
-  has_many :user_messages, :foreign_key => 'receiver_id', :conditions => ["state != 'deleted'"]
+  has_many :user_messages, :foreign_key => 'receiver_id'
   has_many :messages_received, :class_name => 'Message', :order => 'created_at desc', :source => :message,
     :through => :user_messages
   has_many :messages_sent, :class_name => 'Message', :foreign_key => 'sender_id', :order => 'created_at desc'

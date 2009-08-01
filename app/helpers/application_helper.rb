@@ -50,16 +50,16 @@ module ApplicationHelper
   end
 
   def print_event(event)
-    text = "[#{event.created_at.to_s(:short)}] "
+    text = ""
     case(event.event_type)
     when("new_received_message")
-      text += "#{link_to '<b>Mensaje', message_path(:id => event.subject, :type => 'received')} recibido</b> de 
-      #{link_to_profile(event.secondary_subject)}"
+      text += "Mensaje recibido:<hr/><p>Asunto: #{link_to event.subject.subject, message_path(:id => event.subject, :type => 'received')}</p><p>
+        Remitente: #{link_to_profile(event.secondary_subject)}</p>"
     when("new_user_created")
       text += "Nuevo <b>#{ROLES[event.secondary_subject.title.to_sym]}</b> registrado,
-      #{link_to_profile(event.subject.profile)}"
+        #{link_to_profile(event.subject.profile)}"
     end
-    text
+    text += "<p>Fecha/Hora: #{event.created_at.to_s(:short)}</p>"
   end
 
   def profile_value(value)

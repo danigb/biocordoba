@@ -10,7 +10,7 @@ class MessagesController < ApplicationController
   end
 
   def received
-    @messages = current_user.messages_received
+    @messages = current_user.messages_received.find(:all, :conditions => ["user_messages.state != 'deleted'"])
     render :action => 'index'
   end
 

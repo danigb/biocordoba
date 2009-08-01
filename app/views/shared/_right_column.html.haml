@@ -4,7 +4,6 @@
       Últimos eventos 
       %hr/
       - for event in current_user.timeline_events 
-        %span.info= print_event(event)
-        %hr/
+        .event= print_event(event)
     - else
       = yield(:right_column)
