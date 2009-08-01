@@ -1,9 +1,30 @@
 #left-column
   - restrict_to 'admin' do
-    Dev - Admin
-    %hr/
     %ul
-      %li= "Poner aquí las secciones"
+      %li 
+        = link_to "Mis mensajes", received_messages_path
+        %p 
+          Envíe y reciba mensajes y notificaciones de empresas, expositores y administradores.
+
+      %li 
+        = link_to "Agenda de los expositores"
+        %p 
+          Conozca y edite la agenda de los expositores de Andalucía Sabor.
+
+      %li
+        = link_to "Agenda de los compradores"
+        %p
+          Conozca y edite la agenda de las empresas visitantes a Andalucía Sabor.
+
+      %li
+        = link_to "Agenda de Extenda"
+        %p
+          Conozca la agenda de los compradores internacionales de la feria.
+
+      %li
+        = link_to "Alta de nuevos participantes"
+        %p
+          Dé de alta, de baja o edite información sobre expositores y empresas.
 
   - restrict_to 'exhibitor' do
     Dev - Expositor
