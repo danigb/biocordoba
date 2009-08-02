@@ -49,12 +49,22 @@
           Recuerde citas, cancele encuentros o imprima su agenda de citas comerciales.
 
   - restrict_to "national_buyer | internation_buyer" do
-    Dev - Comprador
-    %hr/
     %ul
-      %li= link_to "Mis mensajes (#{current_user.unread_messages_count})", received_messages_path
-      %li= link_to "Información sobre expositores", search_path
-      %li= link_to "Mi agenda", root_path
+      %li
+        = link_to "Mis mensajes (#{current_user.unread_messages_count} sin leer)", received_messages_path
+        %p
+          Envíe y reciba mensajes de empresas, expositores y administradores.
+
+      %li
+        = link_to "Información sobre expositores", search_path
+        %p
+          Acceda a información sobre los expositores de Andalucía Sabor.
+
+      %li
+        = link_to "Mi agenda", root_path
+        %p
+          Recuerde citas, cancele encuentros o imprima su agenda de citas comerciales.
+
 
   - restrict_to 'extenda' do
     Dev - Extenda

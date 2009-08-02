@@ -13,8 +13,8 @@
       %tbody
         - for user in @users
           %tr{:class => "#{cycle('odd', 'even')}"}
-            %td= user.login
-            %td= user.email
+            %td= h user.login
+            %td= h user.email
             %td= h user.password
             %td
               = link_to "Editar", edit_user_path(user)
