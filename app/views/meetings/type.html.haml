@@ -16,8 +16,8 @@
 - content_for(:right_column) do 
   %p
     Ver agenda de:
-  - form_for :user, :url => meetings_for_path, :html => {:method => :get} do |f|
+  - form_for :user, :url => '/ajax/meetings_for', :html => {:method => :get} do |f|
     %p
-      = f.select :id, User.type(@name).map{|u| [u.profile.company_name, u.id]}, :include_blank => true
+      = f.select :id, User.type(@name).map{|u| [u.profile.company_name, u.to_param]}, :include_blank => true
     %p
       = submit_tag "Ver"

@@ -24,4 +24,8 @@ class AjaxController < ApplicationController
   def to_meeting
     redirect_to meeting_into_and_path(params[:host][:id], params[:guest][:id])
   end
+
+  def meetings_for
+    redirect_to meetings_for_path(params[:user][:id])
+  end
 end

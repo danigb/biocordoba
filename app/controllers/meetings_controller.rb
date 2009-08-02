@@ -8,8 +8,8 @@ class MeetingsController < ApplicationController
 
   def new
     @date = params[:date].present? ? Date.parse(params[:date]) : Date.parse(CONFIG[:admin][:preferences][:event_start_day])
-    @host = User.find(params[:host_id])
-    @guest = User.find(params[:guest_id])
+    @host = User.find_by_login(params[:host_id])
+    @guest = User.find_by_login(params[:guest_id])
 
     !valid_host_and_guest?(@host, @guest) || !valid_event_date?(@date) || !valid_guest?(@guest)
     @meeting = Meeting.between(@host, @guest)
@@ -61,7 +61,7 @@ class MeetingsController < ApplicationController
 
   def for_user
     begin
-      @user = User.find(params[:user][:id]) 
+      @user = User.find_by_login(params[:id]) 
     rescue 
       redirect_back_or("/") and return
     end

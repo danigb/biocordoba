@@ -14,8 +14,6 @@ class User < ActiveRecord::Base
     :through => :user_messages
   has_many :messages_sent, :class_name => 'Message', :foreign_key => 'sender_id', :order => 'created_at desc'
 
-  accepts_nested_attributes_for :profile, :preference
-
   validates_presence_of     :login
   validates_length_of       :login,    :within => 3..40
   validates_uniqueness_of   :login
@@ -26,7 +24,6 @@ class User < ActiveRecord::Base
   validates_uniqueness_of   :email, :if => Proc.new{|u| u.is_admin_or_extenda?}
   validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message, :if => Proc.new{|u| u.is_admin_or_extenda?}
   
-
   validates_presence_of     :role_id
 
   named_scope :buyers, lambda { {:joins => :roles, :include => :profile, 
@@ -35,32 +32,18 @@ class User < ActiveRecord::Base
     :conditions => ["roles.title = 'exhibitor'"] } }
   named_scope :no_admins, lambda { {:joins => :roles, :include => :profile, 
     :conditions => ["roles.title != 'admin' && roles.title != 'extenda'"], :order => 'profiles.company_name' } }
-
   named_scope :type, lambda {|type| {:joins => :roles, :include => :profile, 
     :conditions => ["roles.title = ?", type] } }
 
   attr_accessible :login, :email, :name, :password, :password_confirmation, :role_id, :profile_attributes, :preference_attributes, :preference_id
+  accepts_nested_attributes_for :profile, :preference
 
   # TimeLine Event
-  fires :new_user_created, :on => :create, :secondary_subject => :main_role,
+  fires :new_user_created, :on => :create, :secondary_subject => :role,
     :if => lambda { |user| !user.is_admin? && !user.is_extenda? }
 
-  # Devuelve los eventos comunes, es decir no tienen actor a quien se dirige y los eventos concretos hacia él
-  def timeline_events
-    TimelineEvent.find(:all, :conditions => ["(actor_type = 'User' AND actor_id = ?) OR actor_type IS NULL", self.id],
-      :limit => 10, :order => 'created_at desc')
-  end
-  
-  def main_role
-    self.roles.first
-  end
-
-  def unread_messages_count
-    self.user_messages.count(:all, :conditions => {:state => 'unread'})
-  end
-
-  def set_master_preferences
-    self.preference = Preference.first
+  def to_param
+    "#{login}"
   end
 
   def self.question_methods_for(*args, &block)
@@ -99,6 +82,7 @@ class User < ActiveRecord::Base
     self.roles.first.id unless self.roles.empty?
   end
 
+  # Simple accessor for role
   def role=(value)
     self.role_id = value.id 
   end
@@ -106,11 +90,23 @@ class User < ActiveRecord::Base
   def role
     self.roles.first
   end
+  # /Simple
 
   def meetings(date, days = 1)
     start_date = Date.new(date.year, date.month, date.day) 
     Meeting.find(:all, 
-      :conditions => ['(host_id = ? or guest_id = ?) and starts_at between ? and ? and state = "accepted"', self.id, self.id, start_date, start_date + days])
+      :conditions => ['(host_id = ? or guest_id = ?) and starts_at between ? and ? and state = "accepted"', 
+        self.id, self.id, start_date, start_date + days])
+  end
+
+  # Devuelve los eventos comunes, es decir no tienen actor a quien se dirige y los eventos concretos hacia él
+  def timeline_events
+    TimelineEvent.find(:all, :conditions => ["(actor_type = 'User' AND actor_id = ?) OR actor_type IS NULL", 
+      self.id], :limit => 10, :order => 'created_at desc')
+  end
+  
+  def unread_messages_count
+    self.user_messages.count(:all, :conditions => {:state => 'unread'})
   end
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
@@ -131,5 +127,4 @@ class User < ActiveRecord::Base
   def password=(value)
     write_attribute :password, (value ? value.downcase : nil)
   end
-
 end
