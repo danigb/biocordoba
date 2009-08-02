@@ -94,5 +94,11 @@ class MeetingsController < ApplicationController
       redirect_back_or("/") 
       return false
     end
+
+    unless host.is_exhibitor?
+      flash[:error] = "No puede solicitar una cita."
+      redirect_back_or("/") 
+      return false
+    end
   end
 end
