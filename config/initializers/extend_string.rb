@@ -35,7 +35,10 @@ class String
     n.gsub!(/Í/,            'i')
     n.gsub!(/Ó/,            'o')
     n.gsub!(/Ú/,            'u')
+    n.gsub!(/Ñ/,            'n')
+    n.gsub!(/'/,            '')
+
     # n.tr!('^ a-z0-9_/\\-',    '')
-    n
+    n[0..20]
   end 
 end

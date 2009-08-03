@@ -19,6 +19,7 @@
             %td
               = link_to "Editar", edit_user_path(user.id)
               = link_to "Eliminar", user_path(user.id, :type => params[:type]), :confirm => '¿Estás seguro?', :method => :delete
+= will_paginate @users
 %p
   - if %w(1 2).include? @role.id.to_s
     = link_to "Crear nuevo usuario", new_admin_path
