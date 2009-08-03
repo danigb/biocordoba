@@ -34,7 +34,7 @@ module ApplicationHelper
     if type == "received"
       link_to_profile(message.sender.profile)
     else
-      message.receiver
+      truncate(message.receiver, :length => 40)
     end
   end
 
@@ -67,7 +67,7 @@ module ApplicationHelper
   end
 
   def link_to_profile(profile, message = profile.company_name)
-    link_to message, profile_path(profile), :class => 'profile-link', :id => profile.id
+    link_to message, profile_path(profile), :class => "profile-link", :id => profile.id
   end
 
   #Usado en los breadcrumbs

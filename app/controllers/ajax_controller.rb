@@ -11,7 +11,7 @@ class AjaxController < ApplicationController
   end
 
   def buyers
-    @buyers = User.buyers.find(:all, :include => :profile, :conditions => ["profiles.sector_id = ?", params[:sector_id]] )
+    @buyers = User.buyers.find(:all, :include => {:profile => :sectors}, :conditions => ["sectors.id = ?", params[:sector_id]] )
     respond_to do |format|
       format.js {
         render :update do |page|
