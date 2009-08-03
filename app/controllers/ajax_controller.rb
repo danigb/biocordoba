@@ -21,6 +21,20 @@ class AjaxController < ApplicationController
     end
   end
 
+  def meetings
+    user = User.find(params[:host_id])
+    @meetings = user.meetings(Date.parse("2009-09-22"))
+
+    respond_to do |format|
+      format.js {
+        render :update do |page|
+          page.visual_effect :slide_down, "meetings-#{params[:host_id]}"
+          page["meetings-#{params[:host_id]}"].replace_html(:partial => 'meetings', :locals => {:meetings => @meetings, :guest => params[:guest]})
+        end
+      }
+    end
+  end
+
   def to_meeting
     redirect_to meeting_into_and_path(params[:host][:id], params[:guest][:id])
   end

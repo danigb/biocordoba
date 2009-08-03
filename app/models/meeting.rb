@@ -9,7 +9,7 @@ class Meeting < ActiveRecord::Base
   validates_presence_of :host_id, :guest_id
 
   # This named_scope is for filter between national_buyer or international_buyer 
-  named_scope :for, lambda {|type| {:from => "roles_users as ru, roles as r, meetings as m",
+  named_scope :type, lambda {|type| {:from => "roles_users as ru, roles as r, meetings as m",
     :conditions => ["m.guest_id = ru.user_id and ru.role_id = r.id and r.title = ?", type] } }
   named_scope :with_state, lambda{|state| {:conditions => ["state = ?", state]}}
 
@@ -62,8 +62,8 @@ class Meeting < ActiveRecord::Base
   # Check that a +date+ belongs to defined event calendar 
   def self.valid_event_date?(date)
     date = Date.parse(date) unless date.class == Date || date.class == ActiveSupport::TimeWithZone
-    preferences = CONFIG[:admin][:preferences]
-    if date < Date.parse(preferences[:event_start_day]) || date > Date.parse(preferences[:event_end_day])
+    
+    if date < Date.parse(PREFS[:event_start_day]) || date > Date.parse(PREFS[:event_end_day])
       return false
     end
 

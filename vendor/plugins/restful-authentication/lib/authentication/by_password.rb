@@ -7,8 +7,6 @@ module Authentication
         include ModelInstanceMethods
         
         # Virtual attribute for the unencrypted password
-        validates_presence_of     :password,                   :if => :password_required?
-        validates_length_of       :password, :within => 6..40, :if => :password_required?
       end
     end # #included directives
 

@@ -2,7 +2,7 @@
   - restrict_to 'admin' do
     %ul
       %li 
-        = link_to "Mis mensajes", received_messages_path
+        = link_to "Mis mensajes (#{current_user.unread_messages_count} sin leer)", received_messages_path
         %p 
           Envíe y reciba mensajes y notificaciones de empresas, expositores y administradores.
 

@@ -2,7 +2,6 @@ require 'digest/sha1'
 
 class User < ActiveRecord::Base
   include Authentication
-  include Authentication::ByPassword
   include Authentication::ByCookieToken
 
   has_and_belongs_to_many :roles
@@ -18,6 +17,9 @@ class User < ActiveRecord::Base
   validates_length_of       :login,    :within => 3..40
   validates_uniqueness_of   :login
   validates_format_of       :login,    :with => Authentication.login_regex, :message => Authentication.bad_login_message
+
+  validates_presence_of     :password
+  validates_length_of       :password, :within => 6..40
 
   validates_presence_of     :email, :if => Proc.new{|u| u.is_admin_or_extenda?}
   validates_length_of       :email,    :within => 6..100, :if => Proc.new{|u| u.is_admin_or_extenda?} #r@a.wk
@@ -114,6 +116,10 @@ class User < ActiveRecord::Base
     return nil if login.blank? || password.blank?
     u = find_by_login(login.downcase) # need to get the salt
     u && u.authenticated?(password) ? u : nil
+  end
+
+  def authenticated?(password)
+    self.password == password
   end
 
   def login=(value)
