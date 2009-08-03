@@ -12,7 +12,7 @@ end
 Meeting.blueprint do
   host User.make(:role_id => "5")
   guest User.make(:role_id => "4")
-  starts_at Date.parse(PREFS[:event_start_day])
+  starts_at DateTime.parse(PREFS[:event_start_day]) + 2.hours
 end
 
 Role.blueprint do

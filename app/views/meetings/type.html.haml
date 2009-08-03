@@ -1,15 +1,11 @@
-- unless @meetings_by_day.blank?
-  - @meetings_by_day.each do |day, meetings|
-    %h2= day
-    - for meeting in meetings
-      %ul
-        %li
-          El expositor
-          %strong
-            = meeting.host.profile.company_name
-          con el comprador
-          %strong
-            = meeting.guest.profile.company_name
+- unless @meetings_by_host.blank?
+  %ul
+    - @meetings_by_host.each do |host, meetings|
+      %li
+        %strong
+          = host.profile.company_name
+          = link_to_remote image_tag("plus.gif"), :url => "/ajax/meetings?host_id=#{host.id}&guest=#{'1' if @guest}"
+          %div{:id => "meetings-#{host.id}"}
 - else
   No existen citas.
 

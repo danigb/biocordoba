@@ -1,0 +1,11 @@
+%ul
+  - for meeting in meetings
+    %li
+      tiene una cita con
+      - unless guest == "1"
+        = meeting.guest.profile.company_name 
+      - else
+        = meeting.host.profile.company_name
+      = "a las #{meeting.starts_at.strftime("%H:%M")}"
+
+      

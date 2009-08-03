@@ -53,8 +53,9 @@ class MeetingsController < ApplicationController
 
   def type
     @name = params[:type].chop # exhibitors -> exhibitor
-    meetings = @name == "exhibitor" ? Meeting.all : Meeting.for(@name)
-    @meetings_by_day = meetings.group_by{|m| I18n.localize(m.starts_at, :format => '%A %d')}
+    meetings = @name == "exhibitor" ? Meeting.all : Meeting.type(@name)
+    @guest = true unless @name == "exhibitor"
+    @meetings_by_host = meetings.group_by{|m| @guest ? m.guest : m.host }
   end
 
   def for_user
@@ -70,7 +71,7 @@ class MeetingsController < ApplicationController
   end
 
   def to_confirm
-    @meetings = Meeting.for("international_buyer").with_state("pending")
+    @meetings = Meeting.type("international_buyer").with_state("pending")
   end
 
   def change_state
