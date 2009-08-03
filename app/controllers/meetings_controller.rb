@@ -62,7 +62,7 @@ class MeetingsController < ApplicationController
   def for_user
     begin
       @user = User.find_by_login(params[:id]) 
-    rescue 
+    rescue ActiveRecord::RecordNotFound
       redirect_back_or("/") and return
     end
 

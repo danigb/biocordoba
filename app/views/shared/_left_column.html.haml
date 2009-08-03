@@ -67,8 +67,24 @@
 
 
   - restrict_to 'extenda' do
-    Dev - Extenda
-    %hr/
     %ul
-      %li= "Poner aquí las secciones"
+      %li
+        = link_to "Mis mensajes (#{current_user.unread_messages_count} sin leer)", received_messages_path
+        %p
+          Envíe y reciba mensajes de empresas, expositores y administradores.
+
+      %li
+        = link_to "Información sobre expositores", search_path
+        %p
+          Acceda a información sobre los expositores de Andalucía Sabor.
+
+      %li
+        = link_to "Agenda de Extenda"
+        %p
+          Recuerde, cancele o imprima su agenda de citas comerciales.
+
+      %li
+        = link_to "Confirmar citas"
+        %p
+          Valide las solicitudes de citas comerciales emitidas por los expositores.
 
