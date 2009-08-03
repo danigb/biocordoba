@@ -11,7 +11,8 @@ rescue Errno::ENOENT
 end
 
 CONFIG = YAML.load(raw_config)[RAILS_ENV]
-puts "Configuration loaded in CONFIG."
+PREFS =  CONFIG[:admin][:preferences]
+puts "Configuration loaded in CONFIG and PREFS."
 
 # Método que se encarga de actualizar la base de datos con
 # el contenido de una +key+ en el fichero de configuración.

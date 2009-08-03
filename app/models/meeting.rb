@@ -62,8 +62,8 @@ class Meeting < ActiveRecord::Base
   # Check that a +date+ belongs to defined event calendar 
   def self.valid_event_date?(date)
     date = Date.parse(date) unless date.class == Date || date.class == ActiveSupport::TimeWithZone
-    preferences = CONFIG[:admin][:preferences]
-    if date < Date.parse(preferences[:event_start_day]) || date > Date.parse(preferences[:event_end_day])
+    
+    if date < Date.parse(PREFS[:event_start_day]) || date > Date.parse(PREFS[:event_end_day])
       return false
     end
 
