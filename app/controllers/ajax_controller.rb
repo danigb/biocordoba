@@ -1,6 +1,6 @@
 class AjaxController < ApplicationController
   def towns
-    @towns = Town.find(:all, :conditions => { :province_id => params[:province_id] } )
+    @towns = Town.find(:all, :conditions => { :province_id => params[:province_id]}, :order => 'name' )
     respond_to do |format|
       format.js {
         render :update do |page|
