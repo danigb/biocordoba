@@ -19,8 +19,8 @@
   Fax:
   = profile_value(@profile.fax)
 %p 
-  Sector:
-  = @profile.sector.name
+  Sectores:
+  = @profile.sectors.inject(""){|sum, e| sum += "#{e.name}, "}.gsub(/, $/, ".")
 - if @user.is_exhibitor?
   %p 
     Productos:

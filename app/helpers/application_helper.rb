@@ -34,7 +34,7 @@ module ApplicationHelper
     if type == "received"
       link_to_profile(message.sender.profile)
     else
-      message.receiver
+      truncate(message.receiver, :length => 40)
     end
   end
 
@@ -53,11 +53,11 @@ module ApplicationHelper
     text = ""
     case(event.event_type)
     when("new_received_message")
-      text += "Mensaje recibido:<hr/><p>Asunto: #{link_to event.subject.subject, message_path(:id => event.subject, :type => 'received')}</p><p>
+      text += "<b>Mensaje</b> recibido:<hr/><p>Asunto: #{link_to event.subject.subject, message_path(:id => event.subject, :type => 'received')}</p><p>
         Remitente: #{link_to_profile(event.secondary_subject)}</p>"
     when("new_user_created")
-      text += "Nuevo <b>#{ROLES[event.secondary_subject.title.to_sym]}</b> registrado,
-        #{link_to_profile(event.subject.profile)}"
+      text += "<b>#{ROLES[event.secondary_subject.title.to_sym]}</b> registrado<hr/>
+        <p>Empresa: #{link_to_profile(event.subject.profile)}</p>"
     end
     text += "<p>Fecha/Hora: #{event.created_at.to_s(:short)}</p>"
   end
@@ -67,7 +67,7 @@ module ApplicationHelper
   end
 
   def link_to_profile(profile, message = profile.company_name)
-    link_to message, profile_path(profile), :class => 'profile-link', :id => profile.id
+    link_to message, profile_path(profile), :class => "profile-link", :id => profile.id
   end
 
   #Usado en los breadcrumbs

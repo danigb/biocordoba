@@ -12,8 +12,11 @@ Rails::Initializer.run do |config|
   config.gem "binarylogic-searchlogic", :lib => "searchlogic", :source => 'http://gems.github.com'
   config.gem "haml"
   config.gem "haddock"
-  
+  config.gem 'mislav-will_paginate', :lib => "will_paginate"
+
   config.i18n.default_locale = :es 
 end
 
 Haddock::Password.diction = File.join(Rails.root, "config", "dictionary.txt")
+WillPaginate::ViewHelpers.pagination_options[:prev_label] = 'Anterior'
+WillPaginate::ViewHelpers.pagination_options[:next_label] = 'Siguiente'

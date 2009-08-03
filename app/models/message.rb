@@ -13,7 +13,6 @@ class Message < ActiveRecord::Base
 
   def receiver
     self.receivers.inject(""){|res, e| res += "#{e.profile.company_name}, " }.gsub(/, $/,"")
-
   end
 
   def send_all=(boolean)

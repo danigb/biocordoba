@@ -6,20 +6,23 @@
   |
   = message_link("sent", "Enviados")
 
-%table#orderable.tablesorter{:cellspacing => "1", :cellpadding => "0", :border => "0"}
-  %thead
-    %tr
-      %th.header= params[:action] == 'received' ? "Remitente" : "Receptores"
-      %th.header Asunto
-      %th.header Fecha
-  %tbody 
-    - for message in @messages
-      %tr{:class => message_class(message, params[:action])}
-        %td=link_message_user(message, params[:action])
-        %td=h message.subject
-        %td=h message.created_at.to_s(:short)
-        %td= link_to "ver", message_path(:id => message, :type => params[:action])
-        - if params[:action] == "received"
-          %td= link_to "Eliminar", message_path(:id => message, :type => params[:action]), :confirm => '¿Estás seguro?', :method => :delete
+- if @messages.blank?
+  %p No tienes mensajes
+- else
+  %table#orderable.tablesorter{:cellspacing => "1", :cellpadding => "0", :border => "0"}
+    %thead
+      %tr
+        %th.header= params[:action] == 'received' ? "Remitente" : "Receptores"
+        %th.header Asunto
+        %th.header Fecha
+    %tbody 
+      - for message in @messages
+        %tr{:class => message_class(message, params[:action])}
+          %td= link_message_user(message, params[:action])
+          %td=h message.subject
+          %td=h message.created_at.to_s(:short)
+          %td= link_to "ver", message_path(:id => message, :type => params[:action])
+          - if params[:action] == "received"
+            %td= link_to "Eliminar", message_path(:id => message, :type => params[:action]), :confirm => '¿Estás seguro?', :method => :delete
 
 %p= link_to "Nuevo Mensaje", new_message_path

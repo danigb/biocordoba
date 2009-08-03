@@ -3,8 +3,8 @@ class UsersController < ApplicationController
     unless params[:search].blank?
       @search = User.search(params[:search])
       @search.roles_title_like_any(current_user.is_exhibitor? ? ["international_buyer", "national_buyer"] : ["exhibitor"]) 
-      @users = @search.all(:include => [{:profile => :sector}, :roles])
-      @users_by_sector = @users.group_by{|u| u.profile.sector.name }
+      @users = @search.all(:include => [{:profile => :sectors}, :roles])
+      @users_by_sector = @users.group_by{|u| u.profile.sectors.first.name }
     end
   end
 
@@ -78,6 +78,7 @@ class UsersController < ApplicationController
   # Aquí debe actualizar profile y preference también haciendo uso de nested forms
   def update
     @user = User.find(params[:id])
+    params[:user][:profile_attributes][:sector_ids] ||= [] #HABTM checkboxes
     if params[:default_preferences] == "1"
       @user.preference.delete
       @user.preference = Preference.first
@@ -100,7 +101,7 @@ class UsersController < ApplicationController
 
   def type
     @role = Role.find_by_title(params[:type])
-    @users = @role.users
+    @users = @role.users.paginate(:per_page => 20, :page => params[:page])
   end
 
   def destroy
