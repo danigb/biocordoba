@@ -9,9 +9,9 @@
       = f.text_field :profile_company_name_like
 
     %div
-      = f.label 'profile_sector_id_equals', "SECTOR"
+      = f.label 'profile_sectors_id_equals', "SECTOR"
       %br/
-      = f.select :profile_sector_id_equals, Sector.all.map{|s| [s.name, s.id]}, :include_blank => "Todos"
+      = f.select :profile_sectors_id_equals, Sector.all.map{|s| [s.name, s.id]}, :include_blank => "Todos"
 
     %div
       = f.submit "Buscar"

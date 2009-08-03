@@ -13,10 +13,13 @@
     %span.info
       Facilitando el email podrá recibir notificaciones de las citas y de los mensajes que reciba de otras empresas.
 %p
-  = f.label :sector_id, "Sector"
+  = f.label :sector_ids, "Sectores:"
   %span.required= "*"
   %br/
-  = f.select :sector_id, Sector.all.map{|e| [e.name, e.id]}, :include_blank => true
+  - Sector.all.each do |s|
+    %p
+      = check_box_tag "user[profile_attributes][sector_ids][]", s.id, @user.profile.sectors.include?(s)
+      = s.name
 %p
   = f.label :province_id, "Provincia"
   %br/

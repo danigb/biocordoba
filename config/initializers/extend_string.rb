@@ -2,7 +2,7 @@ class String
   # Normalizar una cadena por Xavier Noria
   def normalize
     return '' if self.nil?
-    n = self.chars.downcase.strip.to_s
+    n = self.downcase.strip.to_s
     n.gsub!(/[àáâãäåāă]/,    'a')
     n.gsub!(/æ/,            'ae')
     n.gsub!(/[ďđ]/,          'd')
@@ -28,6 +28,13 @@ class String
     n.gsub!(/[žżź]/,         'z')
     n.gsub!(/\s+/,           '-')
     n.gsub!(/\./,            '')
+    #Migue, el donwcase no afecta a los siguientes caracteres
+    n.gsub!(/\,/,            '')
+    n.gsub!(/Á/,            'a')
+    n.gsub!(/É/,            'e')
+    n.gsub!(/Í/,            'i')
+    n.gsub!(/Ó/,            'o')
+    n.gsub!(/Ú/,            'u')
     # n.tr!('^ a-z0-9_/\\-',    '')
     n
   end 
