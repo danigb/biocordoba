@@ -2,8 +2,6 @@ class MeetingsController < ApplicationController
   before_filter :login_required
   
   def index
-    @international_buyers = Role.find_by_title('international_buyer').users
-    @national_buyers = Role.find_by_title('national_buyer').users
   end
 
   def new
@@ -69,6 +67,21 @@ class MeetingsController < ApplicationController
     @date = Time.parse("#{CONFIG[:admin][:preferences][:event_start_day]} #{CONFIG[:admin][:preferences][:event_day_start_at]}")
     @days = 3
     @meetings = @user.meetings(@date, @days)
+  end
+
+  def to_confirm
+    @meetings = Meeting.for("international_buyer").with_state("pending")
+  end
+
+  def change_state
+    meeting = Meeting.find(params[:id])
+    if meeting.pending? && %w(accepted canceled).include?(params[:state])
+      meeting.send("#{params[:state][0..-3]}!")
+      
+      flash[:notice] = params[:state] == "accepted" ? "La cita ha sido aceptada." : "La cita ha sido rechazada."
+    end
+
+    redirect_to meetings_to_confirm_path
   end
 
   protected

@@ -1,0 +1,21 @@
+- if @meetings.blank?
+  No existen citas a confirmar
+- else
+  - for meeting in @meetings
+    %div
+      %p
+        = "El expositor #{meeting.host.profile.company_name} desea una cita con la empresa #{meeting.guest.profile.company_name}."
+      %p
+        = meeting.starts_at.strftime("El día %d/%m/%Y a las %H:%M h.")
+
+      %p
+        = link_to_profile(meeting.host.profile, "Ver ficha del expositor")
+        %br/
+        = link_to "Confirmar", change_state_meeting_path(meeting, :state => 'accepted')
+        = link_to "Cancelar",  change_state_meeting_path(meeting, :state => 'canceled')
+        
+      
+
+
+    
+

@@ -11,6 +11,7 @@ class Meeting < ActiveRecord::Base
   # This named_scope is for filter between national_buyer or international_buyer 
   named_scope :for, lambda {|type| {:from => "roles_users as ru, roles as r, meetings as m",
     :conditions => ["m.guest_id = ru.user_id and ru.role_id = r.id and r.title = ?", type] } }
+  named_scope :with_state, lambda{|state| {:conditions => ["state = ?", state]}}
 
   def validate
     errors.add("host_id", "Usted debe ser un expositor") unless self.host && self.host.is_exhibitor?
