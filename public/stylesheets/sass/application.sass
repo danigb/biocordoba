@@ -1,7 +1,9 @@
 !primary_color = #4B7399
+!bg_color = #191918
+!green = #70b120
 body
 
-  :background #191918 url('/images/body-bg.jpg') center top no-repeat
+  :background = !bg_color url('/images/body-bg.jpg') center top no-repeat
   :color #fff
   :font-family Arial, sans-serif
   :font-size 11px
@@ -16,7 +18,9 @@ body
 
   html .clearfix
     :height 1%
-
+h2
+  :font-size 14px
+  :letter-spacing 1.67px
 
 .accesible
   :display none
@@ -57,20 +61,53 @@ p.button
   :padding 5px
   :text-align right
 
+/* 
+  General
+
 #container
-  #login
+  #login_area
     :margin 0 auto
     :padding-left 229px
 
     .info
-      :font-size 11px
       :float left
-      :width 476px
-
+      :width 240px
+      :margin 0 50px 0 0 
     .access
       :float left
-      :width 229px
-  
+      :width 260px
+      form
+        :margin-top 25px
+        p
+          :margin 5px 0
+
+/*
+  Forms
+
+form
+  label
+    :width 70px
+    :float left
+    :clear both
+    :margin 5px 0
+  input
+    :background = !green
+    :border none
+    :color #fff
+    :font-weight bold
+    :float left
+    :width 190px
+    :margin 5px 0
+  p.enviar, p.rememberme
+    :clear both
+    :text-align right
+    :float right
+    input
+      :width inherit
+    
+/*
+  Header
+
 #header
   .wrapper h1
     :float left
@@ -86,12 +123,16 @@ p.button
       span
         :display none
   h2.claim
-    :background url('/images/header-claim-es.jpg') no-repeat
+    :background url('/images/header-claim-agenda.jpg') no-repeat
     :float left 
     :height 210px
     :width 477px
     span
       :display none
+
+/* 
+  Flash messages && Errors
+
 #flash_notice,
 #flash_error
   :padding 5px 8px
@@ -134,18 +175,6 @@ p.button
       :font-size 12px
       :list-style disc
 
-.big_field
-  :font-size 2em
-
-.login
-  :width 300px
-#user-info
-  :float right
-  :margin-right 10px
-  :padding 5px
-#breadcrumbs
-  :float left
-  :margin-left 5px
 #content
   .main_content_extended
     :margin-left 229px
@@ -202,7 +231,20 @@ p.button
         :color #627ffd
 
 #footer
-
+  .wrapper
+    :background-color #000000
+    :height 58px
+    :margin-top 25px
+    /*
+      230+210+478+10+10
+    :width 916px 
+    p
+      :margin 25px 0px 0px 0px
+      :font normal normal 10px Verdana, Arial
+      :color #ffffff
+      :text-align center
+      a
+        :color = !green
 
 .highlight
   :background-color yellow
