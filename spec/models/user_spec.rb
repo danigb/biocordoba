@@ -3,14 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe User do
   before(:each) do
     @user = User.make
-
-    meeting = Meeting.make
-    meeting.host = @user
-    meeting.save
-
-    meeting = Meeting.make
-    meeting.guest = @user
-    meeting.save
+    @date = Date.parse(PREFS[:event_start_day])
   end
 
   it "Should create a profile after create" do
@@ -18,23 +11,29 @@ describe User do
   end
 
   it "should be national" do
-    @user.location_id = 1
-    @user.should be_is_national
-    @user.should_not be_is_international
+    @user.role = Role.find_by_title("national_buyer")
+    @user.should be_is_national_buyer
+    @user.should_not be_is_international_buyer
   end
 
   it "should be international" do
-    @user.location_id = 2
-    @user.should_not be_is_national
-    @user.should be_is_international
+    @user.role = Role.find_by_title("international_buyer")
+    @user.should_not be_is_national_buyer
+    @user.should be_is_international_buyer
   end
 
   it "should return false without location_id" do
-    @user.should_not be_is_national
-    @user.should_not be_is_international
+    @user.should_not be_is_national_buyer
+    @user.should_not be_is_international_buyer
   end
 
-  it "should have two meetings (like a host and like a guest)" do
-    @user.meetings.length.should equal(2)
+  it "should have two meetings" do
+    2.times do
+      meeting = Meeting.make
+      meeting.host = @user
+      meeting.save!
+    end
+
+    @user.meetings(@date).length.should equal(2)
   end
 end

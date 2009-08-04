@@ -9,7 +9,7 @@ class Meeting < ActiveRecord::Base
   validates_presence_of :host_id, :guest_id
 
   # This named_scope is for filter between national_buyer or international_buyer 
-  named_scope :type, lambda {|type| {:from => "roles_users as ru, roles as r, meetings as m",
+  named_scope :with_type, lambda {|type| {:from => "roles_users as ru, roles as r, meetings as m",
     :conditions => ["m.guest_id = ru.user_id and ru.role_id = r.id and r.title = ?", type] } }
   named_scope :with_state, lambda{|state| {:conditions => ["state = ?", state]}}
   named_scope :in, lambda {|date| {:conditions => ["DATE(starts_at) = ?", date]}}
@@ -73,7 +73,7 @@ class Meeting < ActiveRecord::Base
     end
 
     if date.respond_to?(:hour)
-      if date.hour < PREFS[:event_day_start_at] || date.hour > PREFS[:event_day_end_at]
+      if date.hour < PREFS[:event_day_start_at].to_i || date.hour > PREFS[:event_day_end_at].to_i
         return false
       end
     end

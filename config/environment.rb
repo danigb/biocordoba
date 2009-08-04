@@ -10,7 +10,7 @@ Rails::Initializer.run do |config|
   config.time_zone = 'Madrid'
   config.gem "rubyist-aasm", :lib => "aasm", :source => 'http://gems.github.com'
   config.gem "binarylogic-searchlogic", :lib => "searchlogic", :source => 'http://gems.github.com'
-  config.gem "haml"
+  config.gem "haml", :version => ">=2.2.2"
   config.gem "haddock"
   config.gem 'mislav-will_paginate', :lib => "will_paginate"
 

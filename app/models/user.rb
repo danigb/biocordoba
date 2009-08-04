@@ -74,10 +74,11 @@ class User < ActiveRecord::Base
   attr_accessor :role_id
   def role_id=(value)
     unless value.blank?
-      self.roles.destroy_all unless self.roles.empty? # Only one role rules
+      self.roles = [] unless self.roles.empty? # Only one role rules
       self.roles << Role.find(value)
     end
   end
+
 
   # Get role id for user
   def role_id

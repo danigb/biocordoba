@@ -57,7 +57,7 @@ class MeetingsController < ApplicationController
     !valid_event_date?(@date)
 
     @name = params[:type].chop # exhibitors -> exhibitor
-    meetings = @name == "exhibitor" ? Meeting.in(@date) : Meeting.in(@date).type(@name)
+    meetings = @name == "exhibitor" ? Meeting.in(@date).with_state("accepted") : Meeting.in(@date).with_type(@name).with_state("accepted")
     @guest = true unless @name == "exhibitor"
     @meetings_by_host = meetings.group_by{|m| @guest ? m.guest : m.host }
   end
