@@ -67,6 +67,10 @@ class Meeting < ActiveRecord::Base
       return false
     end
 
+    if date.hour < PREFS[:event_day_start_at].to_i || date.hour > PREFS[:event_day_end_at].to_i
+      return false
+    end
+
     true
   end
 

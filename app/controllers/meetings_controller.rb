@@ -30,8 +30,8 @@ class MeetingsController < ApplicationController
       end
 
       # Reloading vars
-      params[:host_id] = current_user.id
-      params[:guest_id] = params[:meeting][:guest_id]
+      params[:host_id] = current_user.login
+      params[:guest_id] = @meeting.guest.login
       new
 
       render :action => 'new'

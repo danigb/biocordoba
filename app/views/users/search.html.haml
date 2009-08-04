@@ -17,17 +17,20 @@
       = f.submit "Buscar"
 
 - if @users
-  %p
-    Se han encontrado los siguientes resultados:
+  - if @users.blank?
+    %p No se han encontrado coincidencias.
 
-  %ul
-    - @users_by_sector.each do |sector_name, users|
-      %h3
-        = sector_name.capitalize
+  - else
+    %p
+      Se han encontrado los siguientes resultados:
 
-      - for user in users
-        %li
-          = link_to_profile(user.profile, user.profile.company_name)
-          = link_to "Solicitar cita", meeting_into_and_path(current_user, user) if user.is_buyer? && !user == current_user
+    %ul
+      - @users_by_sector.each do |sector_name, users|
+        %h3
+          = sector_name.capitalize
+
+        - for user in users
+          %li
+            = link_to_profile(user.profile, user.profile.company_name)
 
 
