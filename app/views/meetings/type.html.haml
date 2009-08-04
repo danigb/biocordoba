@@ -1,3 +1,8 @@
+.date
+  = back_link(@date)
+  =" #{I18n.localize(@date, :format => '%A %d')} "
+  = foward_link(@date)
+
 - unless @meetings_by_host.blank?
   %ul
     - @meetings_by_host.each do |host, meetings|

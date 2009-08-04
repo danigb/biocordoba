@@ -13,7 +13,6 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password
 
-
   private
 
   def redirect_back_or(path)
@@ -21,5 +20,4 @@ class ApplicationController < ActionController::Base
   rescue ActionController::RedirectBackError
     redirect_to path
   end
-
 end

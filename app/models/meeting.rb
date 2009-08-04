@@ -12,6 +12,7 @@ class Meeting < ActiveRecord::Base
   named_scope :type, lambda {|type| {:from => "roles_users as ru, roles as r, meetings as m",
     :conditions => ["m.guest_id = ru.user_id and ru.role_id = r.id and r.title = ?", type] } }
   named_scope :with_state, lambda{|state| {:conditions => ["state = ?", state]}}
+  named_scope :in, lambda {|date| {:conditions => ["DATE(starts_at) = ?", date]}}
 
   def validate
     errors.add("host_id", "Usted debe ser un expositor") unless self.host && self.host.is_exhibitor?
@@ -67,8 +68,10 @@ class Meeting < ActiveRecord::Base
       return false
     end
 
-    if date.hour < PREFS[:event_day_start_at].to_i || date.hour > PREFS[:event_day_end_at].to_i
-      return false
+    if date.respond_to?(:hour)
+      if date.hour < PREFS[:event_day_start_at] || date.hour > PREFS[:event_day_end_at]
+        return false
+      end
     end
 
     true
@@ -77,7 +80,7 @@ class Meeting < ActiveRecord::Base
   def self.valid_date?(host, guest, date)
     waps = lambda do |user, date| 
       Meeting.find(:first, 
-        :conditions => ["(host_id = ? OR guest_id = ?) AND starts_at <= ? AND ends_at >= ?", user, user, date, date])
+        :conditions => ["(host_id = ? OR guest_id = ?) AND DATE(starts_at) = ?", user, user, date])
     end
     
     return false if waps.call(host, date).present? || waps.call(guest, date)

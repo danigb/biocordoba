@@ -24,7 +24,7 @@ class MeetingsController < ApplicationController
       redirect_to root_path
     else
       if @meeting.errors[:starts_at]
-        flash.now[:error] = "No se ha guardado la cita. La fecha ya está reservada."
+        flash.now[:error] = "No se ha guardado la cita. La fecha ya está reservada o está fuera del evento."
       else
         flash.now[:error] = "No se ha guardado la cita. Ya tienes un cita con este comprador."
       end
@@ -52,8 +52,11 @@ class MeetingsController < ApplicationController
   end
 
   def type
+    @date = params[:date].present? ? Date.parse(params[:date]) : Date.parse(CONFIG[:admin][:preferences][:event_start_day])
+    !valid_event_date?(@date)
+
     @name = params[:type].chop # exhibitors -> exhibitor
-    meetings = @name == "exhibitor" ? Meeting.all : Meeting.type(@name)
+    meetings = @name == "exhibitor" ? Meeting.in(@date) : Meeting.in(@date).type(@name)
     @guest = true unless @name == "exhibitor"
     @meetings_by_host = meetings.group_by{|m| @guest ? m.guest : m.host }
   end
