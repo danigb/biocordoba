@@ -142,15 +142,27 @@ form
   Flash messages && Errors
 
 #flash_notice,
-#flash_error
+#flash_error,
+#flash_notice_login,
+#flash_error_login
   :padding 5px 8px
   :margin 10px 0
+  :color = !bg_color
+  :font-weight bold
 
-#flash_notice
+
+#flash_notice_login,
+#flash_error_login
+  :margin 10px 0 10px 519px
+  :width 240px
+
+#flash_notice,
+#flash_notice_login
   :background-color #CFC
   :border solid 1px #6C6
 
-#flash_error
+#flash_error,
+#flash_error_login
   :background-color #FCC
   :border solid 1px #C66
 
@@ -184,36 +196,11 @@ form
       :list-style disc
 
 #content
-  .main_content_extended
-    :margin-left 229px
-    :float left
-    :overflow hidden
-    :width 476px
+  :min-height 465px
   .main_content
     :float left
     :overflow hidden
     :width 476px
-  #schedules
-    :width 360px
-    :margin 0 auto
-
-    .date
-      :text-align center
-      :margin 20px
-      :font-size 2em
-
-    .schedule
-      :float left
-
-      .user
-        :text-align center
-        :margin 0px 0px 10px 0px
-        :font-weight bolder
-
-  #search
-    :margin-left 30px
-    div
-      :margin 10px
 
 #left-column, #right-column
   :float left
@@ -221,6 +208,10 @@ form
 
 
 #changelog
+  h1
+    :margin 1.5em 0
+  h2
+    :margin 1em 0
   ul
     :list-style-type none
 

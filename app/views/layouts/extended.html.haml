@@ -18,14 +18,13 @@
               %span "AGENDA VIRTUAL. ANDALUCÍA SABOR"
           %h2.claim
             %span
-              del 22 al 24 de Septiembre - Andalucía Sabor, International Fine Food Exhibition
+              AGENDA VIRTUAL - del 22 al 24 de Septiembre
           = render :partial => 'sessions/user_bar'
 
       #content
-        .wrapper
+        .wrapper   
           - flash.each do |name, msg|
-            = content_tag :div, msg, :id => "flash_#{name}"
-            
+            = content_tag :div, msg, :id => "flash_#{name}_login"
           = yield
 
       #footer
