@@ -10,14 +10,14 @@
 
     - weekly_calendar(@host.meetings(@date), :date => @date, :without_days => true) do |w|
       - w.week(:clickable_hours => true) do |event,truncate|
-        =  link_to event.name(@host), meeting_path(event) 
+        =  link_to event.name, meeting_path(event) 
   .schedule
     .user
       = @guest.login
 
     - weekly_calendar(@guest.meetings(@date), :date => @date, :without_days => true, :without_hours => true) do |w|
       - w.week(:clickable_hours => true) do |event,truncate|
-        =  link_to event.name(@guest),  meeting_path(event) 
+        =  link_to event.name(current_user),  meeting_path(event) 
 
 - content_for(:right_column) do
   %center
@@ -31,7 +31,9 @@
 
       .form
         - form_for @meeting do |f|
-          = f.time_select :starts_at
+          %p= f.time_select :starts_at
+          %p= f.text_area :note_host, :rows => 10, :cols => 20
+          
           = hidden_field_tag "date", @date
           = f.hidden_field :guest_id, :value => @guest.id
           %p

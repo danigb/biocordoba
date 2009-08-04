@@ -79,9 +79,9 @@ class MeetingsController < ApplicationController
 
   def change_state
     meeting = Meeting.find(params[:id])
+
     if meeting.pending? && %w(accepted canceled).include?(params[:state])
       meeting.send("#{params[:state][0..-3]}!")
-      
       flash[:notice] = params[:state] == "accepted" ? "La cita ha sido aceptada." : "La cita ha sido rechazada."
     end
 

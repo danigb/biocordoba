@@ -47,8 +47,12 @@ class Meeting < ActiveRecord::Base
     transitions :from => [:accepted, :pending], :to => :canceled
   end
 
-  def name(user)
-    self.host_id == user.id ? guest.login : host.login 
+  def name(user = nil)
+    if user
+      user.login == host.login ? "Con usted" : "Ocupado"
+    else
+      self.guest.login
+    end     
   end
 
   # Return meeting between into host and guest or return new meeting
