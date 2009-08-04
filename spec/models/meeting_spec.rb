@@ -4,11 +4,11 @@ describe Meeting do
 
   before do
     @exhibitor = User.make
-    @exhibitor.role = Role.find_by_title("exhibitor")
+    @exhibitor.role_id = Role.find_by_title("exhibitor").id
     @exhibitor.save
 
     @buyer = User.make
-    @buyer.role = Role.find_by_title('buyer')
+    @buyer.role_id = Role.find_by_title('national_buyer').id
     @buyer.save
 
     @meeting = Meeting.make(:host => @exhibitor, :guest => @buyer)
