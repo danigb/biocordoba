@@ -1,7 +1,7 @@
 body {
   background: #191918 url('/images/body-bg.jpg') center top no-repeat;
   color: #fff;
-  font-family: Arial, sans-serif;
+  font-family: Verdana, Arial;
   font-size: 11px;
   font-variant: normal;
   font-style: normal;
@@ -14,19 +14,24 @@ body {
   * html .clearfix {
     height: 1%; }
 
-h2 {
-  font-size: 14px;
-  letter-spacing: 1.67px; }
-
 .accesible {
   display: none; }
 
 a {
-  color: #666; }
+  color: #70b120; }
   a:hover {
     color: #666; }
   a img {
     border: none; }
+
+h2 {
+  font-size: 14px;
+  letter-spacing: 0.4px; }
+
+p {
+  margin: 0 0 1em 0; }
+  p.green {
+    color: #70b120; }
 
 .wrapper {
   width: 961px;
@@ -58,8 +63,9 @@ p.button {
   padding-left: 229px; }
   #container #login_area .info {
     float: left;
-    width: 240px;
-    margin: 0 50px 0 0; }
+    width: 235px;
+    margin: 0 50px 0 0;
+    padding-left: 5px; }
   #container #login_area .access {
     float: left;
     width: 260px; }
@@ -67,6 +73,14 @@ p.button {
       margin-top: 25px; }
       #container #login_area .access form p {
         margin: 5px 0; }
+      #container #login_area .access form p.enviar, #container #login_area .access form p.rememberme {
+        clear: both;
+        text-align: right;
+        float: right; }
+        #container #login_area .access form p.enviar input, #container #login_area .access form p.rememberme input {
+          width: inherit; }
+    #container #login_area .access #remember_me {
+      margin-left: 10px; }
 
 /* Forms */
 form label {
@@ -82,12 +96,6 @@ form input {
   float: left;
   width: 190px;
   margin: 5px 0; }
-form p.enviar, form p.rememberme {
-  clear: both;
-  text-align: right;
-  float: right; }
-  form p.enviar input, form p.rememberme input {
-    width: inherit; }
 
 /* Header */
 #header .wrapper h1 {
