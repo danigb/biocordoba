@@ -25,7 +25,7 @@ end
 
 Message.blueprint do
   sender User.make
-  receiver User.make
+  subject {Faker::Lorem.sentence}
   message {Faker::Lorem.sentence}
 end
 

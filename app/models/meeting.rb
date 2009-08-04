@@ -73,7 +73,7 @@ class Meeting < ActiveRecord::Base
     end
 
     if date.respond_to?(:hour)
-      if date.hour < PREFS[:event_day_start_at] || date.hour > PREFS[:event_day_end_at]
+      if date.hour < PREFS[:event_day_start_at].to_i || date.hour > PREFS[:event_day_end_at].to_i
         return false
       end
     end

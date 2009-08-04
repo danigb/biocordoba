@@ -30,13 +30,12 @@ describe Meeting do
   end
 
   it "A exhibitor new meeting with national buyer should have acepted state" do
-    @meeting.acepted?.should be_true 
+    @meeting.accepted?.should be_true 
   end
 
   it "A exhibitor new meeting with international buyer should have pending state" do
     @buyer = User.make
-    @buyer.role = Role.find_by_title('buyer')
-    @buyer.location_id = 2
+    @buyer.role = Role.find_by_title('international_buyer')
     @buyer.save
     @meeting = Meeting.make(:host => @exhibitor, :guest => @buyer)
 
