@@ -10,7 +10,7 @@
 
     - weekly_calendar(@host.meetings(@date), :date => @date, :without_days => true) do |w|
       - w.week(:clickable_hours => true) do |event,truncate|
-        =  link_to event.name, meeting_path(event) 
+        =  link_to event.name(current_user, false), meeting_path(event) 
   .schedule
     .user
       = @guest.login
