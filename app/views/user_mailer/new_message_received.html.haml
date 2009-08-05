@@ -1,0 +1,19 @@
+%h1 Nuevo mensaje recibido
+
+%p
+  Remitente: 
+  %br/
+  = @sender.profile.company_name
+%p
+  Asunto:
+  %br/
+  = @message.subject
+
+%p
+  Contenido:
+  %br/
+  = @message.message
+
+%p 
+  Puede acceder al mensaje usando este link
+  = link_to "link", message_url(@message)

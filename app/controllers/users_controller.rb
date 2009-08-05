@@ -42,7 +42,7 @@ class UsersController < ApplicationController
 
     success = @user && @extenda_valid && @user.save 
     if success && @user.errors.empty?
-      UserMailer.deliver_welcome_email(current_user, @user)
+      UserMailer.send_later(:deliver_welcome_email, current_user, @user)
 
       flash[:notice] = "El usuario <b>#{@user.login}</b> ha sido registrado con éxito."
       if params[:continue]

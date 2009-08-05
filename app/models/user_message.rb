@@ -32,5 +32,9 @@ class UserMessage < ActiveRecord::Base
   end
 
 
+  #Mandamos un email al que ha recibido el mensaje
+  def after_create
+    UserMailer.send_later(:deliver_new_message_received, self.receiver, self.message)
+  end
 
 end
