@@ -20,7 +20,7 @@ body {
 a {
   color: #70b120; }
   a:hover {
-    color: #666; }
+    color: #d41e67; }
   a img {
     border: none; }
 
@@ -207,7 +207,7 @@ form input {
       color: #fff;
       text-decoration: none; }
       #left-column ul li a:hover {
-        color: #70b120;
+        color: #d41e67;
         text-decoration: underline; }
     #left-column ul li p {
       color: #70b120;

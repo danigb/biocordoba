@@ -2,6 +2,7 @@
 !bg_color = #191918
 !green = #70b120
 !dark_green = #4c800c
+!pink = #D41E67
 body
 
   :background = !bg_color url('/images/body-bg.jpg') center top no-repeat
@@ -27,7 +28,7 @@ a
   :color = !green
 
   &:hover
-    :color #666
+    :color = !pink
 
   img
     :border none
@@ -232,7 +233,7 @@ form
         :color #fff
         :text-decoration none
         &:hover
-          :color = !green
+          :color = !pink
           :text-decoration underline
       p
         :color = !green
