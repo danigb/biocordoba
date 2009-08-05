@@ -1,10 +1,47 @@
-- title "Mostrando el evento"
+- title "Mostrando la cita"
+
+- if @meeting.canceled?
+  %span.canceled Atención: esta cita está cancelada 
+  %p
+    = @meeting.cancel_reason.blank? ? "El interlocutor no ha dado ninguna razón para su cancelación" : "Razón: #{@meeting.cancel_reason}"
+
+%h1 Información de la cita
 %p 
-  TODO - Mostrar la información del evento concreto
-%p
-  Mostrar la información de la persona con la que te vas a reunir
-%p Mostrar la anotación que hayas tomado al crear la cita
+  Fecha de la cita:
+  = @meeting.starts_at.to_s(:short)
 
-%p TODO - Mostrar solo cuando se pueda cancelar la cita
+- #Mostramos los distintos perfiles dependiendo de quién esté viendo la cita
+- if @host || @admin_extenda
+  #guest-info-mini
+    %p
+      = "Comprador: #{@meeting.guest.profile.company_name} ("
+      -# = link_to_profile @meeting.guest.profile, "Más información"
+      = link_to "Más información"
+      )
+  #guest-info= render :partial => 'profiles/show', :locals => {:profile => @meeting.guest.profile}
+  
+- if @guest || @admin_extenda
+  #host-info-mini
+    %p
+      = "Expositor: #{@meeting.host.profile.company_name} ("
+      = link_to "Más información"
+      )
+  #host-info= render :partial => 'profiles/show', :locals => {:profile => @meeting.host.profile}
 
-= link_to "Cancelar cita"
+- #Notas, accesibles solo por el host y el guest
+- if @host || @guest
+  %h1 Notas
+  - form_for @meeting, :url => change_note_meeting_path(@meeting) do |f|
+    %p
+      = f.text_area @host ? 'note_host' : 'note_guest', :rows => 5, :cols => 50
+    %p
+      = f.submit "Guardar nota"
+
+.separata
+  %h1 Opciones
+  - if(@host || @admin_extenda) && !@meeting.canceled?
+    %p
+      %h2= link_to "Cancelar cita", meeting_path(@meeting), :method => :put, :confirm => "¿Seguro que desea cancelar la cita?"
+  - if @host || @guest
+    %h2= link_to "Enviar mensaje", new_message_path(:receiver => (@host ? @meeting.guest.profile.company_name : @meeting.host.profile.company_name))
+

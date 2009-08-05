@@ -2,7 +2,7 @@
 %p 
   La empresa 
   = link_to @meeting.host.profile.company_name, profile_url(@meeting.host.profile)
-  ha creado una cita contigo el día
+  ha creado una cita contigo para el día
   = @meeting.starts_at.to_s(:short)
 
 %p= link_to "Ver cita", meeting_url(@meeting)

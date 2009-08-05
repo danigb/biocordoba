@@ -22,7 +22,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :sectors, :as => 'sectores'
   map.resources :profiles, :as => 'perfiles'
-  map.resources :meetings, :as => 'citas', :member => {:change_state => :get}
+  map.resources :meetings, :as => 'citas', :member => {:change_state => :get, :change_note => :put}
   map.resource  :session
   map.resources :messages, :as => 'mensajes', :collection => {:received => :get, :sent => :get, 
     :auto_complete_for_profile_company_name => :get}

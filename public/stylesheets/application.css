@@ -242,3 +242,7 @@ span.info {
   border: 1px solid #FFF;
   margin-bottom: 5px;
   padding: 5px; }
+
+span.canceled {
+  font-size: 25px;
+  color: red; }

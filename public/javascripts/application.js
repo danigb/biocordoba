@@ -59,7 +59,15 @@ $(document).ready(function() {
     $('<div />').appendTo('body').append("<img src='/images/loader.gif'/> Cargando...").dialog({modal:true, position: ['center', 50]}).load("/perfiles/" + this.id);
     e.preventDefault();
   });
-    
+
+  //Meeting show
+  $("#guest-info, #host-info").hide();
+  $("#guest-info-mini a, #host-info-mini a").click(function(e){ 
+    $(this).parent().parent().next().toggle("slow");
+    e.preventDefault();
+  })
+
+  $("#guest-info-mini a, #host-info-mini a").toggle(function(){ $(this).text("Menos información") }, function(){ $(this).text("Más información") });
 
 });
 

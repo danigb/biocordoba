@@ -1,7 +1,17 @@
 class MeetingsController < ApplicationController
   before_filter :login_required
+  before_filter :access_control, :only => [:show, :update, :change_note]
   
   def index
+  end
+
+  def show
+    if @meeting.host == current_user
+      @host = true
+    elsif @meeting.guest == current_user
+      @guest = true
+    end
+    @admin_extenda = current_user.is_admin_or_extenda?
   end
 
   def new
@@ -39,8 +49,7 @@ class MeetingsController < ApplicationController
   end
 
   def update
-    @meeting = Meeting.find(params[:id])
-    @meeting.cancel_reason = params[:meeting][:cancel_reason]
+    @meeting.cancel_reason = params[:meeting][:cancel_reason] if params[:meeting]
 
     if @meeting.cancel!
       flash[:notice] = "La cita ha sido cancelada con éxito."
@@ -49,6 +58,13 @@ class MeetingsController < ApplicationController
     end
 
     redirect_back_or("/")
+  end
+
+  def change_note
+    if(@meeting.update_attributes(params[:meeting]))
+      flash[:notice] = "Nota actualizada"
+      redirect_to meeting_path(@meeting)
+    end
   end
 
   def type
@@ -116,6 +132,16 @@ class MeetingsController < ApplicationController
       flash[:error] = "No puede solicitar una cita."
       redirect_back_or("/") 
       return false
+    end
+  end
+
+  private
+
+  def access_control
+    @meeting = Meeting.find(params[:id])
+    unless current_user == @meeting.host || current_user == @meeting.guest || current_user.is_admin_or_extenda?
+      flash[:error] = "No puedes acceder a ver esa cita"
+      redirect_to root_path
     end
   end
 end
