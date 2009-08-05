@@ -14,4 +14,4 @@
 
 %p 
   Puede acceder al mensaje usando este
-  = link_to "link", message_url(@message)
+  = link_to "link", message_url(:id => @message.id, :type => 'received')

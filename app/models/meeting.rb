@@ -37,7 +37,9 @@ class Meeting < ActiveRecord::Base
 
   aasm_state :pending 
   aasm_state :accepted #En determinados casos se aceptará automáticamente
-  aasm_state :canceled
+  # aasm_state :canceled, :enter => Proc.new{|m| MeetingMailer.send_later(:deliver_meeting_canceled, m)}
+  aasm_state :canceled, :enter => Proc.new{|m| MeetingMailer.deliver_meeting_canceled(m)}
+ 
 
   aasm_event :accept do
     transitions :from => :pending, :to => :accepted
@@ -105,4 +107,5 @@ class Meeting < ActiveRecord::Base
     def accept_state
       self.accept!
     end
+
 end
