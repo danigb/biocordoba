@@ -62,7 +62,9 @@ class Meeting < ActiveRecord::Base
   end
 
   # Return meeting between into host and guest or return new meeting
-  def self.between(host, guest)
+  def self.between(host, guest, return_new = true)
+    host, guest = guest, host if host.is_buyer?
+
     if meeting = find_by_host_id_and_guest_id_and_state(host, guest, "accepted")
       return meeting
     end
