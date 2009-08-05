@@ -20,6 +20,6 @@ class UserMailer < ActionMailer::Base
     @from = "Andalucía sabor international fine food exhibition <andaluciasabor@andaluciasabor.es>"  
     @subject = "[Andalucía Sabor] "  
     @sent_on = Time.now 
-    content_type = "text/html"
+    @content_type = "text/html"
   end
 end
