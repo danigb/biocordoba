@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
   named_scope :exhibitors, lambda { {:joins => :roles, :include => :profile, 
     :conditions => ["roles.title = 'exhibitor'"] } }
   named_scope :no_admins, lambda { {:joins => :roles, :include => :profile, 
-    :conditions => ["roles.title != 'admin' && roles.title != 'extenda'"], :order => 'profiles.company_name' } }
+    :conditions => ["roles.title != 'admin' AND roles.title != 'extenda'"], :order => 'profiles.company_name' } }
   named_scope :type, lambda {|type| {:joins => :roles, :include => :profile, 
     :conditions => ["roles.title = ?", type] , :order => "profiles.company_name" }}
 
