@@ -135,4 +135,8 @@ class User < ActiveRecord::Base
   def password=(value)
     write_attribute :password, (value ? value.downcase : nil)
   end
+
+  def after_destroy
+    TimelineEvent.find(:first, :conditions => {:subject_type => 'User', :subject_id => self.id}).destroy
+  end
 end

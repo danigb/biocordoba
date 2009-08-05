@@ -36,7 +36,6 @@ class UsersController < ApplicationController
     @extenda_valid = current_user.is_extenda? && !@user.is_international_buyer? ? false : true
 
     if params[:default_preferences] == "1"
-      @user.preference.delete if @user.preference
       @user.preference = Preference.first
     end
 
@@ -79,8 +78,9 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     params[:user][:profile_attributes][:sector_ids] ||= [] #HABTM checkboxes
+
     if params[:default_preferences] == "1"
-      @user.preference.delete
+      @user.preference.delete if @user.preference && @user.preference.id != 1
       @user.preference = Preference.first
     else
       if params[:user][:preference_attributes][:id] == "1" 

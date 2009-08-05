@@ -21,7 +21,6 @@ class MeetingsController < ApplicationController
 
     if @meeting.save
       flash[:notice] = "La cita se ha guardado con éxito."
-      MeetingMailer.deliver_alert_for_extenda(@meeting)
       redirect_to root_path
     else
       if @meeting.errors[:starts_at]
