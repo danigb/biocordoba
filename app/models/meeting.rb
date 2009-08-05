@@ -1,8 +1,6 @@
 class Meeting < ActiveRecord::Base
   include AASM
 
-  after_create :accept_state, :if => Proc.new { |m| m.guest.is_national_buyer? } 
-
   belongs_to :host, :class_name => 'User'
   belongs_to :guest, :class_name => 'User'
 
@@ -18,7 +16,7 @@ class Meeting < ActiveRecord::Base
     errors.add("host_id", "Usted debe ser un expositor") unless self.host && self.host.is_exhibitor?
     errors.add("guest_id", "Debe invitar a un comprador") unless self.guest && (self.guest.is_buyer?)
 
-    if new_record? && Meeting.find_by_host_id_and_guest_id_and_state(self.host, self.guest, "accepted")
+    if new_record? && !Meeting.between(self.host, self.guest).new_record?
       errors.add("guest_id", "Ya tienes una cita con este comprador") 
     end
 
@@ -35,9 +33,10 @@ class Meeting < ActiveRecord::Base
   aasm_column :state
   aasm_initial_state :pending
 
-  aasm_state :pending 
+  aasm_state :pending
   aasm_state :accepted #En determinados casos se aceptará automáticamente
-  aasm_state :canceled
+  aasm_state :canceled, :enter => Proc.new{ |m| MeetingMailer.send_later(:deliver_meeting_canceled, m) }
+  
 
   aasm_event :accept do
     transitions :from => :pending, :to => :accepted
@@ -62,7 +61,9 @@ class Meeting < ActiveRecord::Base
   end
 
   # Return meeting between into host and guest or return new meeting
-  def self.between(host, guest)
+  def self.between(host, guest, return_new = true)
+    host, guest = guest, host if host.is_buyer?
+
     if meeting = find_by_host_id_and_guest_id_and_state(host, guest, "accepted")
       return meeting
     end
@@ -72,7 +73,7 @@ class Meeting < ActiveRecord::Base
 
   # Check that a +date+ belongs to defined event calendar 
   def self.valid_event_date?(date)
-    date = Date.parse(date) unless date.class == Date || date.class == ActiveSupport::TimeWithZone
+    date = Date.parse(date) unless [Date, DateTime, Time, ActiveSupport::TimeWithZone].include? date.class 
     
     if date < Date.parse(PREFS[:event_start_day]) || date > Date.parse(PREFS[:event_end_day])
       return false
@@ -90,17 +91,11 @@ class Meeting < ActiveRecord::Base
   def self.valid_date?(host, guest, date)
     waps = lambda do |user, date| 
       Meeting.find(:first, 
-        :conditions => ["(host_id = ? OR guest_id = ?) AND DATE(starts_at) = ?", user, user, date])
+        :conditions => ["(host_id = ? OR guest_id = ?) AND DATE(starts_at) = ?", user, user, date.strftime("%Y-%m-%d")])
     end
     
     return false if waps.call(host, date).present? || waps.call(guest, date)
     true
   end
 
-  private
-  
-    # El meeting se acepta automáticamente si el invitado es un comprador nacional
-    def accept_state
-      self.accept!
-    end
 end

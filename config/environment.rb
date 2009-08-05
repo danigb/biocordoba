@@ -15,8 +15,12 @@ Rails::Initializer.run do |config|
   config.gem 'mislav-will_paginate', :lib => "will_paginate"
 
   config.i18n.default_locale = :es 
+  config.active_record.observers = :meeting_observer
 end
 
 Haddock::Password.diction = File.join(Rails.root, "config", "dictionary.txt")
 WillPaginate::ViewHelpers.pagination_options[:prev_label] = 'Anterior'
 WillPaginate::ViewHelpers.pagination_options[:next_label] = 'Siguiente'
+#Consulta de nuevos trabajos cada 15 segundos [Default = 5]
+Delayed::Worker::SLEEP = 15
+

@@ -9,9 +9,10 @@ class User < ActiveRecord::Base
   belongs_to :preference
 
   has_many :user_messages, :foreign_key => 'receiver_id'
-  has_many :messages_received, :class_name => 'Message', :order => 'created_at desc', :source => :message,
-    :through => :user_messages
-  has_many :messages_sent, :class_name => 'Message', :foreign_key => 'sender_id', :order => 'created_at desc'
+  has_many :messages_received, :class_name => 'Message', :order => 'created_at desc', 
+    :source => :message, :through => :user_messages
+  has_many :messages_sent, :class_name => 'Message', :foreign_key => 'sender_id', 
+    :order => 'created_at desc'
 
   validates_presence_of     :login
   validates_length_of       :login,    :within => 3..40
@@ -33,7 +34,7 @@ class User < ActiveRecord::Base
   named_scope :exhibitors, lambda { {:joins => :roles, :include => :profile, 
     :conditions => ["roles.title = 'exhibitor'"] } }
   named_scope :no_admins, lambda { {:joins => :roles, :include => :profile, 
-    :conditions => ["roles.title != 'admin' && roles.title != 'extenda'"], :order => 'profiles.company_name' } }
+    :conditions => ["roles.title != 'admin' AND roles.title != 'extenda'"], :order => 'profiles.company_name' } }
   named_scope :type, lambda {|type| {:joins => :roles, :include => :profile, 
     :conditions => ["roles.title = ?", type] , :order => "profiles.company_name" }}
 
@@ -133,5 +134,9 @@ class User < ActiveRecord::Base
 
   def password=(value)
     write_attribute :password, (value ? value.downcase : nil)
+  end
+
+  def after_destroy
+    TimelineEvent.find(:first, :conditions => {:subject_type => 'User', :subject_id => self.id}).destroy
   end
 end

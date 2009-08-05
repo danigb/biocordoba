@@ -1,0 +1,17 @@
+%h1 Nuevo mensaje recibido
+
+%p
+  Remitente: 
+  = @sender.profile.company_name
+%p
+  Asunto:
+  = @message.subject
+
+%p
+  Contenido:
+  %br/
+  = @message.message
+
+%p 
+  Puede acceder al mensaje usando este
+  = link_to "link", message_url(:id => @message.id, :type => 'received')

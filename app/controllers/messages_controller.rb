@@ -56,6 +56,7 @@ class MessagesController < ApplicationController
     end
   end
 
+  #TODO, A background
   def mark_as_read
     @message_user = @message.user_messages.find_by_receiver_id(current_user.id)
     @message_user.mark_as_read! if @message_user && @message_user.unread?

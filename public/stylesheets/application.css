@@ -282,6 +282,7 @@ span.info {
   margin-bottom: 5px;
   padding: 5px; }
 
+<<<<<<< HEAD:public/stylesheets/application.css
 /* Images */
 .clip_img {
   background: transparent url("/images/clip.jpg") left top;
@@ -292,3 +293,8 @@ span.info {
 .oil_img {
   background: transparent url("/images/oil.jpg") left top;
   height: 263px; }
+=======
+span.canceled {
+  font-size: 25px;
+  color: red; }
+>>>>>>> b5e66e1fdaf71556aefe9b70ad16d0ec63d75c7e:public/stylesheets/application.css
