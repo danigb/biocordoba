@@ -28,6 +28,12 @@ h2 {
   font-size: 14px;
   letter-spacing: 0.4px; }
 
+h3 {
+  font-size: 16px;
+  margin-top: 20px; }
+  h3 span {
+    display: block; }
+
 p {
   margin: 0 0 1em 0; }
   p.green {
@@ -191,7 +197,7 @@ form input {
     border-left: #70b120 2px solid;
     border-right: #70b120 2px solid;
     border-bottom: #70b120 0.01px solid;
-    height: 100px;
+    height: 77px;
     background-color: #000;
     list-style: none;
     padding: 10px 20px; }
@@ -205,13 +211,18 @@ form input {
         text-decoration: underline; }
     #left-column ul li p {
       color: #70b120;
-      margin-top: 20px; }
+      margin-top: 10px; }
 
 #right-column {
   margin-left: 10px; }
   #right-column .box_green {
     background: #70b120 url(/images/content-display-bg.png) left top;
-    height: 70px; }
+    height: 71px;
+    border: #4c800c 1px solid; }
+  #right-column .box_dark_green {
+    background: #4c800c;
+    min-height: 423px;
+    border-top: 5px #000 solid; }
 
 #changelog h1 {
   margin: 1.5em 0; }
@@ -272,6 +283,12 @@ span.info {
   padding: 5px; }
 
 /* Images */
+.clip_img {
+  background: transparent url("/images/clip.jpg") left top;
+  width: 62px;
+  height: 72px;
+  float: left; }
+
 .oil_img {
   background: transparent url("/images/oil.jpg") left top;
   height: 263px; }

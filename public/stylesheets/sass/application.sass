@@ -1,6 +1,7 @@
 !primary_color = #4B7399
 !bg_color = #191918
 !green = #70b120
+!dark_green = #4c800c
 body
 
   :background = !bg_color url('/images/body-bg.jpg') center top no-repeat
@@ -34,6 +35,12 @@ a
 h2
   :font-size 14px
   :letter-spacing 0.4px
+
+h3
+  :font-size 16px
+  :margin-top 20px
+  span
+    :display block
 
 p
   :margin 0 0 1em 0
@@ -215,7 +222,7 @@ form
       :border-left = !green 2px solid 
       :border-right = !green 2px solid 
       :border-bottom = !green 0.01px solid
-      :height 100px
+      :height 77px
       :background-color #000
       :list-style none
       &.last
@@ -229,13 +236,18 @@ form
           :text-decoration underline
       p
         :color = !green
-        :margin-top 20px
+        :margin-top 10px
 
 #right-column
   :margin-left 10px  
   .box_green
     :background = !green url("/images/content-display-bg.png") left top
-    :height 70px
+    :height 71px
+    :border = !dark_green 1px solid
+  .box_dark_green
+    :background = !dark_green  
+    :min-height 423px
+    :border-top 5px #000 solid
 
 #changelog
   h1
@@ -302,6 +314,11 @@ span.info
 /*
   Images
 
+.clip_img
+  :background transparent url("/images/clip.jpg") left top
+  :width 62px
+  :height 72px
+  :float left
 .oil_img
   :background transparent url("/images/oil.jpg") left top
   :height 263px
