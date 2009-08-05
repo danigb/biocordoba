@@ -4,6 +4,7 @@
  
 set :application, "eventos86"
 set :deploy_to, "/srv/http/staging/#{application}"
+set :rails_env, 'production'
  
 #############################################################
 #	Settings
