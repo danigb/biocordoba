@@ -21,6 +21,15 @@ Profile.blueprint do
   company_name { Sham.word }
 end
 
+Preference.blueprint do
+  meetings_duration 15
+  event_start_day "2009-09-22"
+  event_end_day "2009-09-24"
+  event_day_start_at 10
+  event_day_end_at 19
+  meetings_number 4
+end
+
 Meeting.blueprint do
   host User.make(:exhibitor)
   guest User.make(:national_buyer)
