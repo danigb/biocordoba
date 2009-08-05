@@ -12,6 +12,13 @@ class MeetingsController < ApplicationController
       @guest = true
     end
     @admin_extenda = current_user.is_admin_or_extenda?
+
+    respond_to do |format|
+      format.html{}
+      format.js{
+        render :layout => false
+      }
+    end
   end
 
   def new
@@ -63,7 +70,7 @@ class MeetingsController < ApplicationController
   def change_note
     if(@meeting.update_attributes(params[:meeting]))
       flash[:notice] = "Nota actualizada"
-      redirect_to meeting_path(@meeting)
+      redirect_to root_path
     end
   end
 

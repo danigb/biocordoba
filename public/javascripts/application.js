@@ -60,6 +60,7 @@ $(document).ready(function() {
     e.preventDefault();
   });
 
+
   //Meeting show
   $("#guest-info, #host-info").hide();
   $("#guest-info-mini a, #host-info-mini a").click(function(e){ 
@@ -68,6 +69,13 @@ $(document).ready(function() {
   })
 
   $("#guest-info-mini a, #host-info-mini a").toggle(function(){ $(this).text("Menos información") }, function(){ $(this).text("Más información") });
+
+  //Meeting Show Ajax
+  $(".meeting-link").click(function(e){
+    $('<div />').appendTo('body').append("<img src='/images/loader.gif'/> Cargando...").dialog({modal:true, position: ['center', 50], width:450}).load("/citas/" + this.id);
+    e.preventDefault();
+  });
+
 
 });
 
