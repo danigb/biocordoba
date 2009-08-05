@@ -9,14 +9,14 @@ class Meeting < ActiveRecord::Base
   validates_presence_of :host_id, :guest_id
 
   # This named_scope is for filter between national_buyer or international_buyer 
-  named_scope :type, lambda {|type| {:from => "roles_users as ru, roles as r, meetings as m",
-    :conditions => ["m.guest_id = ru.user_id and ru.role_id = r.id and r.title = ?", type] } }
+  named_scope :with_type, lambda {|type| {:from => "roles_users as ru, roles as r, meetings as m",
+    :conditions => ["(m.guest_id = ru.user_id or m.host_id = ru.user_id) and ru.role_id = r.id and r.title = ?", type] } }
   named_scope :with_state, lambda{|state| {:conditions => ["state = ?", state]}}
   named_scope :in, lambda {|date| {:conditions => ["DATE(starts_at) = ?", date]}}
 
   def validate
     errors.add("host_id", "Usted debe ser un expositor") unless self.host && self.host.is_exhibitor?
-    errors.add("guest_id", "Debe invitar a un comprador") unless self.guest && (self.guest.is_national_buyer? || self.guest.is_international_buyer?)
+    errors.add("guest_id", "Debe invitar a un comprador") unless self.guest && (self.guest.is_buyer?)
 
     if new_record? && Meeting.find_by_host_id_and_guest_id_and_state(self.host, self.guest, "accepted")
       errors.add("guest_id", "Ya tienes una cita con este comprador") 
@@ -47,11 +47,17 @@ class Meeting < ActiveRecord::Base
     transitions :from => [:accepted, :pending], :to => :canceled
   end
 
-  def name(user = nil)
-    if user
-      user.login == host.login ? "Con usted" : "Ocupado"
+  def name(user, me = true)
+    if me
+      user.login == host.login ? host.profile.company_name : guest.profile.company_name
     else
-      self.guest.login
+      if user.login == host.login 
+        guest.profile.company_name
+      elsif user.login == guest.login
+        host.profile.company_name
+      else
+        "Ocupado"
+      end
     end     
   end
 

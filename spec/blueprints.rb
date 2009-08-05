@@ -6,12 +6,24 @@ User.blueprint do
   login Sham.word
   password 'secret'
   email { Sham.email }
-  role_id Role.find_by_title("exhibitor").id
+  role_id Role.find_by_title("exhibitor") # Exhibitor by default
+
+  profile Profile.make
+end
+
+Role.all.each do |role|
+  User.blueprint(role.title.to_sym) do
+    role_id role.id
+  end
+end
+
+Profile.blueprint do
+  company_name { Sham.word }
 end
 
 Meeting.blueprint do
-  host User.make(:role_id => Role.find_by_title("exhibitor").id)
-  guest User.make(:role_id => Role.find_by_title("national_buyer").id)
+  host User.make(:exhibitor)
+  guest User.make(:national_buyer)
   starts_at DateTime.parse(PREFS[:event_start_day] + " 10:00") 
 end
 

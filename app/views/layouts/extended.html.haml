@@ -18,16 +18,23 @@
               %span "AGENDA VIRTUAL. ANDALUCÍA SABOR"
           %h2.claim
             %span
-              del 22 al 24 de Septiembre - Andalucía Sabor, International Fine Food Exhibition
+              AGENDA VIRTUAL - del 22 al 24 de Septiembre
           = render :partial => 'sessions/user_bar'
 
       #content
-        .wrapper
+        .wrapper   
           - flash.each do |name, msg|
-            = content_tag :div, msg, :id => "flash_#{name}"
-            
+            = content_tag :div, msg, :id => "flash_#{name}_login"
           = yield
 
       #footer
         .wrapper
-          = link_to "Changelog", development_path
+          %p
+            = "Todos los derechos reservados © 2009 Andalucía Sabor International Fine Food Exhibition |"
+            = mail_to "andaluciasabor@andaluciasabor.es", "andaluciasabor@andaluciasabor.es"
+            = " | "
+            = link_to "Aviso legal", "http://www.andaluciasabor.es/index.php?section=aviso-legal"
+            
+      
+      = link_to "Changelog", development_path
+

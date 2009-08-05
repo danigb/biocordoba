@@ -1,7 +1,7 @@
 body {
   background: #191918 url('/images/body-bg.jpg') center top no-repeat;
   color: #fff;
-  font-family: Arial, sans-serif;
+  font-family: Verdana, Arial;
   font-size: 11px;
   font-variant: normal;
   font-style: normal;
@@ -18,11 +18,20 @@ body {
   display: none; }
 
 a {
-  color: #666; }
+  color: #70b120; }
   a:hover {
     color: #666; }
   a img {
     border: none; }
+
+h2 {
+  font-size: 14px;
+  letter-spacing: 0.4px; }
+
+p {
+  margin: 0 0 1em 0; }
+  p.green {
+    color: #70b120; }
 
 .wrapper {
   width: 961px;
@@ -48,17 +57,47 @@ p.button {
   padding: 5px;
   text-align: right; }
 
-#container #login {
+/* General */
+#container #login_area {
   margin: 0 auto;
   padding-left: 229px; }
-  #container #login .info {
-    font-size: 11px;
+  #container #login_area .info {
     float: left;
-    width: 476px; }
-  #container #login .access {
+    width: 235px;
+    margin: 0 50px 0 0;
+    padding-left: 5px; }
+  #container #login_area .access {
     float: left;
-    width: 229px; }
+    width: 260px; }
+    #container #login_area .access form {
+      margin-top: 25px; }
+      #container #login_area .access form p {
+        margin: 5px 0; }
+      #container #login_area .access form p.enviar, #container #login_area .access form p.rememberme {
+        clear: both;
+        text-align: right;
+        float: right; }
+        #container #login_area .access form p.enviar input, #container #login_area .access form p.rememberme input {
+          width: inherit; }
+    #container #login_area .access #remember_me {
+      margin-left: 10px; }
 
+/* Forms */
+form label {
+  width: 70px;
+  float: left;
+  clear: both;
+  margin: 5px 0; }
+form input {
+  background: #70b120;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  float: left;
+  width: 190px;
+  margin: 5px 0; }
+
+/* Header */
 #header .wrapper h1 {
   float: left;
   font-size: x-small;
@@ -73,23 +112,35 @@ p.button {
     #header .wrapper h1 a span {
       display: none; }
 #header h2.claim {
-  background: url('/images/header-claim-es.jpg') no-repeat;
+  background: url('/images/header-claim-agenda.jpg') no-repeat;
   float: left;
   height: 210px;
   width: 477px; }
   #header h2.claim span {
     display: none; }
 
+/* Flash messages && Errors */
 #flash_notice,
-#flash_error {
+#flash_error,
+#flash_notice_login,
+#flash_error_login {
   padding: 5px 8px;
-  margin: 10px 0; }
+  margin: 10px 0;
+  color: #191918;
+  font-weight: bold; }
 
-#flash_notice {
+#flash_notice_login,
+#flash_error_login {
+  margin: 10px 0 10px 519px;
+  width: 240px; }
+
+#flash_notice,
+#flash_notice_login {
   background-color: #CFC;
   border: solid 1px #6C6; }
 
-#flash_error {
+#flash_error,
+#flash_error_login {
   background-color: #FCC;
   border: solid 1px #C66; }
 
@@ -121,52 +172,21 @@ p.button {
       font-size: 12px;
       list-style: disc; }
 
-.big_field {
-  font-size: 2em; }
-
-.login {
-  width: 300px; }
-
-#user-info {
-  float: right;
-  margin-right: 10px;
-  padding: 5px; }
-
-#breadcrumbs {
-  float: left;
-  margin-left: 5px; }
-
-#content .main_content_extended {
-  margin-left: 229px;
-  float: left;
-  overflow: hidden;
-  width: 476px; }
-#content .main_content {
-  float: left;
-  overflow: hidden;
-  width: 476px; }
-#content #schedules {
-  width: 360px;
-  margin: 0 auto; }
-  #content #schedules .date {
-    text-align: center;
-    margin: 20px;
-    font-size: 2em; }
-  #content #schedules .schedule {
-    float: left; }
-    #content #schedules .schedule .user {
-      text-align: center;
-      margin: 0px 0px 10px 0px;
-      font-weight: bolder; }
-#content #search {
-  margin-left: 30px; }
-  #content #search div {
-    margin: 10px; }
+#content {
+  min-height: 465px; }
+  #content .main_content {
+    float: left;
+    overflow: hidden;
+    width: 476px; }
 
 #left-column, #right-column {
   float: left;
   width: 229px; }
 
+#changelog h1 {
+  margin: 1.5em 0; }
+#changelog h2 {
+  margin: 1em 0; }
 #changelog ul {
   list-style-type: none; }
   #changelog ul li {
@@ -181,6 +201,19 @@ p.button {
     #changelog ul span.todo {
       color: #627ffd; }
 
+#footer .wrapper {
+  background-color: #000000;
+  height: 58px;
+  margin-top: 25px;
+  /* 230+210+478+10+10 */
+  width: 916px; }
+  #footer .wrapper p {
+    margin: 25px 0px 0px 0px;
+    font: normal normal 10px Verdana, Arial;
+    color: #ffffff;
+    text-align: center; }
+    #footer .wrapper p a {
+      color: #70b120; }
 
 .highlight {
   background-color: yellow; }

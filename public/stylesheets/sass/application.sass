@@ -1,9 +1,11 @@
 !primary_color = #4B7399
+!bg_color = #191918
+!green = #70b120
 body
 
-  :background #191918 url('/images/body-bg.jpg') center top no-repeat
+  :background = !bg_color url('/images/body-bg.jpg') center top no-repeat
   :color #fff
-  :font-family Arial, sans-serif
+  :font-family Verdana, Arial
   :font-size 11px
   :font-variant normal
   :font-style normal
@@ -17,12 +19,11 @@ body
   html .clearfix
     :height 1%
 
-
 .accesible
   :display none
 
 a
-  :color #666
+  :color = !green
 
   &:hover
     :color #666
@@ -30,6 +31,14 @@ a
   img
     :border none
 
+h2
+  :font-size 14px
+  :letter-spacing 0.4px
+
+p
+  :margin 0 0 1em 0
+  &.green
+    :color = !green
 
 .wrapper
   :width 961px
@@ -57,20 +66,56 @@ p.button
   :padding 5px
   :text-align right
 
+/* 
+  General
+
 #container
-  #login
+  #login_area
     :margin 0 auto
     :padding-left 229px
 
     .info
-      :font-size 11px
       :float left
-      :width 476px
-
+      :width 235px
+      :margin 0 50px 0 0 
+      :padding-left 5px
     .access
       :float left
-      :width 229px
-  
+      :width 260px
+      form
+        :margin-top 25px
+        p
+          :margin 5px 0
+        p.enviar, p.rememberme
+          :clear both
+          :text-align right
+          :float right
+          input
+            :width inherit
+      #remember_me
+        :margin-left 10px
+
+/*
+  Forms
+
+form
+  label
+    :width 70px
+    :float left
+    :clear both
+    :margin 5px 0
+  input
+    :background = !green
+    :border none
+    :color #fff
+    :font-weight bold
+    :float left
+    :width 190px
+    :margin 5px 0
+    
+/*
+  Header
+
 #header
   .wrapper h1
     :float left
@@ -86,22 +131,38 @@ p.button
       span
         :display none
   h2.claim
-    :background url('/images/header-claim-es.jpg') no-repeat
+    :background url('/images/header-claim-agenda.jpg') no-repeat
     :float left 
     :height 210px
     :width 477px
     span
       :display none
+
+/* 
+  Flash messages && Errors
+
 #flash_notice,
-#flash_error
+#flash_error,
+#flash_notice_login,
+#flash_error_login
   :padding 5px 8px
   :margin 10px 0
+  :color = !bg_color
+  :font-weight bold
 
-#flash_notice
+
+#flash_notice_login,
+#flash_error_login
+  :margin 10px 0 10px 519px
+  :width 240px
+
+#flash_notice,
+#flash_notice_login
   :background-color #CFC
   :border solid 1px #6C6
 
-#flash_error
+#flash_error,
+#flash_error_login
   :background-color #FCC
   :border solid 1px #C66
 
@@ -134,49 +195,12 @@ p.button
       :font-size 12px
       :list-style disc
 
-.big_field
-  :font-size 2em
-
-.login
-  :width 300px
-#user-info
-  :float right
-  :margin-right 10px
-  :padding 5px
-#breadcrumbs
-  :float left
-  :margin-left 5px
 #content
-  .main_content_extended
-    :margin-left 229px
-    :float left
-    :overflow hidden
-    :width 476px
+  :min-height 465px
   .main_content
     :float left
     :overflow hidden
     :width 476px
-  #schedules
-    :width 360px
-    :margin 0 auto
-
-    .date
-      :text-align center
-      :margin 20px
-      :font-size 2em
-
-    .schedule
-      :float left
-
-      .user
-        :text-align center
-        :margin 0px 0px 10px 0px
-        :font-weight bolder
-
-  #search
-    :margin-left 30px
-    div
-      :margin 10px
 
 #left-column, #right-column
   :float left
@@ -184,6 +208,10 @@ p.button
 
 
 #changelog
+  h1
+    :margin 1.5em 0
+  h2
+    :margin 1em 0
   ul
     :list-style-type none
 
@@ -202,7 +230,20 @@ p.button
         :color #627ffd
 
 #footer
-
+  .wrapper
+    :background-color #000000
+    :height 58px
+    :margin-top 25px
+    /*
+      230+210+478+10+10
+    :width 916px 
+    p
+      :margin 25px 0px 0px 0px
+      :font normal normal 10px Verdana, Arial
+      :color #ffffff
+      :text-align center
+      a
+        :color = !green
 
 .highlight
   :background-color yellow
