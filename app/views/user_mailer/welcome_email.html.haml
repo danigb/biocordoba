@@ -3,5 +3,8 @@
 %p Los credenciales para acceder al sistema son:
 
 %p
-  Nombre de usuario: <b><%=h @user.login %></b><br/>
-  Contraseña: <b><%= @user.password %></b>
+  Nombre de usuario:
+  %b=h @user.login
+%p
+  Contraseña: 
+  %b= @user.password
