@@ -90,7 +90,7 @@ module ApplicationHelper
 
   #Muestra el enlace de solicitar cita en el caso de ser necesario
   def link_to_meeting(user, msg = "Solicitar cita")
-    if @current_user.is_exhibitor? && user.is_buyer? && !@current_user.meeting_with(user)
+    if @current_user.is_exhibitor? && user.is_buyer? && !Meeting.between(@current_user, user)
       link_to "Solicitar cita", meeting_into_and_path(current_user, user)
     end
   end

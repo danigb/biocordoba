@@ -102,13 +102,6 @@ class User < ActiveRecord::Base
         self.id, self.id, start_date, start_date + days])
   end
 
-  #Nos devuelve la cita que tenemos con el usuario, nil en caso de no tener ninguna
-  def meeting_with(user)
-    Meeting.find(:first, 
-      :conditions => ['((host_id = ? AND guest_id = ?) OR host_id = ? AND guest_id = ?)', 
-        self.id, user.id, user.id, self.id])
-  end
-
   # Devuelve los eventos comunes, es decir no tienen actor a quien se dirige y los eventos concretos hacia él
   def timeline_events
     TimelineEvent.find(:all, :conditions => ["(actor_type = 'User' AND actor_id = ?) OR actor_type IS NULL", 
