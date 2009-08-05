@@ -1,5 +1,6 @@
 # This controller handles the login/logout function of the site.  
 class SessionsController < ApplicationController
+  caches_page :new
   skip_before_filter :login_required
   layout 'extended'
   # render new.rhtml

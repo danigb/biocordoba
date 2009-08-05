@@ -282,6 +282,10 @@ span.info {
   margin-bottom: 5px;
   padding: 5px; }
 
+span.canceled {
+  font-size: 25px;
+  color: red; }
+
 /* Images */
 .clip_img {
   background: transparent url("/images/clip.jpg") left top;

@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   helper :breadcrumbs
 
   helper :all # include all helpers, all the time
-  protect_from_forgery # See ActionController::RequestForgeryProtection for details
+  # protect_from_forgery # See ActionController::RequestForgeryProtection for details
   before_filter :login_required
 
   # Scrub sensitive parameters from your log
