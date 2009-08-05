@@ -13,6 +13,13 @@ class MeetingMailer < ActionMailer::Base
     @body = {:meeting => meeting}
   end
 
+  def new_meeting(meeting)
+    setup_email
+    @recipients = meeting.guest.email
+    @subject += "Nueva cita"
+    @body = {:meeting => meeting}
+  end
+
   def setup_email
     @from = "Andalucía sabor international fine food exhibition <andaluciasabor@andaluciasabor.es>"  
     @subject = "[Andalucía Sabor] "  

@@ -1,9 +1,6 @@
 class Meeting < ActiveRecord::Base
   include AASM
 
-  after_create :accept_state, :if => Proc.new { |m| m.guest.is_national_buyer? } 
-  after_create :deliver_alert_extenda, :if => Proc.new { |m| m.guest.is_international_buyer? }
-
   belongs_to :host, :class_name => 'User'
   belongs_to :guest, :class_name => 'User'
 
@@ -100,16 +97,5 @@ class Meeting < ActiveRecord::Base
     return false if waps.call(host, date).present? || waps.call(guest, date)
     true
   end
-
-  private
-  
-    # El meeting se acepta automáticamente si el invitado es un comprador nacional
-    def accept_state
-      self.accept!
-    end
-
-    def deliver_alert_extenda
-      MeetingMailer.send_later(:deliver_alert_for_extenda, self) 
-    end
 
 end
