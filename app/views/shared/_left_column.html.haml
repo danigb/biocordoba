@@ -21,7 +21,7 @@
         %p
           Conozca la agenda de los compradores internacionales de la feria.
 
-      %li
+      %li.last
         = link_to "Alta de nuevos participantes", users_path
         %p
           Dé de alta, de baja o edite información sobre expositores y empresas.
@@ -43,7 +43,7 @@
         %p
           Seleccione empresas de su interés y solicite citas con ellas.
       
-      %li
+      %li.last
         = link_to "Mi agenda", root_path
         %p
           Recuerde citas, cancele encuentros o imprima su agenda de citas comerciales.
@@ -60,7 +60,7 @@
         %p
           Acceda a información sobre los expositores de Andalucía Sabor.
 
-      %li
+      %li.last
         = link_to "Mi agenda", root_path
         %p
           Recuerde citas, cancele encuentros o imprima su agenda de citas comerciales.
@@ -83,7 +83,7 @@
         %p
           Recuerde, cancele o imprima su agenda de citas comerciales.
 
-      %li
+      %li.last
         = link_to "Confirmar citas (#{Meeting.for("international_buyer").with_state('pending').length} nuevas)", meetings_to_confirm_path
         %p
           Valide las solicitudes de citas comerciales emitidas por los expositores.

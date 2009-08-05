@@ -25,10 +25,11 @@
         .wrapper
           = render :partial => 'shared/left_column'
           .main_content
+            = yield
+          #right-column 
             - flash.each do |name, msg|
               = content_tag :div, msg, :id => "flash_#{name}"
-            = yield
-          = render :partial => 'shared/right_column'
+            = render :partial => 'shared/right_column'
 
       #footer
         .wrapper
