@@ -6,4 +6,7 @@ class UserMailer < ActionMailer::Base
     sent_on Time.now 
     body( {:user => new_user, :url => "http://example.com/login"})  
   end   
+
+  #Nuevo mensaje recibido
+
 end

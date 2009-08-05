@@ -58,7 +58,7 @@ module WeeklyHelper
                 for event in @objects
                   if event.starts_at.strftime('%j').to_s == day.strftime('%j').to_s
                     if event.starts_at.strftime('%k').to_i == h.to_i
-                      concat(tag("div", :id => "week_event", :style =>"left:#{143 * index}px;top:#{left(event.starts_at,options[:business_hours])}px;width:138px;height:#{width(event.starts_at,event.ends_at)}px;", :onclick => "location.href='/events/#{event.id}';"))
+                      concat(tag("div", :id => "week_event", :style =>"left:#{143 * index}px;top:#{left(event.starts_at,options[:business_hours])}px;width:138px;height:#{width(event.starts_at,event.ends_at)}px;", :onclick => "location.href='/citas/#{event.id}';"))
                       truncate = width(event.starts_at,event.ends_at)
                       yield(event,truncate)
                       concat("</div>")
