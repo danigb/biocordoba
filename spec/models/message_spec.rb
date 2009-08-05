@@ -36,5 +36,6 @@ describe Message do
 
   it "should be unread" do
     @user.user_messages.first.should be_unread
+    @user.unread_messages_count.should > 0
   end
 end
