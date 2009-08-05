@@ -20,7 +20,7 @@ body {
 a {
   color: #70b120; }
   a:hover {
-    color: #666; }
+    color: #d41e67; }
   a img {
     border: none; }
 
@@ -28,13 +28,19 @@ h2 {
   font-size: 14px;
   letter-spacing: 0.4px; }
 
+h3 {
+  font-size: 16px;
+  margin-top: 20px; }
+  h3 span {
+    display: block; }
+
 p {
   margin: 0 0 1em 0; }
   p.green {
     color: #70b120; }
 
 .wrapper {
-  width: 961px;
+  width: 1001px;
   margin: 0 auto;
   height: 1%;
   position: relative;
@@ -107,7 +113,7 @@ form input {
     background: transparent url('/images/logo.jpg') no-repeat left top;
     display: block;
     height: 210px;
-    width: 229px;
+    width: 261px;
     text-decoration: none; }
     #header .wrapper h1 a span {
       display: none; }
@@ -177,11 +183,46 @@ form input {
   #content .main_content {
     float: left;
     overflow: hidden;
-    width: 476px; }
+    width: 476px;
+    margin-left: 10px; }
 
 #left-column, #right-column {
   float: left;
   width: 229px; }
+
+#left-column {
+  margin-left: 25px; }
+  #left-column ul li {
+    border-top: #70b120 2px solid;
+    border-left: #70b120 2px solid;
+    border-right: #70b120 2px solid;
+    border-bottom: #70b120 0.01px solid;
+    height: 77px;
+    background-color: #000;
+    list-style: none;
+    padding: 10px 20px; }
+    #left-column ul li.last {
+      border-bottom: #70b120 2px solid; }
+    #left-column ul li a {
+      color: #fff;
+      text-decoration: none; }
+      #left-column ul li a:hover {
+        color: #d41e67;
+        text-decoration: underline; }
+    #left-column ul li p {
+      color: #70b120;
+      margin-top: 10px; }
+
+#right-column {
+  margin-left: 10px; }
+  #right-column .box_green {
+    background: #70b120 url(/images/content-display-bg.png) left top;
+    height: 71px;
+    border: #4c800c 1px solid; }
+  #right-column .box_dark_green {
+    background: #4c800c;
+    min-height: 423px;
+    border-top: 5px #000 solid; }
 
 #changelog h1 {
   margin: 1.5em 0; }
@@ -204,9 +245,7 @@ form input {
 #footer .wrapper {
   background-color: #000000;
   height: 58px;
-  margin-top: 25px;
-  /* 230+210+478+10+10 */
-  width: 916px; }
+  margin-top: 25px; }
   #footer .wrapper p {
     margin: 25px 0px 0px 0px;
     font: normal normal 10px Verdana, Arial;
@@ -243,6 +282,19 @@ span.info {
   margin-bottom: 5px;
   padding: 5px; }
 
+<<<<<<< HEAD:public/stylesheets/application.css
+/* Images */
+.clip_img {
+  background: transparent url("/images/clip.jpg") left top;
+  width: 62px;
+  height: 72px;
+  float: left; }
+
+.oil_img {
+  background: transparent url("/images/oil.jpg") left top;
+  height: 263px; }
+=======
 span.canceled {
   font-size: 25px;
   color: red; }
+>>>>>>> b5e66e1fdaf71556aefe9b70ad16d0ec63d75c7e:public/stylesheets/application.css

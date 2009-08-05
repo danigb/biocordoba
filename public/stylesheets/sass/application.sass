@@ -1,6 +1,8 @@
 !primary_color = #4B7399
 !bg_color = #191918
 !green = #70b120
+!dark_green = #4c800c
+!pink = #D41E67
 body
 
   :background = !bg_color url('/images/body-bg.jpg') center top no-repeat
@@ -26,7 +28,7 @@ a
   :color = !green
 
   &:hover
-    :color #666
+    :color = !pink
 
   img
     :border none
@@ -35,13 +37,19 @@ h2
   :font-size 14px
   :letter-spacing 0.4px
 
+h3
+  :font-size 16px
+  :margin-top 20px
+  span
+    :display block
+
 p
   :margin 0 0 1em 0
   &.green
     :color = !green
 
 .wrapper
-  :width 961px
+  :width 1001px
   :margin 0 auto
   :height 1%
   :position relative
@@ -126,7 +134,7 @@ form
       :background transparent url('/images/logo.jpg') no-repeat left top
       :display block
       :height 210px
-      :width 229px
+      :width 261px
       :text-decoration none
       span
         :display none
@@ -201,11 +209,46 @@ form
     :float left
     :overflow hidden
     :width 476px
+    :margin-left 10px
 
 #left-column, #right-column
   :float left
   :width 229px
 
+#left-column
+  :margin-left 25px
+  ul
+    li
+      :border-top = !green 2px solid 
+      :border-left = !green 2px solid 
+      :border-right = !green 2px solid 
+      :border-bottom = !green 0.01px solid
+      :height 77px
+      :background-color #000
+      :list-style none
+      &.last
+        :border-bottom= !green 2px solid 
+      :padding 10px 20px
+      a
+        :color #fff
+        :text-decoration none
+        &:hover
+          :color = !pink
+          :text-decoration underline
+      p
+        :color = !green
+        :margin-top 10px
+
+#right-column
+  :margin-left 10px  
+  .box_green
+    :background = !green url("/images/content-display-bg.png") left top
+    :height 71px
+    :border = !dark_green 1px solid
+  .box_dark_green
+    :background = !dark_green  
+    :min-height 423px
+    :border-top 5px #000 solid
 
 #changelog
   h1
@@ -234,9 +277,6 @@ form
     :background-color #000000
     :height 58px
     :margin-top 25px
-    /*
-      230+210+478+10+10
-    :width 916px 
     p
       :margin 25px 0px 0px 0px
       :font normal normal 10px Verdana, Arial
@@ -271,6 +311,21 @@ span.info
   :border 1px solid #FFF
   :margin-bottom 5px
   :padding 5px
+<<<<<<< HEAD:public/stylesheets/sass/application.sass
+
+/*
+  Images
+
+.clip_img
+  :background transparent url("/images/clip.jpg") left top
+  :width 62px
+  :height 72px
+  :float left
+.oil_img
+  :background transparent url("/images/oil.jpg") left top
+  :height 263px
+=======
 span.canceled
   :font-size 25px
   :color red
+>>>>>>> b5e66e1fdaf71556aefe9b70ad16d0ec63d75c7e:public/stylesheets/sass/application.sass

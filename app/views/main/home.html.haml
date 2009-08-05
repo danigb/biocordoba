@@ -5,10 +5,12 @@
 
 - else
   - title "Versión administrador"
-  %p Se encuentra en la zona de administración del sitio, acceda a las secciones usando el menú de la izquierda.
+  .oil_img
 
-  = "&nbsp"
-
-  -# - content_for(:right_column) do
-  -#   %p
-  -#     Últimos mensajes
+  - content_for(:right_column) do
+    .box_green
+      .clip_img
+      %h3
+        %span Últimos 
+        %span Mensajes
+    .box_dark_green
