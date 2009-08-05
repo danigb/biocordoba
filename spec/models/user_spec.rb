@@ -36,4 +36,11 @@ describe User do
 
     @user.meetings(@date).length.should equal(2)
   end
+
+  it "should be authenticate" do
+    user = User.make
+
+    User.authenticate(user.login, user.password).should be_true
+    User.authenticate(user.login, "wrong_pass").should be_nil
+  end
 end
