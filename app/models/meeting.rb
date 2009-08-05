@@ -18,7 +18,7 @@ class Meeting < ActiveRecord::Base
     errors.add("host_id", "Usted debe ser un expositor") unless self.host && self.host.is_exhibitor?
     errors.add("guest_id", "Debe invitar a un comprador") unless self.guest && (self.guest.is_buyer?)
 
-    if new_record? && Meeting.find_by_host_id_and_guest_id_and_state(self.host, self.guest, "accepted")
+    if new_record? && !Meeting.between(self.host, self.guest).new_record?
       errors.add("guest_id", "Ya tienes una cita con este comprador") 
     end
 
@@ -72,7 +72,7 @@ class Meeting < ActiveRecord::Base
 
   # Check that a +date+ belongs to defined event calendar 
   def self.valid_event_date?(date)
-    date = Date.parse(date) unless date.class == Date || date.class == ActiveSupport::TimeWithZone
+    date = Date.parse(date) unless [Date, DateTime, Time, ActiveSupport::TimeWithZone].include? date.class 
     
     if date < Date.parse(PREFS[:event_start_day]) || date > Date.parse(PREFS[:event_end_day])
       return false
@@ -90,7 +90,7 @@ class Meeting < ActiveRecord::Base
   def self.valid_date?(host, guest, date)
     waps = lambda do |user, date| 
       Meeting.find(:first, 
-        :conditions => ["(host_id = ? OR guest_id = ?) AND DATE(starts_at) = ?", user, user, date])
+        :conditions => ["(host_id = ? OR guest_id = ?) AND DATE(starts_at) = ?", user, user, date.strftime("%Y-%m-%d")])
     end
     
     return false if waps.call(host, date).present? || waps.call(guest, date)

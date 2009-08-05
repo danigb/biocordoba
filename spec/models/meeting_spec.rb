@@ -65,13 +65,35 @@ describe Meeting do
   end
 
   describe "validate" do
-    it "should have a exhibitor user for host"
-    it "should have a buyer user for guest"
-    it "should not have two meetings with same guest"
-    it "should not have a meeting out of event"
-    it "should not have two meetings in same date"
-  end
+    before do
+      @meeting = Meeting.make
+      @host = @meeting.host
+      @guest = @meeting.guest
+    end
 
+    it "should have a exhibitor user for host" do
+      @host.should be_is_exhibitor
+    end
+
+    it "should have a buyer user for guest" do
+      @guest.should be_is_buyer
+    end
+
+    it "should not have two meetings with same guest" do
+      meeting =  Meeting.make_unsaved(:host => @host, :guest => @guest)
+      meeting.should have(1).errors_on(:guest_id)
+    end
+
+    it "should not have a meeting out of event" do
+      meeting =  Meeting.make_unsaved(:starts_at => Time.now)
+      meeting.should have(1).errors_on(:starts_at)     
+    end
+
+    it "should not have two meetings in same date" do
+      meeting = Meeting.make_unsaved(:host => User.make, :guest => @guest, :starts_at => @meeting.starts_at)
+      meeting.should have(1).errors_on(:starts_at)     
+    end
+  end
 
   describe "functions" do
     it "should return my name in a meeting" do
@@ -93,7 +115,13 @@ describe Meeting do
       meeting.name(user, false).should == "Ocupado"  
     end
 
-    it "should return meeting between a host and a guest user"
+    it "should validate a date belongs to event" do
+      success_date = DateTime.parse "#{PREFS[:event_start_day]} #{PREFS[:event_day_start_at]}:00"
+      wrong_date = DateTime.parse "#{PREFS[:event_start_day]} #{PREFS[:event_day_start_at] - 1}:00"
+
+      Meeting.valid_event_date?(success_date).should be_true
+      Meeting.valid_event_date?(wrong_date).should be_false
+    end
   end
 end
 
