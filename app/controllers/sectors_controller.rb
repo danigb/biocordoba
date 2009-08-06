@@ -1,4 +1,6 @@
 class SectorsController < ApplicationController
+  access_control :DEFAULT => 'admin'
+
   # GET /sectors
   # GET /sectors.xml
   def index

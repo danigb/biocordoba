@@ -95,7 +95,7 @@ class MeetingsController < ApplicationController
   end
 
   def to_confirm
-    @meetings = Meeting.type("international_buyer").with_state("pending")
+    @meetings = Meeting.with_type("international_buyer").with_state("pending")
   end
 
   def change_state

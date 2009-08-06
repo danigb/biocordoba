@@ -20,4 +20,12 @@ class ApplicationController < ActionController::Base
   rescue ActionController::RedirectBackError
     redirect_to path
   end
+
+  protected
+
+  def permission_denied
+    flash[:notice] = "Acceso denegado"
+    return redirect_back_or("/")
+  end
+
 end

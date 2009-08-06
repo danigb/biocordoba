@@ -1,12 +1,5 @@
 class UsersController < ApplicationController
-  def search
-    unless params[:search].blank?
-      @search = User.search(params[:search])
-      @search.roles_title_like_any(current_user.is_exhibitor? ? ["international_buyer", "national_buyer"] : ["exhibitor"]) 
-      @users = @search.all(:include => [{:profile => :sectors}, :roles])
-      @users_by_sector = @users.group_by{|u| u.profile.sectors.first.name }
-    end
-  end
+  access_control :DEFAULT => 'admin', :search => '!admin'
 
   def index
     @roles = Role.find(:all, :include => :users)
@@ -60,7 +53,7 @@ class UsersController < ApplicationController
     @user.password = Haddock::Password.generate(10)
 
     unless @user.login.blank?
-      @user.build_profile(:company_name => @user.login, :sector_id => 1)
+      @user.build_profile(:company_name => @user.login)
     end
 
     if @user.save
@@ -118,4 +111,15 @@ class UsersController < ApplicationController
 
     redirect_to type_users_path(params[:type])
   end
+
+
+  def search
+    unless params[:search].blank?
+      @search = User.search(params[:search])
+      @search.roles_title_like_any(current_user.is_exhibitor? ? ["international_buyer", "national_buyer"] : ["exhibitor"]) 
+      @users = @search.all(:include => [{:profile => :sectors}, :roles])
+      @users_by_sector = @users.group_by{|u| u.profile.sectors.first.name }
+    end
+  end
+
 end

@@ -1,8 +1,8 @@
 - title "Nueva configuración"
 
-- form_for :preference, :url => admin_preferences_path do |f|
+- form_for :preference, :url => preferences_path do |f|
   #preferences
     = render :partial => 'form', :locals => {:f => f}
   %p= f.submit "Guardar"
 
-%p= link_to "Volver al listado", admin_preferences_path
+%p= link_to "Volver al listado", preferences_path

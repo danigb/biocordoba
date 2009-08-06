@@ -41,9 +41,9 @@ class User < ActiveRecord::Base
   attr_accessible :login, :email, :name, :password, :password_confirmation, :role_id, :profile_attributes, :preference_attributes, :preference_id
   accepts_nested_attributes_for :profile, :preference
 
-  # TimeLine Event
-  fires :new_user_created, :on => :create, :secondary_subject => :role,
-    :if => lambda { |user| !user.is_admin? && !user.is_extenda? }
+  # TimeLine Event #FIXME temporalmente desactivado
+  # fires :new_user_created, :on => :create, :secondary_subject => :role,
+  #   :if => lambda { |user| !user.is_admin? && !user.is_extenda? }
 
   def to_param
     "#{login}"

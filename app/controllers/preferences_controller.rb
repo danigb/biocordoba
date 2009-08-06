@@ -1,4 +1,6 @@
-class Admin::PreferencesController < ApplicationController
+class PreferencesController k< ApplicationController
+  access_control :DEFAULT => 'admin'
+
   def index
     @preferences = Preference.all
   end

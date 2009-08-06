@@ -18,6 +18,6 @@
         %td=h preference.event_end_day 
         %td=h preference.event_day_start_at.strftime("%H:%M")
         %td=h preference.event_day_end_at.strftime("%H:%M")
-        %td= link_to "Editar", edit_admin_preference_path(preference)
-        %td= link_to "Eliminar", admin_preference_path(preference), :method => 'delete' unless preference.id == 1
+        %td= link_to "Editar", edit_preference_path(preference)
+        %td= link_to "Eliminar", preference_path(preference), :method => 'delete' unless preference.id == 1
 
