@@ -28,9 +28,6 @@ class MessagesController < ApplicationController
   
   def create
     @message = current_user.messages_sent.build(params[:message])
-    #Si el usuario no admin o extenda nos aseguramos que no envia a todos
-    #activar si se verifica q solo los administradores pueden
-    @message.send_all=false unless current_user.is_admin_or_extenda?
     if @message.save
       flash[:notice] = "¡ Mensaje enviado !"
       redirect_to message_path(:id => @message.id, :type => 'sent')

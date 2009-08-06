@@ -11,7 +11,7 @@
     %div
       = f.label 'profile_sectors_id_equals', "SECTOR"
       %br/
-      = f.select :profile_sectors_id_equals, Sector.all.map{|s| [s.name.capitalize, s.id]}, :include_blank => "Todos"
+      = f.select :profile_sectors_id_equals, @sectors.map{|s| [s.name.capitalize, s.id]}, :include_blank => "Todos"
 
     %div
       = f.submit "Buscar"

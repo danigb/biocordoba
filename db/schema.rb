@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090806152517) do
+ActiveRecord::Schema.define(:version => 20090806172354) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -36,6 +36,10 @@ ActiveRecord::Schema.define(:version => 20090806152517) do
     t.datetime "starts_at"
     t.datetime "ends_at"
   end
+
+  add_index "meetings", ["guest_id"], :name => "index_meetings_on_guest_id"
+  add_index "meetings", ["host_id"], :name => "index_meetings_on_host_id"
+  add_index "meetings", ["state"], :name => "meetings_state"
 
   create_table "messages", :force => true do |t|
     t.integer  "sender_id"
@@ -99,7 +103,9 @@ ActiveRecord::Schema.define(:version => 20090806152517) do
     t.integer "user_id"
   end
 
+  add_index "roles_users", ["role_id", "user_id"], :name => "index_roles_users_on_role_id_and_user_id"
   add_index "roles_users", ["role_id"], :name => "index_roles_users_on_role_id"
+  add_index "roles_users", ["user_id", "role_id"], :name => "index_roles_users_on_user_id_and_role_id"
   add_index "roles_users", ["user_id"], :name => "index_roles_users_on_user_id"
 
   create_table "sectors", :force => true do |t|
@@ -119,6 +125,8 @@ ActiveRecord::Schema.define(:version => 20090806152517) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "timeline_events", ["actor_type", "actor_id"], :name => "timeline_events_actor_type_id"
 
   create_table "towns", :force => true do |t|
     t.string  "name"
@@ -146,6 +154,6 @@ ActiveRecord::Schema.define(:version => 20090806152517) do
     t.string   "password",                  :limit => 40
   end
 
-  add_index "users", ["login"], :name => "index_users_on_login", :unique => true
+  add_index "users", ["login"], :name => "users_login"
 
 end

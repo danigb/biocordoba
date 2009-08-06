@@ -116,6 +116,7 @@ class UsersController < ApplicationController
 
 
   def search
+    @sectors = Sector.find(:all, :select => 'id, name')
     unless params[:search].blank?
       @search = User.search(params[:search])
       @search.roles_title_like_any(current_user.is_exhibitor? ? ["international_buyer", "national_buyer"] : ["exhibitor"]) 

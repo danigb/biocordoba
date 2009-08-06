@@ -16,7 +16,7 @@ class Message < ActiveRecord::Base
   end
 
   def send_all=(boolean)
-    self.receivers = boolean == "1" ? User.no_admins : []
+    self.receivers = User.no_admins if boolean == "1"
   end
 
   def receivers_string=(string)

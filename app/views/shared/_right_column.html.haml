@@ -1,8 +1,8 @@
 - if logged_in?
   - if yield(:right_column).nil?
-    Últimos eventos 
-    %hr/
-    - for event in current_user.timeline_events 
-      .event= print_event(event)
+    -# Últimos eventos 
+    -# %hr/
+    -# - for event in current_user.timeline_events 
+    -#   .event= print_event(event)
   - else
     = yield(:right_column)
