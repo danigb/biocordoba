@@ -25,8 +25,7 @@ class AjaxController < ApplicationController
 
   def meetings
     user = User.find(params[:host_id])
-    @meetings = user.meetings(Date.parse(params[:date] || CONFIG[:admin][:preferences][:event_start_day]
-))
+    @meetings = user.meetings(Date.parse(params[:date] || CONFIG[:admin][:preferences][:event_start_day]))
 
     respond_to do |format|
       format.js {
