@@ -1,7 +1,7 @@
 - unless current_user.is_admin_or_extenda?
   - title "Mi agenda"
 
-  = render :partial => 'meetings/my_meetings'
+  = render :partial => 'meetings/my_meetings', :locals => {:user => current_user}
 
 - else
   - title "Versión administrador"

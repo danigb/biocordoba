@@ -1,10 +1,4 @@
-= render :partial => 'meetings/my_meetings'
+= render :partial => 'meetings/my_meetings', :locals => {:user => @user}
 
 - content_for(:right_column) do
-  %p
-    Ver agenda de:
-  - form_for :user, :url => meetings_for_path, :html => {:method => :get} do |f|
-    %p
-      = f.select :id, User.type(@user.role.title).map{|u| [u.profile.company_name, u.id]}, :include_blank => true
-    %p
-      = submit_tag "Ver"
+  = render :partial => 'meetings/select_schedule_form', :locals => {:role_name => @user.role.title}

@@ -60,7 +60,6 @@ $(document).ready(function() {
     e.preventDefault();
   });
 
-
   //Meeting show
   /* $("#guest-info, #host-info").hide(); */
   $("#guest-info-mini a, #host-info-mini a").click(function(e){ 
@@ -77,6 +76,11 @@ $(document).ready(function() {
     e.preventDefault();
   });
 
+  //meetings/type form
+  $("form#select-schedule select").change(function(){
+      if(this.value != "")
+        $(this).parent().parent().submit();
+  })
 
 });
 

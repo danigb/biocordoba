@@ -9,16 +9,10 @@
       %li
         %strong
           = host.profile.company_name
-          = link_to_remote image_tag("plus.gif"), :url => "/ajax/meetings?host_id=#{host.id}&guest=#{'1' if @guest}"
+          = link_to_remote image_tag("plus.gif"), :url => "/ajax/meetings?host_id=#{host.id}&guest=#{'1' if @guest}&date=#{params[:date]}"
           %div{:id => "meetings-#{host.id}"}
 - else
   No existen citas.
 
 - content_for(:right_column) do 
-  %p
-    Ver agenda de:
-  - form_for :user, :url => '/ajax/meetings_for', :html => {:method => :get} do |f|
-    %p
-      = f.select :id, User.type(@name).map{|u| [u.profile.company_name, u.to_param]}, :include_blank => true
-    %p
-      = submit_tag "Ver"
+  = render :partial => 'meetings/select_schedule_form', :locals => {:role_name => @name}

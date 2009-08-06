@@ -85,15 +85,13 @@ class MeetingsController < ApplicationController
   end
 
   def for_user
-    begin
-      @user = User.find_by_login(params[:id]) 
-    rescue ActiveRecord::RecordNotFound
+    if @user = User.find_by_login(params[:id]) 
+      @date = Time.parse("#{CONFIG[:admin][:preferences][:event_start_day]} #{CONFIG[:admin][:preferences][:event_day_start_at]}")
+      @days = 3
+      @meetings = @user.meetings(@date, @days)
+    else
       redirect_back_or("/") and return
     end
-
-    @date = Time.parse("#{CONFIG[:admin][:preferences][:event_start_day]} #{CONFIG[:admin][:preferences][:event_day_start_at]}")
-    @days = 3
-    @meetings = @user.meetings(@date, @days)
   end
 
   def to_confirm
