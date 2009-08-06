@@ -1,4 +1,4 @@
-class PreferencesController k< ApplicationController
+class PreferencesController < ApplicationController
   access_control :DEFAULT => 'admin'
 
   def index
