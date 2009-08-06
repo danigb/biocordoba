@@ -14,6 +14,6 @@
         %td
           = link_to "Ver perfil", profile_path(user.profile_id)
           |
-          Mandar Mensaje #TODO
+          = link_to "Enviar Mensaje", new_message_path(:receiver => user.profile.company_name)
 
-= link_to "Volver", admin_path
+= link_to "Volver", root_path

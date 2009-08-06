@@ -12,7 +12,7 @@
           = link_to_remote image_tag("plus.gif"), :url => "/ajax/meetings?host_id=#{host.id}&guest=#{'1' if @guest}&date=#{params[:date]}"
           %div{:id => "meetings-#{host.id}"}
 - else
-  No existen citas.
+  No existen citas para ese día.
 
 - content_for(:right_column) do 
   = render :partial => 'meetings/select_schedule_form', :locals => {:role_name => @name}

@@ -1,4 +1,6 @@
 class AjaxController < ApplicationController
+  access_control :DEFAULT => ('admin | extenda'), [:to_meeting, :buyers] => 'exhibitor'
+
   def towns
     @towns = Town.find(:all, :conditions => { :province_id => params[:province_id]}, :order => 'name' )
     respond_to do |format|

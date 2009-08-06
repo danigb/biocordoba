@@ -2,9 +2,6 @@
 class SessionsController < ApplicationController
   skip_before_filter :login_required
   layout 'extended'
-  # render new.rhtml
-  def new
-  end
 
   def create
     logout_keeping_session!
