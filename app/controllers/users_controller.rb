@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @sectors = []
   end
 
   def new_admin_extenda
@@ -15,6 +16,7 @@ class UsersController < ApplicationController
  
   def edit
     @user = User.find(params[:id])
+    @sectors = @user.profile.sectors
   end
 
   def create

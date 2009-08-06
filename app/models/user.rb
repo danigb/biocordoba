@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
     :conditions => ["roles.title = 'national_buyer' OR roles.title = 'international_buyer'"] } }
   named_scope :exhibitors, lambda { {:joins => :roles, :include => :profile, 
     :conditions => ["roles.title = 'exhibitor'"] } }
-  named_scope :no_admins, lambda { {:joins => :roles, :include => :profile, 
+  named_scope :no_admins, lambda { {:include => [:profile, :roles], 
     :conditions => ["roles.title != 'admin' AND roles.title != 'extenda'"], :order => 'profiles.company_name' } }
   named_scope :type, lambda {|type| {:joins => :roles, :include => :profile, 
     :conditions => ["roles.title = ?", type] , :order => "profiles.company_name" }}
@@ -106,7 +106,7 @@ class User < ActiveRecord::Base
   # Devuelve los eventos comunes, es decir no tienen actor a quien se dirige y los eventos concretos hacia él
   def timeline_events
     TimelineEvent.find(:all, :conditions => ["(actor_type = 'User' AND actor_id = ?) OR actor_type IS NULL", 
-      self.id], :limit => 10, :order => 'created_at desc')
+      self.id], :limit => 10, :order => 'created_at desc', :include => [:subject, :secondary_subject])
   end
   
   def unread_messages_count

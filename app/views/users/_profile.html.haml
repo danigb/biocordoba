@@ -18,7 +18,7 @@
   %br/
   - Sector.all.each do |s|
     %p
-      = check_box_tag "user[profile_attributes][sector_ids][]", s.id, @user.profile.sectors.include?(s)
+      = check_box_tag "user[profile_attributes][sector_ids][]", s.id, @sectors.map(&:id).include?(s.id)
       = s.name
 %p
   = f.label :province_id, "Provincia"

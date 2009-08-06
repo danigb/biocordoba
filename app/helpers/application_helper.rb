@@ -44,9 +44,7 @@ module ApplicationHelper
   end
 
   def message_class(message, type)
-    if(type == "received")
-      message.user_messages.find_by_receiver_id(current_user.id).state
-    end
+    message.state if(type == "received")
   end
 
   def print_event(event)

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090805083459) do
+ActiveRecord::Schema.define(:version => 20090806152517) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(:version => 20090805083459) do
     t.string   "subject"
   end
 
+  add_index "messages", ["sender_id"], :name => "index_messages_on_sender_id"
+
   create_table "preferences", :force => true do |t|
     t.integer  "meetings_number"
     t.integer  "meetings_duration"
@@ -74,6 +76,9 @@ ActiveRecord::Schema.define(:version => 20090805083459) do
     t.string   "stand"
   end
 
+  add_index "profiles", ["company_name"], :name => "profiles_company_name"
+  add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
+
   create_table "profiles_sectors", :id => false, :force => true do |t|
     t.integer "profile_id"
     t.integer "sector_id"
@@ -87,10 +92,15 @@ ActiveRecord::Schema.define(:version => 20090805083459) do
     t.string "title"
   end
 
+  add_index "roles", ["title"], :name => "roles_title"
+
   create_table "roles_users", :id => false, :force => true do |t|
     t.integer "role_id"
     t.integer "user_id"
   end
+
+  add_index "roles_users", ["role_id"], :name => "index_roles_users_on_role_id"
+  add_index "roles_users", ["user_id"], :name => "index_roles_users_on_user_id"
 
   create_table "sectors", :force => true do |t|
     t.string   "name"
@@ -120,6 +130,10 @@ ActiveRecord::Schema.define(:version => 20090805083459) do
     t.integer "message_id",  :null => false
     t.string  "state"
   end
+
+  add_index "user_messages", ["message_id"], :name => "index_user_messages_on_message_id"
+  add_index "user_messages", ["receiver_id", "state"], :name => "user_messages_receiver_state"
+  add_index "user_messages", ["state", "receiver_id"], :name => "user_messages_state_receiver"
 
   create_table "users", :force => true do |t|
     t.string   "login",                     :limit => 40

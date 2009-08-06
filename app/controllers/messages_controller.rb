@@ -10,12 +10,15 @@ class MessagesController < ApplicationController
   end
 
   def received
-    @messages = current_user.messages_received.find(:all, :conditions => ["user_messages.state != 'deleted'"])
+    @messages = current_user.messages_received.find(:all,
+      :select => "messages.id, messages.subject, sender_id, messages.created_at, user_messages.state as state", 
+      :conditions => ["user_messages.state != 'deleted'"], :include => {:sender => :profile}).paginate(:per_page => 20, :page => params[:page])
     render :action => 'index'
   end
 
   def sent
-    @messages = current_user.messages_sent
+    @messages = current_user.messages_sent.paginate(:per_page => 20, :page => params[:page],
+      :include => {:receivers => :profile})
     render :action => 'index'
   end
   
