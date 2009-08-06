@@ -5,8 +5,10 @@
     %title
       = h(yield(:title) || "AGENDA VIRTUAL")
     %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}/
-    = stylesheet_link_tag 'application', 'tablesorter', 'weekly', 'ui-theme/ui'
-    = javascript_include_tag 'jquery-1.3.2.min', 'jquery-ui-1.7.2.custom.min', 'jquery.tablesorter.min', "application"
+    -# = stylesheet_link_tag 'application', 'tablesorter', 'weekly', 'ui-theme/ui', :cache => true
+    = stylesheet_link_merged :base
+    = javascript_include_merged :base
+
     = yield(:head)
   
   %body

@@ -1,0 +1,22 @@
+--- 
+javascripts: 
+- base: 
+  - jquery-1.3.2.min
+  - jquery-ui-1.7.2.custom.min
+  - jquery.tablesorter.min
+  - jquery.autocomplete.min
+  # - prototype
+  # - jrails
+  # - effects
+  # - controls
+  # - dragdrop
+  - application
+stylesheets: 
+- base: 
+  - autocomplete
+  - ui-theme/ui
+  # - scaffold
+  - weekly
+  - tablesorter
+  # - all
+  - application

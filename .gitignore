@@ -12,3 +12,5 @@ doc/app
 config/config.yml
 config/database.yml
 coverage/
+public/javascripts/base_packaged.js
+public/stylesheets/base_packaged.css

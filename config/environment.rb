@@ -14,6 +14,7 @@ Rails::Initializer.run do |config|
   config.gem "haddock"
   config.gem 'mislav-will_paginate', :lib => "will_paginate"
 
+
   config.i18n.default_locale = :es 
   config.active_record.observers = :meeting_observer
 end

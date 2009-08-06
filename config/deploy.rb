@@ -122,3 +122,11 @@ namespace :delayed_job do
     run "cd #{current_path}; script/delayed_job -e #{rails_env} restart"
   end
 end
+
+
+desc "Create asset packages for production" 
+task :after_update_code do
+ run <<-EOF
+   cd #{release_path} && rake asset:packager:build_all
+ EOF
+end

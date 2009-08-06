@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+
   map.root :controller => 'main', :action => 'home'
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'
@@ -33,4 +34,5 @@ ActionController::Routing::Routes.draw do |map|
 
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
+
 end
