@@ -8,7 +8,7 @@ class Message < ActiveRecord::Base
   validates_presence_of :sender, :message, :subject
 
   def validate
-    errors.add(:sender_id, "Debes introducir un receptor válido") if self.receivers.blank?
+    errors.add(:sender_id, "Debe enviar el mensaje a al menos una persona") if self.receivers.blank?
   end
 
   def receiver

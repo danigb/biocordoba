@@ -14,7 +14,7 @@ javascripts:
 stylesheets: 
 - base: 
   - autocomplete
-  - ui-theme/ui
+  - ui
   # - scaffold
   - weekly
   - tablesorter

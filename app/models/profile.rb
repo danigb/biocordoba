@@ -10,4 +10,8 @@ class Profile < ActiveRecord::Base
   validates_numericality_of :phone, :fax, :allow_blank => true
   validates_url_format_of :website, :message => "Formato de página web incorrecto", :allow_blank => true
 
+  def validate
+    errors.add(:sectors, "Debe seleccionar al menos un sector") if self.sectors.blank?
+  end
+
 end
