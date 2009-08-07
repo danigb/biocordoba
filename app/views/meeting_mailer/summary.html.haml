@@ -1,0 +1,13 @@
+%h1= "Resumen de citas para el #{@date}"
+
+- if @meetings.blank?
+  %p No tienes citas concertadas para este día
+- else
+  %ul
+    - for meeting in @meetings
+      %li.summary-item
+        = meeting.date({:include_month => false, :include_week_day => false})
+        con
+        = link_to meeting.partner(@user).profile.company_name, profile_url(meeting.partner(@user).profile)
+        |
+        = link_to "Ver cita", meeting_url(meeting)

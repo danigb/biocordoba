@@ -139,4 +139,9 @@ class User < ActiveRecord::Base
   def after_destroy
     TimelineEvent.find(:first, :conditions => {:subject_type => 'User', :subject_id => self.id}).destroy
   end
+
+  #Enviamos al email del usuario un resumen con sus citas para un día concreto
+  def send_summary(date = Time.now.to_date)
+    MeetingMailer.deliver_summary(self, date)
+  end
 end

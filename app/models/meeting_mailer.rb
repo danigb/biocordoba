@@ -20,6 +20,13 @@ class MeetingMailer < ActionMailer::Base
     @body = {:meeting => meeting}
   end
 
+  def summary(user, date = Time.now.to_date)
+    setup_email
+    @recipients = user.email
+    @subject += "Resumen de citas para el día de hoy"
+    @body = {:meetings => user.meetings(date, 1), :user => user, :date => date.localize}
+  end
+
   def setup_email
     @from = "Andalucía sabor international fine food exhibition <andaluciasabor@andaluciasabor.es>"  
     @subject = "[Andalucía Sabor] "  
