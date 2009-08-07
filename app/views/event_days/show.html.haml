@@ -1,0 +1,6 @@
+%h1
+  Resumen del día
+  = @day.localize
+
+- if @meetings.blank?
+  %p No tienes citas concertadas para este día

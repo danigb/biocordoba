@@ -81,7 +81,7 @@ module WeeklyHelper
           concat(tag("div", :id => "header_box")) # id = "day"
           # concat(content_tag("b", day.strftime('%A')))
           # concat(tag("br"))
-          concat(I18n.localize(day, :format => '%A %d'))
+          concat("<a href='/resumen/#{day}' title='Ver resumen del día'>#{day.localize}</a>")
           concat("</div>")
         end
       concat("</div>")      

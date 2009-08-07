@@ -20,6 +20,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.search '/buscador', :controller => 'users', :action => 'search'
   map.development '/changelog', :controller => 'development', :action => 'changelog'
+  map.resumen '/resumen/:date', :controller => 'event_days', :action => 'show'
 
   map.resources :sectors, :as => 'sectores'
   map.resources :profiles, :as => 'perfiles'
