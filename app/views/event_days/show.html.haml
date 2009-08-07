@@ -4,3 +4,10 @@
 
 - if @meetings.blank?
   %p No tienes citas concertadas para este día
+- else
+  %ul
+    - for meeting in @meetings
+      %li
+        = meeting.date({:include_month => false, :include_week_day => false})
+        con
+        = link_to_profile meeting.partner(current_user).profile

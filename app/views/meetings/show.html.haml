@@ -9,8 +9,7 @@
 
 %h1 Información de la cita
 %p 
-  Fecha de la cita:
-  = @meeting.starts_at.to_s(:short)
+  = @meeting.date
 
 - #Mostramos los distintos perfiles dependiendo de quién esté viendo la cita
 - if @host || @admin_extenda

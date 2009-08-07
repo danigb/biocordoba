@@ -1,8 +1,8 @@
 class Meeting < ActiveRecord::Base
   include AASM
 
-  belongs_to :host, :class_name => 'User'
-  belongs_to :guest, :class_name => 'User'
+  belongs_to :host, :class_name => 'User', :include => :profile
+  belongs_to :guest, :class_name => 'User', :include => :profile
 
   validates_presence_of :host_id, :guest_id
 
@@ -98,4 +98,21 @@ class Meeting < ActiveRecord::Base
     true
   end
 
+  #Fecha de la cita formateada correctamente
+  #m.date(:include_month => true, :include_week_day => false)
+  def date(options = {})
+    res = ""
+    res += "#{I18n.localize(self.starts_at, :format => '%A %d')} de " if options[:include_week_day] != false
+    res += "#{I18n.localize(self.starts_at, :format => '%B')} de " if options[:include_month] != false
+    res += "#{self.starts_at.strftime("%H:%M")} a #{(self.starts_at + 15.minutes).strftime("%H:%M")}"
+  end
+
+  #Obtención del interlocutor de la quedada, insertamos mi usuario como parámetro de entrada
+  def partner(me)
+    if(self.host == me)
+      self.guest
+    elsif(self.guest == me)
+      self.host
+    end
+  end
 end

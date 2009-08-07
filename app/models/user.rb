@@ -94,13 +94,13 @@ class User < ActiveRecord::Base
   def role
     self.roles.first
   end
-  # /Simple
 
+  # /Simple
   def meetings(date, days = 1)
     start_date = Date.new(date.year, date.month, date.day) 
     Meeting.find(:all, 
       :conditions => ['(host_id = ? or guest_id = ?) and starts_at between ? and ? and state = "accepted"', 
-        self.id, self.id, start_date, start_date + days])
+        self.id, self.id, start_date, start_date + days], :order => 'starts_at')
   end
 
   # Devuelve los eventos comunes, es decir no tienen actor a quien se dirige y los eventos concretos hacia él
