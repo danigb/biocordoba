@@ -1,13 +1,17 @@
-%h1
-  Resumen del día
-  = @day.localize
+#summary
+  %h1
+    Resumen del día
+    = @day.localize
 
-- if @meetings.blank?
-  %p No tienes citas concertadas para este día
-- else
-  %ul
-    - for meeting in @meetings
-      %li
-        = meeting.date({:include_month => false, :include_week_day => false})
-        con
-        = link_to_profile meeting.partner(current_user).profile
+  - if @meetings.blank?
+    %p No tienes citas concertadas para este día
+  - else
+    %ul
+      - for meeting in @meetings
+        %li.summary-item
+          = meeting.date({:include_month => false, :include_week_day => false})
+          con
+          = link_to_profile meeting.partner(current_user).profile
+          |
+          = link_to "Ver cita", meeting_path(meeting), :id => meeting.id, :class => 'meeting-link' 
+  = link_to "Volver a mi agenda", root_path

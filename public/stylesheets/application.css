@@ -303,3 +303,10 @@ span.canceled {
 
 #guest-info, #host-info {
   display: none; }
+
+#summary li.summary-item, #summary p {
+  font-size: 20px; }
+#summary ul {
+  margin: 20px 0 20px 20px; }
+#summary h1 {
+  margin-bottom: 10px; }
