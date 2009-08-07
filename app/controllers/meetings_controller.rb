@@ -41,7 +41,7 @@ class MeetingsController < ApplicationController
       redirect_to root_path
     else
       if @meeting.errors[:starts_at]
-        flash.now[:error] = "No se ha guardado la cita. La fecha ya está reservada o está fuera del evento."
+        flash.now[:error] = "No se ha guardado la cita. #{@meeting.errors[:starts_at]}."
       else
         flash.now[:error] = "No se ha guardado la cita. Ya tienes un cita con este comprador."
       end

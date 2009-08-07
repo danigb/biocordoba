@@ -24,7 +24,7 @@ class Meeting < ActiveRecord::Base
       errors.add("starts_at", "Fecha fuera de evento")
     end
 
-    if new_record? && !Meeting.valid_date?(self.host, self.guest, self.starts_at)
+    if new_record? && !Meeting.valid_date?(self.host, self.guest, self.starts_at, self.ends_at)
       errors.add("starts_at", "Fecha ya reservada") 
     end
   end
@@ -88,13 +88,13 @@ class Meeting < ActiveRecord::Base
     true
   end
 
-  def self.valid_date?(host, guest, date)
-    waps = lambda do |user, date| 
+  def self.valid_date?(host, guest, starts, ends)
+    waps = lambda do |user, starts, ends| 
       Meeting.find(:first, 
-        :conditions => ["(host_id = ? OR guest_id = ?) AND DATE(starts_at) = ?", user, user, date.strftime("%Y-%m-%d")])
+                   :conditions => ["(host_id = ? OR guest_id = ?) AND (starts_at between ? and ? OR ends_at between ? and ?)", user, user, starts, ends, starts, ends])
     end
     
-    return false if waps.call(host, date).present? || waps.call(guest, date)
+    return false if waps.call(host, starts, ends).present? || waps.call(guest, starts, ends)
     true
   end
 

@@ -19,7 +19,13 @@ end
 
 Profile.blueprint do
   company_name { Sham.word }
+  sectors << Sector.first
 end
+
+Sector.blueprint do
+  name Sham.word
+end
+
 
 Preference.blueprint do
   meetings_duration 15
