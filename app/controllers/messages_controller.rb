@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
 
-  cache_sweeper :user_message_sweeper, :only => [:create, :show]
+  cache_sweeper :user_message_sweeper, :only => [:create, :show, :destroy]
 
   before_filter :load_message, :only => [:show, :destroy]
   before_filter :mark_as_read, :only => :show
@@ -14,12 +14,12 @@ class MessagesController < ApplicationController
   def received
     @messages = current_user.messages_received.find(:all,
       :select => "messages.id, messages.subject, sender_id, messages.created_at, user_messages.state as state", 
-      :conditions => ["user_messages.state != 'deleted'"], :include => {:sender => :profile}).paginate(:per_page => 20, :page => params[:page])
+      :conditions => ["user_messages.state != 'deleted'"], :include => {:sender => :profile}).paginate(:per_page => 10, :page => params[:page])
     render :action => 'index'
   end
 
   def sent
-    @messages = current_user.messages_sent.paginate(:per_page => 20, :page => params[:page],
+    @messages = current_user.messages_sent.paginate(:per_page => 10, :page => params[:page],
       :include => {:receivers => :profile})
     render :action => 'index'
   end
