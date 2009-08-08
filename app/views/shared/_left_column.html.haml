@@ -1,90 +1,91 @@
-#left-column
-  - restrict_to 'admin' do
-    %ul
-      %li 
-        = link_to "Mis mensajes (#{current_user.unread_messages_count} sin leer)", received_messages_path
-        %p 
-          Envíe y reciba mensajes y notificaciones de empresas, expositores y administradores.
+- cache "#{current_user.login}-left-column" do 
+  #left-column
+    - restrict_to 'admin' do
+      %ul
+        %li 
+          = link_to "Mis mensajes (#{current_user.unread_messages_count} sin leer)", received_messages_path
+          %p 
+            Envíe y reciba mensajes y notificaciones de empresas, expositores y administradores.
 
-      %li 
-        = link_to "Agenda de los expositores", meetings_type_path("exhibitors")
-        %p 
-          Conozca y edite la agenda de los expositores de Andalucía Sabor.
+        %li 
+          = link_to "Agenda de los expositores", meetings_type_path("exhibitors")
+          %p 
+            Conozca y edite la agenda de los expositores de Andalucía Sabor.
 
-      %li
-        = link_to "Agenda de los compradores", meetings_type_path("national_buyers")
-        %p
-          Conozca y edite la agenda de las empresas visitantes a Andalucía Sabor.
+        %li
+          = link_to "Agenda de los compradores", meetings_type_path("national_buyers")
+          %p
+            Conozca y edite la agenda de las empresas visitantes a Andalucía Sabor.
 
-      %li
-        = link_to "Agenda de Extenda", meetings_type_path("international_buyers")
-        %p
-          Conozca la agenda de los compradores internacionales de la feria.
+        %li
+          = link_to "Agenda de Extenda", meetings_type_path("international_buyers")
+          %p
+            Conozca la agenda de los compradores internacionales de la feria.
 
-      %li.last
-        = link_to "Alta de nuevos participantes", users_path
-        %p
-          Dé de alta, de baja o edite información sobre expositores y empresas.
+        %li.last
+          = link_to "Alta de nuevos participantes", users_path
+          %p
+            Dé de alta, de baja o edite información sobre expositores y empresas.
 
-  - restrict_to 'exhibitor' do
-    %ul
-      %li
-        = link_to "Mis mensajes (#{current_user.unread_messages_count} sin leer)", received_messages_path
-        %p
-          Envíe y reciba mensajes de empresas, expositores y administradores.
-     
-      %li
-        = link_to "Información sobre empresas visitantes", search_path
-        %p
-          Acceda a la información sobre las empresas compradoras.
-      
-      %li 
-        = link_to "Solicitar Citas", meetings_path
-        %p
-          Seleccione empresas de su interés y solicite citas con ellas.
-      
-      %li.last
-        = link_to "Mi agenda", root_path
-        %p
-          Recuerde citas, cancele encuentros o imprima su agenda de citas comerciales.
+    - restrict_to 'exhibitor' do
+      %ul
+        %li
+          = link_to "Mis mensajes (#{current_user.unread_messages_count} sin leer)", received_messages_path
+          %p
+            Envíe y reciba mensajes de empresas, expositores y administradores.
+       
+        %li
+          = link_to "Información sobre empresas visitantes", search_path
+          %p
+            Acceda a la información sobre las empresas compradoras.
+        
+        %li 
+          = link_to "Solicitar Citas", meetings_path
+          %p
+            Seleccione empresas de su interés y solicite citas con ellas.
+        
+        %li.last
+          = link_to "Mi agenda", root_path
+          %p
+            Recuerde citas, cancele encuentros o imprima su agenda de citas comerciales.
 
-  - restrict_to "national_buyer | internation_buyer" do
-    %ul
-      %li
-        = link_to "Mis mensajes (#{current_user.unread_messages_count} sin leer)", received_messages_path
-        %p
-          Envíe y reciba mensajes de empresas, expositores y administradores.
+    - restrict_to "national_buyer | internation_buyer" do
+      %ul
+        %li
+          = link_to "Mis mensajes (#{current_user.unread_messages_count} sin leer)", received_messages_path
+          %p
+            Envíe y reciba mensajes de empresas, expositores y administradores.
 
-      %li
-        = link_to "Información sobre expositores", search_path
-        %p
-          Acceda a información sobre los expositores de Andalucía Sabor.
+        %li
+          = link_to "Información sobre expositores", search_path
+          %p
+            Acceda a información sobre los expositores de Andalucía Sabor.
 
-      %li.last
-        = link_to "Mi agenda", root_path
-        %p
-          Recuerde citas, cancele encuentros o imprima su agenda de citas comerciales.
+        %li.last
+          = link_to "Mi agenda", root_path
+          %p
+            Recuerde citas, cancele encuentros o imprima su agenda de citas comerciales.
 
 
-  - restrict_to 'extenda' do
-    %ul
-      %li
-        = link_to "Mis mensajes (#{current_user.unread_messages_count} sin leer)", received_messages_path
-        %p
-          Envíe y reciba mensajes de empresas, expositores y administradores.
+    - restrict_to 'extenda' do
+      %ul
+        %li
+          = link_to "Mis mensajes (#{current_user.unread_messages_count} sin leer)", received_messages_path
+          %p
+            Envíe y reciba mensajes de empresas, expositores y administradores.
 
-      %li
-        = link_to "Información sobre expositores", search_path
-        %p
-          Acceda a información sobre los expositores de Andalucía Sabor.
+        %li
+          = link_to "Información sobre expositores", search_path
+          %p
+            Acceda a información sobre los expositores de Andalucía Sabor.
 
-      %li
-        = link_to "Agenda de Extenda", meetings_type_path("international_buyers")
-        %p
-          Recuerde, cancele o imprima su agenda de citas comerciales.
+        %li
+          = link_to "Agenda de Extenda", meetings_type_path("international_buyers")
+          %p
+            Recuerde, cancele o imprima su agenda de citas comerciales.
 
-      %li.last
-        = link_to "Confirmar citas (#{Meeting.with_type("international_buyer").with_state('pending').length} nuevas)", meetings_to_confirm_path
-        %p
-          Valide las solicitudes de citas comerciales emitidas por los expositores.
+        %li.last
+          = link_to "Confirmar citas (#{Meeting.with_type("international_buyer").with_state('pending').length} nuevas)", meetings_to_confirm_path
+          %p
+            Valide las solicitudes de citas comerciales emitidas por los expositores.
 

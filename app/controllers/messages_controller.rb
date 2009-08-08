@@ -1,5 +1,7 @@
 class MessagesController < ApplicationController
 
+  cache_sweeper :user_message_sweeper, :only => [:create, :show]
+
   before_filter :load_message, :only => [:show, :destroy]
   before_filter :mark_as_read, :only => :show
 

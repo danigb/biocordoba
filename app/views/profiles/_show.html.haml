@@ -1,49 +1,50 @@
-%p
-  Empresa:
-  = h profile.company_name
-%p 
-  Dirección:
-  = h profile_value(profile.address)
-%p 
-  C.P:
-  = h profile_value(profile.zip_code)
-%p 
-  Localidad:
-  = !profile.town.nil? ? profile.town.name : "No definido"
-%p 
-  Provincia:
-  = !profile.province.nil? ? profile.province.name : "No definido"
-%p 
-  Teléfono:
-  = profile_value(profile.phone)
-%p 
-  Fax:
-  = profile_value(profile.fax)
-%p 
-  Sectores:
-  = profile.sectors.inject(""){|sum, e| sum += "#{e.name}, "}.gsub(/, $/, ".")
-- if profile.user.is_exhibitor?
+- cache profile do
+  %p
+    Empresa:
+    = h profile.company_name
   %p 
-    Productos:
-    = profile_value(profile.products)
+    Dirección:
+    = h profile_value(profile.address)
   %p 
-    Envases:
-    = profile_value(profile.packages)
-- elsif profile.user.is_buyer?
+    C.P:
+    = h profile_value(profile.zip_code)
   %p 
-    Perfil comercial:
-    = profile_value(profile.commercial_profile)
+    Localidad:
+    = !profile.town.nil? ? profile.town.name : "No definido"
   %p 
-    Productos:
-    = profile_value(profile.products)
-  
-%p 
-  Email:
-  = profile.user.email
-%p 
-  Web:
-  = profile_value(profile.website)
-%p 
-  Stand de Andalucía Sabor:
-  = profile_value(profile.stand)
+    Provincia:
+    = !profile.province.nil? ? profile.province.name : "No definido"
+  %p 
+    Teléfono:
+    = profile_value(profile.phone)
+  %p 
+    Fax:
+    = profile_value(profile.fax)
+  %p 
+    Sectores:
+    = profile.sectors.inject(""){|sum, e| sum += "#{e.name}, "}.gsub(/, $/, ".")
+  - if profile.user.is_exhibitor?
+    %p 
+      Productos:
+      = profile_value(profile.products)
+    %p 
+      Envases:
+      = profile_value(profile.packages)
+  - elsif profile.user.is_buyer?
+    %p 
+      Perfil comercial:
+      = profile_value(profile.commercial_profile)
+    %p 
+      Productos:
+      = profile_value(profile.products)
+    
+  %p 
+    Email:
+    = profile.user.email
+  %p 
+    Web:
+    = profile_value(profile.website)
+  %p 
+    Stand de Andalucía Sabor:
+    = profile_value(profile.stand)
 

@@ -1,6 +1,5 @@
 - title "Ficha del usuario"
 = render :partial => 'show', :locals => {:profile => @profile}
 %p
-  - if logged_in?
-    = link_to_meeting(@profile.user)
-    = link_to "Enviar Mensaje", new_message_path(:receiver => @profile.company_name)
+  = link_to_meeting(@profile.user)
+  = link_to "Enviar Mensaje", new_message_path(:receiver => @profile.company_name)
