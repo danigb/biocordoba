@@ -30,3 +30,6 @@ config.action_mailer.delivery_method = :test
 config.gem "rspec", :lib => false, :version => ">= 1.2.0" 
 config.gem "rspec-rails", :lib => false, :version => ">= 1.2.0" 
 config.gem "faker"
+config.gem "webrat", :lib => false, :version => ">=0.4.3"
+config.gem "cucumber", :lib => false, :version => ">=0.2.2"
+
