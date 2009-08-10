@@ -16,6 +16,8 @@ class Meeting < ActiveRecord::Base
     errors.add("host_id", "Usted debe ser un expositor") unless self.host && self.host.is_exhibitor?
     errors.add("guest_id", "Debe invitar a un comprador") unless self.guest && (self.guest.is_buyer?)
 
+    # errors.add("host_id", "Has superado tu número de citas máximo por día") if self.host.meetings
+
     if new_record? && !Meeting.between(self.host, self.guest).new_record?
       errors.add("guest_id", "Ya tienes una cita con este comprador") 
     end
@@ -91,11 +93,23 @@ class Meeting < ActiveRecord::Base
   def self.valid_date?(host, guest, starts, ends)
     waps = lambda do |user, starts, ends| 
       Meeting.find(:first, 
-                   :conditions => ["(host_id = ? OR guest_id = ?) AND (starts_at between ? and ? OR ends_at between ? and ?)", user, user, starts, ends, starts, ends])
+         :conditions => ["(host_id = ? OR guest_id = ?) AND 
+          (starts_at between ? and ? OR ends_at between ? and ?)", 
+           user, user, starts, ends, starts, ends])
     end
     
-    return false if waps.call(host, starts, ends).present? || waps.call(guest, starts, ends)
+    return false if waps.call(host, starts, ends).present? || waps.call(guest, starts, ends).present?
     true
+  end
+
+  #
+  #
+  #DASDK ASLDASKD ALSDKA SASKLD ASKDLASKD KSDKK K KSKA DLAKDLA KDLASDK 
+  #
+  #
+  #
+  def self.valid_number_meeting?(user, date)
+    user.meetings(date)
   end
 
   #Fecha de la cita formateada correctamente

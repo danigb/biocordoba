@@ -33,3 +33,5 @@ config.gem "faker"
 config.gem "webrat", :lib => false, :version => ">=0.4.3"
 config.gem "cucumber", :lib => false, :version => ">=0.2.2"
 
+
+ActionMailer::Base.default_url_options[:host] = "localhost:3000"
