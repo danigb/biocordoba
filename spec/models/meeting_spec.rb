@@ -117,7 +117,7 @@ describe Meeting do
 
     it "should validate a date belongs to event" do
       success_date = DateTime.parse "#{PREFS[:event_start_day]} #{PREFS[:event_day_start_at]}:00"
-      wrong_date = DateTime.parse "#{PREFS[:event_start_day]} #{PREFS[:event_day_start_at] - 1}:00"
+      wrong_date = DateTime.parse("#{PREFS[:event_start_day]} #{PREFS[:event_day_start_at]}:00") - 1.hour
 
       Meeting.valid_event_date?(success_date).should be_true
       Meeting.valid_event_date?(wrong_date).should be_false
