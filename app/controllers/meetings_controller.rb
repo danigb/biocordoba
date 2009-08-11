@@ -1,6 +1,7 @@
 class MeetingsController < ApplicationController
   before_filter :login_required
   before_filter :access_control, :only => [:show, :update, :change_note]
+  # before_filter :show_meetings_remaining, :only => [:new, :create]
   
   def index
   end
@@ -41,6 +42,8 @@ class MeetingsController < ApplicationController
     else
       if @meeting.errors[:starts_at]
         flash.now[:error] = "No se ha guardado la cita. #{@meeting.errors[:starts_at]}."
+      elsif @meeting.errors[:max_meetings]
+        flash.now[:error] = "No se ha guardado la cita. Has superado el número máximo de citas."
       else
         flash.now[:error] = "No se ha guardado la cita. Ya tienes un cita con este comprador."
       end

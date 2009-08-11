@@ -117,7 +117,7 @@ describe Meeting do
       @host.should have(4).meetings(Event.start_day)
       meeting = Meeting.make_unsaved(:host => @host, :guest => User.make(:national_buyer), :starts_at => @meeting.starts_at + 3.hours)
       meeting.valid?
-      meeting.errors.on(:host_id).should == "Has superado tu número de citas máximo para este día"
+      meeting.errors.on(:max_meetings).should == "Has superado tu número de citas máximo para este día"
     end
 
     it "a host should create a meeting with a guest although the guest canceled another one before"

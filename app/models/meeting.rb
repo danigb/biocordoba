@@ -16,7 +16,7 @@ class Meeting < ActiveRecord::Base
     errors.add("host_id", "Usted debe ser un expositor") unless self.host && self.host.is_exhibitor?
     errors.add("guest_id", "Debe invitar a un comprador") unless self.guest && (self.guest.is_buyer?)
 
-    errors.add("host_id", "Has superado tu número de citas máximo para este día") unless Meeting.valid_meetings_number?(self.host, self.starts_at)
+    errors.add("max_meetings", "Has superado tu número de citas máximo para este día") unless Meeting.valid_meetings_number?(self.host, self.starts_at)
 
     if new_record? && !Meeting.between(self.host, self.guest).new_record?
       errors.add("guest_id", "Ya tienes una cita con este comprador") 

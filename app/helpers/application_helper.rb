@@ -98,7 +98,7 @@ module ApplicationHelper
     if number > 0
       "<h2>Puedes hacer #{pluralize(number, 'cita', 'citas')} más este día</h2>"
     else
-      "<h2> Sólo puedes hacer #{current_user.meetings(@date).length} citas cada día </h2>"
+      "<h2> No puedes hacer más citas hoy </h2>"
     end
   end
 end
