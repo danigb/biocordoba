@@ -93,12 +93,4 @@ module ApplicationHelper
     end
   end
 
-  def meetings_remaining_info
-    number = current_user.meetings_remaining(@date)
-    if number > 0
-      "<h2>Puedes hacer #{pluralize(number, 'cita', 'citas')} más este día</h2>"
-    else
-      "<h2> No puedes hacer más citas hoy </h2>"
-    end
-  end
 end
