@@ -96,17 +96,29 @@ describe Meeting do
     end
 
     it "valid_date behaviour" do
-      meeting = Meeting.make_unsaved(:host => User.make, :guest => @guest, :starts_at => @meeting.starts_at)
+      meeting = Meeting.new(:host => User.make, :guest => @guest, :starts_at => @meeting.starts_at)
+      meeting.valid?
       Meeting.valid_date?(meeting.host, meeting.guest, meeting.starts_at, meeting.ends_at).should == false
-      meeting = Meeting.make_unsaved(:host => User.make, :guest => @guest, :starts_at => @meeting.starts_at + 1.hour)
+
+      meeting = Meeting.new(:host => User.make, :guest => @guest, :starts_at => @meeting.starts_at + 1.hour)
+      meeting.valid?
       Meeting.valid_date?(meeting.host, meeting.guest, meeting.starts_at, meeting.ends_at).should == true
     end
 
     it "should not have two meetings in same date" do
-      # meeting = Meeting.make(:host => User.make, :guest => @guest, :starts_at => @meeting.starts_at)
-      # meeting.should_not be_valid
-      # meeting.should have(1).errors_on(:starts_at)     
+      meeting = Meeting.make_unsaved(:host => User.make, :guest => @guest, :starts_at => @meeting.starts_at)
+      meeting.should_not be_valid
     end
+
+    it "expositor only can create 4 meetings a day" do
+      2.times do |i|
+        meeting = Meeting.make(:host => @host, :guest => User.make(:national_buyer), :starts_at => @meeting.starts_at + ((i+1)*20).minutes)
+      end
+      #Comprobar que tenemos dos para hoy
+      #Si metemos otra debe saltar la validación
+    end
+
+
   end
 
   describe "functions" do

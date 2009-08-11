@@ -9,7 +9,7 @@ User.blueprint do
   role_id Role.find_by_title("exhibitor") # Exhibitor by default
 
   profile Profile.make
-  preference_id Preference.make
+  preference Preference.make
 end
 
 Role.all.each do |role|
