@@ -111,13 +111,16 @@ describe Meeting do
     end
 
     it "expositor only can create 4 meetings a day" do
-      2.times do |i|
+      3.times do |i|
         meeting = Meeting.make(:host => @host, :guest => User.make(:national_buyer), :starts_at => @meeting.starts_at + ((i+1)*20).minutes)
       end
-      #Comprobar que tenemos dos para hoy
-      #Si metemos otra debe saltar la validación
+      @host.should have(4).meetings(Event.start_day)
+      meeting = Meeting.make_unsaved(:host => @host, :guest => User.make(:national_buyer), :starts_at => @meeting.starts_at + 3.hours)
+      meeting.valid?
+      meeting.errors.on(:host_id).should == "Has superado tu número de citas máximo para este día"
     end
 
+    it "a host should create a meeting with a guest although the guest canceled another one before"
 
   end
 
@@ -147,6 +150,26 @@ describe Meeting do
 
       Meeting.valid_event_date?(success_date).should be_true
       Meeting.valid_event_date?(wrong_date).should be_false
+    end
+  end
+
+  describe "User.meetings" do
+    before do
+      @meeting = Meeting.make
+      @host = @meeting.host
+      @guest = @meeting.guest
+    end
+
+    it "@host should have 1 meetings for the first event day" do
+      @host.should have(1).meetings(Event.start_day)
+    end
+
+    it "@host should have 1 meeting the first event day and 2 meetings the next day" do
+      @host.should have(1).meetings(Event.start_day)
+      2.times do |i|
+        Meeting.make(:host => @host, :starts_at => (@meeting.starts_at + 1.day) + 20*(i+1).minutes)
+      end
+      @host.should have(2).meetings(Event.start_day + 1.day)
     end
   end
 end

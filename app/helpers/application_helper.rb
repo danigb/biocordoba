@@ -92,4 +92,13 @@ module ApplicationHelper
       link_to "Solicitar cita", meeting_into_and_path(current_user, user)
     end
   end
+
+  def meetings_remaining_info
+    number = current_user.meetings_remaining(@date)
+    if number > 0
+      "<h2>Puedes hacer #{pluralize(number, 'cita', 'citas')} más este día</h2>"
+    else
+      "<h2> Sólo puedes hacer #{current_user.meetings(@date).length} citas cada día </h2>"
+    end
+  end
 end
