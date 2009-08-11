@@ -1,5 +1,6 @@
 - title "Nuevo Mensaje"
-
-= render :partial => 'form'
-%p
-  = link_to "Volver", messages_path 
+#messages
+  %h3 Redactar mensaje
+  = render :partial => 'form'
+  %p
+    = link_to "Volver", messages_path 
