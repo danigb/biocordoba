@@ -121,7 +121,8 @@ form input {
   background: url('/images/header-claim-agenda.jpg') no-repeat;
   float: left;
   height: 210px;
-  width: 477px; }
+  width: 477px;
+  margin-right: 10px; }
   #header h2.claim span {
     display: none; }
 
@@ -178,6 +179,7 @@ form input {
       font-size: 12px;
       list-style: disc; }
 
+/* Identificadores */
 #content {
   min-height: 465px; }
   #content .main_content {
@@ -226,6 +228,12 @@ form input {
       border-bottom: 1px dotted #fff; }
       #right-column .box_dark_green .last_messages span {
         font-style: italic; }
+
+#user-info {
+  margin-top: 170px;
+  text-align: right;
+  width: 230px;
+  float: left; }
 
 #changelog h1 {
   margin: 1.5em 0; }
