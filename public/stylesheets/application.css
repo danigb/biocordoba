@@ -121,7 +121,8 @@ form input {
   background: url('/images/header-claim-agenda.jpg') no-repeat;
   float: left;
   height: 210px;
-  width: 477px; }
+  width: 477px;
+  margin-right: 10px; }
   #header h2.claim span {
     display: none; }
 
@@ -178,6 +179,7 @@ form input {
       font-size: 12px;
       list-style: disc; }
 
+/* Identificadores */
 #content {
   min-height: 465px; }
   #content .main_content {
@@ -215,14 +217,23 @@ form input {
 
 #right-column {
   margin-left: 10px; }
-  #right-column .box_green {
-    background: #70b120 url(/images/content-display-bg.png) left top;
-    height: 71px;
-    border: #4c800c 1px solid; }
   #right-column .box_dark_green {
     background: #4c800c;
     min-height: 423px;
-    border-top: 5px #000 solid; }
+    border-top: 5px #000 solid;
+    color: #fff; }
+    #right-column .box_dark_green .last_messages {
+      margin: 15px 35px 15px 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px dotted #fff; }
+      #right-column .box_dark_green .last_messages span {
+        font-style: italic; }
+
+#user-info {
+  margin-top: 170px;
+  text-align: right;
+  width: 230px;
+  float: left; }
 
 #changelog h1 {
   margin: 1.5em 0; }
@@ -287,11 +298,12 @@ span.canceled {
   color: red; }
 
 /* Images */
-.clip_img {
-  background: transparent url("/images/clip.jpg") left top;
-  width: 62px;
-  height: 72px;
-  float: left; }
+.last_messages_img {
+  background: transparent url("/images/last_messages.jpg") left top;
+  width: 230px;
+  height: 73px; }
+  .last_messages_img h3 {
+    display: none; }
 
 .oil_img {
   background: transparent url("/images/oil.jpg") left top;
