@@ -241,14 +241,17 @@ form
 
 #right-column
   :margin-left 10px  
-  .box_green
-    :background = !green url("/images/content-display-bg.png") left top
-    :height 71px
-    :border = !dark_green 1px solid
   .box_dark_green
     :background = !dark_green  
     :min-height 423px
     :border-top 5px #000 solid
+    :color #fff
+    .last_messages
+      :margin 15px 35px 15px 15px
+      :padding-bottom 15px
+      :border-bottom 1px dotted #fff
+      span 
+        :font-style italic
 
 #changelog
   h1
@@ -319,11 +322,12 @@ span.canceled
 /*
   Images
 
-.clip_img
-  :background transparent url("/images/clip.jpg") left top
-  :width 62px
-  :height 72px
-  :float left
+.last_messages_img
+  :background transparent url("/images/last_messages.jpg") left top
+  :width 230px
+  :height 73px
+  h3
+    :display none
 .oil_img
   :background transparent url("/images/oil.jpg") left top
   :height 263px
