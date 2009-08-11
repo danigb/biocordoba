@@ -33,7 +33,6 @@ class MeetingsController < ApplicationController
   def create 
     @meeting = Meeting.new(params[:meeting])
     @meeting.starts_at = Time.parse("#{params[:date]} #{@meeting.starts_at.strftime("%k:%M")}")
-    @meeting.ends_at = @meeting.starts_at + current_user.preference.meetings_duration.minutes
     @meeting.host = current_user
 
     if @meeting.save

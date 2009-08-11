@@ -23,12 +23,17 @@ class Meeting < ActiveRecord::Base
     end
 
     unless Meeting.valid_event_date?(self.starts_at)
-      errors.add("starts_at", "Fecha fuera de evento")
+      errors.add("starts_at", "La cita debe estar dentro de las jornadas del evento")
     end
 
     if new_record? && !Meeting.valid_date?(self.host, self.guest, self.starts_at, self.ends_at)
-      errors.add("starts_at", "Fecha ya reservada") 
+      errors.add("starts_at", "Ya tienes otra cita pendiente o aceptada durante el periodo seleccionado") 
     end
+  end
+
+  #Le ponemos la fecha fin automáticamente
+  def before_validation
+    self.ends_at =(self.starts_at + self.host.preference.meetings_duration.minutes)
   end
 
   #AASM 
@@ -107,7 +112,7 @@ class Meeting < ActiveRecord::Base
   #DASDK ASLDASKD ALSDKA SASKLD ASKDLASKD KSDKK K KSKA DLAKDLA KDLASDK 
   #
   #
-  #
+  #TODO esté método se usa?
   def self.valid_number_meeting?(user, date)
     user.meetings(date)
   end
@@ -128,5 +133,10 @@ class Meeting < ActiveRecord::Base
     elsif(self.guest == me)
       self.host
     end
+  end
+
+  #Duración de la cita
+  def duration
+    (self.ends_at - self.starts_at)/60
   end
 end

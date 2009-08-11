@@ -32,6 +32,11 @@ describe Meeting do
       @meeting = Meeting.make(:guest => @buyer)
       @meeting.should be_pending
     end
+
+    it "duration should be 15 minutes by default" do
+      @meeting.ends_at.should == @meeting.starts_at + 15.minutes
+      @meeting.duration.should == 15
+    end
   end
 
   describe "named_scope" do
@@ -87,10 +92,19 @@ describe Meeting do
     it "should not have a meeting out of event" do
       meeting =  Meeting.make_unsaved(:starts_at => Time.now)
       meeting.should have(1).errors_on(:starts_at)     
+      meeting.errors.on(:starts_at).should == "La cita debe estar dentro de las jornadas del evento"
+    end
+
+    it "valid_date behaviour" do
+      meeting = Meeting.make_unsaved(:host => User.make, :guest => @guest, :starts_at => @meeting.starts_at)
+      Meeting.valid_date?(meeting.host, meeting.guest, meeting.starts_at, meeting.ends_at).should == false
+      meeting = Meeting.make_unsaved(:host => User.make, :guest => @guest, :starts_at => @meeting.starts_at + 1.hour)
+      Meeting.valid_date?(meeting.host, meeting.guest, meeting.starts_at, meeting.ends_at).should == true
     end
 
     it "should not have two meetings in same date" do
-      # meeting = Meeting.make_unsaved(:host => User.make, :guest => @guest, :starts_at => @meeting.starts_at)
+      # meeting = Meeting.make(:host => User.make, :guest => @guest, :starts_at => @meeting.starts_at)
+      # meeting.should_not be_valid
       # meeting.should have(1).errors_on(:starts_at)     
     end
   end
