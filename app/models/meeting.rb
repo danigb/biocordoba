@@ -16,7 +16,7 @@ class Meeting < ActiveRecord::Base
     errors.add("host_id", "Usted debe ser un expositor") unless self.host && self.host.is_exhibitor?
     errors.add("guest_id", "Debe invitar a un comprador") unless self.guest && (self.guest.is_buyer?)
 
-    # errors.add("host_id", "Has superado tu número de citas máximo por día") if self.host.meetings
+    errors.add("max_meetings", "Has superado tu número de citas máximo para este día") unless Meeting.valid_meetings_number?(self.host, self.starts_at)
 
     if new_record? && !Meeting.between(self.host, self.guest).new_record?
       errors.add("guest_id", "Ya tienes una cita con este comprador") 
@@ -82,7 +82,7 @@ class Meeting < ActiveRecord::Base
   def self.valid_event_date?(date)
     date = Date.parse(date) unless [Date, DateTime, Time, ActiveSupport::TimeWithZone].include? date.class 
     
-    if date < Date.parse(PREFS[:event_start_day]) || date > Date.parse(PREFS[:event_end_day])
+    if date < Event.start_day || date > Event.end_day
       return false
     end
 
@@ -107,14 +107,8 @@ class Meeting < ActiveRecord::Base
     true
   end
 
-  #
-  #
-  #DASDK ASLDASKD ALSDKA SASKLD ASKDLASKD KSDKK K KSKA DLAKDLA KDLASDK 
-  #
-  #
-  #TODO esté método se usa?
-  def self.valid_number_meeting?(user, date)
-    user.meetings(date)
+  def self.valid_meetings_number?(user, date)
+    user.meetings(date).length < user.preference.meetings_number
   end
 
   #Fecha de la cita formateada correctamente

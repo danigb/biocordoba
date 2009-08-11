@@ -1,7 +1,9 @@
 class MeetingsController < ApplicationController
   before_filter :login_required
   before_filter :access_control, :only => [:show, :update, :change_note]
-  
+  before_filter :show_meetings_remaining, :only => :new
+  include ActionView::Helpers::TextHelper
+
   def index
   end
 
@@ -22,12 +24,14 @@ class MeetingsController < ApplicationController
   end
 
   def new
-    @date = params[:date].present? ? Date.parse(params[:date]) : Date.parse(CONFIG[:admin][:preferences][:event_start_day])
-    @host = User.find_by_login(params[:host_id])
-    @guest = User.find_by_login(params[:guest_id])
+    unless @loaded #FIX que impide que se cargue de nuevo si lo hemos cargado en el before filter
+      @host = User.find_by_login(params[:host_id])
+      @guest = User.find_by_login(params[:guest_id])
 
-    !valid_host_and_guest?(@host, @guest) || !valid_event_date?(@date) || !valid_guest?(@guest)
-    @meeting = Meeting.between(@host, @guest)
+      !valid_host_and_guest?(@host, @guest) || !valid_event_date?(@date) || !valid_guest?(@guest)
+      @date = params[:date].present? ? Date.parse(params[:date]) : current_user.preference.event_start_day
+      @meeting = Meeting.between(@host, @guest)
+    end
   end
 
   def create 
@@ -41,6 +45,8 @@ class MeetingsController < ApplicationController
     else
       if @meeting.errors[:starts_at]
         flash.now[:error] = "No se ha guardado la cita. #{@meeting.errors[:starts_at]}."
+      elsif @meeting.errors[:max_meetings]
+        flash.now[:error] = "No se ha guardado la cita. Has superado el número máximo de citas."
       else
         flash.now[:error] = "No se ha guardado la cita. Ya tienes un cita con este comprador."
       end
@@ -146,6 +152,27 @@ class MeetingsController < ApplicationController
     unless current_user == @meeting.host || current_user == @meeting.guest || current_user.is_admin_or_extenda?
       flash[:error] = "No puedes acceder a ver esa cita"
       redirect_to root_path
+    end
+  end
+
+  def show_meetings_remaining
+    @host = User.find_by_login(params[:host_id])
+    @guest = User.find_by_login(params[:guest_id])
+
+    !valid_host_and_guest?(@host, @guest) || !valid_event_date?(@date) || !valid_guest?(@guest)
+    @date = params[:date].present? ? Date.parse(params[:date]) : current_user.preference.event_start_day
+    @meeting = Meeting.between(@host, @guest)
+    @remaining = current_user.meetings_remaining(@date)
+    @loaded = true
+
+    if @meeting.new_record?
+      if @remaining > 0
+        flash[:notice] = "Puedes hacer #{pluralize(@remaining, 'cita', 'citas')} más este día"
+      else
+        flash[:error] = "Has superado el número máximo de citas para este día"
+      end
+    else
+      flash[:notice] = "Ya tienes una cita con este comprador, ¿la quieres cancelar?"
     end
   end
 end

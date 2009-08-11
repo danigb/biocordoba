@@ -92,4 +92,5 @@ module ApplicationHelper
       link_to "Solicitar cita", meeting_into_and_path(current_user, user)
     end
   end
+
 end

@@ -22,22 +22,23 @@
 - content_for(:right_column) do
   %center
     - if @meeting.new_record?
-      %h2 Crear una cita
+      - if @remaining.nil? || @remaining > 0
+        %h2 Crear una cita
 
-      La duración de la cita será de
-      %strong
-        = current_user.preference.meetings_duration
-      minutos
+        La duración de la cita será de
+        %strong
+          = current_user.preference.meetings_duration
+        minutos
 
-      .form
-        - form_for @meeting do |f|
-          %p= f.time_select :starts_at, {:minute_step => 15} 
-          %p= f.text_area :note_host, :rows => 10, :cols => 20
-          
-          = hidden_field_tag "date", @date
-          = f.hidden_field :guest_id, :value => @guest.id
-          %p
-            = submit_tag "Crear"
+        .form
+          - form_for @meeting do |f|
+            %p= f.time_select :starts_at, {:minute_step => 15} 
+            %p= f.text_area :note_host, :rows => 10, :cols => 20
+            
+            = hidden_field_tag "date", @date
+            = f.hidden_field :guest_id, :value => @guest.id
+            %p
+              = submit_tag "Crear"
     - else
       Ya tienes una cita con este comprador
       

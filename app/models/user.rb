@@ -99,8 +99,12 @@ class User < ActiveRecord::Base
   def meetings(date, days = 1)
     start_date = Date.new(date.year, date.month, date.day) 
     Meeting.find(:all, 
-      :conditions => ['(host_id = ? or guest_id = ?) and starts_at between ? and ? and state = "accepted"', 
+      :conditions => ['(host_id = ? or guest_id = ?) and DATE(starts_at) between ? and ? and state = "accepted"', 
         self.id, self.id, start_date, start_date + days], :order => 'starts_at')
+  end
+
+  def meetings_remaining(date)
+    self.preference.meetings_number - self.meetings(date).length
   end
 
   # Devuelve los eventos comunes, es decir no tienen actor a quien se dirige y los eventos concretos hacia él

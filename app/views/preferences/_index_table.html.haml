@@ -11,7 +11,7 @@
   %tbody 
     - for preference in preferences
       %tr
-        %td= preference.id == 1 ? 'Master' : preference.users.map{|e| link_to(e.login, edit_admin_user_path(e)) + " "}
+        %td= preference.id == 1 ? 'Master' : preference.users.map{|e| link_to(e.login, edit_user_path(e)) + " "}
         %td=h preference.meetings_number 
         %td=h preference.meetings_duration 
         %td=h preference.event_start_day 
