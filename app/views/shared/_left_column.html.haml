@@ -22,10 +22,18 @@
           %p
             Conozca la agenda de los compradores internacionales de la feria.
 
-        %li.last
+        %li
           = link_to "Alta de nuevos participantes", users_path
           %p
             Dé de alta, de baja o edite información sobre expositores y empresas.
+        %li.last
+          = link_to "Sectores", sectors_path
+          ,
+          = link_to "preferencias", preferences_path
+          o
+          = link_to "monitorización de usuarios", messages_monitors_path
+          %p
+            Administra otros parámetros de la aplicación.
 
     - restrict_to 'exhibitor' do
       %ul
