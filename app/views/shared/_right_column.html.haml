@@ -1,8 +1,10 @@
 - if yield(:right_column).nil?
   - cache "#{@current_user.login}-timeline" do
-    Últimos eventos 
-    %hr/
-    - for event in current_user.timeline_events 
-      .event= print_event(event)
+    .last_messages_img
+      %h3 Últimos Mensajes
+    .box_dark_green
+      - for event in current_user.timeline_events 
+        .last_messages
+          = print_event(event)
 - else
   = yield(:right_column)
