@@ -94,6 +94,16 @@ function load_buyers(sector_id){
   $.get('/ajax/buyers', {'sector_id': sector_id}, null, "script" ); return false;
 }
 
+function getMeetings(host_id, guest, date){
+    var elem = $("#meetings-"+host_id);
+    if(elem.html() == ""){
+      $.get('/ajax/meetings', 
+          {'host_id':host_id, 'guest':guest, 'date':date}, null, "script" ); 
+    }else{
+      elem.slideUp().html("");
+    }
+/* , :url => "/ajax/meetings?host_id=#{host.id}&guest=#{'1' if @guest}&date=#{params[:date]}" */
+}
 // All ajax requests will trigger the format.xml block
 // of +respond_to do |format|+ declarations
 $.ajaxSetup({
