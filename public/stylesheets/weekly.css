@@ -31,4 +31,4 @@
 #mini_day_row #click_hour{height:57px;width:55px;border-right:1px solid #cfe6ec;padding:17px 1px 0px 18px;float:left;}
 #mini_day_row #click_hour a{color:#000;}
 #mini_day_row #click_hour:hover{background:#C7F980;}
-#day_row #week_event.pending{background:#F9F89E; border-left:4px solid #F9F89E;}
+#week_event.pending{background:#F9F89E; border-left:4px solid #F9F89E;}

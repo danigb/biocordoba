@@ -27,7 +27,7 @@ class Meeting < ActiveRecord::Base
     end
 
     if new_record? && !Meeting.valid_date?(self.host, self.guest, self.starts_at, self.ends_at)
-      errors.add("starts_at", "Ya tienes otra cita pendiente o aceptada durante el periodo seleccionado") 
+      errors.add("starts_at", "Comprueba que ni tu ni el comprador tengais una cita aceptada o pendiente durante el periodo seleccionado.") 
     end
   end
 

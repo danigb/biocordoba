@@ -4,9 +4,16 @@
   = javascript_include_tag "jquery", "application"
 
 - if @meeting.canceled?
-  %span.canceled Atención: esta cita está cancelada 
+  #flash_error
+    Esta cita está cancelada.
   %p
     = @meeting.cancel_reason.blank? ? "El interlocutor no ha dado ninguna razón para su cancelación" : "Razón: #{@meeting.cancel_reason}"
+- elsif @meeting.pending?
+  #flash_error
+    Esta cita está pendiente de aceptación por parte de un organismo internacional extenda.
+- else
+  #flash_notice
+    Cita aceptada automáticamente
 
 %h1 Información de la cita
 %p 
