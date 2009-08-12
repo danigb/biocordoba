@@ -1,3 +1,6 @@
+.pink {
+  color: #d41e67; }
+
 body {
   background: #191918 url('/images/body-bg.jpg') center top no-repeat;
   color: #fff;
@@ -25,6 +28,7 @@ a {
     border: none; }
 
 h2 {
+  margin-bottom: 20px;
   font-size: 14px;
   letter-spacing: 0.4px; }
 
@@ -89,12 +93,13 @@ p.button {
       margin-left: 10px; }
 
 /* Forms */
-form label {
+label {
   width: 70px;
   float: left;
   clear: both;
   margin: 5px 0; }
-form input {
+
+input {
   background: #70b120;
   border: none;
   color: #fff;
@@ -122,7 +127,7 @@ form input {
   float: left;
   height: 210px;
   width: 477px;
-  margin-right: 10px; }
+  margin: 0 10px 0 0; }
   #header h2.claim span {
     display: none; }
   #header h2.claim .version {
@@ -188,32 +193,12 @@ form input {
           color: #d41e67;
           text-decoration: underline; }
 
-#messages h3 {
-  margin: 0 0 20px 0; }
 
 #user-info {
   margin-top: 170px;
   text-align: right;
   width: 230px;
   float: left; }
-
-#changelog h1 {
-  margin: 1.5em 0; }
-#changelog h2 {
-  margin: 1em 0; }
-#changelog ul {
-  list-style-type: none; }
-  #changelog ul li {
-    font-size: 0.9em; }
-  #changelog ul span {
-    font-weight: bolder;
-    font-size: 0.7em; }
-    #changelog ul span.new {
-      color: #66AA00; }
-    #changelog ul span.update {
-      color: #ff0078; }
-    #changelog ul span.todo {
-      color: #627ffd; }
 
 #footer .wrapper {
   background-color: #000000;
@@ -288,6 +273,16 @@ span.canceled {
   font-size: 25px;
   color: red; }
 
+#meetings label {
+  width: 120px; }
+#meetings p.enviar {
+  clear: both;
+  margin-top: 20px; }
+  #meetings p.enviar input {
+    width: auto; }
+#meetings .pink {
+  clear: both; }
+
 /* Images */
 .last_messages_img {
   background: transparent url("/images/last_messages.jpg") left top;
@@ -348,3 +343,22 @@ span.canceled {
   color: #e02727;
   clear: both;
   font-weight: bold; }
+
+/* Changelog */
+#changelog h1 {
+  margin: 1.5em 0; }
+#changelog h2 {
+  margin: 1em 0; }
+#changelog ul {
+  list-style-type: none; }
+  #changelog ul li {
+    font-size: 0.9em; }
+  #changelog ul span {
+    font-weight: bolder;
+    font-size: 0.7em; }
+    #changelog ul span.new {
+      color: #66AA00; }
+    #changelog ul span.update {
+      color: #ff0078; }
+    #changelog ul span.todo {
+      color: #627ffd; }
