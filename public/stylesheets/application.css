@@ -125,59 +125,12 @@ form input {
   margin-right: 10px; }
   #header h2.claim span {
     display: none; }
-
-/* Flash messages && Errors */
-#flash_notice,
-#flash_error,
-#flash_notice_login,
-#flash_error_login {
-  padding: 5px 8px;
-  margin: 10px 0;
-  color: #191918;
-  font-weight: bold; }
-
-#flash_notice_login,
-#flash_error_login {
-  margin: 10px 0 10px 519px;
-  width: 240px; }
-
-#flash_notice,
-#flash_notice_login {
-  background-color: #CFC;
-  border: solid 1px #6C6; }
-
-#flash_error,
-#flash_error_login {
-  background-color: #FCC;
-  border: solid 1px #C66; }
-
-.fieldWithErrors {
-  display: inline; }
-
-#errorExplanation {
-  width: 400px;
-  border: 2px solid #CF0000;
-  padding: 0;
-  padding-bottom: 12px;
-  margin-bottom: 20px;
-  background-color: #f0f0f0; }
-  #errorExplanation h2 {
-    text-align: left;
-    padding: 5px 5px 5px 15px;
-    margin: 0;
-    font-weight: bold;
-    font-size: 12px;
-    background-color: #c00;
-    color: #fff; }
-  #errorExplanation p {
-    color: #333;
-    margin-bottom: 0;
-    padding: 8px; }
-  #errorExplanation ul {
-    margin: 2px 24px; }
-    #errorExplanation ul li {
-      font-size: 12px;
-      list-style: disc; }
+  #header h2.claim .version {
+    margin-top: 55px; }
+    #header h2.claim .version span {
+      background: #4c800c;
+      display: inline;
+      padding: 3px 10px; }
 
 /* Identificadores */
 #content {
@@ -228,6 +181,15 @@ form input {
       border-bottom: 1px dotted #fff; }
       #right-column .box_dark_green .last_messages span {
         font-style: italic; }
+      #right-column .box_dark_green .last_messages a {
+        color: #fff;
+        text-decoration: none; }
+        #right-column .box_dark_green .last_messages a:hover {
+          color: #d41e67;
+          text-decoration: underline; }
+
+#messages h3 {
+  margin: 0 0 20px 0; }
 
 #user-info {
   margin-top: 170px;
@@ -275,18 +237,47 @@ form input {
   text-decoration: line-through; }
 
 span.info {
-  font-size: 0.7em; }
+  font-size: 0.9em; }
 
-#new-message #exhibitors, #new-message #buyers {
-  float: left;
-  width: 230px;
-  margin: 5px; }
-
-.unread td {
-  background: #FCC !important; }
-
-.read td {
-  background-color: #CFC !important; }
+#new-message {
+  background: #70b120 url(/images/content-display-bg.png) left top;
+  padding: 10px;
+  min-height: 400px; }
+  #new-message input, #new-message textarea {
+    background: #fff;
+    color: black; }
+  #new-message span input {
+    background: #70b120;
+    color: #fff; }
+  #new-message span.info {
+    margin-left: 70px; }
+  #new-message span.submit {
+    width: inherit;
+    clear: both;
+    display: block; }
+    #new-message span.submit input {
+      background: #d41e67;
+      display: block;
+      width: auto; }
+  #new-message .formError {
+    margin-left: 70px; }
+  #new-message label {
+    font-weight: bold;
+    color: #000; }
+  #new-message #exhibitors, #new-message #buyers {
+    float: left;
+    width: 230px;
+    margin: 5px; }
+  #new-message #send_all label {
+    width: auto;
+    margin-right: 20px; }
+  #new-message #receivers {
+    clear: both; }
+    #new-message #receivers label {
+      width: 455px;
+      clear: both; }
+    #new-message #receivers .formError {
+      margin-left: 0; }
 
 .event {
   border: 1px solid #FFF;
@@ -323,3 +314,37 @@ span.canceled {
   margin: 20px 0 20px 20px; }
 #summary h1 {
   margin-bottom: 20px; }
+
+/* Flash messages && Errors */
+#flash_notice,
+#flash_error,
+#flash_notice_login,
+#flash_error_login {
+  padding: 5px 8px;
+  margin: 10px 0;
+  color: #191918;
+  font-weight: bold; }
+
+#flash_notice_login,
+#flash_error_login {
+  margin: 10px 0 10px 519px;
+  width: 240px; }
+
+#flash_notice,
+#flash_notice_login {
+  background-color: #CFC;
+  border: solid 1px #6C6; }
+
+#flash_error,
+#flash_error_login {
+  background-color: #FCC;
+  border: solid 1px #C66; }
+
+.fieldWithErrors input, .fieldWithErrors textarea {
+  border: solid 1px red; }
+
+.formError {
+  display: block;
+  color: #e02727;
+  clear: both;
+  font-weight: bold; }

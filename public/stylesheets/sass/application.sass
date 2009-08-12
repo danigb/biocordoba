@@ -3,6 +3,7 @@
 !green = #70b120
 !dark_green = #4c800c
 !pink = #D41E67
+!grey = #c8c8c8
 body
 
   :background = !bg_color url('/images/body-bg.jpg') center top no-repeat
@@ -146,63 +147,14 @@ form
     :margin-right 10px
     span
       :display none
+    .version
+      :margin-top 55px
 
-/* 
-  Flash messages && Errors
+      span
+        :background = !dark_green
+        :display inline
+        :padding 3px 10px
 
-#flash_notice,
-#flash_error,
-#flash_notice_login,
-#flash_error_login
-  :padding 5px 8px
-  :margin 10px 0
-  :color = !bg_color
-  :font-weight bold
-
-
-#flash_notice_login,
-#flash_error_login
-  :margin 10px 0 10px 519px
-  :width 240px
-
-#flash_notice,
-#flash_notice_login
-  :background-color #CFC
-  :border solid 1px #6C6
-
-#flash_error,
-#flash_error_login
-  :background-color #FCC
-  :border solid 1px #C66
-
-.fieldWithErrors
-  :display inline
-
-#errorExplanation
-  :width 400px
-  :border 2px solid #CF0000
-  :padding 0
-  :padding-bottom 12px
-  :margin-bottom 20px
-  :background-color #f0f0f0
-  h2
-    :text-align left
-    :padding 5px 5px 5px 15px
-    :margin 0
-    :font
-      :weight bold
-      :size 12px
-    :background-color #c00
-    :color #fff
-  p
-    :color #333
-    :margin-bottom 0
-    :padding 8px
-  ul
-    :margin 2px 24px
-    li
-      :font-size 12px
-      :list-style disc
 
 /*Identificadores*/
 
@@ -255,6 +207,15 @@ form
       :border-bottom 1px dotted #fff
       span 
         :font-style italic
+      a
+        :color #fff
+        :text-decoration none
+        &:hover
+          :color = !pink
+          :text-decoration underline 
+#messages
+  h3
+    :margin 0 0 20px 0 
 
 #user-info
   :margin-top 170px
@@ -307,18 +268,50 @@ form
   :text-decoration line-through
 
 span.info
-  :font-size 0.7em
+  :font-size 0.9em
+
 
 #new-message
+  :background = !green url("/images/content-display-bg.png") left top
+  :padding 10px
+  :min-height 400px
+  input, textarea
+    :background #fff
+    :color = #000
+  span
+    input
+      :background = !green
+      :color #fff
+    &.info
+      :margin-left 70px
+    &.submit
+      :width inherit
+      :clear both
+      :display block
+      input
+        :background = !pink
+        :display block
+        :width auto
+  .formError
+    :margin-left 70px
+  label 
+    :font-weight bold
+    :color #000
   #exhibitors, #buyers
     :float left
     :width 230px
     :margin 5px
-
-.unread td
-  :background #FCC !important
-.read td
-  :background-color #CFC !important
+  #send_all
+    label 
+      :width auto
+      :margin-right 20px
+  #receivers
+    :clear both
+    label
+      :width 455px
+      :clear both
+    .formError
+      :margin-left 0
 .event
   :border 1px solid #FFF
   :margin-bottom 5px
@@ -354,3 +347,41 @@ span.canceled
     :margin 20px 0 20px 20px
   h1
     :margin-bottom 20px
+
+/* 
+  Flash messages && Errors
+
+#flash_notice,
+#flash_error,
+#flash_notice_login,
+#flash_error_login
+  :padding 5px 8px
+  :margin 10px 0
+  :color = !bg_color
+  :font-weight bold
+
+
+#flash_notice_login,
+#flash_error_login
+  :margin 10px 0 10px 519px
+  :width 240px
+
+#flash_notice,
+#flash_notice_login
+  :background-color #CFC
+  :border solid 1px #6C6
+
+#flash_error,
+#flash_error_login
+  :background-color #FCC
+  :border solid 1px #C66
+
+.fieldWithErrors
+  input, textarea
+    :border solid 1px red
+
+.formError
+  :display block
+  :color #e02727
+  :clear both
+  :font-weight bold
