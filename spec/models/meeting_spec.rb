@@ -120,8 +120,30 @@ describe Meeting do
       meeting.errors.on(:max_meetings).should == "Has superado tu número de citas máximo para este día"
     end
 
-    it "a host should create a meeting with a guest although the guest canceled another one before"
+    it "a host should create a meeting with a guest although the guest canceled another meeting before" do
+      @meeting.cancel!
+      @meeting.should be_canceled
+      meeting = Meeting.make_unsaved(:host => @host, :guest => @guest, :starts_at => @meeting.starts_at + 3.hours)
+      meeting.should be_valid
+    end
 
+    it "you can't create a meeting with a guest if you have another pending'" do
+      @meeting.update_attribute(:state, "pending")
+      @meeting.should be_pending
+      meeting = Meeting.make_unsaved(:host => @host, :guest => @guest, :starts_at => @meeting.starts_at + 3.hours)
+      meeting.should_not be_valid
+    end
+
+    it "you should create meetings after another 10:00 - 10-15" do
+      meeting = Meeting.make_unsaved(:host => @host, :guest => User.make(:national_buyer), :starts_at => @meeting.starts_at + 15.minutes)
+      meeting.should be_valid
+    end
+
+    it "should create meetings just before 10:45 - 10:30" do
+      meeting = Meeting.make(:host => @host, :guest => User.make(:national_buyer), :starts_at => @meeting.starts_at + 45.minutes)
+      meeting = Meeting.make_unsaved(:host => @host, :guest => User.make(:national_buyer), :starts_at => @meeting.starts_at + 30.minutes)
+      meeting.should be_valid
+    end
   end
 
   describe "functions" do

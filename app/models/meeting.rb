@@ -71,7 +71,7 @@ class Meeting < ActiveRecord::Base
   def self.between(host, guest, return_new = true)
     host, guest = guest, host if host.is_buyer?
 
-    if meeting = find_by_host_id_and_guest_id_and_state(host, guest, "accepted")
+    if meeting = find(:first, :conditions => ["host_id = ? AND guest_id = ? AND state != ?", host, guest, "canceled"])
       return meeting
     end
 
@@ -97,10 +97,12 @@ class Meeting < ActiveRecord::Base
 
   def self.valid_date?(host, guest, starts, ends)
     waps = lambda do |user, starts, ends| 
+      # starts += 1.seconds
+      ends -= 1.seconds
       Meeting.find(:first, 
          :conditions => ["(host_id = ? OR guest_id = ?) AND 
           (starts_at between ? and ? OR ends_at between ? and ?)", 
-           user, user, starts, ends, starts, ends])
+           user, user, starts, ends, starts + 1.second, ends])
     end
     
     return false if waps.call(host, starts, ends).present? || waps.call(guest, starts, ends).present?

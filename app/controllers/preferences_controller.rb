@@ -13,7 +13,7 @@ class PreferencesController < ApplicationController
     @preference = Preference.find(params[:id])
     if @preference.update_attributes(params[:preference])
       flash[:notice] = "Successfully updated preference."
-      redirect_to admin_preferences_url
+      redirect_to preferences_url
     else
       render :action => 'edit'
     end
@@ -40,6 +40,6 @@ class PreferencesController < ApplicationController
     else
       flash[:error] = "Error al borrar la configuración"
     end
-    redirect_to admin_preferences_path
+    redirect_to preferences_path
   end
 end
