@@ -99,7 +99,7 @@ class User < ActiveRecord::Base
   def meetings(date, days = 1)
     start_date = Date.new(date.year, date.month, date.day) 
     Meeting.find(:all, 
-      :conditions => ['(host_id = ? or guest_id = ?) and DATE(starts_at) between ? and ? and state = "accepted"', 
+      :conditions => ['(host_id = ? or guest_id = ?) and DATE(starts_at) between ? and ? and state != "canceled"', 
         self.id, self.id, start_date, start_date + days], :order => 'starts_at')
   end
 

@@ -83,7 +83,7 @@ $(document).ready(function() {
   })
 
   //Dynamic flash messages
-  setTimeout("$('.flash-message').slideUp('slow')", 5000);
+  setTimeout("$('.flash-message').slideUp('slow')", 7000);
 });
 
 function load_town(province_id, f){

@@ -113,6 +113,7 @@ describe Meeting do
       3.times do |i|
         meeting = Meeting.make(:host => @host, :guest => User.make(:national_buyer), :starts_at => @meeting.starts_at + ((i+1)*20).minutes)
       end
+      @host.meetings_remaining(@meeting.starts_at.to_date).should == 0
       @host.should have(4).meetings(Event.start_day)
       meeting = Meeting.make_unsaved(:host => @host, :guest => User.make(:national_buyer), :starts_at => @meeting.starts_at + 3.hours)
       meeting.valid?
@@ -139,9 +140,18 @@ describe Meeting do
     end
 
     it "should create meetings just before 10:45 - 10:30" do
-      meeting = Meeting.make(:host => @host, :guest => User.make(:national_buyer), :starts_at => @meeting.starts_at + 45.minutes)
+      Meeting.make(:host => @host, :guest => User.make(:national_buyer), :starts_at => @meeting.starts_at + 45.minutes)
       meeting = Meeting.make_unsaved(:host => @host, :guest => User.make(:national_buyer), :starts_at => @meeting.starts_at + 30.minutes)
       meeting.should be_valid
+    end
+
+    it "should have 4 meetings in a hour" do
+      @host.meetings_remaining(@meeting.starts_at.to_date).should == 3
+      [15, 45, 30].each_with_index do |t, i|
+        @host.meetings_remaining(@meeting.starts_at.to_date).should == 3-i
+        Meeting.make(:host => @host, :guest => User.make(:national_buyer), :starts_at => @meeting.starts_at + t.minutes)
+      end
+      @host.meetings_remaining(@meeting.starts_at.to_date).should == 0
     end
   end
 
