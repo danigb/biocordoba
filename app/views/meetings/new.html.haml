@@ -5,7 +5,7 @@
     = foward_link(@date)
 
   .schedule
-    .user
+    .user.first
       Tus citas
 
     - weekly_calendar(@host.meetings(@date), :date => @date, :without_days => true) do |w|
@@ -13,43 +13,54 @@
         =  link_to event.name(current_user, false), meeting_path(event), :id => event.id, :class => 'meeting-link' 
   .schedule
     .user
-      = @guest.login
+      = @guest.login.upcase
 
     - weekly_calendar(@guest.meetings(@date), :date => @date, :without_days => true, :without_hours => true) do |w|
       - w.week(:clickable_hours => true) do |event,truncate|
         =  event.name(current_user, true)
 
 - content_for(:right_column) do
-  %center
-    - if @meeting.new_record?
-      - if @remaining.nil? || @remaining > 0
-        %h2 Crear una cita
-
-        La duración de la cita será de
-        %b
-          = current_user.preference.meetings_duration
-        minutos
-
-        .form
+  .meeting_request_img
+    %h2 Petición de citas
+  .box_dark_green
+    #meeting_request
+      - if @meeting.new_record?
+        - if @remaining.nil? || @remaining > 0
           - form_for @meeting do |f|
-            %p= f.time_select :starts_at, {:minute_step => 15} 
-            %p= f.text_area :note_host, :rows => 10, :cols => 20
-            
+            = label_tag "start_at", "HORA DE LA CITA"
+            %p= f.time_select :starts_at, {:minute_step => 15}
+
+            %p.input= @guest.login.upcase
+            %span.button= link_to "Ver Perfil"
+
+            %p.info
+              = label_tag "note_host", "Información sobre Cita"
+            %p
+              = f.text_area :note_host, :rows => 10
+  
             = hidden_field_tag "date", @date
             = f.hidden_field :guest_id, :value => @guest.id
-            %p
-              = submit_tag "Crear"
-    - else
-      Ya tienes una cita con este comprador
-      
-      %h2 ¿Cancelar cita?
-      .form
-        - form_for @meeting do |f|
-          = f.label :cancel_reason, "¿Por qué? (opcional)" 
-          %br/
-          = f.text_area :cancel_reason, :rows => 10, :cols => 20
-          %br/
-          = submit_tag "Cancelar"
+            %p.enviar
+              = submit_tag "Solicitar Cita"
 
+            %p.info.small
+              El tiempo de cada cita está establecido en 
+              = current_user.preference.meetings_duration
+              min.
 
+            %p.info.small
+              Dispone de un máximo de 4 citas comerciales por cada jornada de la feria.
 
+            %p.info.small
+              Podrá organizar sus citas en horario de la feria (de 10:00 h. a 19:00 h.)
+            
+      - else
+        Ya tienes una cita con este comprador
+        
+        %h2 ¿Cancelar cita?
+        .form
+          - form_for @meeting do |f|
+            %p.info
+              = f.label :cancel_reason, "¿Por qué? (opcional)" 
+              = f.text_area :cancel_reason, :rows => 10, :cols => 20
+            %p.enviar= submit_tag "Cancelar Cita"

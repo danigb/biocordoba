@@ -43,6 +43,9 @@ p {
   p.green {
     color: #70b120; }
 
+span.info {
+  font-size: 0.9em; }
+
 .wrapper {
   width: 1001px;
   margin: 0 auto;
@@ -67,7 +70,41 @@ p.button {
   padding: 5px;
   text-align: right; }
 
-/* General */
+/* Old css */
+.event {
+  border: 1px solid #FFF;
+  margin-bottom: 5px;
+  padding: 5px; }
+
+span.canceled {
+  font-size: 25px;
+  color: red; }
+
+.highlight {
+  background-color: yellow; }
+
+.required {
+  color: #ff0000; }
+
+.strike {
+  text-decoration: line-through; }
+
+span.canceled {
+  font-size: 25px;
+  color: red; }
+
+#guest-info, #host-info {
+  display: none; }
+
+#summary li.summary-item, #summary p {
+  font-size: 15px;
+  margin-bottom: 5px; }
+#summary ul {
+  margin: 20px 0 20px 20px; }
+#summary h1 {
+  margin-bottom: 20px; }
+
+/* Login */
 #container #login_area {
   margin: 0 auto;
   padding-left: 229px; }
@@ -108,6 +145,17 @@ input {
   width: 190px;
   margin: 5px 0; }
 
+p.enviar input {
+  width: auto;
+  padding: 2px 5px; }
+
+span.button {
+  background: #70b120;
+  padding: 2px 5px; }
+  span.button a {
+    color: #fff;
+    text-decoration: none; }
+
 /* Header */
 #header .wrapper h1 {
   float: left;
@@ -136,6 +184,12 @@ input {
       background: #4c800c;
       display: inline;
       padding: 3px 10px; }
+
+#user-info {
+  margin-top: 170px;
+  text-align: right;
+  width: 230px;
+  float: left; }
 
 /* Identificadores */
 #content {
@@ -193,37 +247,6 @@ input {
           color: #d41e67;
           text-decoration: underline; }
 
-
-#user-info {
-  margin-top: 170px;
-  text-align: right;
-  width: 230px;
-  float: left; }
-
-#footer .wrapper {
-  background-color: #000000;
-  height: 58px;
-  margin-top: 25px; }
-  #footer .wrapper p {
-    margin: 25px 0px 0px 0px;
-    font: normal normal 10px Verdana, Arial;
-    color: #ffffff;
-    text-align: center; }
-    #footer .wrapper p a {
-      color: #70b120; }
-
-.highlight {
-  background-color: yellow; }
-
-.required {
-  color: #ff0000; }
-
-.strike {
-  text-decoration: line-through; }
-
-span.info {
-  font-size: 0.9em; }
-
 #new-message {
   background: #70b120 url(/images/content-display-bg.png) left top;
   padding: 10px; }
@@ -265,24 +288,64 @@ span.info {
     #new-message #receivers .formError {
       margin-left: 0; }
 
-.event {
-  border: 1px solid #FFF;
-  margin-bottom: 5px;
-  padding: 5px; }
-
-span.canceled {
-  font-size: 25px;
-  color: red; }
-
 #meetings label {
   width: 120px; }
 #meetings p.enviar {
   clear: both;
   margin-top: 20px; }
-  #meetings p.enviar input {
-    width: auto; }
 #meetings .pink {
   clear: both; }
+
+#meeting_request {
+  margin: 20px 5px 20px 5px;
+  padding-bottom: 10px; }
+  #meeting_request label {
+    clear: both;
+    float: none; }
+  #meeting_request textarea {
+    width: 217px; }
+  #meeting_request span.button {
+    float: right;
+    margin-bottom: 20px; }
+  #meeting_request p.enviar {
+    float: right; }
+  #meeting_request p.info {
+    color: #000;
+    clear: both;
+    font-size: 12px; }
+    #meeting_request p.info.small {
+      font-style: italic;
+      font-size: 10px; }
+  #meeting_request p.input {
+    padding: 2px 5px;
+    background: #fff;
+    color: #000;
+    font-size: 12px; }
+
+#schedules .date {
+  font-size: 20px;
+  margin-bottom: 20px;
+  margin-left: 53px; }
+#schedules .user {
+  font-size: 14px;
+  margin-bottom: 10px; }
+  #schedules .user.first {
+    margin-left: 55px; }
+#schedules .schedule {
+  float: left; }
+
+/* Footer */
+#footer .wrapper {
+  background-color: #000000;
+  height: 58px;
+  margin-top: 25px; }
+  #footer .wrapper p {
+    margin: 25px 0px 0px 0px;
+    font: normal normal 10px Verdana, Arial;
+    color: #ffffff;
+    text-align: center; }
+    #footer .wrapper p a {
+      color: #70b120; }
 
 /* Images */
 .last_messages_img {
@@ -296,20 +359,12 @@ span.canceled {
   background: transparent url("/images/oil.jpg") left top;
   height: 263px; }
 
-span.canceled {
-  font-size: 25px;
-  color: red; }
-
-#guest-info, #host-info {
-  display: none; }
-
-#summary li.summary-item, #summary p {
-  font-size: 15px;
-  margin-bottom: 5px; }
-#summary ul {
-  margin: 20px 0 20px 20px; }
-#summary h1 {
-  margin-bottom: 20px; }
+.meeting_request_img {
+  background: transparent url("/images/meetings_request.jpg") left top;
+  width: 230px;
+  height: 73px; }
+  .meeting_request_img h2 {
+    display: none; }
 
 /* Flash messages && Errors */
 #flash_notice,
