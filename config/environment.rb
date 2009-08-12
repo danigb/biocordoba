@@ -27,3 +27,4 @@ WillPaginate::ViewHelpers.pagination_options[:next_label] = 'Siguiente'
 Delayed::Worker::SLEEP = 15
 
 ActionController::Base.cache_store = :mem_cache_store
+ActiveSupport::CoreExtensions::Time::Conversions::DATE_FORMATS.merge!(:hour_only => "%H:%M")
