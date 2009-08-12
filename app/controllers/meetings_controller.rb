@@ -106,9 +106,16 @@ class MeetingsController < ApplicationController
   def change_state
     meeting = Meeting.find(params[:id])
 
-    if meeting.pending? && %w(accepted canceled).include?(params[:state])
-      meeting.send("#{params[:state][0..-3]}!")
-      flash[:notice] = params[:state] == "accepted" ? "La cita ha sido aceptada." : "La cita ha sido rechazada."
+    if meeting.pending? && %w(accept cancel).include?(params[:state])
+      meeting.send("#{params[:state]}!")
+      if params[:state] == "accept" 
+        flash[:notice] = "La cita ha sido aceptada."
+        #Enviamos mail de cita aceptada
+        MeetingMailer.send_later(:deliver_meeting_accepted, meeting)
+      else
+        #El email lo enviamos desde el modelo, ya que también cancelamos usando el método update
+        flash[:notice] = "La cita ha sido rechazada."
+      end
     end
 
     redirect_to meetings_to_confirm_path

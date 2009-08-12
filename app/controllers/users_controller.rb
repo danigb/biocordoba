@@ -52,11 +52,10 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     @user.password = Haddock::Password.generate(10)
 
-    unless @user.login.blank?
-      @user.build_profile(:company_name => @user.login)
-    end
-
     if @user.save
+      unless @user.login.blank?
+        @user.build_profile(:company_name => @user.login).save
+      end
       UserMailer.deliver_welcome_email(current_user, @user)
 
       flash[:notice] = "El usuario <b></b> ha sido creado con éxito."

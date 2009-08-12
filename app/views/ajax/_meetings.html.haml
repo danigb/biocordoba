@@ -3,9 +3,9 @@
     %li
       tiene una cita con
       - unless guest == "1"
-        = meeting.guest.profile.company_name 
+        = link_to_profile meeting.guest.profile, meeting.guest.profile.company_name 
       - else
-        = meeting.host.profile.company_name
+        = link_to_profile meeting.host.profile, meeting.host.profile.company_name
       = "a las #{meeting.starts_at.strftime("%H:%M")}"
 
       

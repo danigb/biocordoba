@@ -11,8 +11,8 @@
       %p
         = link_to_profile(meeting.host.profile, "Ver ficha del expositor")
         %br/
-        = link_to "Confirmar", change_state_meeting_path(meeting, :state => 'accepted')
-        = link_to "Cancelar",  change_state_meeting_path(meeting, :state => 'canceled')
+        = link_to "Confirmar", change_state_meeting_path(meeting, :state => 'accept'), :confirm => '¿Quieres aceptar la cita?'
+        = link_to "Cancelar",  change_state_meeting_path(meeting, :state => 'cancel'), :confirm => '¿Estás seguro que quieres cancelar la cita?'
         
       
 

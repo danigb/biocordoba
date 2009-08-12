@@ -13,6 +13,14 @@ class MeetingMailer < ActionMailer::Base
     @body = {:meeting => meeting}
   end
 
+  #Cita aceptada por extenda
+  def meeting_accepted(meeting)
+    setup_email
+    @recipients = meeting.host.email
+    @subject += "Cita aceptada"
+    @body = {:meeting => meeting}
+  end
+
   def new_meeting(meeting)
     setup_email
     @recipients = meeting.guest.email
