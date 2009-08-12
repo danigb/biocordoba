@@ -9,21 +9,21 @@
       = f.label :message, "Mensaje".upcase
       = f.text_area :message, :rows => "6", :cols => "46"
       = f.error_message_on :message
-      %span.info= "Formato: **<strong>negrita</strong>** _<em>cursiva</em>_ [Un ejemplo](http://ejemplo.net/)" 
+      -# %span.info= "Formato: **<strong>negrita</strong>** _<em>cursiva</em>_ [Un ejemplo](http://ejemplo.net/)" 
 
     - restrict_to "admin | extenda" do
       #send_all
         %p
-          = f.label :send_all, "Enviar a todos".upcase
+          = f.label :send_all, "ENVIAR A TODOS"
           = f.check_box :send_all
 
     #receivers
       %p
-        = label_tag :receivers_select, "Elegir destinatarios".upcase
+        = label_tag :receivers_select, "ELEGIR DESTINATARIOS".upcase
         = select_tag :receivers_select, select_options_buyers_exhibitors
-        %span.info= "(separados por comas)"
       %p
-        = f.label :receivers_string, "Destinatarios del mensaje".upcase
+        = f.label :receivers_string, "DESTINATARIOS DEL MENSAJE"
+        -# %span.info= "(separados por comas)"
         = f.text_field :receivers_string, :size => 50, :autocomplete =>"off", :value => (params[:receiver] ? "#{params[:receiver]}, " : "")
         = f.error_message_on :sender_id
 

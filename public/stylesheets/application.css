@@ -230,7 +230,9 @@ span.info {
   min-height: 400px; }
   #new-message input, #new-message textarea {
     background: #fff;
-    color: black; }
+    color: black;
+    border: none;
+    width: 350px; }
   #new-message span input {
     background: #70b120;
     color: #fff; }

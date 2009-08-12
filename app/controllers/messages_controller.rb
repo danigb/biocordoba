@@ -29,6 +29,7 @@ class MessagesController < ApplicationController
   end
   
   def create
+    params[:message][:receivers_string] = "" if params[:message][:send_all] == '1'
     @message = current_user.messages_sent.build(params[:message])
     if @message.save
       flash[:notice] = "¡ Mensaje enviado !"

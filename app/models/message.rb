@@ -20,11 +20,10 @@ class Message < ActiveRecord::Base
   end
 
   def receivers_string=(string)
+      debugger
     string.split(", ").uniq.each do |company_name|
       profile = Profile.find_by_company_name(company_name)
-      if profile
-        self.receivers << profile.user 
-      end
+      self.receivers << profile.user if profile
     end
   end
 
