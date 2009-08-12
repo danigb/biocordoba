@@ -59,7 +59,7 @@
         
         %h2 ¿Cancelar cita?
         .form
-          - form_for @meeting do |f|
+          - form_for meeting do |f|
             %p.info
               = f.label :cancel_reason, "¿Por qué? (opcional)" 
               = f.text_area :cancel_reason, :rows => 10, :cols => 20
