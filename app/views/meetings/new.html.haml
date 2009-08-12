@@ -5,7 +5,7 @@
     = foward_link(@date)
 
   .schedule
-    .user
+    .user.first
       Tus citas
 
     - weekly_calendar(@host.meetings(@date), :date => @date, :without_days => true) do |w|
@@ -13,7 +13,7 @@
         =  link_to event.name(current_user, false), meeting_path(event), :id => event.id, :class => 'meeting-link' 
   .schedule
     .user
-      = @guest.login
+      = @guest.login.upcase
 
     - weekly_calendar(@guest.meetings(@date), :date => @date, :without_days => true, :without_hours => true) do |w|
       - w.week(:clickable_hours => true) do |event,truncate|
