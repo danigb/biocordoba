@@ -1,11 +1,13 @@
 %ul
   - for meeting in meetings
     %li
-      tiene una cita con
+      = "[#{meeting.starts_at.to_s(:hour_only)}]"
+      = "cita #{MEETING_STATE[meeting.state.to_sym]} con"
       - unless guest == "1"
         = link_to_profile meeting.guest.profile, meeting.guest.profile.company_name 
       - else
         = link_to_profile meeting.host.profile, meeting.host.profile.company_name
-      = "a las #{meeting.starts_at.strftime("%H:%M")}"
+      | 
+      = link_to "Cancelar cita",  change_state_meeting_path(meeting, :state => 'cancel'), :confirm => '¿Estás seguro que quieres cancelar la cita?'
 
       
