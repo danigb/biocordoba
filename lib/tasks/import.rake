@@ -25,11 +25,12 @@ task :load_exhibitors => :environment do
 
       if user.save!
         town = province.towns.find_by_name(city)
-        profile = Profile.create!(:company_name => company_name, :address => address, :zip_code => zip_code,
+        profile = Profile.new(:company_name => company_name, :address => address, :zip_code => zip_code,
           :phone => phone, :fax => fax, :website => url.blank? ? "" : "http://#{url}", :stand => stand, :user_id => user.id,
           :province => province, :town => town)
         sleep 0.2
         profile.sectors << sector
+        profile.save!
         puts "[#{Time.now.to_s(:short)}] Expositor creado, #{company_name}"
       end
     end
