@@ -167,12 +167,12 @@ class MeetingsController < ApplicationController
 
     if @meeting.new_record?
       if @remaining > 0
-        flash[:notice] = "Puedes hacer #{pluralize(@remaining, 'cita', 'citas')} más este día"
+        flash.now[:notice] = "Puedes hacer #{pluralize(@remaining, 'cita', 'citas')} más este día"
       else
-        flash[:error] = "Has superado el número máximo de citas para este día"
+        flash.now[:error] = "Has superado el número máximo de citas para este día"
       end
     else
-      flash[:notice] = "Ya tienes una cita con este comprador, ¿la quieres cancelar?"
+      flash.now[:error] = "Ya tienes una cita con este comprador, ¿la quieres cancelar?"
     end
   end
 end

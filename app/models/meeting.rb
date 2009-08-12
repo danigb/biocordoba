@@ -101,7 +101,7 @@ class Meeting < ActiveRecord::Base
       ends -= 1.seconds
       Meeting.find(:first, 
          :conditions => ["(host_id = ? OR guest_id = ?) AND 
-          (starts_at between ? and ? OR ends_at between ? and ?)", 
+          (starts_at BETWEEN ? AND ? OR ends_at BETWEEN ? AND ?) AND (state != 'canceled')", 
            user, user, starts, ends, starts + 1.second, ends])
     end
     
