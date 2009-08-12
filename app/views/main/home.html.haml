@@ -2,35 +2,9 @@
   - title "Mi agenda"
 
   = render :partial => 'meetings/my_meetings', :locals => {:user => current_user}
-
+  %p.imprimir
+    = link_to "imprimir agenda"
 - else
   - title "Versión administrador"
   .oil_img
-
-  -# - content_for(:right_column) do
-  -#   .last_messages_img
-  -#     %h3 Últimos Mensajes
-  -#   .box_dark_green
-
-  -#     .last_messages
-  -#       %span Asunto:
-  -#       %p
-  -#         <a href="">Lorem Ipsum </a>is simply dummy text of the printing and typesetting industry.
-
-  -#       %span Remitente:
-  -#       %p Antonio Gonzalez Pérez
-
-  -#       %span Fecha/Hora:
-  -#       %p 22 sep 13:34 h.
-
-  -#     .last_messages
-  -#       %span Asunto:
-  -#       %p
-  -#         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-
-  -#       %span Remitente:
-  -#       %p Antonio Gonzalez Pérez
-
-  -#       %span Fecha/Hora:
-  -#       %p 22 sep 13:34 h.
 

@@ -1,5 +1,10 @@
-- title "Ficha del usuario"
-= render :partial => 'show', :locals => {:profile => @profile}
-%p
-  = link_to_meeting(@profile.user)
-  = link_to "Enviar Mensaje", new_message_path(:receiver => @profile.company_name)
+#profile
+  - title "Ficha del usuario"
+  %h2 Información sobre empresas visitantes
+
+  = render :partial => 'show', :locals => {:profile => @profile}
+  %p
+    = link_to_meeting(@profile.user)
+    = link_to "Enviar Mensaje", new_message_path(:receiver => @profile.company_name)
+
+  %span.button.pink= link_to "REALIZAR OTRA BÚSQUEDA"

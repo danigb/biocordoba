@@ -1,7 +1,6 @@
 - cache profile do
   %p
-    Empresa:
-    = h profile.company_name
+    %h3.violet= h profile.company_name.upcase
   %p 
     Dirección:
     = h profile_value(profile.address)

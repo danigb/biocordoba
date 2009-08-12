@@ -1,36 +1,34 @@
 - title "Buscador de empresas"
-%h1 Buscador de empresas
+%h2 Información sobre los expositores
 
 #search
   - form_for :search, :url => search_path do |f|
-    %div
+    %p
       = f.label 'profile_company_name_like', "NOMBRE EMPRESA"
-      %br/
-      = f.text_field :profile_company_name_like
+      = f.text_field :profile_company_name_like, :class => "white"
 
-    %div
+    %p
       = f.label 'profile_sectors_id_equals', "SECTOR"
-      %br/
       = f.select :profile_sectors_id_equals, @sectors.map{|s| [s.name.capitalize, s.id]}, :include_blank => "Todos"
 
-    %div
+    %p.enviar
       = f.submit "Buscar"
+#results
+  - if @users
+    - if @users.blank?
+      %p No se han encontrado coincidencias.
 
-- if @users
-  - if @users.blank?
-    %p No se han encontrado coincidencias.
+    - else
+      %p
+        Se han encontrado los siguientes resultados:
 
-  - else
-    %p
-      Se han encontrado los siguientes resultados:
+      %ul
+        - @users_by_sector.each do |sector_name, users|
+          %h3
+            = sector_name.capitalize
 
-    %ul
-      - @users_by_sector.each do |sector_name, users|
-        %h3
-          = sector_name.capitalize
-
-        - for user in users
-          %li
-            = link_to_profile(user.profile, user.profile.company_name)
+          - for user in users
+            %li
+              = link_to_profile(user.profile, user.profile.company_name.upcase)
 
 

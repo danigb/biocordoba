@@ -1,6 +1,9 @@
 .pink {
   color: #d41e67; }
 
+.violet {
+  color: #b81d88; }
+
 body {
   background: #191918 url('/images/body-bg.jpg') center top no-repeat;
   color: #fff;
@@ -30,11 +33,13 @@ a {
 h2 {
   margin-bottom: 20px;
   font-size: 14px;
-  letter-spacing: 0.4px; }
+  letter-spacing: 0.4px;
+  font-weight: normal; }
 
 h3 {
   font-size: 16px;
-  margin-top: 20px; }
+  margin-top: 20px;
+  font-weight: normal; }
   h3 span {
     display: block; }
 
@@ -129,7 +134,7 @@ span.canceled {
     #container #login_area .access #remember_me {
       margin-left: 10px; }
 
-/* Forms */
+/* Forms and links */
 label {
   width: 70px;
   float: left;
@@ -148,6 +153,16 @@ input {
 p.enviar input {
   width: auto;
   padding: 2px 5px; }
+p.imprimir {
+  text-align: right;
+  clear: both;
+  font-size: 12px;
+  padding-top: 20px;
+  margin: 0; }
+  p.imprimir a {
+    color: #fff; }
+    p.imprimir a:hover {
+      color: #d41e67; }
 
 span.button {
   background: #70b120;
@@ -155,6 +170,8 @@ span.button {
   span.button a {
     color: #fff;
     text-decoration: none; }
+  span.button.pink {
+    background: #b81d88; }
 
 /* Header */
 #header .wrapper h1 {
@@ -233,7 +250,8 @@ span.button {
     background: #4c800c;
     min-height: 423px;
     border-top: 5px #000 solid;
-    color: #fff; }
+    color: #fff;
+    padding-bottom: 5px; }
     #right-column .box_dark_green .last_messages {
       margin: 15px 35px 15px 15px;
       padding-bottom: 15px;
@@ -322,6 +340,29 @@ span.button {
     color: #000;
     font-size: 12px; }
 
+#profile h2, #profile h3 {
+  font-size: 13px;
+  font-weight: normal; }
+#profile h2 {
+  margin-top: 10px; }
+#profile h3 {
+  margin: 25px 0 25px; }
+#profile p {
+  margin-bottom: 10px; }
+
+#results {
+  clear: both;
+  padding-left: 5px; }
+  #results a {
+    color: #fff; }
+    #results a:hover {
+      color: #b81d88; }
+  #results h3 {
+    color: #b81d88;
+    margin-bottom: 20px; }
+  #results ul li {
+    margin-bottom: 5px; }
+
 #schedules .date {
   font-size: 20px;
   margin-bottom: 20px;
@@ -333,6 +374,20 @@ span.button {
     margin-left: 55px; }
 #schedules .schedule {
   float: left; }
+
+#search {
+  padding-left: 5px; }
+  #search label {
+    width: 145px; }
+  #search input.white {
+    background: #fff;
+    color: #000; }
+  #search input#search_profile_company_name_like {
+    width: 280px;
+    padding: 2px 5px;
+    margin-bottom: 10px; }
+  #search p.enviar input {
+    margin-bottom: 20px; }
 
 /* Footer */
 #footer .wrapper {
