@@ -473,3 +473,8 @@ span.button {
       color: #ff0078; }
     #changelog ul span.todo {
       color: #627ffd; }
+
+.cancel-form {
+  display: none; }
+  .cancel-form label {
+    width: inherit; }

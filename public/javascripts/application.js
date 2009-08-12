@@ -55,7 +55,7 @@ $(document).ready(function() {
 
 
   //Profile dialog
-  $(".profile-link").click(function(e){
+  $(".profile-link").live("click", function(e){
     $('<div />').appendTo('body').append("<img src='/images/loader.gif'/> Cargando...").dialog({resizable: false, modal:true, position: ['center', 50]}).load("/perfiles/" + this.id);
     e.preventDefault();
   });
@@ -84,6 +84,13 @@ $(document).ready(function() {
 
   //Dynamic flash messages
   setTimeout("$('.flash-message').slideUp('slow')", 7000);
+
+  //Cancel form
+  $(".cancel-meeting-link").live("click", function(e){
+      var id = this.id;
+      $("#cancel-form-"+id).toggle("slow");
+      e.preventDefault();
+  })
 });
 
 function load_town(province_id, f){
@@ -102,8 +109,8 @@ function getMeetings(host_id, guest, date){
     }else{
       elem.slideUp().html("");
     }
-/* , :url => "/ajax/meetings?host_id=#{host.id}&guest=#{'1' if @guest}&date=#{params[:date]}" */
 }
+
 // All ajax requests will trigger the format.xml block
 // of +respond_to do |format|+ declarations
 $.ajaxSetup({

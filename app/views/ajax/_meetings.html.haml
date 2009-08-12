@@ -8,6 +8,8 @@
       - else
         = link_to_profile meeting.host.profile, meeting.host.profile.company_name
       | 
-      = link_to "Cancelar cita",  change_state_meeting_path(meeting, :state => 'cancel'), :confirm => '¿Estás seguro que quieres cancelar la cita?'
+      -# = link_to "Cancelar cita",  change_state_meeting_path(meeting, :state => 'cancel'), :confirm => '¿Estás seguro que quieres cancelar la cita?'
+      = link_to "Cancelar cita", meeting_path(meeting), :class => 'cancel-meeting-link', :id => meeting.id
+      = render :partial => '/meetings/cancel_form', :locals => {:meeting => meeting}
 
       

@@ -62,9 +62,10 @@ class MeetingsController < ApplicationController
     end
   end
 
+  #Se está usando para cancelar citas
   def update
     @meeting.cancel_reason = params[:meeting][:cancel_reason] if params[:meeting]
-
+    debugger
     if @meeting.cancel!
       flash[:notice] = "La cita ha sido cancelada con éxito."
     else
