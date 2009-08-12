@@ -108,6 +108,17 @@ input {
   width: 190px;
   margin: 5px 0; }
 
+p.enviar input {
+  width: auto;
+  padding: 2px 5px; }
+
+span.button {
+  background: #70b120;
+  padding: 2px 5px; }
+  span.button a {
+    color: #fff;
+    text-decoration: none; }
+
 /* Header */
 #header .wrapper h1 {
   float: left;
@@ -278,10 +289,34 @@ span.canceled {
 #meetings p.enviar {
   clear: both;
   margin-top: 20px; }
-  #meetings p.enviar input {
-    width: auto; }
 #meetings .pink {
   clear: both; }
+
+#meeting_request {
+  margin: 20px 5px 20px 5px;
+  padding-bottom: 10px; }
+  #meeting_request label {
+    clear: both;
+    float: none; }
+  #meeting_request textarea {
+    width: 217px; }
+  #meeting_request span.button {
+    float: right;
+    margin-bottom: 20px; }
+  #meeting_request p.enviar {
+    float: right; }
+  #meeting_request p.info {
+    color: #000;
+    clear: both;
+    font-size: 12px; }
+    #meeting_request p.info.small {
+      font-style: italic;
+      font-size: 10px; }
+  #meeting_request p.input {
+    padding: 2px 5px;
+    background: #fff;
+    color: #000;
+    font-size: 12px; }
 
 /* Images */
 .last_messages_img {
@@ -294,6 +329,13 @@ span.canceled {
 .oil_img {
   background: transparent url("/images/oil.jpg") left top;
   height: 263px; }
+
+.meeting_request_img {
+  background: transparent url("/images/meetings_request.jpg") left top;
+  width: 230px;
+  height: 73px; }
+  .meeting_request_img h2 {
+    display: none; }
 
 span.canceled {
   font-size: 25px;
