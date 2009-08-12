@@ -4,6 +4,9 @@
 !dark_green = #4c800c
 !pink = #D41E67
 !grey = #c8c8c8
+
+.pink
+  :color = !pink
 body
 
   :background = !bg_color url('/images/body-bg.jpg') center top no-repeat
@@ -35,6 +38,7 @@ a
     :border none
 
 h2
+  :margin-bottom 20px
   :font-size 14px
   :letter-spacing 0.4px
 
@@ -107,20 +111,19 @@ p.button
 /*
   Forms
 
-form
-  label
-    :width 70px
-    :float left
-    :clear both
-    :margin 5px 0
-  input
-    :background = !green
-    :border none
-    :color #fff
-    :font-weight bold
-    :float left
-    :width 190px
-    :margin 5px 0
+label
+  :width 70px
+  :float left
+  :clear both
+  :margin 5px 0
+input
+  :background = !green
+  :border none
+  :color #fff
+  :font-weight bold
+  :float left
+  :width 190px
+  :margin 5px 0
     
 /*
   Header
@@ -144,7 +147,7 @@ form
     :float left 
     :height 210px
     :width 477px
-    :margin-right 10px
+    :margin 0 10px 0 0
     span
       :display none
     .version
@@ -214,8 +217,6 @@ form
           :color = !pink
           :text-decoration underline 
 #messages
-  h3
-    :margin 0 0 20px 0 
 
 #user-info
   :margin-top 170px
@@ -223,27 +224,6 @@ form
   :width 230px
   :float left
   span
-#changelog
-  h1
-    :margin 1.5em 0
-  h2
-    :margin 1em 0
-  ul
-    :list-style-type none
-
-    li
-      :font-size 0.9em
-
-    span
-      :font-weight bolder
-      :font-size 0.7em
-
-      &.new
-        :color #66AA00
-      &.update
-        :color #ff0078
-      &.todo
-        :color #627ffd
 
 #footer
   .wrapper
@@ -321,6 +301,18 @@ span.canceled
   :font-size 25px
   :color red
 
+#meetings
+  label 
+    :width 120px
+  p.enviar
+    :clear both
+    :margin-top 20px
+    input
+      :width auto
+  .pink
+    :clear both
+
+
 /*
   Images
 
@@ -385,3 +377,27 @@ span.canceled
   :color #e02727
   :clear both
   :font-weight bold
+
+/*Changelog*/
+
+#changelog
+  h1
+    :margin 1.5em 0
+  h2
+    :margin 1em 0
+  ul
+    :list-style-type none
+
+    li
+      :font-size 0.9em
+
+    span
+      :font-weight bolder
+      :font-size 0.7em
+
+      &.new
+        :color #66AA00
+      &.update
+        :color #ff0078
+      &.todo
+        :color #627ffd
