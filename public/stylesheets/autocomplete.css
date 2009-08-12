@@ -32,17 +32,20 @@
 	*/
 	line-height: 16px;
 	overflow: hidden;
+  font-weight: bold;
 }
 
 .ac_loading {
 	background: white url('indicator.gif') right center no-repeat;
 }
 
-.ac_odd {
-	background-color: #eee;
+.ac_odd, .ac_even {
+	/* background-color: #eee; */
+	background-color: #4C800C;
 }
 
 .ac_over {
-	background-color: #0A246A;
+	/* background-color: #0A246A; */
+	background-color: #000;
 	color: white;
 }
