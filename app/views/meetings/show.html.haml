@@ -1,6 +1,7 @@
 - title "Mostrando la cita"
 
-= javascript_include_tag "jquery", "application"
+- if @controller.request.format == "text/javascript"
+  = javascript_include_tag "jquery", "application"
 
 - if @meeting.canceled?
   %span.canceled Atención: esta cita está cancelada 

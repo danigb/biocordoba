@@ -40,7 +40,7 @@ class MeetingsController < ApplicationController
     @meeting.host = current_user
 
     if @meeting.save
-      flash[:notice] = "La cita se ha guardado con éxito."
+      flash[:notice] = @meeting.guest.is_international_buyer? ? "La cita está pendiente de aceptación" : "La cita ha sido creada."
       redirect_to root_path
     else
       if @meeting.errors[:starts_at]
