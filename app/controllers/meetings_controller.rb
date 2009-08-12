@@ -1,8 +1,10 @@
 class MeetingsController < ApplicationController
+  include ActionView::Helpers::TextHelper
+
   before_filter :login_required
   before_filter :access_control, :only => [:show, :update, :change_note]
   before_filter :show_meetings_remaining, :only => :new
-  include ActionView::Helpers::TextHelper
+  cache_sweeper :meeting_sweeper, :only => [:change_state, :create]
 
   def index
   end

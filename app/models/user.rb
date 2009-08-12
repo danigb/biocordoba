@@ -33,6 +33,8 @@ class User < ActiveRecord::Base
     :conditions => ["roles.title = 'national_buyer' OR roles.title = 'international_buyer'"] } }
   named_scope :exhibitors, lambda { {:joins => :roles, :include => :profile, 
     :conditions => ["roles.title = 'exhibitor'"] } }
+  named_scope :extendas, lambda { {:joins => :roles, :include => :profile, 
+    :conditions => ["roles.title = 'extenda'"] } }
   named_scope :no_admins, lambda { {:include => [:profile, :roles], 
     :conditions => ["roles.title != 'admin' AND roles.title != 'extenda'"], :order => 'profiles.company_name' } }
   named_scope :type, lambda {|type| {:joins => :roles, :include => :profile, 
