@@ -33,7 +33,7 @@ $(document).ready(function() {
       text_field.val(
         text_field.val() + this.value + ", "
       );
-      $("#receivers span").text("Destinatario añadido").show().effect("highlight",null, 2000).fadeOut(1000)
+      /* $("#receivers span").text("Destinatario añadido").show().effect("highlight",null, 2000).fadeOut(1000) */
       text_field.effect("highlight", null, 2000); 
     }
   });

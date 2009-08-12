@@ -226,8 +226,7 @@ span.info {
 
 #new-message {
   background: #70b120 url(/images/content-display-bg.png) left top;
-  padding: 10px;
-  min-height: 400px; }
+  padding: 10px; }
   #new-message input, #new-message textarea {
     background: #fff;
     color: black;

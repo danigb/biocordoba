@@ -1,15 +1,14 @@
-- title "Nuevo Mensaje"
+- title "Redactar un nuevo mensaje"
 #new-message
   - form_for @message do |f|
     %p
-      = f.label :subject, "Asunto".upcase
-      = f.text_field :subject, :size => 50
+      = f.label :subject, "ASUNTO"
+      = f.text_field :subject, :size => 50, :autocomplete => 'off'
       = f.error_message_on :subject
     %p
-      = f.label :message, "Mensaje".upcase
+      = f.label :message, "MENSAJE"
       = f.text_area :message, :rows => "6", :cols => "46"
       = f.error_message_on :message
-      -# %span.info= "Formato: **<strong>negrita</strong>** _<em>cursiva</em>_ [Un ejemplo](http://ejemplo.net/)" 
 
     - restrict_to "admin | extenda" do
       #send_all
@@ -22,10 +21,9 @@
         = label_tag :receivers_select, "ELEGIR DESTINATARIOS".upcase
         = select_tag :receivers_select, select_options_buyers_exhibitors
       %p
-        = f.label :receivers_string, "DESTINATARIOS DEL MENSAJE"
-        -# %span.info= "(separados por comas)"
+        = f.label :receivers_string, "DESTINATARIOS DEL MENSAJE (separados por comas)"
         = f.text_field :receivers_string, :size => 50, :autocomplete =>"off", :value => (params[:receiver] ? "#{params[:receiver]}, " : "")
         = f.error_message_on :sender_id
 
-
     %span.submit= f.submit "ENVIAR" 
+    .separata
