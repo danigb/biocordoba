@@ -1,8 +1,5 @@
 - title "Mostrando la cita"
 
-- if @controller.request.format == "text/javascript"
-  = javascript_include_tag "jquery", "application"
-
 - if @meeting.canceled?
   #flash_error
     Esta cita está cancelada.

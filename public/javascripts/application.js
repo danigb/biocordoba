@@ -62,12 +62,20 @@ $(document).ready(function() {
 
   //Meeting show
   /* $("#guest-info, #host-info").hide(); */
-  $("#guest-info-mini a, #host-info-mini a").click(function(e){ 
+  $("#guest-info-mini a, #host-info-mini a").live("click", function(e){ 
     $(this).parent().parent().next().toggle("slow");
     e.preventDefault();
   })
 
-  $("#guest-info-mini a, #host-info-mini a").toggle(function(){ $(this).text("Menos información") }, function(){ $(this).text("Más información") });
+  $("#guest-info-mini a, #host-info-mini a").live("click", function(){
+      if($(this).html() == "Más información"){
+        $(this).text("Menos información");
+      }else{
+        $(this).text("Más información");
+      }
+      /* this.toggle(function(){ $(this).text("Menos información") }, function(){ $(this).text("Más información") }) 
+       * Deprecated, ahora usamos live*/
+      });
 
   //Meeting Show Ajax
   $(".meeting-link").unbind();
@@ -86,6 +94,7 @@ $(document).ready(function() {
   setTimeout("$('.flash-message').slideUp('slow')", 7000);
 
   //Cancel form
+  /* $(".cancel-meeting-link").die("click"); //Matamos el live por si existe anteriormente */
   $(".cancel-meeting-link").live("click", function(e){
       var id = this.id;
       $("#cancel-form-"+id).toggle("slow");
