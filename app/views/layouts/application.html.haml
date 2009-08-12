@@ -20,7 +20,7 @@
               %span "AGENDA VIRTUAL. ANDALUCÍA SABOR"
           %h2.claim
             .version
-              %span= "VERSIÓN #{current_user.role.title.upcase}"
+              %span= "VERSIÓN #{ROLES[current_user.role.title.to_sym].upcase}"
             %span
               AGENDA VIRTUAL - del 22 al 24 de Septiembre
           = render :partial => 'sessions/user_bar'
