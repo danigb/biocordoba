@@ -28,8 +28,7 @@ describe Meeting do
     end
 
     it "should have pending state with a international buyer" do
-      @buyer = User.make(:international_buyer)
-      @meeting = Meeting.make(:guest => @buyer)
+      @meeting = Meeting.make(:guest => User.make(:international_buyer))
       @meeting.should be_pending
     end
 
@@ -123,7 +122,7 @@ describe Meeting do
     it "a host should create a meeting with a guest although the guest canceled another meeting before" do
       @meeting.cancel!
       @meeting.should be_canceled
-      meeting = Meeting.make_unsaved(:host => @host, :guest => @guest, :starts_at => @meeting.starts_at + 3.hours)
+      meeting = Meeting.make_unsaved(:host => @host, :guest => @guest, :starts_at => @meeting.starts_at)
       meeting.should be_valid
     end
 
