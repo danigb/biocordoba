@@ -1,7 +1,6 @@
 #profile
   - title "Ficha del usuario"
-  %h2 Información sobre empresas visitantes
-
+  -# %h2 Información sobre empresas visitantes
   = render :partial => 'show', :locals => {:profile => @profile}
   %p
     = link_to_meeting(@profile.user)

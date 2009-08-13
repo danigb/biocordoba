@@ -1,6 +1,8 @@
 - cache profile do
   %p
-    %h3.violet= h profile.company_name.upcase
+    %h2.violet
+      PERFIL DE
+      = h profile.company_name.upcase
   %p 
     Dirección:
     = h profile_value(profile.address)
@@ -33,9 +35,6 @@
     %p 
       Perfil comercial:
       = profile_value(profile.commercial_profile)
-    %p 
-      Productos:
-      = profile_value(profile.products)
     
   %p 
     Email:

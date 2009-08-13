@@ -217,6 +217,12 @@ span.button {
   #agenda_extenda ul li {
     list-style: none;
     padding-bottom: 5px; }
+#agenda_extenda .meetings-summary {
+  margin-top: 10px; }
+#agenda_extenda .plus-icon {
+  display: inline; }
+  #agenda_extenda .plus-icon img {
+    vertical-align: middle; }
 
 #left-column, #right-column {
   float: left;
@@ -391,7 +397,8 @@ span.button {
   font-size: 13px;
   font-weight: normal; }
 #profile h2 {
-  margin-top: 10px; }
+  margin: 10px 0;
+  text-align: center; }
 #profile h3 {
   margin: 25px 0 25px; }
 #profile p {

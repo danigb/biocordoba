@@ -56,7 +56,7 @@ $(document).ready(function() {
 
   //Profile dialog
   $(".profile-link").live("click", function(e){
-    $('<div />').appendTo('body').append("<img src='/images/loader-1.gif'/> Cargando...").dialog({resizable: false, modal:true, position: ['center', 50]}).load("/perfiles/" + this.id);
+    $('<div />').appendTo('body').append("<img src='/images/loader-1.gif'/> Cargando...").dialog({resizable: false, modal:true, position: ['center', 50]}).load("/perfiles/" + this.id + ".js");
     e.preventDefault();
   });
 
@@ -80,7 +80,7 @@ $(document).ready(function() {
   //Meeting Show Ajax
   $(".meeting-link").unbind();
   $(".meeting-link").click(function(e){
-    $('<div />').appendTo('body').append("<img src='/images/loader-1.gif'/> Cargando...").dialog({resizable: false, modal:true, position: ['center', 50], width:450}).load("/citas/" + this.id);
+    $('<div />').appendTo('body').append("<img src='/images/loader-1.gif'/> Cargando...").dialog({resizable: false, modal:true, position: ['center', 50], width:450}).load("/citas/" + this.id + ".js");
     e.preventDefault();
   });
 
