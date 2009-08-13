@@ -64,8 +64,16 @@ class MessagesController < ApplicationController
 
   #TODO, A background
   def mark_as_read
-    @message_user = @message.user_messages.find_by_receiver_id(current_user.id)
-    @message_user.mark_as_read! if @message_user && @message_user.unread?
+
+    #Si el usuario es extenda, ponemos como leido a todos los usuarios
+    if current_user.is_extenda?
+      @message.user_messages.each do |um|
+        um.mark_as_read! if !um.indirect_receiver.nil? && um.unread?
+      end
+    else
+      @message_user = @message.user_messages.find_by_receiver_id(current_user.id)
+      @message_user.mark_as_read! if @message_user && @message_user.unread?
+    end
   end
 
 end
