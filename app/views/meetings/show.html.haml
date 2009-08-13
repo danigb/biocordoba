@@ -35,17 +35,18 @@
 
   - #Notas, accesibles solo por el host y el guest
   - if @host || @guest
-    - form_for @meeting, :url => change_note_meeting_path(@meeting) do |f|
-      %p
-        = label_tag("meeting_#{@host ? 'note_host' : 'note_guest'}","Notas")
-        = f.text_area @host ? 'note_host' : 'note_guest', :rows => 5, :cols => 48
-      %p.enviar
-        = f.submit "Guardar nota"
+    #notes
+      - form_for @meeting, :url => change_note_meeting_path(@meeting) do |f|
+        %p
+          = label_tag("meeting_#{@host ? 'note_host' : 'note_guest'}","Notas sobre la cita")
+          = f.text_area @host ? 'note_host' : 'note_guest', :rows => 5, :cols => 48
+        %p.enviar
+          = f.submit "Guardar nota"
 
   .separata
     %h2 OPCIONES
     - if(@host || @admin_extenda) && !@meeting.canceled?
-      %span.button.violet= link_to "Cancelar cita", meeting_path(@meeting), :class => 'cancel-meeting-link', :id => @meeting.id
+      %span.button.violet#cancel-button= link_to "Cancelar cita", meeting_path(@meeting), :class => 'cancel-meeting-link', :id => @meeting.id
       %p
         = render :partial => 'cancel_form', :locals => {:meeting => @meeting}
     - if @host || @guest

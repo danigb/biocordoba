@@ -94,12 +94,14 @@ $(document).ready(function() {
   setTimeout("$('.flash-message').slideUp('slow')", 7000);
 
   //Cancel form
-  /* $(".cancel-meeting-link").die("click"); //Matamos el live por si existe anteriormente */
   $(".cancel-meeting-link").live("click", function(e){
       var id = this.id;
       $("#cancel-form-"+id).toggle("slow");
       e.preventDefault();
   })
+
+  //Meetings show cancel button
+  $("#cancel-button").live("click", function(){$(this).hide()});
 });
 
 function load_town(province_id, f){
