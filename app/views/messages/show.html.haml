@@ -3,7 +3,7 @@
 %p
   %strong
     De:
-    =h @message.sender.profile.company_name
+    = link_to_profile @message.sender.profile
 %p
   %strong
     - if params[:type] == "sent"

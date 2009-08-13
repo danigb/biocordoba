@@ -34,7 +34,7 @@ module ApplicationHelper
     if type == "received"
       link_to_profile(message.sender.profile)
     else
-      truncate(message.receiver, :length => 40)
+      truncate(message.receiver(false), :length => 40)
     end
   end
 

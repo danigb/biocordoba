@@ -1,24 +1,34 @@
-- unless current_user.is_admin_or_extenda?
+- restrict_to "national_buyer | exhibitor" do
   - title "Mi agenda"
-
   = render :partial => 'meetings/my_meetings', :locals => {:user => current_user}
-  #my_meetings_footer
 
-    /*Comprador*/
+- restrict_to "admin | extenda" do
+  - title "Versión administrador"
+  .oil_img
+
+
+#my_meetings_footer
+  /*Comprador nacional*/
+  - restrict_to "national_buyer" do
     %p
       *Cada comprador nacional deberá reservar 3 horas cada día en sus agendas para citas. 
     %p
       Si su empresa no está registrada, pero acudirá a la feria, debe establecer también un tiempo mínimo de X horas / día (por definir).
-
-    /*Expositor*/
     %p.imprimir
       = link_to "imprimir agenda"
 
-    /*Extenda*/
+  /*Expositor*/
+  - restrict_to "exhibitor" do
+    %p
+      = "*Tiene un máximo de #{current_user.preference.meetings_number} citas por día del evento, y su duración será de"
+      = "#{current_user.preference.meetings_duration} minutos cada una."
+
+    %p.imprimir
+      = link_to "imprimir agenda"
+
+  /*Extenda*/
+  - restrict_to "extenda" do
     %p
       *Cada comprador internacional que forme parte de Extenda deberá reservar en sus agendas 3 horas al día durante dos de los tres días de la feria para citas.
 
-- else
-  - title "Versión administrador"
-  .oil_img
 

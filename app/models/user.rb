@@ -112,7 +112,7 @@ class User < ActiveRecord::Base
   # Devuelve los eventos comunes, es decir no tienen actor a quien se dirige y los eventos concretos hacia él
   def timeline_events
     TimelineEvent.find(:all, :conditions => ["(actor_type = 'User' AND actor_id = ?) OR actor_type IS NULL", 
-      self.id], :limit => 10, :order => 'created_at desc', :include => [:subject, :secondary_subject])
+      self.id], :limit => 3, :order => 'created_at desc', :include => [:subject, :secondary_subject])
   end
   
   def unread_messages_count

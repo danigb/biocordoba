@@ -11,10 +11,14 @@ class Message < ActiveRecord::Base
     errors.add(:sender_id, "Debe enviar el mensaje a al menos una persona") if self.receivers.blank?
   end
 
-  def receiver
+  def receiver(links = true)
     self.receivers.inject(""){|res, e| 
       unless e.is_extenda?
-        res += "#{e.profile.company_name}, "
+        if links
+          res += "<a href='/perfiles/#{e.profile.id}' class='profile-link' id='#{e.profile.id}'>#{e.profile.company_name}</a>, "
+        else
+          res += "#{e.profile.company_name}, "
+        end
       else
         res
       end
