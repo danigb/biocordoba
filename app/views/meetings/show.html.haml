@@ -21,7 +21,6 @@
     #guest-info-mini
       %p
         = "Comprador: #{@meeting.guest.profile.company_name.upcase} ("
-        -# = link_to_profile @meeting.guest.profile, "Más información"
         = link_to "Más información"
         )
     #guest-info= render :partial => 'profiles/show', :locals => {:profile => @meeting.guest.profile}
@@ -38,8 +37,8 @@
   - if @host || @guest
     - form_for @meeting, :url => change_note_meeting_path(@meeting) do |f|
       %p
-        = label_tag("meeting_ #{@host ? 'note_host' : 'note_guest'}","Notas")
-        = f.text_area @host ? 'note_host' : 'note_guest', :rows => 5, :cols => 50
+        = label_tag("meeting_#{@host ? 'note_host' : 'note_guest'}","Notas")
+        = f.text_area @host ? 'note_host' : 'note_guest', :rows => 5, :cols => 48
       %p.enviar
         = f.submit "Guardar nota"
 
