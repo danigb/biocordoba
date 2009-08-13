@@ -167,8 +167,10 @@ span.button {
   span.button a {
     color: #fff;
     text-decoration: none; }
-  span.button.pink {
+  span.button.violet {
     background: #b81d88; }
+  span.button.pink {
+    background: #d41e67; }
 
 /* Header */
 #header .wrapper h1 {
@@ -311,6 +313,11 @@ span.button {
 #meetings .pink {
   clear: both; }
 
+#meeting h2 {
+  color: #b81d88; }
+#meeting p.enviar input {
+  margin-bottom: 20px; }
+
 #meeting_request {
   margin: 20px 5px 20px 5px;
   padding-bottom: 10px; }
@@ -321,7 +328,8 @@ span.button {
     width: 217px; }
   #meeting_request span.button {
     float: right;
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    color: #fff; }
   #meeting_request p.enviar {
     float: right; }
   #meeting_request p.info {
