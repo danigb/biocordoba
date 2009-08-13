@@ -1,8 +1,10 @@
 class MeetingsController < ApplicationController
+  include ActionView::Helpers::TextHelper
+
   before_filter :login_required
   before_filter :access_control, :only => [:show, :update, :change_note]
   before_filter :show_meetings_remaining, :only => :new
-  include ActionView::Helpers::TextHelper
+  cache_sweeper :meeting_sweeper, :only => [:change_state, :create]
 
   def index
   end
@@ -60,9 +62,10 @@ class MeetingsController < ApplicationController
     end
   end
 
+  #Se está usando para cancelar citas
   def update
     @meeting.cancel_reason = params[:meeting][:cancel_reason] if params[:meeting]
-
+    debugger
     if @meeting.cancel!
       flash[:notice] = "La cita ha sido cancelada con éxito."
     else
@@ -106,12 +109,19 @@ class MeetingsController < ApplicationController
   def change_state
     meeting = Meeting.find(params[:id])
 
-    if meeting.pending? && %w(accepted canceled).include?(params[:state])
-      meeting.send("#{params[:state][0..-3]}!")
-      flash[:notice] = params[:state] == "accepted" ? "La cita ha sido aceptada." : "La cita ha sido rechazada."
+    if %w(accept cancel).include?(params[:state])
+      meeting.send("#{params[:state]}!")
+      if params[:state] == "accept" 
+        flash[:notice] = "La cita ha sido aceptada."
+        #Enviamos mail de cita aceptada
+        MeetingMailer.send_later(:deliver_meeting_accepted, meeting)
+      else
+        #El email lo enviamos desde el modelo, ya que también cancelamos usando el método update
+        flash[:notice] = "La cita ha sido rechazada/cancelada."
+      end
     end
 
-    redirect_to meetings_to_confirm_path
+    redirect_to :back
   end
 
   protected

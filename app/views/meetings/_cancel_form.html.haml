@@ -1,0 +1,8 @@
+%div{:id => "cancel-form-#{meeting.id}", :class => 'cancel-form form'}
+  - form_for meeting do |f|
+    %p.info
+      = f.label :cancel_reason, "Motivo de la cancelación (opcional)" 
+    %p
+      = f.text_area :cancel_reason, :rows => 5, :cols => 50
+    %p.enviar= submit_tag "Cancelar Cita", :confirm => "¿Seguro que quieres cancelarla?"
+  .separata

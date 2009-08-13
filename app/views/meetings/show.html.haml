@@ -1,8 +1,5 @@
 - title "Mostrando la cita"
 
-- if @controller.request.format == "text/javascript"
-  = javascript_include_tag "jquery", "application"
-
 - if @meeting.canceled?
   #flash_error
     Esta cita está cancelada.
@@ -50,7 +47,8 @@
   %h1 Opciones
   - if(@host || @admin_extenda) && !@meeting.canceled?
     %p
-      %h2= link_to "Cancelar cita", meeting_path(@meeting), :method => :put, :confirm => "¿Seguro que desea cancelar la cita?"
+      %h2= link_to "Cancelar cita", meeting_path(@meeting), :class => 'cancel-meeting-link', :id => @meeting.id
+      = render :partial => 'cancel_form', :locals => {:meeting => @meeting}
   - if @host || @guest
     %h2= link_to "Enviar mensaje", new_message_path(:receiver => (@host ? @meeting.guest.profile.company_name : @meeting.host.profile.company_name))
 

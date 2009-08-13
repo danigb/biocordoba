@@ -55,19 +55,27 @@ $(document).ready(function() {
 
 
   //Profile dialog
-  $(".profile-link").click(function(e){
+  $(".profile-link").live("click", function(e){
     $('<div />').appendTo('body').append("<img src='/images/loader.gif'/> Cargando...").dialog({resizable: false, modal:true, position: ['center', 50]}).load("/perfiles/" + this.id);
     e.preventDefault();
   });
 
   //Meeting show
   /* $("#guest-info, #host-info").hide(); */
-  $("#guest-info-mini a, #host-info-mini a").click(function(e){ 
+  $("#guest-info-mini a, #host-info-mini a").live("click", function(e){ 
     $(this).parent().parent().next().toggle("slow");
     e.preventDefault();
   })
 
-  $("#guest-info-mini a, #host-info-mini a").toggle(function(){ $(this).text("Menos información") }, function(){ $(this).text("Más información") });
+  $("#guest-info-mini a, #host-info-mini a").live("click", function(){
+      if($(this).html() == "Más información"){
+        $(this).text("Menos información");
+      }else{
+        $(this).text("Más información");
+      }
+      /* this.toggle(function(){ $(this).text("Menos información") }, function(){ $(this).text("Más información") }) 
+       * Deprecated, ahora usamos live*/
+      });
 
   //Meeting Show Ajax
   $(".meeting-link").unbind();
@@ -84,6 +92,14 @@ $(document).ready(function() {
 
   //Dynamic flash messages
   setTimeout("$('.flash-message').slideUp('slow')", 7000);
+
+  //Cancel form
+  /* $(".cancel-meeting-link").die("click"); //Matamos el live por si existe anteriormente */
+  $(".cancel-meeting-link").live("click", function(e){
+      var id = this.id;
+      $("#cancel-form-"+id).toggle("slow");
+      e.preventDefault();
+  })
 });
 
 function load_town(province_id, f){
@@ -92,6 +108,16 @@ function load_town(province_id, f){
 
 function load_buyers(sector_id){
   $.get('/ajax/buyers', {'sector_id': sector_id}, null, "script" ); return false;
+}
+
+function getMeetings(host_id, guest, date){
+    var elem = $("#meetings-"+host_id);
+    if(elem.html() == ""){
+      $.get('/ajax/meetings', 
+          {'host_id':host_id, 'guest':guest, 'date':date}, null, "script" ); 
+    }else{
+      elem.slideUp().html("");
+    }
 }
 
 // All ajax requests will trigger the format.xml block

@@ -55,19 +55,21 @@ module WeeklyHelper
           @hours.each do |h|
             concat(tag("div", :id => @day_row))
               (@start_date..@end_date).each_with_index do |day, index|
-                for event in @objects
+                to_delete = []
+                @objects.each do |event|
                   if event.starts_at.strftime('%j').to_s == day.strftime('%j').to_s
-                    if event.starts_at.strftime('%k').to_i == h.to_i
-                      # concat(tag("div", :id => "week_event", :style =>"left:#{143 * index}px;top:#{left(event.starts_at,options[:business_hours])}px;width:138px;height:#{width(event.starts_at,event.ends_at)}px;", :onclick => "location.href='/citas/#{event.id}';"))
+                    if event.starts_at.strftime('%H').to_i == h.to_i
                       concat(tag("div", :id => "week_event", :style =>"left:#{143 * index}px;top:#{left(event.starts_at,options[:business_hours])}px;width:138px;height:#{width(event.starts_at,event.ends_at)}px;", :class => event.pending? ? 'pending' : 'acepted'))
                       truncate = width(event.starts_at,event.ends_at)
                       yield(event,truncate)
                       concat("</div>")
 
-                      @objects.delete(event)
+                      to_delete << event
                     end
                   end
                 end
+
+                @objects = @objects - to_delete
               end 
             concat("</div>")  
           end

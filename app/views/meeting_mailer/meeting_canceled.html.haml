@@ -1,9 +1,10 @@
 %h1 Cita cancelada
 %p 
-  Se ha cancelado la cita entre
+  La cita entre
   = link_to @meeting.host.profile.company_name, profile_url(@meeting.host.profile)
   y
   = link_to @meeting.guest.profile.company_name, profile_url(@meeting.guest.profile)
+  ha sido cancelada.
 - unless @meeting.cancel_reason.blank?
   %p
     Existe una nota explicativa de la cancelación:
