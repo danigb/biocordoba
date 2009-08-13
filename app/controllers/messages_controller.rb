@@ -50,6 +50,12 @@ class MessagesController < ApplicationController
   def load_message
     begin
       @message = eval("current_user.messages_#{params[:type]}.find(params[:id])")
+      #Cargamos el receptor indirecto si extenda está viendo los mensajes
+      if current_user.is_extenda? && params[:type] == "received"
+        user_message = @message.user_messages.find(:first, :conditions => ["indirect_receiver_id IS NOT NULL"],
+          :include => {:indirect_receiver => :profile})
+        @indirect_receiver = user_message.indirect_receiver
+      end
     rescue NoMethodError # Comprobamos que no han alterado el parámetro
       flash[:error] = "Acceso denegado"
       redirect_to messages_path

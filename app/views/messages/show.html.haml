@@ -6,11 +6,15 @@
     =h @message.sender.profile.company_name
 %p
   %strong
-    Para:
     - if params[:type] == "sent"
+      Para:
       = @message.receiver
     - else
-      = current_user.profile.company_name
+      - if current_user.is_extenda?
+        #flash_notice= "Este mensaje iba dirigido al comprador internacional #{link_to_profile @indirect_receiver.profile}"
+      - else
+        Para:
+        = current_user.profile.company_name
 %p
   = h @message.message
 

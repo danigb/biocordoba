@@ -52,7 +52,7 @@ describe "Messages to international buyer" do
   it "the message should be sent to the extenda users insteed" do
     @extenda_1.should have(1).messages_received
     @extenda_2.should have(1).messages_received
-    @international.should have(0).messages_received
+    @international.should have(1).messages_received
   end
 
   it "the message should reference to @international" do

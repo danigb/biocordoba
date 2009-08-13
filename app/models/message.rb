@@ -12,7 +12,13 @@ class Message < ActiveRecord::Base
   end
 
   def receiver
-    self.receivers.inject(""){|res, e| res += "#{e.profile.company_name}, " }.gsub(/, $/,"")
+    self.receivers.inject(""){|res, e| 
+      unless e.is_extenda?
+        res += "#{e.profile.company_name}, "
+      else
+        res
+      end
+    }.gsub(/, $/,"")
   end
 
   def send_all=(boolean)

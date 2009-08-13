@@ -46,7 +46,7 @@ class UserMessage < ActiveRecord::Base
       #Notificarles
       UserMailer.send_later(:deliver_new_message_to_international_user, self.receiver, self.message)
       #Borramos el mensaje que iba dirigido al comprador internacional
-      self.destroy
+      # self.destroy TODO, no lo borramos, para simplificar la muestra
 
     else
       UserMailer.send_later(:deliver_new_message_received, self.receiver, self.message)
