@@ -1,4 +1,5 @@
-%h1= "Agenda del usuario #{@user.profile.company_name}"
+%h2
+  = "Agenda del usuario #{@user.profile.company_name}"
 = render :partial => 'meetings/my_meetings', :locals => {:user => @user}
 
 - content_for(:right_column) do

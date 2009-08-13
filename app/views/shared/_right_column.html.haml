@@ -7,5 +7,8 @@
       - for event in current_user.timeline_events 
         .last_messages
           = print_event(event)
+      - if current_user.timeline_events.nil?
+        .last_messages.link
+          = link_to "ver todos los mensajes", messages_path()
 
 = yield(:right_column)

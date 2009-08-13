@@ -169,26 +169,20 @@ p
     input
       :width auto
       :padding 2px 5px
-  &.imprimir
-    :text-align right 
-    :clear both
-    :font-size 12px
-    :padding-top 20px
-    :margin 0
-    a
-      :color #fff
-      &:hover
-        :color = !pink
 
 span.button
   :background = !green
   :padding 2px 5px
+  :font-size 12px
   a
     :color #fff
     :text-decoration none
-  &.pink
+  &.violet
     :background = !violet
-
+  &.pink
+    :background = !pink
+  &.dark_green
+    :background = !dark_green
 
 /*
   Header
@@ -288,6 +282,12 @@ span.button
         &:hover
           :color = !pink
           :text-decoration underline 
+      &.link
+        :border-bottom none
+        a
+          :text-decoration underline
+          &:hover
+            :text-decoration none
 
 #new-message
   :background = !green url("/images/content-display-bg.png") left top
@@ -342,6 +342,26 @@ span.button
   .pink
     :clear both
 
+#meeting
+  h2
+    :color = !violet
+  p.enviar
+    input
+      :margin-bottom 20px
+  
+#meetings_confirm
+  div
+    :background = !grey
+    :padding 15px
+    :color #000
+  h2
+    :margin 0 0 40px 10px
+  span.button
+    :padding 2px 15px
+    :font-weight bold
+  p.pink
+    :font-size 12px
+    :margin-left 10px
 #meeting_request
   :margin 20px 5px 20px 5px
   :padding-bottom 10px
@@ -353,6 +373,7 @@ span.button
   span.button
     :float right
     :margin-bottom 20px
+    :color #fff
   p.enviar
     :float right
   p.info
@@ -368,6 +389,22 @@ span.button
     :background #fff
     :color #000
     :font-size 12px
+
+#my_meetings_footer
+  :clear both
+  :padding-top 10px
+  :font-style italic
+  p
+    :margin-bottom 0
+    &.imprimir
+      :text-align right 
+      :font-size 12px
+      :margin 0
+      a
+        :color #fff
+        &:hover
+          :color = !pink
+  
 
 #profile
   h2,h3
@@ -386,7 +423,7 @@ span.button
   a
     :color #fff
     &:hover
-      :color = !violet
+      :color = !green
   h3
     :color = !violet
     :margin-bottom 20px
