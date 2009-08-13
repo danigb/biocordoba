@@ -10,5 +10,5 @@
       - if current_user.timeline_events.nil?
         .last_messages.link
           = link_to "ver todos los mensajes", messages_path()
-- else
-  = yield(:right_column)
+
+= yield(:right_column)

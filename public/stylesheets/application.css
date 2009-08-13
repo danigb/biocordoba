@@ -326,6 +326,9 @@ span.button {
 #meetings_confirm span.button {
   padding: 2px 15px;
   font-weight: bold; }
+#meetings_confirm p.pink {
+  font-size: 12px;
+  margin-left: 10px; }
 
 #meeting_request {
   margin: 20px 5px 20px 5px;
