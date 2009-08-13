@@ -56,7 +56,7 @@ $(document).ready(function() {
 
   //Profile dialog
   $(".profile-link").live("click", function(e){
-    $('<div />').appendTo('body').append("<img src='/images/loader.gif'/> Cargando...").dialog({resizable: false, modal:true, position: ['center', 50]}).load("/perfiles/" + this.id);
+    $('<div />').appendTo('body').append("<img src='/images/loader-1.gif'/> Cargando...").dialog({resizable: false, modal:true, position: ['center', 50]}).load("/perfiles/" + this.id);
     e.preventDefault();
   });
 
@@ -102,6 +102,23 @@ $(document).ready(function() {
 
   //Meetings show cancel button
   $("#cancel-button").live("click", function(){$(this).hide()});
+  
+  // /citas selector de empresa, mostramos su perfil comercial
+  $("#guest_id:select").live("change", function(e){
+    $("#commercial-profile").load('/profiles/commercial_profile/'+this.value)
+    // $.get('/profiles/commercial_profile/'+this.value, {}, 
+    //   function(data){
+    //     $("#commercial-profile").html(data);
+    //   }, "text" ); 
+  });
+
+  //Ajax global options
+  $("#loading").bind("ajaxSend", function(){
+     $(this).show();
+  }).bind("ajaxComplete", function(){
+     $(this).hide();
+  });
+
 });
 
 function load_town(province_id, f){
