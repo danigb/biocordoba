@@ -9,7 +9,7 @@
       - @meetings_by_host.each do |host, meetings|
         %li
           %strong
-            = host.profile.company_name.upcase
+            = host.profile.company_name.capitalize
             = link_to_function image_tag("plus.gif"), "getMeetings(#{host.id}, #{@guest ? '1' : '0'}, '#{params[:date]}')"
             ="<div id='meetings-#{host.id}'></div>"
   - else

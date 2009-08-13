@@ -64,7 +64,7 @@ module ApplicationHelper
     value.blank? ? "No definido" : value
   end
 
-  def link_to_profile(profile, message = profile.company_name)
+  def link_to_profile(profile, message = profile.company_name.capitalize)
     link_to message, profile_path(profile), :class => "profile-link", :id => profile.id
   end
 

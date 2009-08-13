@@ -4,9 +4,9 @@
       = "[#{meeting.starts_at.to_s(:hour_only)}]"
       = "cita #{MEETING_STATE[meeting.state.to_sym]} con"
       - unless guest == "1"
-        = link_to_profile meeting.guest.profile, meeting.guest.profile.company_name 
+        = link_to_profile meeting.guest.profile
       - else
-        = link_to_profile meeting.host.profile, meeting.host.profile.company_name
+        = link_to_profile meeting.host.profile
       | 
       = link_to "Cancelar cita", meeting_path(meeting), :class => 'cancel-meeting-link', :id => meeting.id
       = render :partial => '/meetings/cancel_form', :locals => {:meeting => meeting}
