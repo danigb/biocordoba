@@ -2,8 +2,22 @@
   - title "Mi agenda"
 
   = render :partial => 'meetings/my_meetings', :locals => {:user => current_user}
-  %p.imprimir
-    = link_to "imprimir agenda"
+  #my_meetings_footer
+
+    /*Comprador*/
+    %p
+      *Cada comprador nacional deberá reservar 3 horas cada día en sus agendas para citas. 
+    %p
+      Si su empresa no está registrada, pero acudirá a la feria, debe establecer también un tiempo mínimo de X horas / día (por definir).
+
+    /*Expositor*/
+    %p.imprimir
+      = link_to "imprimir agenda"
+
+    /*Extenda*/
+    %p
+      *Cada comprador internacional que forme parte de Extenda deberá reservar en sus agendas 3 horas al día durante dos de los tres días de la feria para citas.
+
 - else
   - title "Versión administrador"
   .oil_img

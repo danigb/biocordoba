@@ -150,20 +150,11 @@ input {
 p.enviar input {
   width: auto;
   padding: 2px 5px; }
-p.imprimir {
-  text-align: right;
-  clear: both;
-  font-size: 12px;
-  padding-top: 20px;
-  margin: 0; }
-  p.imprimir a {
-    color: #fff; }
-    p.imprimir a:hover {
-      color: #d41e67; }
 
 span.button {
   background: #70b120;
-  padding: 2px 5px; }
+  padding: 2px 5px;
+  font-size: 12px; }
   span.button a {
     color: #fff;
     text-decoration: none; }
@@ -171,6 +162,8 @@ span.button {
     background: #b81d88; }
   span.button.pink {
     background: #d41e67; }
+  span.button.dark_green {
+    background: #4c800c; }
 
 /* Header */
 #header .wrapper h1 {
@@ -263,6 +256,12 @@ span.button {
         #right-column .box_dark_green .last_messages a:hover {
           color: #d41e67;
           text-decoration: underline; }
+      #right-column .box_dark_green .last_messages.link {
+        border-bottom: none; }
+        #right-column .box_dark_green .last_messages.link a {
+          text-decoration: underline; }
+          #right-column .box_dark_green .last_messages.link a:hover {
+            text-decoration: none; }
 
 #new-message {
   background: #70b120 url(/images/content-display-bg.png) left top;
@@ -318,6 +317,16 @@ span.button {
 #meeting p.enviar input {
   margin-bottom: 20px; }
 
+#meetings_confirm div {
+  background: #c8c8c8;
+  padding: 15px;
+  color: #000; }
+#meetings_confirm h2 {
+  margin: 0 0 40px 10px; }
+#meetings_confirm span.button {
+  padding: 2px 15px;
+  font-weight: bold; }
+
 #meeting_request {
   margin: 20px 5px 20px 5px;
   padding-bottom: 10px; }
@@ -345,6 +354,21 @@ span.button {
     color: #000;
     font-size: 12px; }
 
+#my_meetings_footer {
+  clear: both;
+  padding-top: 10px;
+  font-style: italic; }
+  #my_meetings_footer p {
+    margin-bottom: 0; }
+    #my_meetings_footer p.imprimir {
+      text-align: right;
+      font-size: 12px;
+      margin: 0; }
+      #my_meetings_footer p.imprimir a {
+        color: #fff; }
+        #my_meetings_footer p.imprimir a:hover {
+          color: #d41e67; }
+
 #profile h2, #profile h3 {
   font-size: 13px;
   font-weight: normal; }
@@ -361,7 +385,7 @@ span.button {
   #results a {
     color: #fff; }
     #results a:hover {
-      color: #b81d88; }
+      color: #70b120; }
   #results h3 {
     color: #b81d88;
     margin-bottom: 20px; }
