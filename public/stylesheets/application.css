@@ -102,12 +102,9 @@ span.canceled {
   display: none; }
 
 #summary li.summary-item, #summary p {
-  font-size: 15px;
   margin-bottom: 5px; }
 #summary ul {
   margin: 20px 0 20px 20px; }
-#summary h1 {
-  margin-bottom: 20px; }
 
 /* Login */
 #container #login_area {
