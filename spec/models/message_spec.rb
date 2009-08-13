@@ -54,4 +54,8 @@ describe "Messages to international buyer" do
     @extenda_2.should have(1).messages_received
     @international.should have(0).messages_received
   end
+
+  it "the message should reference to @international" do
+    @extenda_1.user_messages.first.indirect_receiver.should == @international
+  end
 end

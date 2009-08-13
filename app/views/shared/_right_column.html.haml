@@ -7,5 +7,5 @@
       - for event in current_user.timeline_events 
         .last_messages
           = print_event(event)
-- else
-  = yield(:right_column)
+
+= yield(:right_column)

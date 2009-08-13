@@ -16,6 +16,15 @@ class UserMailer < ActionMailer::Base
     @body = {:sender => message.sender, :message => message}
   end
 
+  def new_message_to_international_user(receiver, message)
+    setup_email
+    @recipients = User.extendas.map(&:email)
+    @subject += "Mensaje enviado a uno de tus compradores internacionales"  
+    @body = {:sender => message.sender, :message => message, :receiver => receiver}
+  end
+
+  #Notificar a los usuarios extenda que han mandado un email a un usuario internacional
+
   def setup_email
     @from = "Andalucía sabor international fine food exhibition <andaluciasabor@andaluciasabor.es>"  
     @subject = "[Andalucía Sabor] "  
