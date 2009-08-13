@@ -1,4 +1,5 @@
-- if yield(:right_column).nil?
+-# - if yield(:right_column).nil?
+- if @controller.controller_name == "main" && @controller.action_name == "home"
   - cache "#{@current_user.login}-timeline" do
     .last_messages_img
       %h3 Últimos Mensajes

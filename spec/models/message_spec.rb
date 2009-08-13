@@ -39,3 +39,19 @@ describe Message do
     @user.unread_messages_count.should > 0
   end
 end
+
+describe "Messages to international buyer" do
+  before do
+    2.times do |i|
+      eval("@extenda_#{i+1} = User.make(:extenda)")
+    end
+    @international = User.make(:international_buyer)
+    @message = Message.make(:receivers_string => "#{@international.profile.company_name}")
+  end
+
+  it "the message should be sent to the extenda users insteed" do
+    @extenda_1.should have(1).messages_received
+    @extenda_2.should have(1).messages_received
+    @international.should have(0).messages_received
+  end
+end

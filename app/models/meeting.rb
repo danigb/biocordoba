@@ -53,16 +53,16 @@ class Meeting < ActiveRecord::Base
     transitions :from => [:accepted, :pending], :to => :canceled
   end
 
-  def name(user, me = true)
-    if me
-      user.login == host.login ? host.profile.company_name : guest.profile.company_name
+  def name(user, allways_busy = false)
+    if allways_busy
+      "Ocupado"
     else
       if user.login == host.login 
         guest.profile.company_name
       elsif user.login == guest.login
         host.profile.company_name
-      else
-        "Ocupado"
+      # else
+      #   "Ocupado"
       end
     end     
   end

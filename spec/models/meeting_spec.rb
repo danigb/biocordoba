@@ -161,10 +161,10 @@ describe Meeting do
       host = meeting.host
       guest = meeting.guest
       
-      meeting.name(host).should == host.profile.company_name
+      meeting.name(host).should == guest.profile.company_name
       meeting.name(host, false).should == guest.profile.company_name
       
-      meeting.name(guest).should == guest.profile.company_name
+      meeting.name(guest).should == host.profile.company_name
       meeting.name(guest, false).should == host.profile.company_name
     end
 
@@ -172,7 +172,7 @@ describe Meeting do
       meeting = Meeting.make
       user = User.make
 
-      meeting.name(user, false).should == "Ocupado"  
+      meeting.name(user, true).should == "Ocupado"  
     end
 
     it "should validate a date belongs to event" do
