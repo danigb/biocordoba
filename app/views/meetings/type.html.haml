@@ -1,18 +1,19 @@
-.date
-  = back_link(@date)
-  =" #{I18n.localize(@date, :format => '%A %d')} "
-  = foward_link(@date)
+#agenda_extenda
+  .date
+    = back_link(@date)
+    =" #{I18n.localize(@date, :format => '%A %d')} "
+    = foward_link(@date)
 
-- unless @meetings_by_host.blank?
-  %ul
-    - @meetings_by_host.each do |host, meetings|
-      %li
-        %strong
-          = host.profile.company_name.capitalize
-          = link_to_function image_tag("plus.gif"), "getMeetings(#{host.id}, #{@guest ? '1' : '0'}, '#{params[:date]}')"
-          ="<div id='meetings-#{host.id}'></div>"
-- else
-  No existen citas para ese día
+  - unless @meetings_by_host.blank?
+    %ul
+      - @meetings_by_host.each do |host, meetings|
+        %li
+          %strong
+            = host.profile.company_name.upcase
+            = link_to_function image_tag("plus.gif"), "getMeetings(#{host.id}, #{@guest ? '1' : '0'}, '#{params[:date]}')"
+            ="<div id='meetings-#{host.id}'></div>"
+  - else
+    No existen citas para ese día
 
-- content_for(:right_column) do 
-  = render :partial => 'meetings/select_schedule_form', :locals => {:role_name => @name}
+  - content_for(:right_column) do 
+    = render :partial => 'meetings/select_schedule_form', :locals => {:role_name => @name}
