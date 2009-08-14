@@ -10,7 +10,10 @@
       Esta cita está pendiente de aceptación por parte de un organismo internacional extenda.
   - else
     #flash_notice
-      Cita aceptada automáticamente
+      - if @meeting.guest.is_international_buyer?
+        Cita aceptada por un organismo extenda
+      - else
+        Cita aceptada automáticamente
 
   %h2 INFORMACIÓN DE LA CITA
   %p 
