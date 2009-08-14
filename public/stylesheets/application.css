@@ -566,9 +566,9 @@ input.white {
     #changelog ul span.todo {
       color: #627ffd; }
 
-.cancel-form, #notes form {
+.cancel-form {
   display: none; }
-  .cancel-form label, #notes form label {
+  .cancel-form label {
     width: inherit; }
 
 #loading {

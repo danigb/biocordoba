@@ -33,7 +33,7 @@
         )
     #host-info= render :partial => 'profiles/show', :locals => {:profile => @meeting.host.profile}
 
-  - #Notas, accesibles solo por el host y el guest
+  //Notas, accesibles solo por el host y el guest
   - if @host || @guest
     #notes
       - form_for @meeting, :url => change_note_meeting_path(@meeting) do |f|
