@@ -1,6 +1,12 @@
-- title "Buscador de empresas"
-%h2
-  Información sobre las empresas
+- restrict_to "national_buyer | international_buyer" do
+  - @name = "Información sobre expositores"
+- restrict_to "exhibitor" do
+  - @name = "Información sobre compradores"
+- restrict_to "admin | extenda" do
+  - @name = "Información sobre empresas"
+
+- title @name
+%h2= @name
 
 #search
   - form_for :search, :url => search_path do |f|

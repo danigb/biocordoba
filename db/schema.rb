@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090813093850) do
+ActiveRecord::Schema.define(:version => 20090814153334) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -153,6 +153,7 @@ ActiveRecord::Schema.define(:version => 20090813093850) do
     t.datetime "remember_token_expires_at"
     t.integer  "preference_id"
     t.string   "password",                  :limit => 40
+    t.string   "state"
   end
 
   add_index "users", ["login"], :name => "users_login"

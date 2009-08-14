@@ -119,6 +119,7 @@ $(document).ready(function() {
      $(this).hide();
   });
 
+
 });
 
 function load_town(province_id, f){

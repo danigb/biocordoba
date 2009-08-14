@@ -3,6 +3,7 @@ require 'digest/sha1'
 class User < ActiveRecord::Base
   include Authentication
   include Authentication::ByCookieToken
+  include AASM
 
   has_and_belongs_to_many :roles
   has_one :profile
@@ -42,6 +43,17 @@ class User < ActiveRecord::Base
 
   attr_accessible :login, :email, :name, :password, :password_confirmation, :role_id, :profile_attributes, :preference_attributes, :preference_id
   accepts_nested_attributes_for :profile, :preference
+
+
+  aasm_column :state
+  aasm_initial_state :enabled
+
+  aasm_state :enabled
+  aasm_state :disabled
+
+  aasm_event :disable do
+    transitions :from => :enabled, :to => :disabled
+  end
 
   # TimeLine Event #FIXME temporalmente desactivado
   # fires :new_user_created, :on => :create, :secondary_subject => :role,
