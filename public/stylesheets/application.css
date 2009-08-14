@@ -165,6 +165,10 @@ span.button {
   span.button.dark_green {
     background: #4c800c; }
 
+input.white {
+  background: #fff;
+  color: #000; }
+
 /* Header */
 #header .wrapper h1 {
   float: left;
@@ -433,9 +437,6 @@ span.button {
   padding-left: 5px; }
   #search label {
     width: 145px; }
-  #search input.white {
-    background: #fff;
-    color: #000; }
   #search input#search_profile_company_name_like {
     width: 280px;
     padding: 2px 5px;
@@ -447,6 +448,38 @@ span.button {
   margin-bottom: 20px; }
 .users span.button {
   margin-right: 10px; }
+.users.new, .users.edit {
+  background: #70b120 url(/images/body-bg.png);
+  padding: 20px; }
+  .users.new a, .users.edit a {
+    color: #d41e67; }
+    .users.new a:hover, .users.edit a:hover {
+      color: #fff; }
+  .users.new input, .users.edit input {
+    width: 235px;
+    background: #fff;
+    color: #000; }
+    .users.new input#user_role_id_1, .users.new input#user_role_id_2, .users.edit input#user_role_id_1, .users.edit input#user_role_id_2 {
+      margin: 2px 10px 0 0; }
+  .users.new label, .users.edit label {
+    width: 160px; }
+  .users.new fieldset, .users.edit fieldset {
+    border: none;
+    margin-bottom: 20px; }
+    .users.new fieldset legend, .users.edit fieldset legend {
+      font-size: 16px;
+      margin-bottom: 30px; }
+  .users.new p.enviar, .users.edit p.enviar {
+    clear: both; }
+    .users.new p.enviar input, .users.edit p.enviar input {
+      margin-right: 10px;
+      width: auto;
+      background: #d41e67;
+      color: #fff; }
+  .users.new.extenda label, .users.edit.extenda label {
+    width: 50px; }
+  .users.new.extenda .formError, .users.edit.extenda .formError {
+    margin-left: 50px; }
 
 /* Footer */
 #footer .wrapper {

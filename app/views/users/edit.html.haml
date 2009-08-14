@@ -1,6 +1,7 @@
 - title "Edición de usuario"
-- form_for @user, :url => user_path(@user.id), :html => {:method => :put} do |f|
-  = render :partial => 'form', :locals => {:f => f}
-  = f.submit "Guardar"
-%p
-  = link_to "Volver", :back
+.users.edit
+  - form_for @user, :url => user_path(@user.id), :html => {:method => :put} do |f|
+    = render :partial => 'form', :locals => {:f => f}
+    %p.enviar
+      = f.submit "Guardar"
+      %span= link_to "Volver", :back

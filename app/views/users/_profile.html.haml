@@ -13,7 +13,7 @@
       Facilitando el email podrá recibir notificaciones de las citas y de los mensajes que reciba de otras empresas.
 %p
   = f.label :sector_ids, "Sectores:"
-  = f.error_message_on :sectores
+  = f.error_message_on :sectors
   %span.required= "*"
   - Sector.all.each do |s|
     %p

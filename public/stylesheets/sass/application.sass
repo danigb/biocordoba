@@ -184,6 +184,11 @@ span.button
   &.dark_green
     :background = !dark_green
 
+input
+  &.white
+    :background #fff
+    :color #000
+
 /*
   Header
 
@@ -472,9 +477,6 @@ span.button
     :width 145px
   :padding-left 5px
   input
-    &.white
-      :background #fff
-      :color #000
     &#search_profile_company_name_like
       :width 280px
       :padding 2px 5px
@@ -488,6 +490,40 @@ span.button
     :margin-bottom 20px
   span.button
     :margin-right 10px
+  &.new, &.edit
+    :background = !green url("/images/body-bg.png")
+    :padding 20px
+    a
+      :color = !pink
+      &:hover
+        :color #fff
+    input
+      :width 235px
+      :background #fff
+      :color #000
+      &#user_role_id_1, &#user_role_id_2
+        :margin 2px 10px 0 0
+    label
+      :width 160px
+    fieldset
+      :border none
+      :margin-bottom 20px
+      legend
+        :font-size 16px
+        :margin-bottom 30px
+    p.enviar
+      :clear both
+      input
+        :margin-right 10px
+        :width auto
+        :background = !pink
+        :color #fff
+    &.extenda
+      label
+        :width 50px
+      .formError
+        :margin-left 50px
+        
 /*
   Footer
 
