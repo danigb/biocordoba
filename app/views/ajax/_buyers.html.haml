@@ -1,14 +1,13 @@
-= label_tag 'guest_id', "COMPRADORES"
 
 - if buyers.blank?
   .pink
     No existen compradores en este sector.
 - else
+  = label_tag 'guest_id', "COMPRADORES"
   - form_tag '/ajax/to_meeting' do
     = select :guest, :id, buyers.map{|b| [b.profile.company_name.capitalize, b.to_param]}, :include_blank => true
     = hidden_field :host, :id, :value => current_user.to_param
 
-    %p.enviar PERFIL COMERCIAL
     #commercial-profile
 
     %p.enviar

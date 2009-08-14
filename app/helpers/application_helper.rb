@@ -68,6 +68,11 @@ module ApplicationHelper
     link_to message, profile_path(profile), :class => "profile-link", :id => profile.id
   end
 
+  #Link para popup de cita
+  def link_to_meeting_show(meeting, message = 'cita')
+    link_to message, meeting_path(meeting), :class => 'meeting-link', :id => meeting.id
+  end
+
   #Usado en los breadcrumbs
   def current_user_is_admin?
     current_user.is_admin?

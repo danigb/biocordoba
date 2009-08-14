@@ -11,6 +11,5 @@
   %p
     = label_tag "sector_id", "SECTOR"
     = select :sector, :id, Sector.all.map{|s| [s.name, s.id]}, {:include_blank => true}, {:onchange => 'load_buyers(this.options[this.selectedIndex].value)'}
-
     #buyers
 

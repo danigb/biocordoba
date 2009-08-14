@@ -15,9 +15,9 @@ class ProfilesController < ApplicationController
       format.js{
         @profile = Profile.find_by_company_name(params[:id])
         if @profile && !@profile.commercial_profile.blank?
-          render :text => @profile.commercial_profile
+          render :text => "<p class='enviar'>PERFIL COMERCIAL</p>" + @profile.commercial_profile
         else
-          render :text => 'Sin información en su perfil comercial' 
+          render :text => "<div class='pink'>Sin información en su perfil comercial</div>" 
         end
       }
     end

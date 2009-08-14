@@ -97,6 +97,13 @@ class User < ActiveRecord::Base
     self.roles.first
   end
 
+  #Usuarios con los que nos vamos a reunir, se supone que nosotros somos un expositor por lo que somos los hosts
+  #Método no usado todavía
+  # def meetings_with
+  #   User.find_by_sql("select u.id, u.login from users u where id IN (select m.guest_id from meetings m where m.host_id = #{self.id} 
+  #                    AND m.state != 'canceled')")
+  # end
+
   # /Simple
   def meetings(date, days = 1)
     start_date = Date.new(date.year, date.month, date.day) 
