@@ -5,6 +5,7 @@ class MessagesController < ApplicationController
   before_filter :load_message, :only => [:show, :destroy]
   before_filter :mark_as_read, :only => :show
 
+  #Atención modificado en el plugin
   auto_complete_for :profile, :company_name, :limit => 15
 
   def index

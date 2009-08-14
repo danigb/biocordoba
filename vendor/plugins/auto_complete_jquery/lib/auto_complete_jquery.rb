@@ -34,12 +34,20 @@ module AutoCompleteJquery
       define_method("auto_complete_for_#{object}_#{method}") do
         object_constant = object.to_s.camelize.constantize
         
+        #Default
+        # find_options = { 
+        #   :conditions => [ "LOWER(#{method}) LIKE ?", '%' + params[:q].downcase + '%' ], 
+        #   :order => "#{method} ASC",
+        #   :select => "#{object_constant.table_name}.#{method}",
+        #   :limit => 10 }.merge!(options)
+        
         find_options = { 
-          :conditions => [ "LOWER(#{method}) LIKE ?", '%' + params[:q].downcase + '%' ], 
+          :conditions => [ "LOWER(#{method}) LIKE ? AND users.state = 'enabled'", '%' + params[:q].downcase + '%' ], 
           :order => "#{method} ASC",
           :select => "#{object_constant.table_name}.#{method}",
-          :limit => 10 }.merge!(options)
-        
+          :limit => 10,
+          :joins => :user}.merge!(options)
+
         @items = object_constant.find(:all, find_options).collect(&method)
 
         render :text => @items.join("\n")

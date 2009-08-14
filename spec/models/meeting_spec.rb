@@ -203,5 +203,6 @@ describe Meeting do
       @host.should have(2).meetings(Event.start_day + 1.day)
     end
   end
+
 end
 

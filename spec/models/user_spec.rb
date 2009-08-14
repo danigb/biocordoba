@@ -43,4 +43,23 @@ describe User do
     User.authenticate(user.login, user.password).should be_true
     User.authenticate(user.login, "wrong_pass").should be_nil
   end
+
+end
+
+describe "user deactivation" do
+  before do
+    @meeting = Meeting.make
+    @host = @meeting.host
+    @guest = @meeting.guest
+  end
+
+  it "the system should cancel 2 meetings with user when disable it" do
+    @meeting_2 = Meeting.make(:host => @host, :starts_at => @meeting.starts_at + 20.minutes)
+    @host.should have(2).meetings(Event.start_day, Event.duration)
+    @guest.should have(1).meetings(Event.start_day, Event.duration)
+    @host.disable!
+    @host.should have(0).meetings(Event.start_day, Event.duration)
+    @guest.should have(0).meetings(Event.start_day, Event.duration)
+  end
+
 end

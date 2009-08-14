@@ -43,12 +43,13 @@ class UserMessage < ActiveRecord::Base
       User.extendas.each do |e|
         e.user_messages.create(:message => self.message, :indirect_receiver => self.receiver)
       end
-      #Notificarles
-      UserMailer.send_later(:deliver_new_message_to_international_user, self.receiver, self.message)
+      #Notificarles, sólo si están activos
+      UserMailer.send_later(:deliver_new_message_to_international_user, self.receiver, self.message) if self.receiver.enabled?
+
       #Borramos el mensaje que iba dirigido al comprador internacional
       # self.destroy TODO, no lo borramos, para simplificar la muestra
     else
-      UserMailer.send_later(:deliver_new_message_received, self.receiver, self.message)
+      UserMailer.send_later(:deliver_new_message_received, self.receiver, self.message) if self.receiver.enabled?
     end
   end
 

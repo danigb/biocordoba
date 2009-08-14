@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
   validates_presence_of     :role_id
 
   named_scope :buyers, :joins => :roles, :include => :profile, 
-    :conditions => ["roles.title = 'national_buyer' OR roles.title = 'international_buyer' AND state = 'enabled'"],
+    :conditions => ["(roles.title = 'national_buyer' OR roles.title = 'international_buyer') AND state = 'enabled'"],
     :order => 'profiles.company_name' 
   named_scope :exhibitors, :joins => :roles, :include => :profile, 
     :conditions => ["roles.title = 'exhibitor' AND state = 'enabled'"], :order => 'profiles.company_name'
@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
   aasm_initial_state :enabled
 
   aasm_state :enabled
-  aasm_state :disabled
+  aasm_state :disabled, :enter => :delete_meetings
 
   aasm_event :disable do
     transitions :from => :enabled, :to => :disabled
@@ -174,5 +174,10 @@ class User < ActiveRecord::Base
   #Enviamos al email del usuario un resumen con sus citas para un día concreto
   def send_summary(date = Time.now.to_date)
     MeetingMailer.deliver_summary(self, date)
+  end
+
+  #Cancelamos los meetings que tenga
+  def delete_meetings
+    self.meetings(Event.start_day, Event.duration).map(&:cancel!)
   end
 end
