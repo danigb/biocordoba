@@ -23,6 +23,11 @@ class UserMailer < ActionMailer::Base
     @body = {:sender => message.sender, :message => message, :receiver => receiver}
   end
 
+  def user_disabled(receiver)
+    setup_email
+    @recipients = receiver.email
+    @subject += "Tu usuario ha sido desactivado"  
+  end
   #Notificar a los usuarios extenda que han mandado un email a un usuario internacional
 
   def setup_email

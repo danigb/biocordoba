@@ -107,6 +107,7 @@ class UsersController < ApplicationController
       flash[:error] = "Error. No puedes desactivar este usuario."
     else
       user.disable!
+      UserMailer.send_later(:deliver_user_disabled, user)
       flash[:notice] = "Usuario eliminado con éxito"
     end
 
