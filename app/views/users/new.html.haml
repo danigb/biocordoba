@@ -1,14 +1,11 @@
 - title "Registra un nuevo usuario"
 
-= error_messages_for :user
 - form_for @user, :url => users_path do |f|
   %fieldset
     %legend Información de acceso
-
     %p
       = label_tag 'role_id', 'Tipo de usuario' 
       %span.required= "*"
-      %br/
       - selected = params[:user][:role_id].to_i if params[:user] && params[:user][:role_id] 
       - if current_user.is_extenda? 
         - selected = Role.find_by_title("international_buyer").id and @disabled = true 
@@ -16,6 +13,8 @@
         
       = f.select :role_id, Role.all.select{|r| r.id != 1 && r.id != 2}.map{|r| [ROLES[r.title.to_sym], r.id]}, {:include_blank => true, :selected => selected}, |
       {:disabled => @disabled} |
+
+      = f.error_message_on :role_id
 
   = render :partial => 'form', :locals => {:f => f}
   %p
