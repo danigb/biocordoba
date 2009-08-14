@@ -443,6 +443,11 @@ span.button {
   #search p.enviar input {
     margin-bottom: 20px; }
 
+.users ul, .users table {
+  margin-bottom: 20px; }
+.users span.button {
+  margin-right: 10px; }
+
 /* Footer */
 #footer .wrapper {
   background-color: #000000;
