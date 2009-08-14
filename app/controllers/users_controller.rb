@@ -54,7 +54,9 @@ class UsersController < ApplicationController
 
     if @user.save
       unless @user.login.blank?
-        @user.build_profile(:company_name => @user.login).save
+        @profile = @user.build_profile(:company_name => @user.login)
+        @profile.sectors << Sector.first
+        @profile.save
       end
       UserMailer.deliver_welcome_email(current_user, @user)
 

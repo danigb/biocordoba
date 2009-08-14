@@ -15,7 +15,7 @@
     %p
       Si su empresa no está registrada, pero acudirá a la feria, debe establecer también un tiempo mínimo de X horas / día (por definir).
     %p.imprimir
-      = link_to "imprimir agenda"
+      = link_to "imprimir agenda", print_path
 
   /*Expositor*/
   - restrict_to "exhibitor" do
@@ -24,7 +24,7 @@
       = "#{current_user.preference.meetings_duration} minutos cada una."
 
     %p.imprimir
-      = link_to "imprimir agenda"
+      = link_to "imprimir agenda", print_path
 
   /*Extenda*/
   - restrict_to "extenda" do

@@ -126,7 +126,7 @@ class MeetingsController < ApplicationController
   def print
     @date = Event.start_day_and_hour
     @days = Event.duration
-    @meetings = current_user.meetings(@date, @days)
+    @role = current_user.is_exhibitor? ? "host" : "huest"
     render :layout => false
   end
 
