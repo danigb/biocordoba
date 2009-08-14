@@ -24,43 +24,43 @@
     %h2 Petición de citas
   .box_dark_green
     #meeting_request
-      - if @meeting.new_record?
-        - if @remaining.nil? || @remaining > 0
-          - form_for @meeting do |f|
-            = label_tag "start_at", "HORA DE LA CITA"
-            %p= f.time_select :starts_at, {:minute_step => 15}
+      -# - if @meeting.new_record?
+      - if @remaining.nil? || @remaining > 0
+        - form_for @meeting do |f|
+          = label_tag "start_at", "HORA DE LA CITA"
+          %p= f.time_select :starts_at, {:minute_step => 15}
 
-            %p.input= @guest.login.upcase
-            %span.button= link_to_profile @guest.profile, "Ver Perfil"
+          %p.input= @guest.login.upcase
+          %span.button= link_to_profile @guest.profile, "Ver Perfil"
 
-            %p.info
-              = label_tag "note_host", "Información sobre Cita"
-            %p
-              = f.text_area :note_host, :rows => 10
-  
-            = hidden_field_tag "date", @date
-            = f.hidden_field :guest_id, :value => @guest.id
-            %p.enviar
-              = submit_tag "Solicitar Cita"
+          %p.info
+            = label_tag "note_host", "Información sobre Cita"
+          %p
+            = f.text_area :note_host, :rows => 10
 
-            %p.info.small
-              El tiempo de cada cita está establecido en 
-              = current_user.preference.meetings_duration
-              min.
+          = hidden_field_tag "date", @date
+          = f.hidden_field :guest_id, :value => @guest.id
+          %p.enviar
+            = submit_tag "Solicitar Cita"
 
-            %p.info.small
-              = "Dispone de un máximo de #{current_user.preference.meetings_number} citas comerciales por cada jornada de la feria."
+          %p.info.small
+            El tiempo de cada cita está establecido en 
+            = current_user.preference.meetings_duration
+            min.
 
-            %p.info.small
-              = "Podrá organizar sus citas en horario de la feria (de #{current_user.preference.event_day_start_at.to_s(:hour_only)} h. a #{current_user.preference.event_day_end_at.to_s(:hour_only)} h.)"
+          %p.info.small
+            = "Dispone de un máximo de #{current_user.preference.meetings_number} citas comerciales por cada jornada de la feria."
+
+          %p.info.small
+            = "Podrá organizar sus citas en horario de la feria (de #{current_user.preference.event_day_start_at.to_s(:hour_only)} h. a #{current_user.preference.event_day_end_at.to_s(:hour_only)} h.)"
             
-      - else
-        Ya tienes una cita con este comprador
-        
-        %h2 ¿Cancelar cita?
-        .form
-          - form_for @meeting do |f|
-            %p.info
-              = f.label :cancel_reason, "¿Por qué? (opcional)" 
-              = f.text_area :cancel_reason, :rows => 10, :cols => 20
-            %p.enviar= submit_tag "Cancelar Cita"
+      -# - else
+      -#   Ya tienes una cita con este comprador
+      -#   
+      -#   %h2 ¿Cancelar cita?
+      -#   .form
+      -#     - form_for @meeting do |f|
+      -#       %p.info
+      -#         = f.label :cancel_reason, "¿Por qué? (opcional)" 
+      -#         = f.text_area :cancel_reason, :rows => 10, :cols => 20
+      -#       %p.enviar= submit_tag "Cancelar Cita"

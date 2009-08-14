@@ -32,7 +32,6 @@ class MeetingsController < ApplicationController
 
       !valid_host_and_guest?(@host, @guest) || !valid_event_date?(@date) || !valid_guest?(@guest)
       @date = params[:date].present? ? Date.parse(params[:date]) : current_user.preference.event_start_day
-      @meeting = Meeting.between(@host, @guest)
     end
   end
 
@@ -141,9 +140,10 @@ class MeetingsController < ApplicationController
     end
   end
 
+  #Comprueba que los usuarios existen y que no son el mismo
   def valid_host_and_guest?(host, guest)
-    if host.id == guest.id
-      flash[:error] = "No puede solicitarse una cita a si mismo."
+    if !host || !guest || host.id == guest.id
+      flash[:error] = "Los usuarios de la cita no son válidos."
       redirect_back_or("/") 
       return false
     end
@@ -171,18 +171,14 @@ class MeetingsController < ApplicationController
 
     !valid_host_and_guest?(@host, @guest) || !valid_event_date?(@date) || !valid_guest?(@guest)
     @date = params[:date].present? ? Date.parse(params[:date]) : current_user.preference.event_start_day
-    @meeting = Meeting.between(@host, @guest)
+    @meeting = Meeting.new
     @remaining = current_user.meetings_remaining(@date)
     @loaded = true
 
-    if @meeting.new_record?
-      if @remaining > 0
-        flash.now[:notice] = "Puedes hacer #{pluralize(@remaining, 'cita', 'citas')} más este día"
-      else
-        flash.now[:error] = "Has superado el número máximo de citas para este día"
-      end
+    if @remaining > 0
+      flash.now[:notice] = "Puedes hacer #{pluralize(@remaining, 'cita', 'citas')} más este día"
     else
-      flash.now[:error] = "Ya tienes una cita con este comprador, ¿la quieres cancelar?"
+      flash.now[:error] = "Has superado el número máximo de citas para este día"
     end
   end
 end
