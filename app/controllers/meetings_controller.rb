@@ -155,6 +155,13 @@ class MeetingsController < ApplicationController
     end
   end
 
+  def print
+    @date = Event.start_day_and_hour
+    @days = Event.duration
+    @meetings = current_user.meetings(@date, @days)
+    render :layout => false
+  end
+
   private
 
   def access_control

@@ -149,9 +149,10 @@ class User < ActiveRecord::Base
     write_attribute :password, (value ? value.downcase : nil)
   end
 
-  def after_destroy
-    TimelineEvent.find(:first, :conditions => {:subject_type => 'User', :subject_id => self.id}).destroy
-  end
+  # No se usa ya, antes cuando se creaba el timeline si
+  # def after_destroy
+  #   TimelineEvent.find(:first, :conditions => {:subject_type => 'User', :subject_id => self.id}).destroy
+  # end
 
   #Enviamos al email del usuario un resumen con sus citas para un día concreto
   def send_summary(date = Time.now.to_date)

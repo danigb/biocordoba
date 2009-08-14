@@ -17,6 +17,7 @@ ActionController::Routing::Routes.draw do |map|
     :requirements => {:type => /exhibitors|international_buyers|national_buyers/}
   map.meetings_for '/citas/para/:id', :controller => 'meetings', :action => 'for_user'
   map.meetings_to_confirm '/citas/a/confirmar', :controller => 'meetings', :action => 'to_confirm'
+  map.print '/imprimir', :controller => 'meetings', :action => 'print'
 
   map.search '/buscador', :controller => 'users', :action => 'search'
   map.development '/changelog', :controller => 'development', :action => 'changelog'
