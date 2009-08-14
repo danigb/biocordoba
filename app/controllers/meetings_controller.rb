@@ -123,6 +123,13 @@ class MeetingsController < ApplicationController
     redirect_to :back
   end
 
+  def print
+    @date = Event.start_day_and_hour
+    @days = Event.duration
+    @meetings = current_user.meetings(@date, @days)
+    render :layout => false
+  end
+
   protected
   def valid_guest?(guest)
     unless guest.is_national_buyer? || guest.is_international_buyer?
@@ -155,12 +162,6 @@ class MeetingsController < ApplicationController
     end
   end
 
-  def print
-    @date = Event.start_day_and_hour
-    @days = Event.duration
-    @meetings = current_user.meetings(@date, @days)
-    render :layout => false
-  end
 
   private
 
