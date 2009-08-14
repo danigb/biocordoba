@@ -449,7 +449,7 @@ input.white {
 .users span.button {
   margin-right: 10px; }
 .users.new, .users.edit {
-  background: #70b120 url(/images/body-bg.png);
+  background: #70b120 url(/images/content-display-bg.png);
   padding: 20px; }
   .users.new a, .users.edit a {
     color: #d41e67; }
