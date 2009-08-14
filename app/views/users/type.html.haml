@@ -8,18 +8,22 @@
       %table#orderable.tablesorter{:cellspacing => "1", :cellpadding => "0", :border => "0"}
         %thead
           %tr
-            %th.header= "Login"
-            %th.header= "Email"
-            %th.header= "Password"
+            %th.header= "Nombre de usuario"
+            -# %th.header= "Email"
+            %th.header= "Contraseña"
+            %th.header= "Empresa"
         %tbody
           - for user in @users
             %tr{:class => "#{cycle('odd', 'even')}"}
               %td= h user.login
-              %td= h user.email
+              -# %td= h user.email
               %td= h user.password
+              %td= truncate(user.profile.company_name, :length => 20)
               %td
                 = link_to "Editar", edit_user_path(user.id)
                 = link_to "Eliminar", user_path(user.id, :type => params[:type]), :confirm => '¿Estás seguro?', :method => :delete
+
+
   = will_paginate @users
   %p
     %span.button.violet

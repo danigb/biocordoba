@@ -104,9 +104,9 @@ class UsersController < ApplicationController
     # You should not delete yourself or first user (admin)
     if user == current_user || user == User.first
       render :text => current_user.login and return
-      flash[:error] = "Error. No puedes eliminar este usuario."
+      flash[:error] = "Error. No puedes desactivar este usuario."
     else
-      user.destroy
+      user.disable!
       flash[:notice] = "Usuario eliminado con éxito"
     end
 
@@ -119,6 +119,7 @@ class UsersController < ApplicationController
     unless params[:search].blank?
       @search = User.search(params[:search])
       @search.roles_title_like_any(current_user.is_exhibitor? ? ["international_buyer", "national_buyer"] : ["exhibitor"]) 
+      @search.state_equals("enabled")
       @users = @search.all(:include => [{:profile => :sectors}, :roles])
       @users_by_sector = @users.group_by{|u| u.profile.sectors.first.name }
     end

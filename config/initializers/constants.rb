@@ -2,3 +2,4 @@ ROLES = {:admin => 'Administrador', :extenda => 'Usuario extenda', :national_buy
   :international_buyer => 'Comprador internacional', :exhibitor => 'Expositor'}
 MESSAGE = {:received => "recibidos", :sent => 'enviados'}
 MEETING_STATE = {:pending => 'pendiente', :accepted => 'aceptada'}
+USER_STATES = {:disabled => 'desactivado', :enabled => 'activado'}

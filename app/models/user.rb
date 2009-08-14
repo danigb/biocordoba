@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
 
   validates_presence_of     :login
   validates_length_of       :login,    :within => 3..40
-  validates_uniqueness_of   :login
+  validates_uniqueness_of   :login, :scope => :state
   validates_format_of       :login,    :with => Authentication.login_regex, :message => Authentication.bad_login_message
 
   validates_presence_of     :password
@@ -25,21 +25,22 @@ class User < ActiveRecord::Base
 
   validates_presence_of     :email, :if => Proc.new{|u| u.is_admin_or_extenda?}
   validates_length_of       :email,    :within => 6..100, :if => Proc.new{|u| u.is_admin_or_extenda?} #r@a.wk
-  validates_uniqueness_of   :email, :if => Proc.new{|u| u.is_admin_or_extenda?}
+  validates_uniqueness_of   :email, :scope => :state, :if => Proc.new{|u| u.is_admin_or_extenda?}
   validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message, :if => Proc.new{|u| u.is_admin_or_extenda?}
   
   validates_presence_of     :role_id
 
-  named_scope :buyers, lambda { {:joins => :roles, :include => :profile, 
-    :conditions => ["roles.title = 'national_buyer' OR roles.title = 'international_buyer'"] } }
-  named_scope :exhibitors, lambda { {:joins => :roles, :include => :profile, 
-    :conditions => ["roles.title = 'exhibitor'"] } }
-  named_scope :extendas, lambda { {:joins => :roles, :include => :profile, 
-    :conditions => ["roles.title = 'extenda'"] } }
-  named_scope :no_admins, lambda { {:include => [:profile, :roles], 
-    :conditions => ["roles.title != 'admin' AND roles.title != 'extenda'"], :order => 'profiles.company_name' } }
+  named_scope :buyers, :joins => :roles, :include => :profile, 
+    :conditions => ["roles.title = 'national_buyer' OR roles.title = 'international_buyer' AND state = 'enabled'"],
+    :order => 'profiles.company_name' 
+  named_scope :exhibitors, :joins => :roles, :include => :profile, 
+    :conditions => ["roles.title = 'exhibitor' AND state = 'enabled'"], :order => 'profiles.company_name'
+  named_scope :extendas, :joins => :roles, :include => :profile, 
+    :conditions => ["roles.title = 'extenda' AND state = 'enabled'"], :order => 'profiles.company_name'
+  named_scope :no_admins, :include => [:profile, :roles], 
+    :conditions => ["roles.title != 'admin' AND roles.title != 'extenda' AND state = 'enabled'"], :order => 'profiles.company_name' 
   named_scope :type, lambda {|type| {:joins => :roles, :include => :profile, 
-    :conditions => ["roles.title = ?", type] , :order => "profiles.company_name" }}
+    :conditions => ["roles.title = ? AND state = 'enabled'", type] , :order => "profiles.company_name" }}
 
   attr_accessible :login, :email, :name, :password, :password_confirmation, :role_id, :profile_attributes, :preference_attributes, :preference_id
   accepts_nested_attributes_for :profile, :preference
@@ -53,6 +54,10 @@ class User < ActiveRecord::Base
 
   aasm_event :disable do
     transitions :from => :enabled, :to => :disabled
+  end
+
+  aasm_event :enable do
+    transitions :from => :disabled, :to => :enabled
   end
 
   # TimeLine Event #FIXME temporalmente desactivado
@@ -141,7 +146,7 @@ class User < ActiveRecord::Base
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   def self.authenticate(login, password)
     return nil if login.blank? || password.blank?
-    u = find_by_login(login.downcase) # need to get the salt
+    u = User.find(:first, :conditions => {:login => login.downcase, :state => 'enabled'}) # need to get the salt
     u && u.authenticated?(password) ? u : nil
   end
 
