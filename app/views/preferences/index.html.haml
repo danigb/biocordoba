@@ -1,9 +1,10 @@
 - title "Configuraciones"
 
-%h2 Configuración general del sistema
-= render :partial => 'index_table', :locals => {:preferences => [@preferences[0]]}
-- if @preferences.length > 0
-  %h2 Configuración de los usuarios
-  = render :partial => 'index_table', :locals => {:preferences => @preferences[1..-1]}
-%p
-  = link_to "Volver", "/"
+#preferences
+  %h2 Configuración general del sistema
+  = render :partial => 'index_table', :locals => {:preferences => [@preferences[0]]}
+  - if @preferences.length > 0
+    %h2 Configuración de los usuarios
+    = render :partial => 'index_table', :locals => {:preferences => @preferences[1..-1]}
+  %p
+    = link_to "Volver", "/"

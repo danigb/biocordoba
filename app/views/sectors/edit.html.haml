@@ -1,0 +1,14 @@
+- title 'Editar sector'
+
+#sectors.edit
+
+  - form_for(@sector) do |f|
+    %p
+      = f.label :name, 'Nombre'
+      = f.text_field :name
+      = f.error_message_on :name
+    %p.enviar  
+      = f.submit 'Actualizar'
+    = link_to 'Ver', @sector
+    |
+    = link_to 'Volver', sectors_path

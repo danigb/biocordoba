@@ -3,21 +3,23 @@
     %tr
       %th.header Usuario
       %th.header Nº Max citas
-      %th.header Duración cita
-      %th.header Fecha inicio 
-      %th.header Fecha final 
-      %th.header Hora inicio 
-      %th.header Hora final 
+      %th.header Duración
+      %th.header Fecha Inicio
+      %th.header Fecha Fin 
+      %th.header Hora Inicio 
+      %th.header Hora Fin
   %tbody 
     - for preference in preferences
       %tr
         %td= preference.id == 1 ? 'Master' : preference.users.map{|e| link_to(e.login, edit_user_path(e)) + " "}
         %td=h preference.meetings_number 
-        %td=h preference.meetings_duration 
+        %td
+          =h preference.meetings_duration
+          min
         %td=h preference.event_start_day 
         %td=h preference.event_end_day 
         %td=h preference.event_day_start_at.strftime("%H:%M")
         %td=h preference.event_day_end_at.strftime("%H:%M")
         %td= link_to "Editar", edit_preference_path(preference)
-        %td= link_to "Eliminar", preference_path(preference), :method => 'delete' unless preference.id == 1
-
+        - unless preference.id == 1
+          %td= link_to "Eliminar", preference_path(preference), :method => 'delete'
