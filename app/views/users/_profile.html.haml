@@ -1,20 +1,18 @@
 %p
-  = f.label :company_name, "Nombre de la compañia"
-  %span.required= "*"
+  = f.label :company_name, "Nombre de la compañia <span class ='required'>*</span>"
   = f.text_field :company_name, :size => 15
   = f.error_message_on :company_name
 
 - fields_for(:user) do |u|
   %p
-    = label_tag 'email'
+    = label_tag "Email  <span class ='required'>*</span>"
     = u.text_field :email 
     = f.error_message_on :email
     %span.info
       Facilitando el email podrá recibir notificaciones de las citas y de los mensajes que reciba de otras empresas.
 %p
-  = f.label :sector_ids, "Sectores:"
+  = f.label :sector_ids, "Sectores: <span class ='required'>*</span>"
   = f.error_message_on :sectors
-  %span.required= "*"
   - Sector.all.each do |s|
     %p
       = check_box_tag "user[profile_attributes][sector_ids][]", s.id, eval("@user.new_record? ? [] : @user.profile.sectors").map(&:id).include?(s.id)

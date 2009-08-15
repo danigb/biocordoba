@@ -476,6 +476,11 @@ input.white {
       width: auto;
       background: #d41e67;
       color: #fff; }
+  .users.new span.info, .users.edit span.info {
+    width: 275px;
+    float: right; }
+  .users.new p, .users.edit p {
+    clear: both; }
   .users.new.extenda label, .users.edit.extenda label {
     width: 50px; }
   .users.new.extenda .formError, .users.edit.extenda .formError {
