@@ -124,7 +124,7 @@ span.canceled
 #container
   #login_area
     :margin 0 auto
-    :padding-left 229px
+    :padding-left 260px
 
     .info
       :float left
@@ -169,6 +169,10 @@ p
     input
       :width auto
       :padding 2px 5px
+    span
+      a
+        :display block 
+        :padding-top 10px
 
 span.button
   :background = !green
@@ -238,7 +242,9 @@ input
     :overflow hidden
     :width 476px
     :margin-left 10px
-
+    &.preferences
+      :width 715px
+    
 #agenda_extenda
   .date
     :font-size 20px
@@ -255,6 +261,7 @@ input
     :display inline
     img
       :vertical-align middle
+
     
 #left-column, #right-column
   :float left
@@ -432,6 +439,11 @@ input
         &:hover
           :color = !pink
   
+#preferences
+  table
+    :margin-bottom 30px
+    &.tablesorter
+      :width 715px
 
 #profile
   h2,h3
@@ -485,45 +497,85 @@ input
     input
       :margin-bottom 20px
 
+#sectors
+  table 
+    :width 485px
+    :margin-left 10px
+    :margin-bottom 20px
+    th
+      :text-align left
+      :color = !pink
+      :font-size 14px
+
 .users
   ul, table
     :margin-bottom 20px
   span.button
     :margin-right 10px
-  &.new, &.edit
-    :background = !green url("/images/content-display-bg.png")
-    :padding 20px
-    a
-      :color = !pink
-      &:hover
-        :color #fff
-    input
-      :width 235px
-      :background #fff
-      :color #000
-      &#user_role_id_1, &#user_role_id_2
-        :margin 2px 10px 0 0
-    label
-      :width 160px
-    fieldset
-      :border none
-      :margin-bottom 20px
-      legend
-        :font-size 16px
-        :margin-bottom 30px
-    p.enviar
-      :clear both
-      input
-        :margin-right 10px
-        :width auto
-        :background = !pink
-        :color #fff
-    &.extenda
+
+.users.new, .users.edit, #sectors.edit, #sectors.new, #preferences.edit
+  :background = !green url("/images/content-display-bg.png")
+  :padding 20px
+  a
+    :color = !pink
+    &:hover
+      :color #fff
+  input
+    :width 235px
+    :background #fff
+    :color #000
+    &#user_role_id_1, &#user_role_id_2
+      :margin 2px 10px 0 0
+  label
+    :width 160px
+  fieldset
+    :border none
+    :margin-bottom 20px
+    legend
+      :font-size 16px
+      :margin-bottom 30px
+    &#new-user-conf
       label
-        :width 50px
-      .formError
-        :margin-left 50px
-        
+        :width 200px
+      input
+        :width auto
+  p.enviar
+    :clear both
+    input
+      :margin-right 10px
+      :width auto
+      :background = !pink
+      :color #fff
+  span
+    &.info
+      :width 275px
+      :float right
+  p
+    :clear both
+  .checkbox
+    input
+      :margin 0 5px 0 0 
+  .formError
+    :margin-left 160px
+  &.extenda
+    label
+      :width 50px
+    .formError
+      :margin-left 50px
+
+#preferences.edit
+  label
+    :width 200px
+  input
+    :width auto
+  p.enviar
+
+#sectors  
+  &.edit, &.new
+    label
+      :width 70px
+    .formError
+      :margin-left 70px
 /*
   Footer
 
@@ -551,6 +603,7 @@ input
 .oil_img
   :background transparent url("/images/oil.jpg") left top
   :height 263px
+  :border = 2px !green solid
 
 .meeting_request_img
   :background transparent url("/images/meetings_request.jpg") left top
@@ -597,6 +650,10 @@ input
   :color #e02727
   :clear both
   :font-weight bold
+    
+.none_margin > .formError
+  :margin-left 0 !important
+  :margin-bottom 10px
 
 /*Changelog*/
 

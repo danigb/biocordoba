@@ -1,15 +1,18 @@
-%h1 Listado de sectores
+- title 'Listado de sectores'
 
-%table
-  %tr
-    %th Nombre del sector
-  - @sectors.each do |sector|
+#sectors
+  %h2 Listado de sectores
+
+  %table
     %tr
-      %td=h sector.name 
-      %td= link_to 'Editar', edit_sector_path(sector) 
-      -# %td= link_to 'Eliminar', sector, :confirm => 'Are you sure?', :method => :delete 
+      %th Nombre del sector
+    - @sectors.each do |sector|
+      %tr
+        %td=h sector.name 
+        %td= link_to 'Editar', edit_sector_path(sector) 
+        -# %td= link_to 'Eliminar', sector, :confirm => 'Are you sure?', :method => :delete 
 
-%p
-  = link_to 'Crear nuevo sector', new_sector_path 
-  o
-  = link_to 'Volver', users_path
+  %p
+    %span.button.violet= link_to 'Crear nuevo sector', new_sector_path 
+    o
+    = link_to 'Volver', users_path

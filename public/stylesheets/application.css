@@ -109,7 +109,7 @@ span.canceled {
 /* Login */
 #container #login_area {
   margin: 0 auto;
-  padding-left: 229px; }
+  padding-left: 260px; }
   #container #login_area .info {
     float: left;
     width: 235px;
@@ -150,6 +150,9 @@ input {
 p.enviar input {
   width: auto;
   padding: 2px 5px; }
+p.enviar span a {
+  display: block;
+  padding-top: 10px; }
 
 span.button {
   background: #70b120;
@@ -212,6 +215,8 @@ input.white {
     overflow: hidden;
     width: 476px;
     margin-left: 10px; }
+    #content .main_content.preferences {
+      width: 715px; }
 
 #agenda_extenda .date {
   font-size: 20px;
@@ -397,6 +402,11 @@ input.white {
         #my_meetings_footer p.imprimir a:hover {
           color: #d41e67; }
 
+#preferences table {
+  margin-bottom: 30px; }
+  #preferences table.tablesorter {
+    width: 715px; }
+
 #profile h2, #profile h3 {
   font-size: 13px;
   font-weight: normal; }
@@ -444,42 +454,75 @@ input.white {
   #search p.enviar input {
     margin-bottom: 20px; }
 
+#sectors table {
+  width: 485px;
+  margin-left: 10px;
+  margin-bottom: 20px; }
+  #sectors table th {
+    text-align: left;
+    color: #d41e67;
+    font-size: 14px; }
+
 .users ul, .users table {
   margin-bottom: 20px; }
 .users span.button {
   margin-right: 10px; }
-.users.new, .users.edit {
+
+.users.new, .users.edit, #sectors.edit, #sectors.new, #preferences.edit {
   background: #70b120 url(/images/content-display-bg.png);
   padding: 20px; }
-  .users.new a, .users.edit a {
+  .users.new a, .users.edit a, #sectors.edit a, #sectors.new a, #preferences.edit a {
     color: #d41e67; }
-    .users.new a:hover, .users.edit a:hover {
+    .users.new a:hover, .users.edit a:hover, #sectors.edit a:hover, #sectors.new a:hover, #preferences.edit a:hover {
       color: #fff; }
-  .users.new input, .users.edit input {
+  .users.new input, .users.edit input, #sectors.edit input, #sectors.new input, #preferences.edit input {
     width: 235px;
     background: #fff;
     color: #000; }
-    .users.new input#user_role_id_1, .users.new input#user_role_id_2, .users.edit input#user_role_id_1, .users.edit input#user_role_id_2 {
+    .users.new input#user_role_id_1, .users.new input#user_role_id_2, .users.edit input#user_role_id_1, .users.edit input#user_role_id_2, #sectors.edit input#user_role_id_1, #sectors.edit input#user_role_id_2, #sectors.new input#user_role_id_1, #sectors.new input#user_role_id_2, #preferences.edit input#user_role_id_1, #preferences.edit input#user_role_id_2 {
       margin: 2px 10px 0 0; }
-  .users.new label, .users.edit label {
+  .users.new label, .users.edit label, #sectors.edit label, #sectors.new label, #preferences.edit label {
     width: 160px; }
-  .users.new fieldset, .users.edit fieldset {
+  .users.new fieldset, .users.edit fieldset, #sectors.edit fieldset, #sectors.new fieldset, #preferences.edit fieldset {
     border: none;
     margin-bottom: 20px; }
-    .users.new fieldset legend, .users.edit fieldset legend {
+    .users.new fieldset legend, .users.edit fieldset legend, #sectors.edit fieldset legend, #sectors.new fieldset legend, #preferences.edit fieldset legend {
       font-size: 16px;
       margin-bottom: 30px; }
-  .users.new p.enviar, .users.edit p.enviar {
+    .users.new fieldset#new-user-conf label, .users.edit fieldset#new-user-conf label, #sectors.edit fieldset#new-user-conf label, #sectors.new fieldset#new-user-conf label, #preferences.edit fieldset#new-user-conf label {
+      width: 200px; }
+    .users.new fieldset#new-user-conf input, .users.edit fieldset#new-user-conf input, #sectors.edit fieldset#new-user-conf input, #sectors.new fieldset#new-user-conf input, #preferences.edit fieldset#new-user-conf input {
+      width: auto; }
+  .users.new p.enviar, .users.edit p.enviar, #sectors.edit p.enviar, #sectors.new p.enviar, #preferences.edit p.enviar {
     clear: both; }
-    .users.new p.enviar input, .users.edit p.enviar input {
+    .users.new p.enviar input, .users.edit p.enviar input, #sectors.edit p.enviar input, #sectors.new p.enviar input, #preferences.edit p.enviar input {
       margin-right: 10px;
       width: auto;
       background: #d41e67;
       color: #fff; }
-  .users.new.extenda label, .users.edit.extenda label {
+  .users.new span.info, .users.edit span.info, #sectors.edit span.info, #sectors.new span.info, #preferences.edit span.info {
+    width: 275px;
+    float: right; }
+  .users.new p, .users.edit p, #sectors.edit p, #sectors.new p, #preferences.edit p {
+    clear: both; }
+  .users.new .checkbox input, .users.edit .checkbox input, #sectors.edit .checkbox input, #sectors.new .checkbox input, #preferences.edit .checkbox input {
+    margin: 0 5px 0 0; }
+  .users.new .formError, .users.edit .formError, #sectors.edit .formError, #sectors.new .formError, #preferences.edit .formError {
+    margin-left: 160px; }
+  .users.new.extenda label, .users.edit.extenda label, #sectors.edit.extenda label, #sectors.new.extenda label, #preferences.edit.extenda label {
     width: 50px; }
-  .users.new.extenda .formError, .users.edit.extenda .formError {
+  .users.new.extenda .formError, .users.edit.extenda .formError, #sectors.edit.extenda .formError, #sectors.new.extenda .formError, #preferences.edit.extenda .formError {
     margin-left: 50px; }
+
+#preferences.edit label {
+  width: 200px; }
+#preferences.edit input {
+  width: auto; }
+
+#sectors.edit label, #sectors.new label {
+  width: 70px; }
+#sectors.edit .formError, #sectors.new .formError {
+  margin-left: 70px; }
 
 /* Footer */
 #footer .wrapper {
@@ -504,7 +547,8 @@ input.white {
 
 .oil_img {
   background: transparent url("/images/oil.jpg") left top;
-  height: 263px; }
+  height: 263px;
+  border: 2px #70b120 solid; }
 
 .meeting_request_img {
   background: transparent url("/images/meetings_request.jpg") left top;
@@ -546,6 +590,10 @@ input.white {
   color: #e02727;
   clear: both;
   font-weight: bold; }
+
+.none_margin > .formError {
+  margin-left: 0 !important;
+  margin-bottom: 10px; }
 
 /* Changelog */
 #changelog h1 {

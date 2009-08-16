@@ -1,71 +1,57 @@
 %p
-  = f.label :company_name, "Nombre de la compañia"
-  %span.required= "*"
+  = f.label :company_name, "Nombre de la compañía <span class ='required'>*</span>"
   = f.text_field :company_name, :size => 15
   = f.error_message_on :company_name
 
 - fields_for(:user) do |u|
   %p
-    = label_tag 'email'
+    = label_tag "Email  <span class ='required'>*</span>"
     = u.text_field :email 
     = f.error_message_on :email
     %span.info
       Facilitando el email podrá recibir notificaciones de las citas y de los mensajes que reciba de otras empresas.
 %p
-  = f.label :sector_ids, "Sectores:"
-  = f.error_message_on :sectors
-  %span.required= "*"
+  = f.label :sector_ids, "Sectores: <span class ='required'>*</span>"
+  .none_margin= f.error_message_on :sectors
   - Sector.all.each do |s|
-    %p
+    %p.checkbox
       = check_box_tag "user[profile_attributes][sector_ids][]", s.id, eval("@user.new_record? ? [] : @user.profile.sectors").map(&:id).include?(s.id)
-      = s.name
+      %span= s.name.upcase
 
 %p
   = f.label :province_id, "Provincia"
-  %br/
   = f.select :province_id, Province.all.collect {|t| [t.name, t.id]}, {:include_blank => "--"}, {:onchange => "load_town(this.options[this.selectedIndex].value)"}
   #town
     - if @user.profile.province_id
       = render :partial => 'ajax/town', :locals => {:towns => Town.find_all_by_province_id(@user.profile.province_id), :f => f}
 %p
   = f.label :address, "Dirección"
-  %br/
   = f.text_field :address
 %p 
   = f.label :zip_code, "Código postal"
-  %br/
   = f.text_field :zip_code, :size => 5
 %p 
   = f.label :phone, "Teléfono"
-  %br/
   = f.text_field :phone, :size => 10
 %p 
   = f.label :fax, "Fax"
-  %br/
   = f.text_field :fax, :size => 10
 %p 
   = f.label :website, "Página web"
-  %br/
   = f.text_field :website, :size => 20
 %p 
   = f.label :stand, "Stand Andalucía sabor"
-  %br/
   = f.text_field :stand, :size => 10
-  
 
 #exhibitor{:style => @user.is_exhibitor? ? '' : 'display:none'}
   %p
     = f.label :products, "Productos"
-    %br/
     = f.text_field :products
   %p
     = f.label :packages, "Envases"
-    %br/
     = f.text_field :packages
 
 #buyer{:style => (@user.is_international_buyer? || @user.is_national_buyer?) ? '' : 'display:none'}
   %p
     = f.label :commercial_profile, "Perfil comercial"
-    %br/
     = f.text_field :commercial_profile
-

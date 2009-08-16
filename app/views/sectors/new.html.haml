@@ -1,0 +1,12 @@
+-title 'Nuevo sector'
+
+#sectors.new
+  - form_for(@sector) do |f|
+    %p
+      = f.label :name, "Nombre"
+      = f.text_field :name
+      = f.error_message_on :name
+    %p.enviar  
+      = f.submit 'Crear Sector'
+
+  = link_to 'Volver', sectors_path

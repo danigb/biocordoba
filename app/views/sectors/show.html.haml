@@ -1,0 +1,10 @@
+- title @sector.name
+%p
+  %b
+    Nombre:
+  =h @sector.name
+
+    
+= link_to 'Editar', edit_sector_path(@sector)
+|
+= link_to 'Volver', sectors_path

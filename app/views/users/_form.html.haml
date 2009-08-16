@@ -3,12 +3,11 @@
   - @user.build_profile unless @user.profile
   - f.fields_for(:profile) do |profile|
     = render :partial => 'profile', :locals => {:f => profile}
-%fieldset
-  %legend Configuraciónes del usuario
+%fieldset{:id => 'new-user-conf'}
+  %legend Configuraciones del usuario
   - @user.build_preference unless @user.preference
   - f.fields_for(:preference) do |pref|
     = label_tag "Utiliza la configuración por defecto"
     = check_box_tag 'default_preferences', 1, hide_preferences, {:onclick => "$('#preferences').toggle();"} 
-    %br/
     #preferences{:style => hide_preferences ? 'display:none' : ""}
       = render :partial => 'preferences/form', :locals => {:f => pref}
