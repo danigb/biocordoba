@@ -55,7 +55,9 @@ $(document).ready(function() {
 
 
   //Profile dialog
+
   $(".profile-link").live("click", function(e){
+    $(".query_review_parent, .ui-dialog, #profile").remove();
     $('<div />').appendTo('body').append("<img src='/images/loader-1.gif'/> Cargando...").dialog({resizable: false, modal:true, position: ['center', 50]}).load("/perfiles/" + this.id + ".js");
     e.preventDefault();
   });
@@ -80,7 +82,8 @@ $(document).ready(function() {
   //Meeting Show Ajax
   /* $(".meeting-link").unbind(); */
   $(".meeting-link").live("click", function(e){
-    $('<div />').appendTo('body').append("<img src='/images/loader-1.gif'/> Cargando...").dialog({resizable: false, modal:true, position: ['center', 50], width:450}).load("/citas/" + this.id + ".js");
+    $(".query_review_parent, .ui-dialog, #meeting").remove();
+    $('<div><div />').appendTo('body').append("<img src='/images/loader-1.gif'/> Cargando...").dialog({resizable: false, modal:true, position: ['center', 50], width:450}).load("/citas/" + this.id + ".js");
     e.preventDefault();
   });
 
@@ -96,7 +99,8 @@ $(document).ready(function() {
   //Cancel form
   $(".cancel-meeting-link").live("click", function(e){
       var id = this.id;
-      $("#cancel-form-"+id).toggle("slow");
+      /* $("#cancel-form-"+id).toggle("slow"); */
+      $("#cancel-form-"+id).show("slow").log("pulsado");
       e.preventDefault();
   })
 
@@ -145,3 +149,9 @@ function getMeetings(host_id, guest, date){
 $.ajaxSetup({
   'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
 });
+
+
+jQuery.fn.log = function (msg) {
+  console.log("%s: %o", msg, this);
+  return this;
+};

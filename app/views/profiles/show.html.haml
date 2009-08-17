@@ -6,5 +6,6 @@
     = link_to_meeting(@profile.user)
   %p
     %span.button.violet= link_to "ENVIAR MENSAJE", new_message_path(:receiver => @profile.company_name), :title => "Enviar mensaje a #{@profile.company_name}"
-  %p
-    %span.button.violet= link_to "REALIZAR OTRA BÚSQUEDA", search_path, :title => 'Ir al buscador' if current_user.is_exhibitor?
+  - if current_user.is_exhibitor?
+    %p
+      %span.button.violet= link_to "REALIZAR OTRA BÚSQUEDA", search_path, :title => 'Ir al buscador' 
