@@ -563,13 +563,13 @@ input.white {
 #flash_notice_login,
 #flash_error_login {
   padding: 5px 8px;
-  margin: 10px 0;
+  margin: 0 0 10px 0;
   color: #191918;
   font-weight: bold; }
 
 #flash_notice_login,
 #flash_error_login {
-  margin: 10px 0 10px 519px;
+  margin: 10px 0 10px 550px;
   width: 240px; }
 
 #flash_notice,
@@ -579,8 +579,8 @@ input.white {
 
 #flash_error,
 #flash_error_login {
-  background-color: #FCC;
-  border: solid 1px #C66; }
+  background-color: #d66;
+  border: solid 1px #C00; }
 
 .fieldWithErrors input, .fieldWithErrors textarea {
   border: solid 1px red; }
