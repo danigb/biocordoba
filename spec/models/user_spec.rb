@@ -63,3 +63,31 @@ describe "user deactivation" do
   end
 
 end
+
+describe "user preferences" do
+  before do
+    @preference = Preference.make
+    @preference2 = Preference.make
+    @user = User.make(:preference => @preference)
+  end
+
+  it "should have preference number 1" do
+    @user.preference.id.should eql(@preference.id)
+  end
+
+  it "can assign another preference file" do
+    @user.preference = @preference2
+    @user.preference.should eql(@preference2)
+  end
+
+  it "should assign preference with id 1 if custom preference deleted" do
+    @user.preference = @preference2
+    @user.save
+    @preference2.users.should include(@user)
+    @preference2.destroy
+    #No pasa los tests
+    @user.preference.id.should == 1
+  end
+end
+
+

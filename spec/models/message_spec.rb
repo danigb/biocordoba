@@ -59,3 +59,22 @@ describe "Messages to international buyer" do
     @extenda_1.user_messages.first.indirect_receiver.should == @international
   end
 end
+
+describe "timeline events" do
+  before do
+    @message = Message.make_unsaved
+    @message.receivers << (@user = User.make)
+    @message.save
+  end  
+
+  it "should receive a timeline Event" do
+    @user.timeline_events.length.should == 1  
+    @user.timeline_events.first.event_type.should == 'new_received_message'
+    @user.timeline_events.first.actor.should == @user
+
+    @message = Message.make_unsaved
+    @message.receivers << @user
+    @message.save
+    @user.timeline_events.length.should == 2  
+  end
+end
