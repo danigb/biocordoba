@@ -3,7 +3,7 @@
   - form_for @message do |f|
     %p
       = f.label :subject, "ASUNTO"
-      = f.text_field :subject, :size => 50, :autocomplete => 'off'
+      = f.text_field :subject, :size => 50, :autocomplete => 'off', :value => params[:subject]
       = f.error_message_on :subject
     %p
       = f.label :message, "MENSAJE"

@@ -99,8 +99,7 @@ $(document).ready(function() {
   //Cancel form
   $(".cancel-meeting-link").live("click", function(e){
       var id = this.id;
-      /* $("#cancel-form-"+id).toggle("slow"); */
-      $("#cancel-form-"+id).show("slow").log("pulsado");
+      $("#cancel-form-"+id).toggle("slow");
       e.preventDefault();
   })
 
