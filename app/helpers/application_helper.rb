@@ -106,4 +106,13 @@ module ApplicationHelper
     end
   end
 
+  #Asunto del mensaje autogenerado
+  def define_subject(subject)
+    if subject =~ /^Re: /
+      subject
+    else
+      "Re: #{subject}"
+    end
+
+  end
 end

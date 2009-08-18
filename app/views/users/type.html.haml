@@ -21,16 +21,16 @@
               %td= truncate(user.profile.company_name, :length => 20)
               %td
                 = link_to "Editar", edit_user_path(user.id)
-                = link_to "Eliminar", user_path(user.id, :type => params[:type]), :confirm => '¿Estás seguro?', :method => :delete
+                = link_to "Eliminar", user_path(user.id, :type => params[:type]), :confirm => '¿Estás seguro?', :method => :delete unless user.login == "admin"
 
 
   = will_paginate @users
   %p
     %span.button.violet
       - if %w(1 2).include? @role.id.to_s
-        = link_to "Crear nuevo usuario", new_admin_path
+        = link_to "Crear nuevo usuario", new_admin_path(:user => {:role_id => @role.id})
       - else
-        = link_to "Crear nuevo usuario", signup_path
+        = link_to "Crear nuevo usuario", signup_path(:user => {:role_id => @role.id})
     o
     = link_to "Volver", users_path
 

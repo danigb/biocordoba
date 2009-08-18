@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
   def new_admin_extenda
     @user = User.new
+    @user.role_id = params[:user][:role_id] if params[:user]
   end
  
   def edit

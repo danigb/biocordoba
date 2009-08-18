@@ -6,24 +6,11 @@ $(document).ready(function() {
   $("#orderable").tablesorter(); 
 
   //Rol, formulario nuevo usuario
-  $("select#user_role_id").bind("change", function(e){
-
-    for(i in a = ['buyer', 'exhibitor']){
-      $("#"+a[i]).hide();
-    }
-
-    var value = $("select#user_role_id").val();
-    if(value == 3 || value == 4){
-      $("#buyer").show();
-    }else if(value == 5 ){
-      $("#exhibitor").show();
-    }
-    if(value == 1 || value == 2){
-      $("#new-user-profile").hide();
-    }else{
-      $("#new-user-profile").show();
-    }
+  $("select#user_role_id").bind("change", function(){
+    showRegisterExtraInfo();
   });
+  //Ejecutamos al cargar, por si entramos en una sección concreta
+  showRegisterExtraInfo();
 
 
   //Nuevo mensaje, selector de receptores
@@ -154,3 +141,17 @@ jQuery.fn.log = function (msg) {
   console.log("%s: %o", msg, this);
   return this;
 };
+
+
+function showRegisterExtraInfo(){
+  for(i in a = ['buyer', 'exhibitor']){
+    $("#"+a[i]).hide();
+  }
+
+  var value = $("select#user_role_id").val();
+  if(value == 3 || value == 4){
+    $("#buyer").show();
+  }else if(value == 5 ){
+    $("#exhibitor").show();
+  }
+}
