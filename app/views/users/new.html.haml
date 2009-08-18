@@ -2,6 +2,7 @@
 
 .users.new
   - form_for @user, :url => users_path do |f|
+    = error_messages_for :user
     %fieldset
       %legend Información de acceso
       %p
