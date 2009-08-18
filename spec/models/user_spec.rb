@@ -80,14 +80,6 @@ describe "user preferences" do
     @user.preference.should eql(@preference2)
   end
 
-  it "should assign preference with id 1 if custom preference deleted" do
-    @user.preference = @preference2
-    @user.save
-    @preference2.users.should include(@user)
-    @preference2.destroy
-    #No pasa los tests
-    @user.preference.id.should == 1
-  end
 end
 
 

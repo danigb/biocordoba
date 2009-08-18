@@ -5,7 +5,7 @@ describe Preference do
     Preference.count.should == 1
   end
 
-  it "should set preference 1 if remove a personal preference" do
+  it "should set preference 1 if remove a personal preference"do
     user = User.make(:preference => (prefs = Preference.make))
     prefs.destroy
     user.reload

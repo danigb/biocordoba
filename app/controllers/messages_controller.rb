@@ -57,7 +57,7 @@ class MessagesController < ApplicationController
           :include => {:indirect_receiver => :profile})
         @indirect_receiver = user_message.indirect_receiver
       end
-    rescue NoMethodError # Comprobamos que no han alterado el parámetro
+    rescue NoMethodError, ActiveRecord::RecordNotFound # Comprobamos que no han alterado el parámetro
       flash[:error] = "Acceso denegado"
       redirect_to messages_path
     end
