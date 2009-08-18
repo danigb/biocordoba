@@ -2,12 +2,13 @@
   = f.label :company_name, "Nombre de la compañía <span class ='required'>*</span>"
   = f.text_field :company_name, :size => 15
   = f.error_message_on :company_name
+  = error_message_on :user,:login
 
 - fields_for(:user) do |u|
   %p
     = label_tag "Email  <span class ='required'>*</span>"
     = u.text_field :email 
-    = f.error_message_on :email
+    = error_message_on :user,:email 
     %span.info
       Facilitando el email podrá recibir notificaciones de las citas y de los mensajes que reciba de otras empresas.
 %p
@@ -27,31 +28,40 @@
 %p
   = f.label :address, "Dirección"
   = f.text_field :address
+  = f.error_message_on :address
 %p 
   = f.label :zip_code, "Código postal"
   = f.text_field :zip_code, :size => 5
+  = f.error_message_on :zip_code
 %p 
   = f.label :phone, "Teléfono"
   = f.text_field :phone, :size => 10
+  = f.error_message_on :phone
 %p 
   = f.label :fax, "Fax"
   = f.text_field :fax, :size => 10
+  = f.error_message_on :fax
 %p 
   = f.label :website, "Página web"
   = f.text_field :website, :size => 20
+  = f.error_message_on :website
 %p 
   = f.label :stand, "Stand Andalucía sabor"
   = f.text_field :stand, :size => 10
+  = f.error_message_on :stand
 
 #exhibitor{:style => @user.is_exhibitor? ? '' : 'display:none'}
   %p
     = f.label :products, "Productos"
     = f.text_field :products
+    = f.error_message_on :products
   %p
     = f.label :packages, "Envases"
     = f.text_field :packages
+    = f.error_message_on :packages
 
 #buyer{:style => (@user.is_international_buyer? || @user.is_national_buyer?) ? '' : 'display:none'}
   %p
     = f.label :commercial_profile, "Perfil comercial"
     = f.text_field :commercial_profile
+    = f.error_message_on :commercial_profile
