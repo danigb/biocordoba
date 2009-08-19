@@ -85,10 +85,10 @@ class UsersController < ApplicationController
     end
 
     if @user.update_attributes(params[:user])
-      flash[:notice] = "Usuario modificado correctamente"
+      flash[:notice] = "Usuario modificado correctamente."
       redirect_to users_path
     else
-      flash[:error] = "Existen errores en el formulario"
+      flash[:error] = "Existen errores en el formulario."
       render :action => 'edit'
     end
   end
@@ -109,7 +109,7 @@ class UsersController < ApplicationController
     else
       user.disable!
       UserMailer.send_later(:deliver_user_disabled, user)
-      flash[:notice] = "Usuario eliminado con éxito"
+      flash[:notice] = "Usuario eliminado con éxito."
     end
 
     redirect_to type_users_path(params[:type])

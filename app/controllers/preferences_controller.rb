@@ -12,7 +12,7 @@ class PreferencesController < ApplicationController
   def update
     @preference = Preference.find(params[:id])
     if @preference.update_attributes(params[:preference])
-      flash[:notice] = "Successfully updated preference."
+      flash[:notice] = "Configuración actualizada."
       redirect_to preferences_url
     else
       render :action => 'edit'
@@ -26,7 +26,7 @@ class PreferencesController < ApplicationController
   def create
     @preference = Preference.new(params[:preference])
     if @preference.save
-      flash[:notice] = "Successfully created preference."
+      flash[:notice] = "Configuración creada."
       redirect_to admin_preferences_url
     else
       render :action => 'new'
@@ -36,9 +36,9 @@ class PreferencesController < ApplicationController
   def destroy
     @preference = Preference.find(params[:id])
     if @preference.destroy
-      flash[:notice] = "Configuración eliminada"
+      flash[:notice] = "Configuración eliminada."
     else
-      flash[:error] = "Error al borrar la configuración"
+      flash[:error] = "Error al borrar la configuración."
     end
     redirect_to preferences_path
   end

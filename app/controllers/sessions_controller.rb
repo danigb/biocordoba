@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
 
   def destroy
     logout_killing_session!
-    flash[:notice] = "Hasta la próxima"
+    flash[:notice] = "¡Hasta la próxima!"
     redirect_to "/login"
   end
 

@@ -7,7 +7,7 @@ class Profile < ActiveRecord::Base
 
 
   validates_presence_of :company_name
-  validates_numericality_of :phone, :fax, :allow_blank => true
+  validates_numericality_of :phone, :fax, :zip_code, :allow_blank => true
   validates_url_format_of :website, :message => "Formato de página web incorrecto", :allow_blank => true
 
   def validate

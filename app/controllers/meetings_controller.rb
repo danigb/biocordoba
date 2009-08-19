@@ -47,9 +47,9 @@ class MeetingsController < ApplicationController
       if @meeting.errors[:starts_at]
         flash.now[:error] = "No se ha guardado la cita. #{@meeting.errors[:starts_at]}."
       elsif @meeting.errors[:max_meetings]
-        flash.now[:error] = "No se ha guardado la cita. Has superado el número máximo de citas."
+        flash.now[:error] = "No se ha guardado la cita. Ha superado el número máximo de citas."
       else
-        flash.now[:error] = "No se ha guardado la cita. Ya tienes un cita con este comprador."
+        flash.now[:error] = "No se ha guardado la cita. Ya tiene un cita con este comprador."
       end
 
       # Reloading vars
@@ -168,7 +168,7 @@ class MeetingsController < ApplicationController
   def access_control
     @meeting = Meeting.find(params[:id])
     unless current_user == @meeting.host || current_user == @meeting.guest || current_user.is_admin_or_extenda?
-      flash[:error] = "No puedes acceder a ver esa cita"
+      flash[:error] = "No puede acceder a ver esa cita"
       redirect_to root_path
     end
   end
@@ -184,9 +184,9 @@ class MeetingsController < ApplicationController
     @loaded = true
 
     if @remaining > 0
-      flash.now[:notice] = "Puedes hacer #{pluralize(@remaining, 'cita', 'citas')} más este día"
+      flash.now[:notice] = "Puede hacer #{pluralize(@remaining, 'cita', 'citas')} más este día"
     else
-      flash.now[:error] = "Has superado el número máximo de citas para este día"
+      flash.now[:error] = "Ha superado el número máximo de citas para este día"
     end
   end
 end

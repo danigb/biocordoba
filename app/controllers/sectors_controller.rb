@@ -46,7 +46,7 @@ class SectorsController < ApplicationController
 
     respond_to do |format|
       if @sector.save
-        flash[:notice] = 'Sector was successfully created.'
+        flash[:notice] = 'Sector creado.'
         format.html { redirect_to(@sector) }
         format.xml  { render :xml => @sector, :status => :created, :location => @sector }
       else
@@ -63,7 +63,7 @@ class SectorsController < ApplicationController
 
     respond_to do |format|
       if @sector.update_attributes(params[:sector])
-        flash[:notice] = 'Sector was successfully updated.'
+        flash[:notice] = 'Sector actualizado.'
         format.html { redirect_to(@sector) }
         format.xml  { head :ok }
       else

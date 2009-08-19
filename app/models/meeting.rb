@@ -13,21 +13,21 @@ class Meeting < ActiveRecord::Base
   named_scope :in, lambda {|date| {:conditions => ["DATE(starts_at) = ?", date]}}
 
   def validate
-    errors.add("host_id", "Usted debe ser un expositor") unless self.host && self.host.is_exhibitor?
-    errors.add("guest_id", "Debe invitar a un comprador") unless self.guest && (self.guest.is_buyer?)
+    errors.add("host_id", "Usted debe ser un expositor.") unless self.host && self.host.is_exhibitor?
+    errors.add("guest_id", "Debe invitar a un comprador.") unless self.guest && (self.guest.is_buyer?)
 
-    errors.add("max_meetings", "Has superado tu número de citas máximo para este día") if !Meeting.valid_meetings_number?(self.host, self.starts_at) && self.new_record?
+    errors.add("max_meetings", "Ha superado tu número de citas máximo para este día.") if !Meeting.valid_meetings_number?(self.host, self.starts_at) && self.new_record?
 
     if new_record? && !Meeting.between(self.host, self.guest).new_record?
-      errors.add("guest_id", "Ya tienes una cita con este comprador") 
+      errors.add("guest_id", "Ya tiene una cita con este comprador.") 
     end
 
     unless Meeting.valid_event_date?(self.starts_at)
-      errors.add("starts_at", "La cita debe estar dentro de las jornadas del evento")
+      errors.add("starts_at", "La cita debe estar dentro de las jornadas del evento.")
     end
 
     if new_record? && !Meeting.valid_date?(self.host, self.guest, self.starts_at, self.ends_at)
-      errors.add("starts_at", "Comprueba que ni tu ni el comprador tengais una cita aceptada o pendiente durante el periodo seleccionado") 
+      errors.add("starts_at", "Compruebe que ni usted ni el comprador tengan una cita aceptada o pendiente durante el periodo seleccionado.") 
     end
   end
 
