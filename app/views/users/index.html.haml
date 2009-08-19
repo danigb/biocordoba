@@ -1,9 +1,7 @@
 - title "Administrar usuarios"
 
 .users
-  %h2= "Seleccione un tipo de usuario"
-  %p
-    %span.button.violet= link_to "Registre un nuevo Usuario", signup_path
+  %h2.pink Usuarios
   %ul
     - for role in @roles[2..-1]
       %li
@@ -11,11 +9,17 @@
         = "(#{role.users.length})"
 
   %p
-    %span.button.violet= link_to "Registre un nuevo Administrador", new_admin_path
+    %span.button.violet= link_to "Nuevo Usuario", signup_path
+  
+
+  %h2.pink.mtop Administradores
   %ul
     - for role in @roles[0..1]
       %li
         = link_to ROLES[role.title.to_sym], type_users_path(role.title)
         = "(#{role.users.length})"
+  
+  %p
+    %span.button.violet= link_to "Nuevo Administrador", new_admin_path
   
   = link_to "Volver", root_path
