@@ -15,6 +15,10 @@ describe Profile do
   end
 
   it "should create a new instance given valid attributes" do
-    # Profile.create!(@valid_attributes)
+    2.times do
+      @profile = Profile.new(@valid_attributes)
+      @profile.sectors << Sector.make
+      @profile.should be_valid
+    end
   end
 end

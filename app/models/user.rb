@@ -154,7 +154,12 @@ class User < ActiveRecord::Base
     self.password == password
   end
 
+  #El login es autocincremental, si existe un elemento con ese login se añade un número
   def login=(value)
+    i, original = 0, value
+    while(User.find_by_login(value))
+      value = "#{original}#{i+=1}"
+    end
     write_attribute :login, (value ? value.downcase : nil)
   end
 
