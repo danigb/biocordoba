@@ -19,10 +19,8 @@
 
   /*Expositor*/
   - restrict_to "exhibitor" do
-    %p.separata
-      ¿Desea dar de alta una cita con un comprador que no está registrado? hágalo
-      = link_to_create_external_meeting
-    %br/
+    %p
+      = link_to_create_external_meeting("¿Desea dar de alta una cita con un comprador que no está registrado?")
     %p
       = "*Tiene un máximo de #{current_user.preference.meetings_number} citas por día del evento, y su duración será de"
       = "#{current_user.preference.meetings_duration} minutos cada una."

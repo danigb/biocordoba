@@ -478,53 +478,53 @@ input.white {
 .users span.button {
   margin-right: 10px; }
 
-.users.new, .users.edit, #sectors.edit, #sectors.new, #preferences.edit {
+.users.new, .users.edit, #sectors.edit, #sectors.new, #preferences.edit, #external.new {
   background: #70b120 url(/images/content-display-bg.png);
   padding: 20px; }
-  .users.new a, .users.edit a, #sectors.edit a, #sectors.new a, #preferences.edit a {
+  .users.new a, .users.edit a, #sectors.edit a, #sectors.new a, #preferences.edit a, #external.new a {
     color: #d41e67; }
-    .users.new a:hover, .users.edit a:hover, #sectors.edit a:hover, #sectors.new a:hover, #preferences.edit a:hover {
+    .users.new a:hover, .users.edit a:hover, #sectors.edit a:hover, #sectors.new a:hover, #preferences.edit a:hover, #external.new a:hover {
       color: #fff; }
-  .users.new input, .users.edit input, #sectors.edit input, #sectors.new input, #preferences.edit input {
+  .users.new input, .users.edit input, #sectors.edit input, #sectors.new input, #preferences.edit input, #external.new input {
     width: 235px;
     background: #fff;
     color: #000; }
-    .users.new input#user_role_id_1, .users.new input#user_role_id_2, .users.edit input#user_role_id_1, .users.edit input#user_role_id_2, #sectors.edit input#user_role_id_1, #sectors.edit input#user_role_id_2, #sectors.new input#user_role_id_1, #sectors.new input#user_role_id_2, #preferences.edit input#user_role_id_1, #preferences.edit input#user_role_id_2 {
+    .users.new input#user_role_id_1, .users.new input#user_role_id_2, .users.edit input#user_role_id_1, .users.edit input#user_role_id_2, #sectors.edit input#user_role_id_1, #sectors.edit input#user_role_id_2, #sectors.new input#user_role_id_1, #sectors.new input#user_role_id_2, #preferences.edit input#user_role_id_1, #preferences.edit input#user_role_id_2, #external.new input#user_role_id_1, #external.new input#user_role_id_2 {
       margin: 2px 10px 0 0; }
-  .users.new label, .users.edit label, #sectors.edit label, #sectors.new label, #preferences.edit label {
+  .users.new label, .users.edit label, #sectors.edit label, #sectors.new label, #preferences.edit label, #external.new label {
     width: 160px; }
-  .users.new fieldset, .users.edit fieldset, #sectors.edit fieldset, #sectors.new fieldset, #preferences.edit fieldset {
+  .users.new fieldset, .users.edit fieldset, #sectors.edit fieldset, #sectors.new fieldset, #preferences.edit fieldset, #external.new fieldset {
     border: none;
     margin-bottom: 20px; }
-    .users.new fieldset legend, .users.edit fieldset legend, #sectors.edit fieldset legend, #sectors.new fieldset legend, #preferences.edit fieldset legend {
+    .users.new fieldset legend, .users.edit fieldset legend, #sectors.edit fieldset legend, #sectors.new fieldset legend, #preferences.edit fieldset legend, #external.new fieldset legend {
       font-size: 16px;
       margin-bottom: 30px; }
-    .users.new fieldset#new-user-conf label, .users.edit fieldset#new-user-conf label, #sectors.edit fieldset#new-user-conf label, #sectors.new fieldset#new-user-conf label, #preferences.edit fieldset#new-user-conf label {
+    .users.new fieldset#new-user-conf label, .users.edit fieldset#new-user-conf label, #sectors.edit fieldset#new-user-conf label, #sectors.new fieldset#new-user-conf label, #preferences.edit fieldset#new-user-conf label, #external.new fieldset#new-user-conf label {
       width: 200px; }
-    .users.new fieldset#new-user-conf input, .users.edit fieldset#new-user-conf input, #sectors.edit fieldset#new-user-conf input, #sectors.new fieldset#new-user-conf input, #preferences.edit fieldset#new-user-conf input {
+    .users.new fieldset#new-user-conf input, .users.edit fieldset#new-user-conf input, #sectors.edit fieldset#new-user-conf input, #sectors.new fieldset#new-user-conf input, #preferences.edit fieldset#new-user-conf input, #external.new fieldset#new-user-conf input {
       width: auto; }
-    .users.new fieldset#new-user-conf .info, .users.edit fieldset#new-user-conf .info, #sectors.edit fieldset#new-user-conf .info, #sectors.new fieldset#new-user-conf .info, #preferences.edit fieldset#new-user-conf .info {
+    .users.new fieldset#new-user-conf .info, .users.edit fieldset#new-user-conf .info, #sectors.edit fieldset#new-user-conf .info, #sectors.new fieldset#new-user-conf .info, #preferences.edit fieldset#new-user-conf .info, #external.new fieldset#new-user-conf .info {
       font-style: italic;
       color: black; }
-  .users.new p.enviar, .users.edit p.enviar, #sectors.edit p.enviar, #sectors.new p.enviar, #preferences.edit p.enviar {
+  .users.new p.enviar, .users.edit p.enviar, #sectors.edit p.enviar, #sectors.new p.enviar, #preferences.edit p.enviar, #external.new p.enviar {
     clear: both; }
-    .users.new p.enviar input, .users.edit p.enviar input, #sectors.edit p.enviar input, #sectors.new p.enviar input, #preferences.edit p.enviar input {
+    .users.new p.enviar input, .users.edit p.enviar input, #sectors.edit p.enviar input, #sectors.new p.enviar input, #preferences.edit p.enviar input, #external.new p.enviar input {
       margin-right: 10px;
       width: auto;
       background: #d41e67;
       color: #fff; }
-  .users.new span.info, .users.edit span.info, #sectors.edit span.info, #sectors.new span.info, #preferences.edit span.info {
+  .users.new span.info, .users.edit span.info, #sectors.edit span.info, #sectors.new span.info, #preferences.edit span.info, #external.new span.info {
     width: 275px;
     float: right; }
-  .users.new p, .users.edit p, #sectors.edit p, #sectors.new p, #preferences.edit p {
+  .users.new p, .users.edit p, #sectors.edit p, #sectors.new p, #preferences.edit p, #external.new p {
     clear: both; }
-  .users.new .checkbox input, .users.edit .checkbox input, #sectors.edit .checkbox input, #sectors.new .checkbox input, #preferences.edit .checkbox input {
+  .users.new .checkbox input, .users.edit .checkbox input, #sectors.edit .checkbox input, #sectors.new .checkbox input, #preferences.edit .checkbox input, #external.new .checkbox input {
     margin: 0 5px 0 0; }
-  .users.new .formError, .users.edit .formError, #sectors.edit .formError, #sectors.new .formError, #preferences.edit .formError {
+  .users.new .formError, .users.edit .formError, #sectors.edit .formError, #sectors.new .formError, #preferences.edit .formError, #external.new .formError {
     margin-left: 160px; }
-  .users.new.extenda label, .users.edit.extenda label, #sectors.edit.extenda label, #sectors.new.extenda label, #preferences.edit.extenda label {
+  .users.new.extenda label, .users.edit.extenda label, #sectors.edit.extenda label, #sectors.new.extenda label, #preferences.edit.extenda label, #external.new.extenda label {
     width: 50px; }
-  .users.new.extenda .formError, .users.edit.extenda .formError, #sectors.edit.extenda .formError, #sectors.new.extenda .formError, #preferences.edit.extenda .formError {
+  .users.new.extenda .formError, .users.edit.extenda .formError, #sectors.edit.extenda .formError, #sectors.new.extenda .formError, #preferences.edit.extenda .formError, #external.new.extenda .formError {
     margin-left: 50px; }
 
 #preferences.edit label {
