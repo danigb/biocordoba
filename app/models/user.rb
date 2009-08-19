@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
   named_scope :type, lambda {|type| {:joins => :roles, :include => :profile, 
     :conditions => ["roles.title = ? AND state = 'enabled'", type] , :order => "profiles.company_name" }}
 
-  attr_accessible :login, :email, :name, :password, :password_confirmation, :role_id, :profile_attributes, :preference_attributes, :preference_id, :state
+  attr_accessible :login, :email, :name, :password, :password_confirmation, :role_id, :profile_attributes, :preference_attributes, :preference_id, :state, :external
   accepts_nested_attributes_for :profile, :preference
 
 
@@ -125,8 +125,8 @@ class User < ActiveRecord::Base
   def meetings(date, days = 1)
     start_date = Date.new(date.year, date.month, date.day) 
     Meeting.find(:all, 
-      :conditions => ['(host_id = ? or guest_id = ?) and starts_at between ? and ? and state != "canceled"', 
-        self.id, self.id, start_date, start_date + days], :order => 'starts_at')
+                 :conditions => ['(host_id = ? or guest_id = ?) and starts_at between ? and ? and state != "canceled"', 
+                   self.id, self.id, start_date, start_date + days], :order => 'starts_at')
   end
 
   def meetings_remaining(date)
@@ -136,9 +136,9 @@ class User < ActiveRecord::Base
   # Devuelve los eventos comunes, es decir no tienen actor a quien se dirige y los eventos concretos hacia él
   def timeline_events
     TimelineEvent.find(:all, :conditions => ["(actor_type = 'User' AND actor_id = ?) OR actor_type IS NULL", 
-      self.id], :limit => 3, :order => 'created_at desc', :include => [:subject, :secondary_subject])
+                       self.id], :limit => 3, :order => 'created_at desc', :include => [:subject, :secondary_subject])
   end
-  
+
   def unread_messages_count
     self.user_messages.count(:all, :conditions => {:state => 'unread'})
   end

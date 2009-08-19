@@ -23,9 +23,13 @@
   - if @host || @admin_extenda
     #guest-info-mini
       %p
-        = "Comprador: #{@meeting.guest.profile.company_name.upcase} ("
-        = link_to "Más información"
-        )
+        - if @meeting.guest.external
+          = "Tiene la cita con #{h @meeting.guest.profile.company_name.upcase}"
+          #flash_notice= "El usuario con el que tiene esta cita no pertenece al sistema." 
+        - else
+          = "Comprador: #{h @meeting.guest.profile.company_name.upcase} ("
+          = link_to "Más información"
+          )
     #guest-info= render :partial => 'profiles/show', :locals => {:profile => @meeting.guest.profile}
     
   - if @guest || @admin_extenda

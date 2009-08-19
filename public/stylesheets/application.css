@@ -634,7 +634,7 @@ input.white {
   .cancel-form label {
     width: inherit; }
 
-.new-external label, .new-external input {
+.new-external label, .new-external input, .edit_meeting label, .edit_meeting input {
   width: inherit;
   float: none; }
 

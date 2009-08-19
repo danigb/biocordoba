@@ -38,8 +38,10 @@ class ProfilesController < ApplicationController
       redirect_to :back and return
     end
 
-    @user = User.new(:login => params[:profile][:company_name].normalize, :state => 'disabled', :password => 'secret')
+    @user = User.new(:login => params[:profile][:company_name].normalize, :state => 'disabled', 
+      :password => 'secret', :external => true)
     @user.roles << Role.find_by_title("national_buyer")
+
     if @user.save
       @profile = Profile.new(:user_id => @user.id, :company_name => params[:profile][:company_name])
       @profile.sectors << Sector.first
