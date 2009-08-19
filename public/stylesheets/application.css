@@ -634,6 +634,10 @@ input.white {
   .cancel-form label {
     width: inherit; }
 
+.new-external label, .new-external input {
+  width: inherit;
+  float: none; }
+
 #loading {
   position: absolute;
   top: 5px;

@@ -21,4 +21,24 @@ class ProfilesController < ApplicationController
       }
     end
   end
+
+  def new_externas
+  end
+
+  #Creamos un usuario externo solo usando su company_name, su estado inicial será desactivado
+  def create_external
+    unless params[:profile][:company_name]
+      flash[:error] = "Debe indicar el nombre del usuario"
+      redirect_to :back and return
+    end
+
+    @user = User.new(:login => params[:profile][:company_name].normalize, :state => 'disabled', :password => 'secret')
+    @user.roles << Role.find_by_title("national_buyer")
+    if @user.save
+      @profile = Profile.new(:user_id => @user.id, :company_name => params[:profile][:company_name])
+      @profile.sectors << Sector.first
+      @profile.save
+      redirect_to meeting_into_and_path(current_user.login, @user.login)
+    end
+  end
 end

@@ -8,7 +8,9 @@ class MeetingMailer < ActionMailer::Base
 
   def meeting_canceled(meeting)
     setup_email
-    @recipients = [meeting.host.email, meeting.guest.email]
+    @recipients = []
+    @recipients << meeting.host.email if meeting.host.email
+    @recipients << meeting.guest.email if meeting.guest.email
     @subject += "Cita cancelada"
     @body = {:meeting => meeting}
   end
