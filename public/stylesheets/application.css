@@ -4,6 +4,9 @@
 .violet {
   color: #b81d88; }
 
+.yellow {
+  color: #f9f89e; }
+
 body {
   background: #191918 url('/images/body-bg.jpg') center top no-repeat;
   color: #fff;
@@ -392,19 +395,19 @@ input.white {
     color: #000;
     font-size: 12px; }
 
-#my_meetings_footer {
+.my_meetings_footer {
   clear: both;
   padding-top: 10px;
   font-style: italic; }
-  #my_meetings_footer p {
+  .my_meetings_footer p {
     margin-bottom: 0; }
-    #my_meetings_footer p.imprimir {
+    .my_meetings_footer p.imprimir {
       text-align: right;
       font-size: 12px;
       margin: 0; }
-      #my_meetings_footer p.imprimir a {
+      .my_meetings_footer p.imprimir a {
         color: #fff; }
-        #my_meetings_footer p.imprimir a:hover {
+        .my_meetings_footer p.imprimir a:hover {
           color: #d41e67; }
 
 #preferences table {
