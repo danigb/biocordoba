@@ -16,6 +16,11 @@
         Para:
         = current_user.profile.company_name
 %p
+  %strong
+    Asunto:
+  %span.pink= h @message.subject
+
+%p
   = h @message.message
 
 %p
