@@ -70,6 +70,9 @@ span.info {
     clear: both;
     visibility: hidden; }
 
+.pagination {
+  margin-bottom: 20px; }
+
 p.button {
   margin-top: 15px;
   padding: 5px;
@@ -460,14 +463,14 @@ input.white {
 #sectors table {
   width: 485px;
   margin-left: 10px;
-  margin-bottom: 20px; }
+  margin-bottom: 10px; }
   #sectors table th {
     text-align: left;
     color: #d41e67;
     font-size: 14px; }
 
 .users ul, .users table {
-  margin-bottom: 20px; }
+  margin-bottom: 10px; }
 .users span.button {
   margin-right: 10px; }
 

@@ -3,7 +3,7 @@
 .users
   %h2= "Seleccione un tipo de usuario"
   %p
-    %span.button.violet= link_to "Registre un nuevo usuario", signup_path
+    %span.button.violet= link_to "Registre un nuevo Usuario", signup_path
   %ul
     - for role in @roles[2..-1]
       %li
@@ -11,7 +11,7 @@
         = "(#{role.users.length})"
 
   %p
-    %span.button.violet= link_to "Registre un nuevo admin/extenda", new_admin_path
+    %span.button.violet= link_to "Registre un nuevo Administrador", new_admin_path
   %ul
     - for role in @roles[0..1]
       %li
