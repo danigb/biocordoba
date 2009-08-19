@@ -1,8 +1,8 @@
-#external.new-external
+%h2 Indique el nombre de la empresa no registrada
+#external.new
   - form_for :profile, :url => create_external_profiles_path do |f|
     %p
-      = f.label :company_name, "Nombre de la persona con la que te vas a reunir"
-      %br/
+      = f.label :company_name, "Nombre:"
       = f.text_field :company_name
-    %p
+    %p.enviar
       = f.submit "Solicitar cita"

@@ -6,16 +6,14 @@
     = "Como expositor de Andalucía Sabor, tiene la oportunidad de solicitar hasta un máximo de #{current_user.preference.meetings_number} citas al día con los compradores nacionales e internacionales presentes en la feria."
 
   %p
-    Para la optimización de este servicio de gestión de citas, le rogamos lea atentamente la ficha de cada comprador para asegurarse de que se adecua a su perfil comercial:
+    Para la optimización de este servicio de gestión de citas, le rogamos lea atentamente la ficha de cada comprador para asegurarse de que se adecua a su perfil comercial.
+  
+  %p
+    = link_to_create_external_meeting("¿Desea dar de alta una cita con un comprador que no está registrado?")
 
   %p
     = label_tag "sector_id", "SECTOR"
     = select :sector, :id, Sector.all.map{|s| [s.name, s.id]}, {:include_blank => true}, {:onchange => 'load_buyers(this.options[this.selectedIndex].value)'}
     #buyers
 
-
-  %p.separata
-    De de alta una cita con un comprador que no esté registrado
-    -# ¿Desea dar de alta una cita con un comprador que no está registrado?
-    = link_to_create_external_meeting
 
