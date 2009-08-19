@@ -1,3 +1,9 @@
 - weekly_calendar(@meetings, :date => @date, :days => @days) do |w|
   - w.week(:clickable_hours => false) do |event,truncate|
     =  link_to event.name(user, false), meeting_path(event), :id => event.id, :class => 'meeting-link'
+
+.my_meetings_footer
+  %p.yellow
+    Amarillo: Cita pendiente de aceptación por Extenda.
+  %p.pink
+    Rosa: Cita aceptada.
