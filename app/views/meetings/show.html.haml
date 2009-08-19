@@ -24,7 +24,7 @@
     #guest-info-mini
       %p
         - if @meeting.guest.external
-          = "Tiene la cita con #{h @meeting.guest.profile.company_name.upcase}"
+          = "Cita con #{h @meeting.guest.profile.company_name.upcase}"
           #flash_notice= "El usuario con el que tiene esta cita no pertenece al sistema." 
         - else
           = "Comprador: #{h @meeting.guest.profile.company_name.upcase} ("

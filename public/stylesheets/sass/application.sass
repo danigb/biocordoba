@@ -522,7 +522,7 @@ input
     :margin-right 10px
 
 
-.users.new, .users.edit, #sectors.edit, #sectors.new, #preferences.edit, #external.new
+.users.new, .users.edit, #sectors.edit, #sectors.new, #preferences.edit
   :background = !green url("/images/content-display-bg.png")
   :padding 20px
   a
@@ -574,6 +574,14 @@ input
       :width 50px
     .formError
       :margin-left 50px
+
+#external.new
+  :background none
+  input
+    :float none
+  p.enviar
+    input
+      :background = !pink
 
 #preferences.edit
   label
