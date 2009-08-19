@@ -39,6 +39,6 @@ class String
     n.gsub!(/'/,            '')
 
     # n.tr!('^ a-z0-9_/\\-',    '')
-    n[0..20]
+    n[0..25]
   end 
 end

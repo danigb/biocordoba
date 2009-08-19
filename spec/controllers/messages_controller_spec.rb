@@ -15,7 +15,6 @@ describe MessagesController do
   it "should not access unless logged_in" do
     get :show, :id => @message.id, :type => 'received'
     response.should redirect_to login_path
-    flash[:error].should == "Debe iniciar sesion para acceder"
   end
 
   it "Logged_in can't access changing type param" do

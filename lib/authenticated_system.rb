@@ -65,7 +65,7 @@ module AuthenticatedSystem
       respond_to do |format|
         format.html do
           store_location
-          flash[:error] = "Debe iniciar sesion para acceder"
+          # flash[:error] = "Debe iniciar sesion para acceder"
           redirect_to login_path
         end
         # format.any doesn't work in rails version < http://dev.rubyonrails.org/changeset/8987

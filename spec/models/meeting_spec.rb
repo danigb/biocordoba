@@ -91,7 +91,7 @@ describe Meeting do
     it "should not have a meeting out of event" do
       meeting =  Meeting.make_unsaved(:starts_at => Time.now)
       meeting.should have(1).errors_on(:starts_at)     
-      meeting.errors.on(:starts_at).should == "La cita debe estar dentro de las jornadas del evento"
+      meeting.errors.on(:starts_at).should == "La cita debe estar dentro de las jornadas del evento."
     end
 
     it "valid_date behaviour" do
@@ -117,7 +117,7 @@ describe Meeting do
       @host.should have(4).meetings(Event.start_day)
       meeting = Meeting.make_unsaved(:host => @host, :guest => User.make(:national_buyer), :starts_at => @meeting.starts_at + 3.hours)
       meeting.valid?
-      meeting.errors.on(:max_meetings).should == "Has superado tu número de citas máximo para este día"
+      meeting.errors.on(:max_meetings).should == "Ha superado tu número de citas máximo para este día."
     end
 
     it "a host should create a meeting with a guest although the guest canceled another meeting before" do

@@ -79,7 +79,22 @@ describe "user preferences" do
     @user.preference = @preference2
     @user.preference.should eql(@preference2)
   end
-
 end
 
+describe "login generation" do
+  before do
+    @user = User.make(:login => "mylogin")
+  end
+
+  it "should create the first user" do
+    @user.login.should == "mylogin"
+  end
+
+  it "we can create users with same login, the system should set autoincremental login" do
+    5.times do |i|
+      @user = User.make(:login => "mylogin")
+      @user.login.should == "mylogin#{i+1}"
+    end
+  end
+end
 
