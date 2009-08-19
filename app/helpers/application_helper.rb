@@ -116,6 +116,6 @@ module ApplicationHelper
   end
 
   def link_to_create_external_meeting(msg="aquí")
-    link_to msg, new_external_profiles_path
+    link_to msg, new_external_profiles_path, :class => 'new-external-link'
   end
 end

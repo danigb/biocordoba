@@ -74,6 +74,13 @@ $(document).ready(function() {
     e.preventDefault();
   });
 
+  ///profiles/new-external popup
+  $(".new-external-link").click(function(e){
+    $(".query_review_parent, .ui-dialog, #external").remove();
+    $('<div><div />').appendTo('body').append("<img src='/images/loader-1.gif'/> Cargando...").dialog({resizable: false, modal:true, position: ['center', 50], width:450}).load("/perfiles/new_external.js");
+    e.preventDefault();
+  });
+
   //meetings/type form
   $("form#select-schedule select").change(function(){
       if(this.value != "")

@@ -22,12 +22,18 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def new_externas
+  def new_external
+    respond_to do |format|
+      format.html{ }
+      format.js{
+        render :layout => false
+      }
+    end
   end
 
   #Creamos un usuario externo solo usando su company_name, su estado inicial será desactivado
   def create_external
-    unless params[:profile][:company_name]
+    unless params[:profile][:company_name].present?
       flash[:error] = "Debe indicar el nombre del usuario"
       redirect_to :back and return
     end
