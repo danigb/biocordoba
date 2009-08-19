@@ -2,23 +2,20 @@
 
 .users
   %h2= "Seleccione un tipo de usuario"
+  %p
+    %span.button.violet= link_to "Registre un nuevo usuario", signup_path
   %ul
-    - for role in @roles
+    - for role in @roles[2..-1]
       %li
         = link_to ROLES[role.title.to_sym], type_users_path(role.title)
         = "(#{role.users.length})"
 
   %p
-    %span.button.violet= link_to "Registra un nuevo usuario", signup_path
-    %span.button.violet= link_to "admin/extenda", new_admin_path
-    o
-    = link_to "Volver", root_path
-
-  -# %p
-  -#   También puedes
-  -#   %br/
-  -#   = link_to "Administrar sectores", sectors_path
-  -#   ,
-  -#   = link_to "Administrar preferencias", preferences_path
-  -#   o
-  -#   = link_to "Monitorizar mensajes sin leer de los usuarios", messages_monitors_path
+    %span.button.violet= link_to "Registre un nuevo admin/extenda", new_admin_path
+  %ul
+    - for role in @roles[0..1]
+      %li
+        = link_to ROLES[role.title.to_sym], type_users_path(role.title)
+        = "(#{role.users.length})"
+  
+  = link_to "Volver", root_path

@@ -10,7 +10,6 @@
       = f.radio_button(:role_id, 2)
       %span Extenda
 
-
     %p
       = f.label :login
       = f.text_field :login
@@ -22,3 +21,4 @@
 
     %p.enviar
       = submit_tag 'Dar de alta' 
+      %span= link_to 'Volver', users_path

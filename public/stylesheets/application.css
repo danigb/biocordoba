@@ -149,7 +149,8 @@ input {
 
 p.enviar input {
   width: auto;
-  padding: 2px 5px; }
+  padding: 2px 5px;
+  cursor: pointer; }
 p.enviar span a {
   display: block;
   padding-top: 10px; }
@@ -157,7 +158,8 @@ p.enviar span a {
 span.button {
   background: #70b120;
   padding: 2px 5px;
-  font-size: 12px; }
+  font-size: 12px;
+  cursor: pointer; }
   span.button a {
     color: #fff;
     text-decoration: none; }
@@ -313,7 +315,8 @@ input.white {
     #new-message span.submit input {
       background: #d41e67;
       display: block;
-      width: auto; }
+      width: auto;
+      cursor: pointer; }
   #new-message .formError {
     margin-left: 70px; }
   #new-message label {
@@ -493,6 +496,9 @@ input.white {
       width: 200px; }
     .users.new fieldset#new-user-conf input, .users.edit fieldset#new-user-conf input, #sectors.edit fieldset#new-user-conf input, #sectors.new fieldset#new-user-conf input, #preferences.edit fieldset#new-user-conf input {
       width: auto; }
+    .users.new fieldset#new-user-conf .info, .users.edit fieldset#new-user-conf .info, #sectors.edit fieldset#new-user-conf .info, #sectors.new fieldset#new-user-conf .info, #preferences.edit fieldset#new-user-conf .info {
+      font-style: italic;
+      color: black; }
   .users.new p.enviar, .users.edit p.enviar, #sectors.edit p.enviar, #sectors.new p.enviar, #preferences.edit p.enviar {
     clear: both; }
     .users.new p.enviar input, .users.edit p.enviar input, #sectors.edit p.enviar input, #sectors.new p.enviar input, #preferences.edit p.enviar input {

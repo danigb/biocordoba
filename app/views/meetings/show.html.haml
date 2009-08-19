@@ -7,11 +7,11 @@
       = @meeting.cancel_reason.blank? ? "El interlocutor no ha dado ninguna razón para su cancelación" : "Razón: #{@meeting.cancel_reason}"
   - elsif @meeting.pending?
     #flash_error
-      Esta cita está pendiente de aceptación por parte de un organismo internacional extenda.
+      Esta cita está pendiente de aceptación por parte de Extenda.
   - else
     #flash_notice
       - if @meeting.guest.is_international_buyer?
-        Cita aceptada por un organismo extenda
+        Cita aceptada por Extenda
       - else
         Cita aceptada automáticamente
 
