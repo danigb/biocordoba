@@ -270,9 +270,8 @@ input.white {
   #right-column .box_dark_green {
     background: #4c800c;
     min-height: 423px;
-    border-top: 5px #000 solid;
     color: #fff;
-    padding-bottom: 5px; }
+    padding: 1px 0 5px 0; }
     #right-column .box_dark_green .last_messages {
       margin: 15px 35px 15px 15px;
       padding-bottom: 15px;
@@ -549,6 +548,7 @@ input.white {
 /* Images */
 .last_messages_img {
   background: transparent url("/images/last_messages.jpg") left top;
+  border-bottom: 5px #000 solid;
   width: 230px;
   height: 73px; }
   .last_messages_img h3 {
@@ -561,6 +561,7 @@ input.white {
 
 .meeting_request_img {
   background: transparent url("/images/meetings_request.jpg") left top;
+  border-bottom: 5px #000 solid;
   width: 230px;
   height: 73px; }
   .meeting_request_img h2 {
