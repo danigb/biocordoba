@@ -24,7 +24,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resumen '/resumen/:date', :controller => 'event_days', :action => 'show'
 
   map.resources :sectors, :as => 'sectores'
-  map.resources :profiles, :as => 'perfiles', :member => {:commercial_profile => :get}
+  map.resources :profiles, :as => 'perfiles', :member => {:commercial_profile => :get}, 
+    :collection => {:new_external => :get, :create_external => :post}
   map.resources :meetings, :as => 'citas', :member => {:change_state => :get, :change_note => :put}
   map.resource  :session
   map.resources :messages, :as => 'mensajes', :collection => {:received => :get, :sent => :get, 

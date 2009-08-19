@@ -13,3 +13,9 @@
     = select :sector, :id, Sector.all.map{|s| [s.name, s.id]}, {:include_blank => true}, {:onchange => 'load_buyers(this.options[this.selectedIndex].value)'}
     #buyers
 
+
+  %p.separata
+    De de alta una cita con un comprador que no esté registrado
+    -# ¿Desea dar de alta una cita con un comprador que no está registrado?
+    = link_to_create_external_meeting
+

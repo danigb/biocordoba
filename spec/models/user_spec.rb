@@ -62,6 +62,11 @@ describe "user deactivation" do
     @guest.should have(0).meetings(Event.start_day, Event.duration)
   end
 
+  it "we can create deactivated users" do
+    @user = User.make(:state => 'disabled')
+    @user.state.should == "disabled"
+  end
+
 end
 
 describe "user preferences" do

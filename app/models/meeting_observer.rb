@@ -4,9 +4,11 @@ class MeetingObserver < ActiveRecord::Observer
   def after_create(record)
     if record.guest.is_national_buyer?  
       record.accept!
-      MeetingMailer.send_later(:deliver_new_meeting, record) #Email nueva cita
+      #Email nueva cita
+      MeetingMailer.send_later(:deliver_new_meeting, record) if record.guest.email
     elsif record.guest.is_international_buyer?
-      MeetingMailer.send_later(:deliver_alert_for_extenda, record) #Aviso a los usuarios extenda
+      #Aviso a los usuarios extenda
+      MeetingMailer.send_later(:deliver_alert_for_extenda, record) if record.guest.email 
     end
   end
 
