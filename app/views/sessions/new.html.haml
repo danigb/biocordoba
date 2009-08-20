@@ -23,14 +23,14 @@
     %h2= "Acceso a la agenda virtual".upcase
 
     - form_tag session_path do
-      /*%p*/
-      /*  = label_tag 'login', "usuario"*/
-      = text_field_tag 'login', @login
-      /*%p*/
-      /*  = label_tag 'password', "contraseña"*/
-      = password_field_tag 'password', nil 
-      /*%p.rememberme*/
-      /*  = label_tag 'remember_me', 'Recuérdame'*/
-      = check_box_tag 'remember_me', '1', @remember_me 
-      /*%p.enviar*/
-      = submit_tag 'ENTRAR'
+      %p
+        = label_tag 'login', "usuario"
+        = text_field_tag 'login', @login
+      %p
+        = label_tag 'password', "contraseña"
+        = password_field_tag 'password', nil 
+      %p.rememberme
+        = label_tag 'remember_me', 'Recuérdame'
+        = check_box_tag 'remember_me', '1', @remember_me 
+      %p.enviar
+        = submit_tag 'ENTRAR'
