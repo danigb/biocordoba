@@ -8,9 +8,30 @@
   padding: 16px 8px 1px 8px;
   width: 36px; }
 
+
 #placeholder {
   height: 43px;
   padding: 0 25px 0 25px; }
+
+#search p {
+  height: 30px; }
+
+.access p, .access label, .access input {
+  margin: 0px !important; }
+
+.access form p {
+  height: 30px; }
+
+.users form p {
+  margin-bottom: 0; }
+  .users form p.info {
+    margin-bottom: 5px; }
+
+.tablesorter th {
+  color: #fff; }
+
+input[type="select"] {
+  width: 800px; }
 
 legend {
   margin-left: -7px; }
@@ -18,11 +39,5 @@ legend {
 span.pink {
   background: transparent; }
 
-p {
-  margin-bottom: 0; }
-
-.access p, .access label, .access input {
-  margin: 0px !important; }
-
-.access form p {
-  height: 30px; }
+p.info {
+  margin-bottom: 5px; }
