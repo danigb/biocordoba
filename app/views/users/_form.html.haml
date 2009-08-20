@@ -8,7 +8,7 @@
   - @user.build_preference unless @user.preference
   - f.fields_for(:preference) do |pref|
     = label_tag "Utiliza la configuración por defecto"
-    = check_box_tag 'default_preferences', 1, hide_preferences, {:onclick => "$('#preferences').toggle();"} 
+    = check_box_tag 'default_preferences', 1, hide_preferences, {:class => "checkbox", :onclick => "$('#preferences').toggle();"} 
     %p.info
       El número máximo de citas por día, duración y horarios están configurados por defecto según las condiciones generales de cada tipo de usuario.
     %p.info

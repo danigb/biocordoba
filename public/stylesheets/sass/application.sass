@@ -47,7 +47,6 @@ h2
   :font-size 14px
   :letter-spacing 0.4px
   :font-weight normal
-  :color #fff
 
 h3
   :font-size 16px
@@ -180,6 +179,8 @@ p
       a
         :display block 
         :padding-top 10px
+        &:hover
+          :color #fff
 
 span.button
   :background = !green
@@ -189,6 +190,8 @@ span.button
   a
     :color #fff
     :text-decoration none
+    &:hover
+      :color #fff
   &.violet
     :background = !violet
   &.pink
@@ -356,6 +359,7 @@ input
         :cursor pointer
   #message_send_all
     :width auto
+    :background none
   .formError
     :margin-left 70px
   label 
@@ -547,11 +551,14 @@ input
     legend
       :font-size 16px
       :margin-bottom 30px
+      :color #fff
     &#new-user-conf
       label
         :width 200px
       input
         :width auto
+        &.checkbox
+          :background none
       .info
         :font-style italic
         :color = #000
@@ -572,6 +579,7 @@ input
     input
       :margin 0 5px 0 0 
       :width auto
+      :background none
   .formError
     :margin-left 160px
   &.extenda
@@ -678,7 +686,7 @@ input
   :clear both
   :font-weight bold
     
-.none_margin > .formError
+.none-margin > .formError
   :margin-left 0 !important
   :margin-bottom 10px
 

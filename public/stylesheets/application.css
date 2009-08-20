@@ -37,8 +37,7 @@ h2 {
   margin-bottom: 20px;
   font-size: 14px;
   letter-spacing: 0.4px;
-  font-weight: normal;
-  color: #fff; }
+  font-weight: normal; }
 
 h3 {
   font-size: 16px;
@@ -162,6 +161,8 @@ p.enviar input {
 p.enviar span a {
   display: block;
   padding-top: 10px; }
+  p.enviar span a:hover {
+    color: #fff; }
 
 span.button {
   background: #70b120;
@@ -171,6 +172,8 @@ span.button {
   span.button a {
     color: #fff;
     text-decoration: none; }
+    span.button a:hover {
+      color: #fff; }
   span.button.violet {
     background: #b81d88; }
   span.button.pink {
@@ -325,7 +328,8 @@ input.white {
       width: auto;
       cursor: pointer; }
   #new-message #message_send_all {
-    width: auto; }
+    width: auto;
+    background: none; }
   #new-message .formError {
     margin-left: 70px; }
   #new-message label {
@@ -502,11 +506,14 @@ input.white {
     margin-bottom: 20px; }
     .users.new fieldset legend, .users.edit fieldset legend, #sectors.edit fieldset legend, #sectors.new fieldset legend, #preferences.edit fieldset legend {
       font-size: 16px;
-      margin-bottom: 30px; }
+      margin-bottom: 30px;
+      color: #fff; }
     .users.new fieldset#new-user-conf label, .users.edit fieldset#new-user-conf label, #sectors.edit fieldset#new-user-conf label, #sectors.new fieldset#new-user-conf label, #preferences.edit fieldset#new-user-conf label {
       width: 200px; }
     .users.new fieldset#new-user-conf input, .users.edit fieldset#new-user-conf input, #sectors.edit fieldset#new-user-conf input, #sectors.new fieldset#new-user-conf input, #preferences.edit fieldset#new-user-conf input {
       width: auto; }
+      .users.new fieldset#new-user-conf input.checkbox, .users.edit fieldset#new-user-conf input.checkbox, #sectors.edit fieldset#new-user-conf input.checkbox, #sectors.new fieldset#new-user-conf input.checkbox, #preferences.edit fieldset#new-user-conf input.checkbox {
+        background: none; }
     .users.new fieldset#new-user-conf .info, .users.edit fieldset#new-user-conf .info, #sectors.edit fieldset#new-user-conf .info, #sectors.new fieldset#new-user-conf .info, #preferences.edit fieldset#new-user-conf .info {
       font-style: italic;
       color: black; }
@@ -524,7 +531,8 @@ input.white {
     clear: both; }
   .users.new .checkbox input, .users.edit .checkbox input, #sectors.edit .checkbox input, #sectors.new .checkbox input, #preferences.edit .checkbox input {
     margin: 0 5px 0 0;
-    width: auto; }
+    width: auto;
+    background: none; }
   .users.new .formError, .users.edit .formError, #sectors.edit .formError, #sectors.new .formError, #preferences.edit .formError {
     margin-left: 160px; }
   .users.new.extenda label, .users.edit.extenda label, #sectors.edit.extenda label, #sectors.new.extenda label, #preferences.edit.extenda label {
@@ -618,7 +626,7 @@ input.white {
   clear: both;
   font-weight: bold; }
 
-.none_margin > .formError {
+.none-margin > .formError {
   margin-left: 0 !important;
   margin-bottom: 10px; }
 
