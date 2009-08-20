@@ -133,9 +133,10 @@ span.canceled {
         text-align: right;
         float: right; }
         #container #login_area .access form p.enviar input, #container #login_area .access form p.rememberme input {
-          width: inherit; }
+          width: auto; }
     #container #login_area .access #remember_me {
-      margin-left: 10px; }
+      margin-left: 10px;
+      background: transparent; }
 
 /* Forms and links */
 label {
@@ -322,6 +323,8 @@ input.white {
       display: block;
       width: auto;
       cursor: pointer; }
+  #new-message #message_send_all {
+    width: auto; }
   #new-message .formError {
     margin-left: 70px; }
   #new-message label {
@@ -519,7 +522,8 @@ input.white {
   .users.new p, .users.edit p, #sectors.edit p, #sectors.new p, #preferences.edit p {
     clear: both; }
   .users.new .checkbox input, .users.edit .checkbox input, #sectors.edit .checkbox input, #sectors.new .checkbox input, #preferences.edit .checkbox input {
-    margin: 0 5px 0 0; }
+    margin: 0 5px 0 0;
+    width: auto; }
   .users.new .formError, .users.edit .formError, #sectors.edit .formError, #sectors.new .formError, #preferences.edit .formError {
     margin-left: 160px; }
   .users.new.extenda label, .users.edit.extenda label, #sectors.edit.extenda label, #sectors.new.extenda label, #preferences.edit.extenda label {
