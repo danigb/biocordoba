@@ -51,7 +51,8 @@ $(document).ready(function() {
     }
 
     $(".query_review_parent, .ui-dialog, #profile").remove();
-    $('<div />').appendTo('body').append("<img src='/images/loader-1.gif'/> Cargando...").dialog({resizable: false, modal:true, position: ['center', 50]}).load("/perfiles/" + this.id + ".js?hide="+hide);
+    $('<div />').appendTo('body').append("<img src='/images/loader-1.gif'/> Cargando...").dialog(
+      {resizable: false, modal:true, position: ['center', 50], bgiframe: true}).load("/perfiles/" + this.id + ".js?hide="+hide);
     e.preventDefault();
   });
 
@@ -76,14 +77,14 @@ $(document).ready(function() {
   /* $(".meeting-link").unbind(); */
   $(".meeting-link").live("click", function(e){
     $(".query_review_parent, .ui-dialog, #meeting").remove();
-    $('<div><div />').appendTo('body').append("<img src='/images/loader-1.gif'/> Cargando...").dialog({resizable: false, modal:true, position: ['center', 50], width:450}).load("/citas/" + this.id + ".js");
+    $('<div><div />').appendTo('body').append("<img src='/images/loader-1.gif'/> Cargando...").dialog({resizable: false, modal:true, position: ['center', 50], width:450, bgiframe: true}).load("/citas/" + this.id + ".js");
     e.preventDefault();
   });
 
   ///profiles/new-external popup
   $(".new-external-link").click(function(e){
     $(".query_review_parent, .ui-dialog, #external").remove();
-    $('<div><div />').appendTo('body').append("<img src='/images/loader-1.gif'/> Cargando...").dialog({resizable: false, modal:true, position: ['center', 50], width:450}).load("/perfiles/new_external.js");
+    $('<div><div />').appendTo('body').append("<img src='/images/loader-1.gif'/> Cargando...").dialog({resizable: false, modal:true, position: ['center', 50], width:450, bgiframe: true}).load("/perfiles/new_external.js");
     e.preventDefault();
   });
 
