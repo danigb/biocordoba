@@ -13,10 +13,13 @@
 #day{height:37px;border-right:1px solid #8F8F8F;border-bottom:1px solid #ccc;padding:16px 10px 1px 8px;background-color:#d40067;color:white;}
 #placeholder{height:30px;border-right:1px; border-bottom: 1px solid #FFF; solid #ccc;background-color:#80b938;}
 #day_row{width:42px;height:55px;position:relative;}
-#week_event{background:#ff87c1;float:left;position:absolute;height:66px;color:#000;border-left:4px solid #d40067;opacity:0.90;filter:alpha(opacity=90);cursor:pointer;padding-top:1px; overflow: hidden;}
-#week_event a{color:#000; text-decoration:none; font-weight: bolder;font-size:0.9em; padding-left: 3px; width: inherit; display:block;}
-#day_row #week_event:hover{background:#D40067; color: #fff;overflow: visible; height: 1%;}
-#day_row #week_event a:hover{height: auto; background: #d40067;}
+
+#week_event{background:#ff87c1;float:left;position:absolute;height:13px;color:#000;border-left:4px solid #d40067;cursor:pointer;}
+#week_event span{height: 20px;display:block; height:20px;}
+#week_event a{color:#000; text-decoration:none; font-weight: bolder;font-size:10px; padding-left: 3px; width: inherit; display:block;}
+#week_event.pending{background:#F9F89E; border-left:4px solid #d40067;}
+
+#day_row #week_event a:hover{height: auto; background: #d40067;height: 13px;}
 #day_row #click_hour{height:57px;width:55px;border-right:1px solid #cfe6ec;padding:17px 1px 0px 18px;float:left;}
 #day_row #click_hour a{color:#000;}
 #day_row #click_hour:hover{background:#C7F980;}
@@ -32,4 +35,3 @@
 #mini_day_row #click_hour{height:57px;width:55px;border-right:1px solid #cfe6ec;padding:17px 1px 0px 18px;float:left;}
 #mini_day_row #click_hour a{color:#000;}
 #mini_day_row #click_hour:hover{background:#C7F980;}
-#week_event.pending{background:#F9F89E; border-left:4px solid #d40067;}

@@ -5,6 +5,9 @@
   padding: 16px 8px 1px 8px;
   width: 36px; }
 
+#week_event span {
+  height: 8px!important; }
+
 #external.new input {
   background: #70b120; }
 #external.new label {
