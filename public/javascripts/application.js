@@ -44,8 +44,14 @@ $(document).ready(function() {
   //Profile dialog
 
   $(".profile-link").live("click", function(e){
+    //Vble used for new meeting button hide  
+    var hide = false;
+    if($(this).hasClass("hide-meeting-button")){
+      hide = true;
+    }
+
     $(".query_review_parent, .ui-dialog, #profile").remove();
-    $('<div />').appendTo('body').append("<img src='/images/loader-1.gif'/> Cargando...").dialog({resizable: false, modal:true, position: ['center', 50]}).load("/perfiles/" + this.id + ".js");
+    $('<div />').appendTo('body').append("<img src='/images/loader-1.gif'/> Cargando...").dialog({resizable: false, modal:true, position: ['center', 50]}).load("/perfiles/" + this.id + ".js?hide="+hide);
     e.preventDefault();
   });
 

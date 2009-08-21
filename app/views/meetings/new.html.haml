@@ -30,7 +30,7 @@
           %p= f.time_select :starts_at, {:minute_step => 15}
 
           %p.input= @guest.profile.company_name.upcase
-          %span.button= link_to_profile @guest.profile, "Ver Perfil"
+          %span.button= link_to 'Ver perfil', profile_path(@guest.profile.id), :class => "profile-link hide-meeting-button", :id => @guest.profile.id
 
           %p.info
             = label_tag "note_host", "Información sobre Cita"

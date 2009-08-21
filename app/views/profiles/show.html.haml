@@ -3,7 +3,7 @@
   -# %h2 Información sobre empresas visitantes
   = render :partial => 'show', :locals => {:profile => @profile}
   %p
-    = link_to_meeting(@profile.user)
+    = link_to_meeting(@profile.user) if params[:hide] == "false"
   %p
     %span.button.violet= link_to "ENVIAR MENSAJE", new_message_path(:receiver => @profile.company_name), :title => "Enviar mensaje a #{@profile.company_name}"
   - if current_user.is_exhibitor?

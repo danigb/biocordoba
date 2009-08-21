@@ -68,6 +68,7 @@ module ApplicationHelper
     link_to message, profile_path(profile), :class => "profile-link", :id => profile.id
   end
 
+
   #Link para popup de cita
   def link_to_meeting_show(meeting, message = 'cita')
     link_to message, meeting_path(meeting), :class => 'meeting-link', :id => meeting.id, :title => 'Ver cita'
@@ -93,7 +94,7 @@ module ApplicationHelper
 
   #Muestra el enlace de solicitar cita en el caso de ser necesario
   def link_to_meeting(user, msg = "Solicitar cita")
-    if @current_user.is_exhibitor? && user.is_buyer? 
+    if @current_user.is_exhibitor? && user.is_buyer?
       if (meeting = Meeting.between(@current_user, user)).new_record?
         res = "<span class='button violet'>"
         res += link_to "SOLICITAR CITA", meeting_into_and_path(current_user, user), :title => 'Solicitar cita'
