@@ -96,7 +96,7 @@ class UsersController < ApplicationController
 
   def type
     @role = Role.find_by_title(params[:type])
-    @users = @role.users.paginate(:per_page => 20, :page => params[:page])
+    @users = @role.users.paginate(:per_page => 20, :page => params[:page], :order => params[:sort])
   end
 
   def destroy

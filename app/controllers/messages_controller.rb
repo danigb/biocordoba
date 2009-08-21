@@ -13,14 +13,18 @@ class MessagesController < ApplicationController
   end
 
   def received
+    waps = params[:sort] ? params[:sort].split(" ") : ["sender.profile.company_name", "asc"]
     @messages = current_user.messages_received.find(:all,
       :select => "messages.id, messages.subject, sender_id, messages.created_at, user_messages.state as state", 
-      :conditions => ["user_messages.state != 'deleted'"], :include => {:sender => :profile}).paginate(:per_page => 10, :page => params[:page])
+      :conditions => ["user_messages.state != 'deleted'"], :include => {:sender => :profile}).sort_by{|m| eval("m.#{waps.first}")}
+    
+    @messages.reverse! if waps.last == "desc"
+    @messages = @messages.paginate(:per_page => 30, :page => params[:page])
     render :action => 'index'
   end
 
   def sent
-    @messages = current_user.messages_sent.paginate(:per_page => 10, :page => params[:page],
+    @messages = current_user.messages_sent.paginate(:per_page => 30, :page => params[:page],
       :include => {:receivers => :profile})
     render :action => 'index'
   end

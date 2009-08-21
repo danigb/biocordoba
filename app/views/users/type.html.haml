@@ -5,20 +5,19 @@
     - if @users.empty?
       No existen usuarios de este tipo.
     - else
-      %table#orderable.tablesorter{:cellspacing => "1", :cellpadding => "0", :border => "0"}
+      %table.tablesorter{:cellspacing => "1", :cellpadding => "0", :border => "0"}
         %thead
           %tr
-            %th.header= "Nombre de usuario"
+            = sorter_header "Empresa", "profiles.company_name", true
+            = sorter_header "Nombre de usuario", "login"
             -# %th.header= "Email"
-            %th.header= "Contraseña"
-            %th.header= "Empresa"
+            %th= "Contraseña"
         %tbody
           - for user in @users
             %tr{:class => "#{cycle('odd', 'even')}"}
-              %td= h user.login
-              -# %td= h user.email
-              %td= h user.password
               %td= truncate(user.profile.company_name, :length => 20)
+              %td= h user.login
+              %td= h user.password
               %td
                 = link_to "Editar", edit_user_path(user.id)
                 = link_to "Eliminar", user_path(user.id, :type => params[:type]), :confirm => '¿Estás seguro?', :method => :delete unless user.login == "admin"

@@ -119,4 +119,18 @@ module ApplicationHelper
   def link_to_create_external_meeting(msg="aquí")
     link_to msg, new_external_profiles_path, :class => 'new-external-link'
   end
+
+  #Creación de cabeceras que permitan ordenar
+  #sorter_header <caption> <sort_field> <default active>
+  def sorter_header(caption, sort_field, default = false)
+    order = (params[:sort].present? && params[:sort].split(' ').last == 'desc' ? 'asc' : 'desc')
+
+    if (default && !params[:sort].present?) || (params[:sort].present? && params[:sort].split(' ').first == sort_field)
+      klass = order == "desc" ? "headerSortDown" : "headerSortUp" 
+    end
+    
+    res = "<th class='header #{klass}'>"
+    res +=  link_to caption, {:sort => "#{sort_field} #{order}"}
+    res += "</th>"
+  end
 end
