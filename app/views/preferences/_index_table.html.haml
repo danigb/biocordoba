@@ -1,4 +1,4 @@
-%table#orderable.tablesorter{:cellspacing => "1", :cellpadding => "0", :border => "0"}
+%table.tablesorter{:cellspacing => "1", :cellpadding => "0", :border => "0", :id => (orderable == true ? "orderable" : "no-orderable")}
   %thead
     %tr
       %th.header Usuario

@@ -3,7 +3,8 @@
 
 $(document).ready(function() { 
 
-  $("#orderable").tablesorter(); 
+  //Orderable
+  $("#orderable").tablesorter({widgets: ['zebra']}); 
 
   //Rol, formulario nuevo usuario
   $("select#user_role_id").bind("change", function(){
@@ -169,3 +170,4 @@ function showRegisterExtraInfo(){
     $("#exhibitor").show();
   }
 }
+

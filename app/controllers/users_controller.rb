@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   access_control :DEFAULT => 'admin', :search => '!admin'
 
   def index
-    @roles = Role.find(:all, :include => :users)
+    @roles = Role.all
   end
 
   def new
