@@ -12,14 +12,20 @@
   - if @messages.blank?
     %p No tienes mensajes
   - else
-    %table.tablesorter{:cellspacing => "1", :cellpadding => "0", :border => "0"}
+    %table.tablesorter{:cellspacing => "1", :cellpadding => "0", :border => "0", :id => ("orderable" if params[:action] != "received")}
       %thead
         %tr
           %th &nbsp;
           -# %th.header= params[:action] == "received" ? "Remitente" : "Receptores"
-          = sorter_header((params[:action] == "received" ? "Remitente" : "Receptores"), "sender.profile.company_name", true)
+          - if params[:action] == "received"
+            = sorter_header "Remitente", "sender.profile.company_name", true
+          - else
+            %th.header Receptores
           %th Asunto
-          = sorter_header "Fecha", "created_at"
+          - if params[:action] == "received"
+            = sorter_header "Fecha", "created_at"
+          - else
+            %th.header Fecha
       %tbody 
         - for message in @messages
           %tr{:class => "#{message_class(message, params[:action])} #{cycle("even", "odd")}"}
