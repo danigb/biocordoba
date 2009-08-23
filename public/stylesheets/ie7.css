@@ -4,6 +4,9 @@
 #search p {
   height: 30px; }
 
+#week_event.item_13 {
+  top: 13px!important; }
+
 .access p, .access label, .access input {
   margin: 0px !important; }
 
