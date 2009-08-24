@@ -53,8 +53,8 @@ class Meeting < ActiveRecord::Base
     transitions :from => [:accepted, :pending], :to => :canceled
   end
 
-  def name(user, allways_busy = false)
-    if allways_busy
+  def name(user, always_busy = false)
+    if always_busy
       "Ocupado"
     else
       if user.login == host.login 

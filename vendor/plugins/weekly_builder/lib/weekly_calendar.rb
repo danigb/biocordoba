@@ -51,15 +51,15 @@ module WeeklyHelper
       concat(tag("div", :id => "hours"))
         days if @options[:without_days].blank?
         
-        concat(tag("div", :id => @grid))
+        concat(tag("div", :class => @grid))
           @hours.each do |h|
-            concat(tag("div", :id => @day_row))
+            concat(tag("div", :class => @day_row))
               (@start_date..@end_date).each_with_index do |day, index|
                 to_delete = []
                 @objects.each do |event|
                   if event.starts_at.strftime('%j').to_s == day.strftime('%j').to_s
                     if event.starts_at.strftime('%H').to_i == h.to_i
-                      concat(tag("div", :id => "week_event", :style =>"left:#{143 * index}px;top:#{left(event.starts_at,options[:business_hours])}px;width:138px;", :class => "item_#{left(event.starts_at,options[:business_hours]).round} #{event.pending? ? 'pending' : 'acepted'}"))
+                      concat(tag("div", :id => "week_event_#{event.id}", :style =>"left:#{143 * index}px;top:#{left(event.starts_at,options[:business_hours])}px;width:138px;", :class => "item_#{left(event.starts_at,options[:business_hours]).round} week_event #{event.pending? ? 'pending' : 'accepted'}"))
                       truncate = width(event.starts_at,event.ends_at)
                       yield(event,truncate)
                       concat("</div>")
@@ -78,9 +78,9 @@ module WeeklyHelper
     end
   
     def days      
-      concat(tag("div", :id => @header_row)) # id = days
+      concat(tag("div", :class => @header_row)) # id = days
         for day in @start_date..@end_date        
-          concat(tag("div", :id => "header_box")) # id = "day"
+          concat(tag("div", :class => "header_box")) # id = "day"
           # concat(content_tag("b", day.strftime('%A')))
           # concat(tag("br"))
           concat("<a href='/resumen/#{day}' title='Ver resumen del día'>#{day.localize}</a>")
@@ -90,10 +90,10 @@ module WeeklyHelper
     end
     
     def hours_column(without_days = false)
-      concat(tag("div", :id => "days")) #id = @header_row
+      concat(tag("div", :class => "days")) #class = @header_row
         concat(content_tag("div", "&nbsp;", :id => "placeholder")) unless without_days
         for hour in @hours
-          concat(content_tag("div", "<b>#{hour}</b>", :id => "day")) # id = header_box
+          concat(content_tag("div", "<b>#{hour}</b>", :class => "day")) # class = header_box
         end
       concat("</div>")
     end
