@@ -1,6 +1,6 @@
 - weekly_calendar(@meetings, :date => @date, :days => @days) do |w|
   - w.week(:clickable_hours => false) do |event,truncate|
-    %span=  link_to truncate(event.name(user, false),:omission => ".." ,:length => 23), meeting_path(event), :id => event.id, :class => "meeting-link"
+    %span=  link_to truncate(event.name(user, false),:omission => ".." ,:length => 22), meeting_path(event), :id => event.id, :class => "meeting-link"
 
 .my_meetings_footer
   %p.yellow

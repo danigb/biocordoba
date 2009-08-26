@@ -1,17 +1,25 @@
-#days {
+.days {
   width: 36px; }
 
-#day {
+.day {
   padding: 16px 8px 1px 8px;
   width: 36px; }
 
-#week_event {
-  font-size: 9px; }
-  #week_event.item_13 {
-    height: 3px!important;
+.week_event {
+  height: 10px; }
+  .week_event.item_13 {
     top: 13px!important; }
-  #week_event span {
-    height: 8px!important; }
+  .week_event.item_26 {
+    top: 26px!important; }
+  .week_event.item_39 {
+    top: 39px!important; }
+  .week_event span {
+    height: inherit!important; }
+    .week_event span a {
+      height: inherit!important; }
+
+.mini_day_row {
+  width: 141px; }
 
 #external.new input {
   background: #70b120; }
