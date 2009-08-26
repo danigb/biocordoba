@@ -14,4 +14,12 @@ class Profile < ActiveRecord::Base
     errors.add(:sectors, "Debe seleccionar al menos un sector") if self.sectors.blank? 
   end
 
+  #User to xml parse
+  def province_name
+     self.province.name if self.province
+  end
+
+  def town_name
+    self.town.name if self.town
+  end
 end
