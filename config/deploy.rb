@@ -1,9 +1,13 @@
+#Multi Stage#
+
+set :default_stage, "development"
+set :stages, %w(production development)
+require 'capistrano/ext/multistage'
+
 #############################################################
 #	Application
 #############################################################
  
-set :application, "eventos86"
-set :deploy_to, "/srv/http/staging/#{application}"
 set :rails_env, 'production'
  
 #############################################################
@@ -23,9 +27,6 @@ set :use_sudo, false
 #############################################################
  
 set :user, "deploy"
-set :domain, "beecoder.com"
-server domain, :app, :web
-role :db, domain, :primary => true
  
 #############################################################
 #	Git
@@ -77,25 +78,6 @@ require 'erb'
   end
  
  
-#############################################################
-#	Passenger
-#############################################################
- 
-namespace :deploy do
- 
-  # Restart passenger on deploy
-  desc "Restarting mod_rails with restart.txt"
-  task :restart, :roles => :app, :except => { :no_release => true } do
-    run "touch #{current_path}/tmp/restart.txt"
-  end
- 
-  [:start, :stop].each do |t|
-    desc "#{t} task is a no-op with mod_rails"
-    task t, :roles => :app do ; end
-  end
- 
-end
-
 # Capistrano Recipes for managing delayed_job
 #
 # Add these callbacks to have the delayed_job process restart when the server

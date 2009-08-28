@@ -26,4 +26,12 @@ config.action_view.cache_template_loading            = true
 
 # Enable threaded mode
 # config.threadsafe!
-ActionMailer::Base.default_url_options[:host] = "sabor86.beecoder.com"
+
+begin
+  raw_config = File.read(RAILS_ROOT + "/config/config.yml")
+rescue Errno::ENOENT
+  puts "Error! You MUST configure config/config.yml file"
+  exit
+end
+CONFIG = YAML.load(raw_config)[RAILS_ENV]
+ActionMailer::Base.default_url_options[:host] = CONFIG[:host]

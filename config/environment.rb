@@ -12,8 +12,7 @@ Rails::Initializer.run do |config|
   config.gem "binarylogic-searchlogic", :lib => "searchlogic", :source => 'http://gems.github.com'
   config.gem "haml", :version => ">=2.2.2"
   config.gem "haddock"
-  config.gem 'mislav-will_paginate', :lib => "will_paginate"
-  # config.gem "jchupp-is_paranoid", :lib => 'is_paranoid', :version => ">= 0.0.1"
+  config.gem 'mislav-will_paginate', :lib => "will_paginate", :source => 'http://gems.github.com'
 
   config.i18n.default_locale = :es 
   config.active_record.observers = :meeting_observer
