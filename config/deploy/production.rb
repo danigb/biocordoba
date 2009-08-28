@@ -46,11 +46,11 @@ namespace :thin do
 
   desc "Restart the app"
   task :restart do
-    if Capistrano::CLI.ui.ask("########## Are You using GOD as monitor? (yes|no): ##########") == "yes"
-      run "thin stop -C #{shared_configuration_location_for(:thin)}"
-    else
+    # if Capistrano::CLI.ui.ask("########## Are You using GOD as monitor? (yes|no): ##########") == "yes"
+    #   run "thin stop -C #{shared_configuration_location_for(:thin)}"
+    # else
       run "thin restart -C #{shared_configuration_location_for(:thin)}"
-    end
+    # end
   end
 end
 
