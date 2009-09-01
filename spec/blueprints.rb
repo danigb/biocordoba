@@ -21,6 +21,17 @@ end
 Profile.blueprint do
   company_name { Sham.word }
   sectors << Sector.first
+  address {Sham.word}
+  commercial_profile { Sham.sentence }
+  products { Sham.sentence }
+  packages { Sham.sentence }
+  fax { 944944944 }
+  phone { 945555555 }
+  stand { rand(1000) }
+  website "http://mydomain.com"
+  zip_code { Faker::Address.zip_code }
+  province_id { Province.first.id }
+  town_id { Town.last.id }
 end
 
 Sector.blueprint do
@@ -53,13 +64,15 @@ end
 
 Message.blueprint do
   sender User.make
-  subject {Faker::Lorem.sentence}
-  message {Faker::Lorem.sentence}
+  subject {Sham.sentence}
+  message {Sham.sentence}
 end
 
 Sham.define do
   email { Faker::Internet.email }
   word { Faker::Name::first_name }
+  sentence { Faker::Lorem.sentence }
+  phone {	Faker::PhoneNumber.phone_number}
 end
 
 
