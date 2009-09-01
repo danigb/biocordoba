@@ -13,6 +13,7 @@ class ProfilesController < ApplicationController
     respond_to do |format|
       format.js{
         @profile = Profile.find_by_company_name(params[:id])
+        debugger
         if @profile && !@profile.commercial_profile.blank?
           render :text => "<p class='enviar'>PERFIL COMERCIAL</p>" + @profile.commercial_profile
         else

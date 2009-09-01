@@ -29,7 +29,7 @@ Profile.blueprint do
   phone { 945555555 }
   stand { rand(1000) }
   website "http://mydomain.com"
-  zip_code { Faker::Address.zip_code }
+  zip_code 41012
   province_id { Province.first.id }
   town_id { Town.last.id }
 end
