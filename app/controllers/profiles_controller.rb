@@ -12,8 +12,8 @@ class ProfilesController < ApplicationController
   def commercial_profile
     respond_to do |format|
       format.js{
-        @profile = User.find(params[:id])
-        debugger
+        @user = User.find_by_login(params[:id])
+        @profile = @user.profile if @user
         if @profile && !@profile.commercial_profile.blank?
           render :text => "<p class='enviar'>PERFIL COMERCIAL</p>" + @profile.commercial_profile
         else
