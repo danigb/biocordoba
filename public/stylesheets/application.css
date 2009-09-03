@@ -630,6 +630,22 @@ input.white {
   margin-left: 0 !important;
   margin-bottom: 10px; }
 
+/* Error 400 - 500 */
+#err_404_500 {
+  background: #70b120 url('/images/content-display-bg.png') left top;
+  width: 438px;
+  margin: 0 auto;
+  min-height: 400px;
+  padding: 30px 30px 30px 20px; }
+  #err_404_500 span {
+    background: #b81d88;
+    color: #fff;
+    width: 283px;
+    padding: 3px 5px 3px 20px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    display: block; }
+
 /* Changelog */
 #changelog h1 {
   margin: 1.5em 0; }

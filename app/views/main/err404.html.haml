@@ -1,0 +1,52 @@
+!!! Strict
+%html{html_attrs}
+  
+  %head
+    %title
+      = "AGENDA VIRTUAL - Error inesperado"
+    %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}/
+    
+    %link{:rel => "shortcut icon", :href => "favicon.ico"}
+    %link{:rel => "icon", :type => "image/gif", :href => "animated_favicon1.gif"}
+
+    = stylesheet_link_merged :base
+
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/ie6.css" />
+    <![endif]-->
+
+    <!--[if IE 7]>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/ie7.css" />
+    <![endif]-->
+
+  %body
+    #loading 
+    #container
+      #header
+        .wrapper
+          %h1
+            - link_to(root_path) do
+              %span "AGENDA VIRTUAL. ANDALUCÍA SABOR"
+          %h2.claim
+            %span
+              AGENDA VIRTUAL - del 22 al 24 de Septiembre
+
+      #content
+        .wrapper
+          #err_404_500
+            %span
+              ERROR 404 - Documento no encontrado
+            %p
+              Parece ser que has llegado a está página que es una página de Error404 lo cual significa que el enlace que te ha llevado aquí no funciona.
+
+            %p
+              Este error ha sido causado por la solicitud de una web, documento o recurso no disponible dentro del propio servidor. 
+              
+      #footer
+        .wrapper
+          %p
+            = "Todos los derechos reservados © 2009 Andalucía Sabor International Fine Food Exhibition |"
+            = mail_to "andaluciasabor@andaluciasabor.es", "andaluciasabor@andaluciasabor.es"
+            = " | "
+            = link_to "Aviso legal","http://www.andaluciasabor.es/index.php?section=aviso-legal"
+

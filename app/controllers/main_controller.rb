@@ -6,4 +6,13 @@ class MainController < ApplicationController
       @meetings = current_user.meetings(@date, @days)
     end
   end
+
+  def err404
+     render :layout => false
+  end
+
+  def err500
+     render :layout => false
+  end
+
 end
