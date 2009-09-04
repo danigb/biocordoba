@@ -1,9 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
   
-  # Change!
-  map.err404 '/err404', :controller => 'main', :action => 'err404'
-  map.err500 '/err500', :controller => 'main', :action => 'err500'
-
   map.root :controller => 'main', :action => 'home'
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'

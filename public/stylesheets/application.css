@@ -633,7 +633,7 @@ input.white {
 /* Error 400 - 500 */
 #err_404_500 {
   background: #70b120 url('/images/content-display-bg.png') left top;
-  width: 438px;
+  width: 428px;
   margin: 0 auto;
   min-height: 400px;
   padding: 30px 30px 30px 20px; }
