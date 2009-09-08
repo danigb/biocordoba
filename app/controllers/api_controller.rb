@@ -3,11 +3,24 @@ class ApiController < ApplicationController
 
   def exhibitors
     @users = User.exhibitors.find(:all, :include => :profile)
-    
-    render :xml => @users.to_xml(:include => :profile, 
-      :except => [:id, :login, :password, :created_at, :external, :preference_id, :remember_token, 
-                  :remember_token_expires_at, :state, :updated_at, :town_id, :province_id, :user_id],
-      :methods => [:province_name, :town_name])
-      
+
+    respond_to do |format|
+      format.xml{}
+    end
+
+    # render :xml => @users.to_xml(:include => :profile, 
+    #   :only => [:id, :company_name])
+  end
+
+  def exhibitor
+
+  end
+
+  def sectors
+
+  end
+
+  def search
+
   end
 end
