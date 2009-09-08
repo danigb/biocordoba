@@ -34,6 +34,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :preferences, :as => 'preferencias'
   map.resources :monitors, :as => 'monitores', :collection => {:messages => :get}
+  map.resources :api, :collection => {:exhibitors => :get, :sectors => :get}
 
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'

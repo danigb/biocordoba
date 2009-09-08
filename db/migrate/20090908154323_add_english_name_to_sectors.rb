@@ -6,7 +6,7 @@ class AddEnglishNameToSectors < ActiveRecord::Migration
     "INSTITUTIONS AND OTHER AGENCIES", "OTHER AGRIFOOD PRODUCTS", "BREAD, CONFECTIONERY, PASTRIES, DESSERTS AND SWEET...",
     "FISH AND SEAFOOD", "MEAT PRODUCTS", "ORGANIC PRODUCTS", "DAIRY PRODUCTS", "WINES, VINAGERS AND SPIRITS"]
     Sector.all.each_with_index do |s, index|
-      s.update_attribute(:english_name, sectors[index].capitalize)
+      s.update_attributes(:english_name => sectors[index].capitalize, :name => s.name.capitalize)
     end
   end
 
