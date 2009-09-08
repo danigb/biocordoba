@@ -31,7 +31,7 @@ class ApiController < ApplicationController
   end
 
   def sectors
-    render :xml => Sector.all.to_xml(:only => [:id, :name, :english_name])
+    @sectors = Sector.all
   end
 
   def search

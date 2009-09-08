@@ -1,4 +1,4 @@
-%h2 Métodos de la api
+%h2 API
 %ul
   %li
     Listado de expositores
@@ -10,10 +10,11 @@
           %li sector: Identificador único del sector
           %li name: String con el nombre del expositor
 
+  %br/
   %li
     Información de un expositor
     %ul
-      %li= link_to "www.agendavirtualandaluciasabor.com/api/exhibitor/id.xml?lang=en|es", "http://agendavirtualandaluciasabor.com/api/exhibitor/exhibitor_id.xml"
+      %li= link_to "www.agendavirtualandaluciasabor.com/api/exhibitor/[id del expositor].xml?lang=en|es", "http://agendavirtualandaluciasabor.com/api/exhibitor/poner_la_id].xml"
       %li 
         Parámetro <b>obligatorio</b>
         %ul
@@ -22,7 +23,7 @@
         %ul
           %li lang: Identificador de idioma ('es'|'en'), si no se indica se utilizará 'es'.
 
-
+  %br/
   %li 
     Listado de sectores
     %ul
