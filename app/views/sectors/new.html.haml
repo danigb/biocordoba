@@ -6,6 +6,10 @@
       = f.label :name, "Nombre"
       = f.text_field :name
       = f.error_message_on :name
+    %p
+      = f.label :name, 'English Name'
+      = f.text_field :english_name
+      = f.error_message_on :english_name
     %p.enviar  
       = f.submit 'Crear Sector'
 

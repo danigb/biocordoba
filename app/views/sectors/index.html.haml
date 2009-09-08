@@ -6,11 +6,12 @@
   %table
     %tr
       %th Nombre del sector
+      %th Sector name
     - @sectors.each do |sector|
       %tr
         %td=h sector.name 
+        %td=h sector.english_name 
         %td= link_to 'Editar', edit_sector_path(sector) 
-        -# %td= link_to 'Eliminar', sector, :confirm => 'Are you sure?', :method => :delete 
 
   %p
     %span.button.violet= link_to 'Crear nuevo sector', new_sector_path 
