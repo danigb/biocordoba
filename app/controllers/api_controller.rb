@@ -26,7 +26,8 @@ class ApiController < ApplicationController
   end
 
   def exhibitor
-
+    @exhibitor = User.exhibitors.find(params[:id])
+    @profile = @exhibitor.profile if @exhibitor
   end
 
   def sectors

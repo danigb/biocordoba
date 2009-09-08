@@ -22,4 +22,5 @@ class Profile < ActiveRecord::Base
   def town_name
     self.town.name if self.town
   end
+
 end
