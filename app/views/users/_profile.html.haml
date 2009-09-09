@@ -52,6 +52,10 @@
   = f.label :stand, "Stand Andalucía Sabor"
   = f.text_field :stand, :size => 10
   = f.error_message_on :stand
+%p
+  = f.label :languages, "Idiomas que habla"
+  = f.text_field :languages, :value => @user.profile.languages || "Español"
+  = f.error_message_on :languages
 
 #exhibitor{:style => @user.is_exhibitor? ? '' : 'display:none'}
   %p

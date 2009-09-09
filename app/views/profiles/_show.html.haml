@@ -3,46 +3,65 @@
     %h2.violet
       PERFIL DE
       = h profile.company_name.upcase
-  %p 
-    Dirección:
-    = h profile_value(profile.address)
-  %p 
-    C.P:
-    = h profile_value(profile.zip_code)
-  %p 
-    Localidad:
-    = !profile.town.nil? ? profile.town.name : "No definido"
-  %p 
-    Provincia:
-    = !profile.province.nil? ? profile.province.name : "No definido"
-  %p 
-    Teléfono:
-    = profile_value(profile.phone)
-  %p 
-    Fax:
-    = profile_value(profile.fax)
+  - if profile.address.present?
+    %p 
+      Dirección:
+      = h profile_value(profile.address)
+  - if profile.zip_code.present?
+    %p 
+      C.P:
+      = h profile_value(profile.zip_code)
+  - if !profile.country.nil?
+    %p 
+      País:
+      = profile.country.name
+  - if !profile.province.nil?
+    %p 
+      Provincia:
+      = profile.province.name 
+  - if !profile.town.nil?
+    %p 
+      Localidad:
+      = profile.town.name
+  - if profile.languages.present?
+    %p 
+      Idiomas que habla:
+      = profile_value(profile.languages)
+  - if profile.phone.present?
+    %p 
+      Teléfono:
+      = profile_value(profile.phone)
+  - if profile.fax.present?
+    %p 
+      Fax:
+      = profile_value(profile.fax)
   %p 
     Sectores:
     = profile.sectors.inject(""){|sum, e| sum += "#{e.name}, "}.gsub(/, $/, ".")
   - if profile.user.is_exhibitor?
-    %p 
-      Productos:
-      = profile_value(profile.products)
-    %p 
-      Envases:
-      = profile_value(profile.packages)
+    - if profile.products.present?
+      %p 
+        Productos:
+        = profile_value(profile.products)
+    - if profile.packages.present?
+      %p 
+        Envases:
+        = profile_value(profile.packages)
   - elsif profile.user.is_buyer?
-    %p 
-      Perfil comercial:
-      = profile_value(profile.commercial_profile)
+    - if profile.commercial_profile.present?
+      %p 
+        Perfil comercial:
+        = profile_value(profile.commercial_profile)
     
   %p 
     Email:
     = profile.user.email
-  %p 
-    Web:
-    = profile_value(profile.website)
-  %p 
-    Stand de Andalucía Sabor:
-    = profile_value(profile.stand)
+  - if profile.website.present?
+    %p 
+      Web:
+      = profile_value(profile.website)
+  - if profile.stand.present?
+    %p 
+      Stand de Andalucía Sabor:
+      = profile_value(profile.stand)
 

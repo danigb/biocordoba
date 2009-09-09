@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def permission_denied
-    flash[:notice] = "Acceso denegado"
+    flash.now[:notice] = "Acceso denegado"
     return redirect_back_or("/")
   end
 
