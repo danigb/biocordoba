@@ -1,4 +1,5 @@
 require "scrapi"
+require "pp"
 desc "Importación de idiomas" 
 task :load_languages => :environment do
 
@@ -14,5 +15,23 @@ task :load_languages => :environment do
     lang, code = e.split(" - ")
     lang.gsub!(/\s\(.*\)/, "")
     Language.create(:name => lang, :code => code)
+  end
+end
+
+desc "Importación de Paises"
+task :load_countries => :environment do
+  index = Scraper.define do
+    array :countries
+    process "p", :countries => :text
+    result :countries
+  end
+
+  uri = URI.parse("http://stneasy.cas.org/html/spanish/helps/2search/2A4ctrycodes.htm")
+  Country.delete_all
+  index.scrape(uri).each do |e|
+    res = e.split(" ")
+    code = res[0]
+    name = res[1..-1].join(" ")
+    Country.create(:name => name, :code => code)
   end
 end
