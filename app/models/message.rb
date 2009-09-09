@@ -1,5 +1,5 @@
 class Message < ActiveRecord::Base
-  attr_accessor :receivers_string, :send_all
+  attr_accessor :receivers_string, :send_all, :send_exhibitors, :send_national_buyers, :send_international_buyers
 
   belongs_to :sender, :class_name => 'User'
   has_many :user_messages
@@ -25,8 +25,20 @@ class Message < ActiveRecord::Base
     }.gsub(/, $/,"")
   end
 
-  def send_all=(boolean)
-    self.receivers = User.no_admins if boolean == "1"
+  # def send_all=(boolean)
+  #   self.receivers = User.no_admins if boolean == "1"
+  # end
+  #
+  def send_exhibitors=(boolean)
+    self.receivers << User.exhibitors if boolean == "1"
+  end
+
+  def send_national_buyers=(boolean)
+    self.receivers << User.national_buyers if boolean == "1"
+  end
+
+  def send_international_buyers=(boolean)
+    self.receivers << User.international_buyers if boolean == "1"
   end
 
   def receivers_string=(string)

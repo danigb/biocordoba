@@ -33,6 +33,12 @@ class User < ActiveRecord::Base
   named_scope :buyers, :joins => :roles, :include => :profile, 
     :conditions => ["(roles.title = 'national_buyer' OR roles.title = 'international_buyer') AND state = 'enabled'"],
     :order => 'profiles.company_name' 
+  named_scope :national_buyers, :joins => :roles, :include => :profile, 
+    :conditions => ["(roles.title = 'national_buyer') AND state = 'enabled'"],
+    :order => 'profiles.company_name' 
+  named_scope :international_buyers, :joins => :roles, :include => :profile, 
+    :conditions => ["(roles.title = 'international_buyer') AND state = 'enabled'"],
+    :order => 'profiles.company_name' 
   named_scope :exhibitors, :joins => :roles, :include => :profile, 
     :conditions => ["roles.title = 'exhibitor' AND state = 'enabled'"], :order => 'profiles.company_name'
   named_scope :extendas, :joins => :roles, :include => :profile, 

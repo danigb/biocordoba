@@ -15,6 +15,16 @@
         %p
           = f.label :send_all, "ENVIAR A TODOS"
           = f.check_box :send_all
+        #extra_info{:style => 'display:none;'}
+          %p
+            = f.label :send_exhibitors, "EXPOSITORES"
+            = f.check_box :send_exhibitors
+          %p
+            = f.label :send_national_buyers, "COMPRADORES NACIONALES"
+            = f.check_box :send_national_buyers
+          %p
+            = f.label :send_international_buyers, "COMPRADORES INTERNACIONALES"
+            = f.check_box :send_international_buyers
 
     #receivers
       %p

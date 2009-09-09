@@ -30,10 +30,23 @@ $(document).ready(function() {
   $("#message_send_all").click(function(e){
     if(this.checked == true){
       $("#receivers").slideUp();
+      $("#send_all #extra_info").show();
+      $("#send_all #extra_info input").attr("checked", true);
     }else{
       $("#receivers").slideDown();
+      $("#send_all #extra_info").hide();
+      $("#send_all #extra_info input").attr("checked", false);
     } 
   })
+
+  //Si no hay ninguno marcado desmarcamos el padre
+  $("#send_all #extra_info input").change(function(){
+    if($("#message_send_exhibitors").attr("checked") == false && $("#message_send_national_buyers").attr("checked") == false && $("#message_send_international_buyers").attr("checked") == false){
+      $("#send_all input").attr("checked", false);
+      $("#send_all #extra_info").hide();
+      $("#receivers").slideDown();
+    }
+  });
 
  //Message Autocomplete
   if($("input#message_receivers_string").length > 0){
