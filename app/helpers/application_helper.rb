@@ -82,7 +82,7 @@ module ApplicationHelper
   #Devuelve las opciones necesarias para el select de selección de destinatarios
   def select_options_buyers_exhibitors
     html = "<option></option>"
-    User.no_admins.group_by{|e| e.role.title}.each do |role, users|
+    User.find(:all, :include => [:profile, :roles]).group_by{|e| e.role.title}.each do |role, users|
       html += "<optgroup label='#{ROLES[role.to_sym]}'>"
       for user in users
         html += "<option>#{user.profile.company_name}</option>"
