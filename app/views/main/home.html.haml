@@ -12,18 +12,20 @@
   - restrict_to "national_buyer" do
     %p
       *Cada comprador nacional deberá reservar 3 horas cada día en sus agendas para citas. 
-    %p
-      Si su empresa no está registrada, pero acudirá a la feria, debe establecer también un tiempo mínimo de X horas / día (por definir).
+    /*%p*/
+    /*  Si su empresa no está registrada, pero acudirá a la feria, debe establecer también un tiempo mínimo de X horas / día (por definir).*/
     %p.imprimir
       = link_to "imprimir agenda", print_path, :target => '_blank'
 
   /*Expositor*/
   - restrict_to "exhibitor" do
+    /*%p*/
+    /*  = link_to_create_external_meeting("¿Desea dar de alta una cita con un comprador que no está registrado?")*/
+    /*%p*/
+    /*  = "*Tiene un máximo de #{current_user.preference.meetings_number} citas por día del evento"*/
+      
     %p
-      = link_to_create_external_meeting("¿Desea dar de alta una cita con un comprador que no está registrado?")
-    %p
-      = "*Tiene un máximo de #{current_user.preference.meetings_number} citas por día del evento, y su duración será de"
-      = "#{current_user.preference.meetings_duration} minutos cada una."
+      = "La duración de las citas serán de #{current_user.preference.meetings_duration} minutos cada una."
 
     %p.imprimir
       = link_to "imprimir agenda", print_path, :target => '_blank'
