@@ -7,10 +7,10 @@ class ApiController < ApplicationController
 
   def exhibitors
 
-    if params[:sector_id].present? && params[:name].present?
-      conditions = ["sectors.id = ? AND LOWER(profiles.company_name) LIKE ?", params[:sector_id], "%" + params[:name].downcase + "%"]
-    elsif params[:sector_id].present?
-      conditions = ["sectors.id = ?", params[:sector_id]]
+    if params[:sector].present? && params[:name].present?
+      conditions = ["sectors.id = ? AND LOWER(profiles.company_name) LIKE ?", params[:sector], "%" + params[:name].downcase + "%"]
+    elsif params[:sector].present?
+      conditions = ["sectors.id = ?", params[:sector]]
     elsif params[:name].present?
       conditions = ["LOWER(profiles.company_name) LIKE ?", "%" + params[:name].downcase + "%"]
     end

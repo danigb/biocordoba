@@ -16,3 +16,20 @@ task :load_languages => :environment do
     Language.create(:name => lang, :code => code)
   end
 end
+
+desc "Importación de Paises"
+task :load_countries => :environment do
+  index = Scraper.define do
+    array :countries
+    process "p", :countries => :text
+    result :countries
+  end
+
+  uri = URI.parse("http://www.europarl.europa.eu/transl_es/plataforma/pagina/maletin/colecc/glosario/pe/paises.htm")
+  Language.delete_all
+  index.scrape(uri)[0..118].each do |e|
+    lang, code = e.split(" - ")
+    lang.gsub!(/\s\(.*\)/, "")
+    Language.create(:name => lang, :code => code)
+  end
+end
