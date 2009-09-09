@@ -4,6 +4,7 @@ class CreateLanguages < ActiveRecord::Migration
       t.string :name
       t.string :code
     end
+    Rake::Task["load_languages"].invoke
   end
 
   def self.down

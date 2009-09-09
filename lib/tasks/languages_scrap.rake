@@ -1,4 +1,5 @@
 require "scrapi"
+require "pp"
 desc "Importación de idiomas" 
 task :load_languages => :environment do
 
@@ -25,11 +26,12 @@ task :load_countries => :environment do
     result :countries
   end
 
-  uri = URI.parse("http://www.europarl.europa.eu/transl_es/plataforma/pagina/maletin/colecc/glosario/pe/paises.htm")
-  Language.delete_all
-  index.scrape(uri)[0..118].each do |e|
-    lang, code = e.split(" - ")
-    lang.gsub!(/\s\(.*\)/, "")
-    Language.create(:name => lang, :code => code)
+  uri = URI.parse("http://stneasy.cas.org/html/spanish/helps/2search/2A4ctrycodes.htm")
+  Country.delete_all
+  index.scrape(uri).each do |e|
+    res = e.split(" ")
+    code = res[0]
+    name = res[1..-1].join(" ")
+    Country.create(:name => name, :code => code)
   end
 end
