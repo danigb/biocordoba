@@ -19,6 +19,11 @@
       - w.week(:clickable_hours => true) do |event,charifluflis|
         =  truncate(event.name(current_user, true), :omission => "..", :length => 22)
 
+.my_meetings_footer
+  %p.green
+    * Las citas pueden ser canceladas por un administrador.
+
+
 - content_for(:right_column) do
   .meeting_request_img
     %h2 Petición de citas
@@ -47,8 +52,11 @@
             = current_user.preference.meetings_duration
             min.
 
+          /*%p.info.small*/
+          /*  = "Dispone de un máximo de #{current_user.preference.meetings_number} citas comerciales por cada jornada de la feria."*/
+
           %p.info.small
-            = "Dispone de un máximo de #{current_user.preference.meetings_number} citas comerciales por cada jornada de la feria."
+            Las citas pueden ser canceladas por un administrador.
 
           %p.info.small
             = "Podrá organizar sus citas en horario de la feria (de #{current_user.preference.event_day_start_at.to_s(:hour_only)} h. a #{current_user.preference.event_day_end_at.to_s(:hour_only)} h.)"
