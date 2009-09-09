@@ -61,7 +61,9 @@ $(document).ready(function() {
     //Vble used for new meeting button hide  
     var hide = false;
     if($(this).hasClass("hide-meeting-button")){
-      hide = true;
+      hide = "meeting";
+    }else if($(this).hasClass("hide-search-button")){
+      hide = "search";
     }
 
     $(".query_review_parent, .ui-dialog, #profile").remove();
