@@ -32,6 +32,6 @@ task :load_countries => :environment do
     res = e.split(" ")
     code = res[0]
     name = res[1..-1].join(" ")
-    Country.create(:name => name, :code => code)
+    Country.create(:name => name.extract_acute, :code => code)
   end
 end

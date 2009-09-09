@@ -20,6 +20,9 @@
       %span= s.name.upcase
 
 %p
+  = f.label :country_id, "País"
+  = f.select :country_id, Country.all.collect {|t| [t.name, t.id]}, {:include_blank => "--"}
+%p
   = f.label :province_id, "Provincia"
   = f.select :province_id, Province.all.collect {|t| [t.name, t.id]}, {:include_blank => "--"}, {:onchange => "load_town(this.options[this.selectedIndex].value)"}
   #town

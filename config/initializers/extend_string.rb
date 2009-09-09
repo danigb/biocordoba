@@ -41,4 +41,15 @@ class String
     # n.tr!('^ a-z0-9_/\\-',    '')
     n[0..25]
   end 
+
+  def extract_acute
+    replace = {"&aacute;" => "á", "&eacute;" => "é","&iacute;" => "í","&oacute;" => "ó","&uacute;" => "ú",
+               "&Áacute;" => 'Á', "&Eacute;" => 'É',"&Iacute;" => 'Í',"&Oacute;" => 'Ó',"&Uacute;" => 'Ú',
+               "&ntilde;" => 'ñ'
+    }
+    replace.each do |k, v|
+      self.gsub!(k, v)
+    end
+    self
+  end
 end

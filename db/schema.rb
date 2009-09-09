@@ -88,6 +88,9 @@ ActiveRecord::Schema.define(:version => 20090909105456) do
     t.integer  "fax"
     t.string   "website"
     t.string   "stand"
+    t.integer  "language_id"
+    t.integer  "country_id",         :default => 23
+    t.string   "languages"
   end
 
   add_index "profiles", ["company_name"], :name => "profiles_company_name"

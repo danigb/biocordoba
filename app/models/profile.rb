@@ -4,6 +4,7 @@ class Profile < ActiveRecord::Base
   has_and_belongs_to_many :sectors
   belongs_to :province
   belongs_to :town
+  belongs_to :country
 
 
   validates_presence_of :company_name
@@ -21,6 +22,10 @@ class Profile < ActiveRecord::Base
 
   def town_name
     self.town.name if self.town
+  end
+
+  def country_id
+     self[:country_id] || 23
   end
 
 end
