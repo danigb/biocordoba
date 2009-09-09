@@ -46,6 +46,19 @@ h3 {
   h3 span {
     display: block; }
 
+h4 {
+  font-size: 14px;
+  margin-bottom: 10px;
+  font-weight: normal;
+  color: #d41e67; }
+
+#results h4 {
+  margin-left: 10px; }
+
+#results li {
+  margin-left: 20px;
+  list-style: none; }
+
 p {
   margin: 0 0 1em 0; }
   p.green {

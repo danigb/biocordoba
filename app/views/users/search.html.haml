@@ -34,12 +34,14 @@
         Se han encontrado los siguientes resultados:
 
       %ul
-        - @users_by_sector.each do |sector_name, users|
+        - @users_by_sector.each do |country, users_by_country|
           %h3
-            = sector_name.capitalize
-
-          - for user in users
-            %li
-              = link_to_profile(user.profile, user.profile.company_name.upcase)
+            = country.capitalize
+          - users_grouped = users_by_country.group_by{|u| u.profile.sectors.first.name}
+          - users_grouped.each do |sector, users|
+            %h4= sector.capitalize
+            - for user in users
+              %li
+                = link_to_profile(user.profile, user.profile.company_name.upcase)
 
 
