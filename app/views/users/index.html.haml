@@ -3,10 +3,15 @@
 .users
   %h2.pink Usuarios
   %ul
-    - for role in @roles[2..-1]
+    - restrict_to "admin" do
+      - for role in @roles[2..-1]
+        %li
+          = link_to ROLES[role.title.to_sym], type_users_path(role.title)
+          = "(#{role.users.length})"
+    - restrict_to "extenda" do
       %li
-        = link_to ROLES[role.title.to_sym], type_users_path(role.title)
-        = "(#{role.users.length})"
+        = link_to ROLES[:international_buyer], type_users_path("international_buyer")
+        = "(#{Role.find_by_title('international_buyer').users.length})"
 
   %p
     %span.button.violet= link_to "Nuevo Usuario", signup_path
@@ -14,10 +19,14 @@
 
   %h2.pink.mtop Administradores
   %ul
-    - for role in @roles[0..1]
-      %li
-        = link_to ROLES[role.title.to_sym], type_users_path(role.title)
-        = "(#{role.users.length})"
+    - restrict_to "admin" do
+      - for role in @roles[0..1]
+        %li
+          = link_to ROLES[role.title.to_sym], type_users_path(role.title)
+          = "(#{role.users.length})"
+    - restrict_to "extenda" do
+      = link_to ROLES[:extenda], type_users_path("extenda")
+      = "(#{Role.find_by_title('extenda').users.length})"
   
   %p
     %span.button.violet= link_to "Nuevo Administrador", new_admin_path

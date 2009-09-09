@@ -11,13 +11,6 @@
     = error_message_on :user,:email 
     %span.info
       Facilitando el email podrá recibir notificaciones de las citas y de los mensajes que reciba de otras empresas.
-%p
-  = f.label :sector_ids, "Sectores: <span class ='required'>*</span>"
-  .none-margin= f.error_message_on :sectors
-  - Sector.all.each do |s|
-    %p.checkbox
-      = check_box_tag "user[profile_attributes][sector_ids][]", s.id, eval("@user.new_record? ? [] : @user.profile.sectors").map(&:id).include?(s.id)
-      %span= s.name.upcase
 
 %p
   = f.label :country_id, "País"
@@ -72,3 +65,11 @@
     = f.label :commercial_profile, "Perfil comercial"
     = f.text_field :commercial_profile
     = f.error_message_on :commercial_profile
+
+%p
+  = f.label :sector_ids, "Sectores: <span class ='required'>*</span>"
+  .none-margin= f.error_message_on :sectors
+  - Sector.all.each do |s|
+    %p.checkbox
+      = check_box_tag "user[profile_attributes][sector_ids][]", s.id, eval("@user.new_record? ? [] : @user.profile.sectors").map(&:id).include?(s.id)
+      %span= s.name.upcase

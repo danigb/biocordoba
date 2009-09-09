@@ -91,6 +91,10 @@
           = link_to "Agenda de Extenda", meetings_type_path("international_buyers")
           %p
             Recuerde, cancele o imprima su agenda de citas comerciales.
+        %li
+          = link_to "Alta de nuevos participantes", users_path
+          %p
+            Dé de alta, de baja o edite información sobre los compradores internacionales.
 
         %li.last
           = link_to "Confirmar citas (#{Meeting.with_type("international_buyer").with_state('pending').length} nuevas)", meetings_to_confirm_path

@@ -1,4 +1,5 @@
-- title "Listado de usuarios #{@role.title}"
+- title "Listado de usuarios: #{ROLES[@role.title.to_sym]}"
+%h2= yield :title
 
 .users
   %p.pink

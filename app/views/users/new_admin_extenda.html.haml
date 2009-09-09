@@ -3,9 +3,10 @@
     
     %h2 Seleccione el tipo de administrador:
    
-    %p.checkbox
-      = f.radio_button(:role_id, 1)
-      %span Admin
+    - restrict_to "admin" do
+      %p.checkbox
+        = f.radio_button(:role_id, 1)
+        %span Admin
     %p.checkbox
       = f.radio_button(:role_id, 2)
       %span Extenda

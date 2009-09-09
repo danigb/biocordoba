@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  access_control :DEFAULT => 'admin', :search => '!admin'
+  access_control :DEFAULT => '(admin | extenda)', :search => '!admin'
 
   def index
     @roles = Role.all
