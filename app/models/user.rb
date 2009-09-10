@@ -196,7 +196,7 @@ class User < ActiveRecord::Base
     begin
       arrive = eval("self.preference.day_#{dia}_arrival.hour")
       leave = eval("(self.preference.day_#{dia}_leave).hour")
-      res = (arrive.to_i..(leave.to_i-1)).to_a
+      res = (arrive.to_i..leave.to_i).to_a
     rescue
       []
     end
