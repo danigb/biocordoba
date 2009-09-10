@@ -14,9 +14,9 @@
             %tr
               %td
                 %a{ :href => "http://agendavirtualandaluciasabor.com", :title => "Ir a Agenda Virtual", :style => "text-decoration:none;" }
-                  %img{ :src => "/images/cabecera_mailing.jpg", :alt => "Andalucía Sabor - Agenda Virtual", :width => "600" }
+                  %img{ :src => "/images/cabecera_mailing.jpg", :alt => "Andalucía Sabor - Agenda Virtual", :width => "600", :style => "border: none;" }
 
-    #content
       = yield
-    #footer
-      = link_to "Andalucía Sabor 2009", root_url
+      %tr
+        %td{:style => "background: #000; height: 58px;text-align: center;font-size:12px; color: #fff;"}
+          Todos los derechos reservados © 2009 Andalucía Sabor International Fine Food Exhibition | 
