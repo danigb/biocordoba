@@ -1,3 +1,4 @@
+%h2 Propiedades del evento
 %p
   = f.label :meetings_number, "Número máximo de reuniones"
   = f.text_field :meetings_number, :size => 2
@@ -16,4 +17,23 @@
 %p
   = f.label :event_day_end_at, "Hora final del evento"
   = f.time_select :event_day_end_at 
-
+<!-- Asistencia -->
+%h2 Asistencia al evento
+%p
+  = f.label :day_22_arrival, "Hora de llegada el día 22"
+  = f.time_select :day_22_arrival
+%p
+  = f.label :day_22_leave, "Hora de salida el día 22"
+  = f.time_select :day_22_leave
+%p
+  = f.label :day_23_arrival, "Hora de llegada el día 23"
+  = f.time_select :day_23_arrival
+%p
+  = f.label :day_23_leave, "Hora de salida el día 23"
+  = f.time_select :day_23_leave
+%p
+  = f.label :day_24_arrival, "Hora de llegada el día 24"
+  = f.time_select :day_24_arrival
+%p
+  = f.label :day_24_leave, "Hora de salida el día 24"
+  = f.time_select :day_24_leave

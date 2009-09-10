@@ -10,12 +10,22 @@ class Event
     Date.parse(CONFIG[:admin][:preferences][:event_day_start_at])
   end
 
+  #Hora inicio evento
+  def self.day_end_hour
+    Date.parse(CONFIG[:admin][:preferences][:event_day_end_at])
+  end
+
   #Hora y fecha inicio del evento
   def self.start_day_and_hour
     Time.parse("#{CONFIG[:admin][:preferences][:event_start_day]} #{CONFIG[:admin][:preferences][:event_day_start_at]}")
   end
 
+  #Hora y fecha fin del evento
+  def self.end_day_and_hour
+    Time.parse("#{CONFIG[:admin][:preferences][:event_end_day]} #{CONFIG[:admin][:preferences][:event_day_end_at]}")
+  end
   #Fecha fin evento
+  #
   def self.end_day
     Date.parse(CONFIG[:admin][:preferences][:event_end_day])
   end
