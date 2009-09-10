@@ -133,4 +133,13 @@ module ApplicationHelper
     res +=  link_to caption, {:sort => "#{sort_field} #{order}"}
     res += "</th>"
   end
+
+  def estancia_info(user)
+    res = "#{user.profile.company_name} asistirá este día a la feria de "
+    res += eval("@guest.preference.day_#{@date.day}_arrival.to_s(:hour_only)")
+    res += " h. a "
+    res += eval("@guest.preference.day_#{@date.day}_leave.to_s(:hour_only)")
+    res += " h."
+    res
+  end
 end
