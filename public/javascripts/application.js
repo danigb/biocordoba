@@ -199,11 +199,13 @@ function showRegisterExtraInfo(){
     $("#exhibitor").show();
     return;
   }
-
-  if(current_role == "national_buyer" || current_role == "international_buyer"){
-    $("#buyer").show();
-  }else if(current_role == "exhibitor"){
-    $("#exhibitor").show();
+  
+  if(typeof(current_role) != "undefined"){
+    if(current_role == "national_buyer" || current_role == "international_buyer"){
+      $("#buyer").show();
+    }else if(current_role == "exhibitor"){
+      $("#exhibitor").show();
+    }
   }
 }
 

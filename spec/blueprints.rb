@@ -20,7 +20,7 @@ end
 
 Profile.blueprint do
   company_name { Sham.word }
-  sectors << Sector.first
+  sectors << Sector.first(:order => 'RAND()')
   address {Sham.word}
   commercial_profile { Sham.sentence }
   products { Sham.sentence }
@@ -43,9 +43,15 @@ Preference.blueprint do
   meetings_duration 15
   event_start_day "2009-09-22"
   event_end_day "2009-09-24"
-  event_day_start_at 10
-  event_day_end_at 19
+  event_day_start_at {Time.parse("10:00")}
+  event_day_end_at {Time.parse("19:00")}
   meetings_number 4
+  day_22_arrival {Time.parse("10:00")}
+  day_23_arrival {Time.parse("10:00")}
+  day_24_arrival {Time.parse("10:00")}
+  day_22_leave {Time.parse("19:00")}
+  day_23_leave {Time.parse("19:00")}
+  day_24_leave {Time.parse("19:00")}
 end
 
 Meeting.blueprint do
