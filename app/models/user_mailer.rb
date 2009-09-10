@@ -5,8 +5,15 @@ class UserMailer < ActionMailer::Base
     setup_email
     @recipients = [current_user.email, new_user.email].compact
     @subject += "Nuevo usuario"  
-    @body = {:user => new_user, :url => "http://example.com/login"}
+    @body = {:user => new_user}
   end   
+
+  def remember_password(user)
+    setup_email
+    @recipients = user.email
+    @subject += "Recordatorio de contraseña"  
+    @body = {:user => user}
+  end
 
   #Nuevo mensaje recibido
   def new_message_received(receiver, message)

@@ -31,7 +31,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource  :session
   map.resources :messages, :as => 'mensajes', :collection => {:received => :get, :sent => :get, 
     :auto_complete_for_profile_company_name => :get}
-  map.resources :users, :as => 'usuarios', :collection => {:search => :any, :print => :get}
+  map.resources :users, :as => 'usuarios', :collection => {:search => :any, :print => :get}, :member => {:send_password => :post}
 
   map.resources :preferences, :as => 'preferencias'
   map.resources :monitors, :as => 'monitores', :collection => {:messages => :get}

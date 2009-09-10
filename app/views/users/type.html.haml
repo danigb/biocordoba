@@ -21,7 +21,10 @@
               %td= h user.password
               %td
                 = link_to "Editar", edit_user_path(user.id)
+                |
                 = link_to "Eliminar", user_path(user.id, :type => params[:type]), :confirm => '¿Estás seguro?', :method => :delete unless user.login == "admin"
+                |
+                = link_to "Enviar contraseña", send_password_user_path(user.id), :confirm => '¿Estas seguro?', :method => :post
 
 
   = will_paginate @users

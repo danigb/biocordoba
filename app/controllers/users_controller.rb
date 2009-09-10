@@ -149,4 +149,15 @@ class UsersController < ApplicationController
     @users = @users.group_by{|u| u.roles.first.title }
     render :layout => false
   end
+
+  def send_password
+    @user = User.find(params[:id])
+    if @user
+      UserMailer.send_later(:deliver_remember_password, @user) 
+      flash[:notice] = "Contraseña enviada"
+    else
+      flash[:error] = "Error al enviar la contraseña"
+    end
+    redirect_to :back
+  end
 end
