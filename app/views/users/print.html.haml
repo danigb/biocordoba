@@ -5,7 +5,7 @@ th {border-bottom: solid black;}
 tr.even{background: #EEE;}
 </STYLE>
 
-%h1 Listado agrupado de usuarios
+%h1 Listado de usuarios
 - @users.each do |role, users|
   %h2{:id => role}= ROLES[role.to_sym]
   %table
