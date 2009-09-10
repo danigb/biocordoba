@@ -5,6 +5,13 @@ class Preference < ActiveRecord::Base
   validates_presence_of :meetings_number, :meetings_duration, :event_start_day, :event_end_day, :event_day_start_at, :event_day_end_at
   validates_numericality_of :meetings_number, :meetings_duration
 
+  def validate
+    %w(22 23 24).each do |e|
+      if(eval("day_#{e}_leave") < eval("day_#{e}_arrival"))
+        errors.add("day_#{e}_leave", "La hora de salida debe ser mayor que la de entrada")
+      end
+    end
+  end
   #Tres configuraciones por defecto
   named_scope :general_for_exhibitor, :conditions => {:id => 1}
   named_scope :general_for_national_buyer, :conditions => {:id => 2}
