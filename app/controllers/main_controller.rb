@@ -6,4 +6,9 @@ class MainController < ApplicationController
       @meetings = current_user.meetings(@date, @days)
     end
   end
+
+  def email
+    render :layout => "email"
+
+  end
 end

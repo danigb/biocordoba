@@ -1,0 +1,23 @@
+!!! Strict
+%html{html_attrs}
+  
+  %head
+    %title
+      = h(yield(:title) || "AGENDA VIRTUAL")
+    %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}/
+    = stylesheet_link_tag 'print', :media => 'print'
+  
+  %body
+    #container
+      #header
+        %h1 Agenda Virtual
+      #content
+        .wrapper
+          .main_content
+            = yield
+      #footer
+        .wrapper
+          %p
+            Todos los derechos reservados © 2009 Andalucía Sabor International Fine Food Exhibition
+
+

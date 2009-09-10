@@ -1,39 +1,20 @@
-!!! Strict
-%html{html_attrs}
-  
-  %head
-    %title
-      = h(yield(:title) || "AGENDA VIRTUAL")
-    %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}/
-    = stylesheet_link_tag 'print', :media => 'print'
-  
-  %body
-    #container
-      #header
-        %h1 Agenda Virtual
-      #content
-        .wrapper
-          .main_content
-            %p Versión imprimible de tu citas
-            %h2 Tu agenda de citas para el evento
-            - 1.upto(@days) do |d|
-              - date = @date + (d - 1).days
-              %h3= date.to_date.localize
-              - @meetings = @current_user.meetings(date, 1)
-              - if @meetings.blank?
-                %p No tienes citas para este día.
-              - else
-                - @meetings.each do |meeting|
-                  %h4
-                    = "[#{meeting.date({:include_month => false, :include_week_day => false})}]"
-                    = "cita #{MEETING_STATE[meeting.state.to_sym]} con #{meeting.partner(current_user).profile.company_name}"
-                  - unless eval("h meeting.note_#{@role}").blank?
-                    %p
-                      Anotación sobre la cita:
-                    %p
-                      = eval("h meeting.note_#{@role}")
+%p Versión imprimible de tu citas
+%h2 Tu agenda de citas para el evento
+- 1.upto(@days) do |d|
+  - date = @date + (d - 1).days
+  %h3= date.to_date.localize
+  - @meetings = @current_user.meetings(date, 1)
+  - if @meetings.blank?
+    %p No tienes citas para este día.
+  - else
+    - @meetings.each do |meeting|
+      %h4
+        = "[#{meeting.date({:include_month => false, :include_week_day => false})}]"
+        = "cita #{MEETING_STATE[meeting.state.to_sym]} con #{meeting.partner(current_user).profile.company_name}"
+      - unless eval("h meeting.note_#{@role}").blank?
+        %p
+          Anotación sobre la cita:
+        %p
+          = eval("h meeting.note_#{@role}")
 
-      #footer
-        .wrapper
-          %p
-            Todos los derechos reservados © 2009 Andalucía Sabor International Fine Food Exhibition
+
