@@ -8,7 +8,8 @@ class MainController < ApplicationController
   end
 
   def email
-    render :layout => "email"
-
+    @message = Message.first 
+    @sender = @user = User.find_by_login("elena")
+    render :file => "user_mailer/#{params[:id]}", :layout => "email"
   end
 end
