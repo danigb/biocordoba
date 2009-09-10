@@ -191,9 +191,18 @@ function showRegisterExtraInfo(){
   }
 
   var value = $("select#user_role_id").val();
+  
   if(value == 3 || value == 4){
     $("#buyer").show();
-  }else if(value == 5 ){
+    return;
+  }else if(value == 5){
+    $("#exhibitor").show();
+    return;
+  }
+
+  if(current_role == "national_buyer" || current_role == "international_buyer"){
+    $("#buyer").show();
+  }else if(current_role == "exhibitor"){
     $("#exhibitor").show();
   }
 }

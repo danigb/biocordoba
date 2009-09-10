@@ -5,3 +5,5 @@
     %p.enviar
       = f.submit "Guardar"
       %span= link_to "Volver", :back
+%script{:type => 'text/javascript'}
+  = "var current_role = '#{@user.roles.first.title}';"
