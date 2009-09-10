@@ -207,5 +207,6 @@ function showRegisterExtraInfo(){
       $("#exhibitor").show();
     }
   }
+
 }
 
