@@ -29,11 +29,6 @@ ActiveRecord::Schema.define(:version => 20090909105456) do
     t.datetime "updated_at"
   end
 
-  create_table "languages", :force => true do |t|
-    t.string "name"
-    t.string "code"
-  end
-
   create_table "meetings", :force => true do |t|
     t.integer  "host_id"
     t.integer  "guest_id"
@@ -88,7 +83,6 @@ ActiveRecord::Schema.define(:version => 20090909105456) do
     t.integer  "fax"
     t.string   "website"
     t.string   "stand"
-    t.integer  "language_id"
     t.integer  "country_id",         :default => 23
     t.string   "languages"
   end

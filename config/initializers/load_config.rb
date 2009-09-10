@@ -65,7 +65,11 @@ begin
   from_yml_to_db_user
   
   # Creamos la configuración maestra en el caso de que no exista
-  Preference.create(CONFIG[:admin][:preferences]) if Preference.first.nil?
+  if Preference.all.length < 3
+    3.times do
+      Preference.create(CONFIG[:admin][:preferences]) 
+    end
+  end
 
 rescue ActiveRecord::StatementInvalid
   # No existen aún las tablas
