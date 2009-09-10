@@ -1,8 +1,21 @@
 !!!
-%html
+%html{ "xml:lang" => "en", :lang => "en", :xmlns => "http://www.w3.org/1999/xhtml" }
   %head
-    %meta{:content => "text/html; charset=UTF-8"}
-  %body  
+    %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "Content-Type" }
+    %title
+      Andalucía Sabor - Agenda Virtual
+    %base{ :href => "http://agendavirtualandaluciasabor.com" }
+  - colspan = 4
+  %body{ :style => "font: 16px arial,helvetica,clean,sans-serif; *font-size:small; *font:x-small;" }
+    %table{ :border => "0", :width => "600px" }
+      %tr
+        %td{ :colspan => colspan }
+          %table{ :align => "center" }
+            %tr
+              %td
+                %a{ :href => "http://agendavirtualandaluciasabor.com", :title => "Ir a Agenda Virtual", :style => "text-decoration:none;" }
+                  %img{ :src => "/images/cabecera_mailing.jpg", :alt => "Andalucía Sabor - Agenda Virtual", :width => "600" }
+
     #content
       = yield
     #footer

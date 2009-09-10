@@ -126,8 +126,22 @@ class MeetingsController < ApplicationController
     @date = Event.start_day_and_hour
     @days = Event.duration
     @role = current_user.is_exhibitor? ? "host" : "guest"
-    render :layout => false
+    render :layout => "print"
   end
+
+
+  def print_admin_extenda
+    @date = params[:date].present? ? Date.parse(params[:date]) : Date.parse(CONFIG[:admin][:preferences][:event_start_day])
+    !valid_event_date?(@date)
+
+    @name = params[:type].chop # exhibitors -> exhibitor
+    meetings = @name == "exhibitor" ? Meeting.in(@date).with_state("accepted") : Meeting.in(@date).with_type(@name).with_state("accepted")
+    @guest = true unless @name == "exhibitor"
+    @meetings_by_host = meetings.group_by{|m| @guest ? m.guest : m.host }
+    
+    render :layout => "print"
+
+  end  
 
   protected
   def valid_guest?(guest)

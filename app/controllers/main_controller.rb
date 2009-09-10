@@ -6,4 +6,10 @@ class MainController < ApplicationController
       @meetings = current_user.meetings(@date, @days)
     end
   end
+
+  def email
+    @message = Message.first 
+    @sender = @user = User.find_by_login("elena")
+    render :file => "user_mailer/#{params[:id]}", :layout => "email"
+  end
 end

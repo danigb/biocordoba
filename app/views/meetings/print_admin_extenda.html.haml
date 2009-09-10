@@ -1,3 +1,6 @@
+%p Versión imprimible de tu citas
+%h2 Tu agenda de citas para el evento
+
 #agenda_extenda
   .date
     = back_link(@date)
@@ -14,11 +17,3 @@
           ="<div id='meetings-#{host.id}' class='meetings-summary'></div>"
   - else
     No existen citas para ese día
-
-.my_meetings_footer
-  %p.imprimir
-    = link_to "Imprimir #{I18n.localize(@date, :format => '%A %d')}","/imprimir_admin"
-    = link_to "Imprimir todo", "/imprimir_admin"
-
-  - content_for(:right_column) do 
-    = render :partial => 'meetings/select_schedule_form', :locals => {:role_name => @name}

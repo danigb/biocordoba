@@ -1,10 +1,32 @@
-%h1 Nueva alta de usuario
+- colspan = 4
+%tr
+  %td{ :colspan => colspan }
+    %p
+      La Agenda Virtual de Andalucía Sabor International Fine Food Exhibition ya está disponible. A través de ella podrá gestionar sus citas comerciales, informarse acerca del resto de expositores y empresas visitantes, así como enviar y recibir mensajes de otros usuarios o administradores. 
 
-%p Los credenciales para acceder al sistema son:
+%tr
+  %td{:colspan => colspan}
+%p 
+  A continuación les indicamos sus datos de acceso 
 
+%tr
+  %td{:colspan => colspan}
 %p
-  Nombre de usuario:
+  usuario: 
   %b=h @user.login
-%p
-  Contraseña: 
-  %b= @user.password
+
+%tr
+  %td{:colspan => colspan}
+    %p
+      contraseña: 
+      %b= @user.password
+
+%tr
+  %td{:colspan => colspan}
+    %p
+      Podrá acceder a través de nuestra web http://www.andaluciasabor.es , pulsando en el enlace correspondiente, o directamente a través de http://www.agendavirtualandaluciasabor.com 
+
+%tr
+  %td{:colspan => colspan}
+    %p
+      Esperamos que esta aplicación les sea de utilidad para sacar mayor partido a la feria y que disfruten de estos días en Andalucía Sabor.
