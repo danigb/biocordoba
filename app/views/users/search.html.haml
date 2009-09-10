@@ -42,6 +42,7 @@
             %h4= sector.capitalize
             - for user in users
               %li
-                = link_to_profile(user.profile, user.profile.company_name.upcase)
+                = link_to user.profile.company_name.upcase, profile_path(user.profile), :class => "profile-link hide-search-button", :id => user.profile.id
+                -# = link_to_profile(user.profile, user.profile.company_name.upcase)
 
 

@@ -11,7 +11,16 @@
   %tbody 
     - for preference in preferences
       %tr
-        %td= preference.id == 1 ? 'Master' : preference.users.map{|e| link_to(e.login, edit_user_path(e)) + " "}
+        %td
+          - case(preference.id)
+            - when(1)
+              Expositores
+            - when(2)
+              Compradores nacionales
+            - when(3)
+              Compradores internacionales
+            - else
+              = preference.users.map{|e| link_to(e.login, edit_user_path(e)) + " "}
         %td=h preference.meetings_number 
         %td
           =h preference.meetings_duration
@@ -21,5 +30,5 @@
         %td=h preference.event_day_start_at.strftime("%H:%M")
         %td=h preference.event_day_end_at.strftime("%H:%M")
         %td= link_to "Editar", edit_preference_path(preference)
-        - unless preference.id == 1
+        - if preference.id > 3
           %td= link_to "Eliminar", preference_path(preference), :method => 'delete'

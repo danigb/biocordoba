@@ -5,9 +5,22 @@ class Preference < ActiveRecord::Base
   validates_presence_of :meetings_number, :meetings_duration, :event_start_day, :event_end_day, :event_day_start_at, :event_day_end_at
   validates_numericality_of :meetings_number, :meetings_duration
 
+  #Tres configuraciones por defecto
+  named_scope :general_for_exhibitor, :conditions => {:id => 1}
+  named_scope :general_for_national_buyer, :conditions => {:id => 2}
+  named_scope :general_for_international_buyer, :conditions => {:id => 3}
+
   def before_destroy
     self.users.each do |u|
-      u.update_attributes(:preference_id => 1)
+      if u.is_exhibitor?
+        id = 1
+      elsif u.is_national_buyer?
+        id = 2
+      elsif u.is_international_buyer?
+        id = 3
+      end
+
+      u.update_attributes(:preference_id => id)
     end
   end
 end
