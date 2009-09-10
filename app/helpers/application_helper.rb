@@ -25,7 +25,7 @@ module ApplicationHelper
   end
 
   def hide_preferences
-    (@user.preference_id <= 3 || @user.new_record?) && @user.preference.errors.blank?
+    (@user.new_record? || @user.preference_id <= 3) && @user.preference.errors.blank?
   end
 
   # Mostramos el usuario emisor o receptor según el tipo de mensajes que estemos viendo

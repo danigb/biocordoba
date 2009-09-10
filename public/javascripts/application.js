@@ -140,6 +140,18 @@ $(document).ready(function() {
   });
 
 
+  //User create, country select
+  if($("#user_profile_attributes_country_id :selected").val() != "23"){
+    $("#province-select").hide();
+  }
+
+  $("#user_profile_attributes_country_id").change(function(){
+    if(this.value != 23){
+      $("#province-select").hide();
+    }else{
+      $("#province-select").show();
+    }  
+  });
 });
 
 function load_town(province_id, f){
