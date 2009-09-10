@@ -21,10 +21,12 @@
 
 .my_meetings_footer
   %p.green
-    *
-    = estancia_info(@guest)
+    * Las citas aceptadas (en rosa) podrán ser canceladas durante los días previos a la feria.
   %p.green
-    * Las citas pueden ser canceladas por un administrador.
+    * Una zona sombreada indica que el comprador no asistirá a la feria durante ese periodo.
+    Por tanto
+    = estancia_info(@guest)
+
 
 
 - content_for(:right_column) do
@@ -58,8 +60,8 @@
           /*%p.info.small*/
           /*  = "Dispone de un máximo de #{current_user.preference.meetings_number} citas comerciales por cada jornada de la feria."*/
 
-          %p.info.small
-            Las citas pueden ser canceladas por un administrador.
+          -# %p.info.small
+          -#   Las citas aceptadas (en rosa) podrán ser canceladas durante los días previos a la feria.
 
           %p.info.small
             = "Podrá organizar sus citas en horario de la feria (de #{current_user.preference.event_day_start_at.to_s(:hour_only)} h. a #{current_user.preference.event_day_end_at.to_s(:hour_only)} h.)"
