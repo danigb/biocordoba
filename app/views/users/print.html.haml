@@ -1,0 +1,22 @@
+<STYLE type="text/css">
+TABLE{ border: solid black; empty-cells: hide }
+TD { border-right: solid black 1px; padding:5px;}
+th {border-bottom: solid black;}
+tr.even{background: #EEE;}
+</STYLE>
+
+%h1 Listado agrupado de usuarios
+- @users.each do |role, users|
+  %h2{:id => role}= ROLES[role.to_sym]
+  %table
+    %tr
+      %th Empresa
+      %th Nombre de usuario
+      %th Contraseña
+    - users.each do |u|
+      %tr{:class => cycle("even", "odd")}
+        %td= u.profile.company_name
+        %td= u.login
+        %td= u.password
+  
+

@@ -141,4 +141,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def print
+    redirect_to root_path and return if (current_user.is_extenda? && !["international_buyer", "extenda"].include?(params[:type]))
+    @users = User.find(:all, :include => [:profile, :roles], :order => "profiles.company_name", 
+      :conditions => ["roles.title = ?", params[:type]])
+
+    @users = @users.group_by{|u| u.roles.first.title }
+    render :layout => false
+  end
 end

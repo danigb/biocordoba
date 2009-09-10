@@ -31,6 +31,9 @@
         = link_to "Crear nuevo usuario", new_admin_path(:user => {:role_id => @role.id})
       - else
         = link_to "Crear nuevo usuario", signup_path(:user => {:role_id => @role.id})
+  %p
+    %span.button.violet
+      = link_to "Imprimir listado de usuarios", print_users_path(:type => @role.title), :target => "_blank"
     o
     = link_to "Volver", users_path
 
