@@ -88,10 +88,18 @@ describe Meeting do
       meeting.should have(1).errors_on(:guest_id)
     end
 
-    it "should not have a meeting out of event" do
-      meeting =  Meeting.make_unsaved(:starts_at => Time.now)
+    # DEPRECATED, ahora validamos que la cita esté dentro de la asistencia del guest
+    # it "should not have a meeting out of event" do
+    #   meeting =  Meeting.make_unsaved(:starts_at => Time.now)
+    #   meeting.should have(1).errors_on(:starts_at)     
+    #   meeting.errors.on(:starts_at).should == "La cita debe estar dentro de las jornadas del evento."
+    # end
+
+    it "should not have a meeting out of guest assistance" do
+      meeting =  Meeting.make_unsaved(:starts_at => Event.start_day_and_hour)
+      meeting.guest.preference.update_attribute(:day_22_arrival, Event.start_day_and_hour + 3.hours)
       meeting.should have(1).errors_on(:starts_at)     
-      meeting.errors.on(:starts_at).should == "La cita debe estar dentro de las jornadas del evento."
+      meeting.errors.on(:starts_at).should == "El comprador no asiste a esa hora al evento."
     end
 
     it "valid_date behaviour" do

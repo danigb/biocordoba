@@ -25,7 +25,7 @@ describe Message do
 
   it "should send to all user" do
     user_count = User.no_admins.count
-    message = Message.make(:send_all => "1")
+    message = Message.make(:send_national_buyers => "1", :send_international_buyers => "1", :send_exhibitors => "1")
     message.receivers.count.should == user_count
   end
 

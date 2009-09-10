@@ -22,8 +22,11 @@ class Meeting < ActiveRecord::Base
       errors.add("guest_id", "Ya tiene una cita con este comprador.") 
     end
 
-    unless Meeting.valid_event_date?(self.starts_at)
-      errors.add("starts_at", "La cita debe estar dentro de las jornadas del evento.")
+    #Dentro de las jornadas del evento
+    # errors.add("starts_at", "La cita debe estar dentro de las jornadas del evento.") unless Meeting.valid_event_date?(self.starts_at)
+    #Dentro de la asistencia del guest
+    unless (self.guest.assistance_day(self.starts_at.day).include?(self.starts_at.hour))
+      errors.add("starts_at", "El comprador no asiste a esa hora al evento.") 
     end
 
     if new_record? && !Meeting.valid_date?(self.host, self.guest, self.starts_at, self.ends_at)

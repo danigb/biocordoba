@@ -1,8 +1,8 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
 describe Preference do
-  it "It must exists a master configuration" do
-    Preference.count.should == 1
+  it "It must exists 3 master configurations" do
+    Preference.count.should == 3
   end
 
   it "should set preference 1 if remove a personal preference"do
