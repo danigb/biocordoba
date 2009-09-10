@@ -33,6 +33,7 @@ module WeeklyHelper
       @hours = ["10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00"]
       @start_hour = 10 
       @end_hour = 19
+      @intervalo = options[:assistance].present? ? options[:assistance] : (10..19).to_a #Nuestro
 
       if options[:days] > 1
         @header_row = "header_row"
@@ -53,7 +54,7 @@ module WeeklyHelper
         
         concat(tag("div", :class => @grid))
           @hours.each do |h|
-            concat(tag("div", :class => @day_row))
+            concat(tag("div", :class => "#{@day_row} #{'no_assistance' unless @intervalo.include?(h.to_i)}"))
               (@start_date..@end_date).each_with_index do |day, index|
                 to_delete = []
                 @objects.each do |event|

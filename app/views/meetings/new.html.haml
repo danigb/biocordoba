@@ -15,7 +15,7 @@
     .user
       = truncate(@guest.profile.company_name.capitalize, :omission => "..",:length => 35)
 
-    - weekly_calendar(@guest.meetings(@date), :date => @date, :without_days => true, :without_hours => true) do |w|
+    - weekly_calendar(@guest.meetings(@date), :date => @date, :without_days => true, :without_hours => true, :assistance => @guest.assistance_day(@date.day)) do |w|
       - w.week(:clickable_hours => true) do |event,charifluflis|
         =  truncate(event.name(current_user, true), :omission => "..", :length => 22)
 

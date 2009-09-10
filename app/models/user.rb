@@ -191,4 +191,14 @@ class User < ActiveRecord::Base
   def delete_meetings
     self.meetings(Event.start_day, Event.duration).map(&:cancel!)
   end
+
+  def assistance_day(dia)
+    begin
+      arrive = eval("self.preference.day_#{dia}_arrival.hour")
+      leave = eval("(self.preference.day_#{dia}_leave).hour")
+      res = (arrive.to_i..(leave.to_i-1)).to_a
+    rescue
+      []
+    end
+  end
 end
