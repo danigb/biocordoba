@@ -12,7 +12,15 @@ class Preference < ActiveRecord::Base
 
   def before_destroy
     self.users.each do |u|
-      u.update_attributes(:preference_id => 1)
+      if u.is_exhibitor?
+        id = 1
+      elsif u.is_national_buyer?
+        id = 2
+      elsif u.is_international_buyer?
+        id = 3
+      end
+
+      u.update_attributes(:preference_id => id)
     end
   end
 end

@@ -30,7 +30,14 @@ class UsersController < ApplicationController
     @extenda_valid = current_user.is_extenda? && !@user.is_international_buyer? ? false : true
 
     if params[:default_preferences] == "1"
-      @user.preference = Preference.first
+      case(params[:user][:role_id])
+        when("5") #Expositor
+          @user.preference = Preference.general_for_exhibitor.first
+        when("3") #Comprador nacional
+          @user.preference = Preference.general_for_national_buyer.first
+        when("4") #Comprador internacional
+          @user.preference = Preference.general_for_international_buyer.first
+      end
     end
 
     success = @user && @extenda_valid && @user.save 
@@ -75,11 +82,17 @@ class UsersController < ApplicationController
     params[:user][:profile_attributes][:sector_ids] ||= [] #HABTM checkboxes
 
     if params[:default_preferences] == "1"
-      @user.preference.delete if @user.preference && @user.preference.id != 1
-      @user.preference = Preference.first
+      @user.preference.delete if @user.preference && @user.preference.id > 3
+      if @user.is_exhibitor?
+        @user.preference = Preference.general_for_exhibitor.first
+      elsif @user.is_national_buyer?
+        @user.preference = Preference.general_for_national_buyer.first
+      elsif @user.is_international_buyer?
+        @user.preference = Preference.general_for_international_buyer.first
+      end
     else
-      if params[:user][:preference_attributes][:id] == "1" 
-        # Quitamos la id del hash para que no pise el master password
+      if params[:user][:preference_attributes][:id].to_i <= 3
+        # Quitamos la id del hash para que no pise el master configuration
         params[:user][:preference_attributes].delete("id")
       end
     end

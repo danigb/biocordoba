@@ -3,6 +3,7 @@
   - @user.build_profile unless @user.profile
   - f.fields_for(:profile) do |profile|
     = render :partial => 'profile', :locals => {:f => profile}
+
 %fieldset{:id => 'new-user-conf'}
   %legend Configuraciones del usuario
   - @user.build_preference unless @user.preference
