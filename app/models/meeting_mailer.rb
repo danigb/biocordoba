@@ -1,4 +1,5 @@
 class MeetingMailer < ActionMailer::Base
+  layout 'email'
   def alert_for_extenda(meeting)
     setup_email
     @recipients = User.type("extenda").map(&:email)
