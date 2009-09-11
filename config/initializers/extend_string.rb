@@ -40,6 +40,7 @@ class String
     n.gsub!(/&/,            '-AND-')
     n.gsub!(/\(/,            '')
     n.gsub!(/\)/,            '')
+    n.gsub!(/"/,            '')
 
     # n.tr!('^ a-z0-9_/\\-',    '')
     n[0..25]

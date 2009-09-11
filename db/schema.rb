@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090911080605) do
+ActiveRecord::Schema.define(:version => 20090911104602) do
 
   create_table "countries", :force => true do |t|
     t.string "name"
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(:version => 20090911080605) do
     t.integer  "country_id",         :default => 23
     t.string   "languages"
     t.string   "contact_person"
+    t.string   "mobile_phone"
   end
 
   add_index "profiles", ["company_name"], :name => "profiles_company_name"

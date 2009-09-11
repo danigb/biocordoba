@@ -1,7 +1,7 @@
 require 'fastercsv'
 
-desc "Importación de los expositores" 
-task :load_exhibitors => :environment do
+desc "Importación de los expositores DEPRECATED" 
+task :old_load_exhibitors => :environment do
   #Relación id del csv ids almacenados en nuestra base de datos {ID_CSV => ID_DB}
   SECTORES = {1 => 1, 2 => 2, 3 => 3, 4 => 4, 5 => 7, 6 => 6, 7 => 5, 8 => 11, 9 => 12, 10 => 13, 11 => 15,
               12 => 16, 13 => 14, 14 => 10, 15 => 8, 16 => 9}
@@ -39,6 +39,44 @@ task :load_exhibitors => :environment do
 end
 
 
+desc "Importación de los expositores" 
+task :load_exhibitors => :environment do
+  file = File.join(RAILS_ROOT, "resources", "expositores.csv")
+  FasterCSV.read(file)[1..-1].each do |row|
+    company_name, address, zip_code, town_name, province_name, contact_person_surname, contact_person_name, phone, mobile_phone, fax, email, website, sector, products, packages, stand = row
+
+    province = Province.find_by_name(province_name)
+    sector = Sector.find(sector)
+
+    #Comprobamos si existe un usuario con ese mismo nombre
+    #Si existe, el csv nos está diciendo que tiene otro sector
+    if(u = User.find_by_login(company_name.normalize))
+      u.profile.sectors << sector
+    else
+      user = User.new(:login => company_name.normalize, :password => Haddock::Password.generate(10), :email => email, :preference_id => 1)
+      user.roles << Role.find_by_title('exhibitor')
+
+      if user.save!
+        town = province.towns.find_by_name(town_name)
+        profile = Profile.new(:company_name => company_name, :address => address, :zip_code => zip_code,
+          :phone => phone, :fax => fax, :mobile_phone => mobile_phone,
+          :website => website.blank? ? "" : "http://#{website}", :stand => stand, :user_id => user.id,
+          :products => products, :packages => packages, :contact_person => "#{contact_person_name} #{contact_person_surname}",
+          :province => province, :town => town)
+
+        sleep 0.2
+        profile.sectors << sector
+        profile.save!
+        if town.nil?
+          puts "[#{Time.now.to_s(:short)}] Expositor creado, #{company_name}" 
+          puts province_name
+          puts town_name
+        end
+      end
+    end
+    
+  end
+end
 desc "Importación de compradores internacionales" 
 task :load_international_buyers => :environment do
 

@@ -53,13 +53,21 @@ class User < ActiveRecord::Base
 
 
   aasm_column :state
-  aasm_initial_state :enabled
+  aasm_initial_state :enabled 
 
+  #Usuario activo, aparece en agenda y web
   aasm_state :enabled
-  aasm_state :disabled, :enter => :delete_meetings
+  #No aparece ni en agenda ni web
+  aasm_state :disabled, :enter => :delete_meetings 
+  # Usuario oculto, no aparece en la agenda pero si en la api
+  aasm_state :only_api 
 
   aasm_event :disable do
     transitions :from => :enabled, :to => :disabled
+  end
+
+  aasm_event :hide do
+    transitions :from => :enabled, :to => :only_api
   end
 
   aasm_event :enable do
