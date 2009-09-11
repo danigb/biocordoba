@@ -1,19 +1,23 @@
-%p Versión imprimible de tu citas
 %h2 Tu agenda de citas para el evento
 
 #agenda_extenda
-  .date
-    = back_link(@date)
-    =" #{I18n.localize(@date, :format => '%A %d')} "
-    = foward_link(@date)
+  - 1.upto(@days) do |d|
+    - date = @date + (d - 1).days
+    .date
+      %h3
+        =" #{I18n.localize(date, :format => '%A %d')} "
 
-  - unless @meetings_by_host.blank?
-    %ul
+    - @meetings_by_host = Meeting.in(date).with_type(@name).with_state("accepted").group_by{|m| @guest ? m.guest : m.host }
+    - unless @meetings_by_host.blank?
       - @meetings_by_host.each do |host, meetings|
-        %li
-          .plus-icon
-            = link_to_function image_tag("plus_green.png", :alt => "Leer más"), "getMeetings(#{host.id}, #{@guest ? '1' : '0'}, '#{params[:date]}')"
-          %strong= host.profile.company_name.upcase
-          ="<div id='meetings-#{host.id}' class='meetings-summary'></div>"
-  - else
-    No existen citas para ese día
+        %ul
+          %strong
+            = host.profile.company_name.upcase 
+          - for meeting in meetings
+            %li
+              = "[#{meeting.starts_at.to_s(:hour_only)}]"
+              = "cita #{MEETING_STATE[meeting.state.to_sym]} con"
+              = meeting.host.profile.company_name.upcase
+
+    - else
+      %span No existen citas para ese día
