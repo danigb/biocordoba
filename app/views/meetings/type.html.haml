@@ -17,8 +17,8 @@
 
 .my_meetings_footer
   %p.imprimir
-    = link_to "Imprimir #{I18n.localize(@date, :format => '%A %d')}","/imprimir_admin"
-    = link_to "Imprimir todo", "/imprimir_admin"
+    = link_to "Imprimir #{I18n.localize(@date, :format => '%A %d')}", print_admin_path(:type => params[:type], :date => @date), :target => "_blank"
+    = link_to "Imprimir todo", print_admin_path(:type => params[:type]), :target => "_blank"
 
   - content_for(:right_column) do 
     = render :partial => 'meetings/select_schedule_form', :locals => {:role_name => @name}

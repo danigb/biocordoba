@@ -4,7 +4,40 @@ body {
   font-family : "Times New Roman", Times, serif;
   font-size : 12pt;
 }
+
+.wrapper {
+  width: 20cm;
+  height: 1%;
+  position: relative;
+  overflow: hidden; }
+
 a {
   text-decoration : underline;
   color : #0000ff;
 }
+
+#content .wrapper {
+  padding-left: 30px;
+}
+
+h1 img{
+  border:none;
+}
+
+h2{
+  color: #70b120;
+  font-weight: bolder;
+}
+
+h3{
+  color: #D41E67;
+}
+
+ul li {
+  margin-left: 40px;
+}
+
+span{
+  margin-left: 40px;
+}
+

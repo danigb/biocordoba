@@ -1,13 +1,24 @@
-%h1= "Resumen de citas para el #{@date}"
+-colspan = 4
+
+%tr
+  %td{:colspan => colspan}
+    %h2{:style => "color: #70B120;padding-left: 20px;"}="Resumen de citas para el #{@date}"
 
 - if @meetings.blank?
-  %p No tienes citas concertadas para este día
+  %tr
+    %td{:colspan => colspan}
+      %p{:style => "padding-left: 20px;"}
+        No tienes citas concertadas para este día
+
 - else
-  %ul
-    - for meeting in @meetings
-      %li.summary-item
-        = meeting.date({:include_month => false, :include_week_day => false})
-        con
-        = link_to meeting.partner(@user).profile.company_name, profile_url(meeting.partner(@user).profile)
-        |
-        = link_to "Ver cita", meeting_url(meeting)
+  %tr
+    %td{:colspan => colspan}
+      %ul
+        - for meeting in @meetings
+          %li.summary-item
+            = meeting.date({:include_month => false, :include_week_day => false})
+            con
+            = link_to meeting.partner(@user).profile.company_name, profile_url(meeting.partner(@user).profile), :style => "color: #70B120;"
+            |
+            = link_to "Ver cita", meeting_url(meeting), :style => "color: #D41E67;"
+

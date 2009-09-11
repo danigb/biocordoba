@@ -1,4 +1,11 @@
-%h1 Usuario desactivado
-%p
-  Tu usuario ha sido desactivado, para conocer las causas póngase en contacto con el 
-  = "<a href='mailto:#{CONFIG[:admin][:email]}&subject=Usuario desactivado'>administrador</a>"
+-colspan = 4
+
+%tr
+  %td{:colspan => colspan}
+    %h2{:style => "color: #70B120;padding-left: 20px;"} Usuario desactivado
+
+%tr
+  %td{:colspan => colspan}
+    %p{:style => "padding-left: 20px;"}
+      Su usuario ha sido desactivado, para conocer las causas póngase en contacto con el 
+      = "<a href='mailto:#{CONFIG[:admin][:email]}&subject=Usuario desactivado' style='color:#70B120' >administrador.</a>"

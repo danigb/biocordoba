@@ -139,6 +139,8 @@ class MeetingsController < ApplicationController
     @guest = true unless @name == "exhibitor"
     @meetings_by_host = meetings.group_by{|m| @guest ? m.guest : m.host }
     
+    @days = params[:date].present? ? 1 : Event.duration 
+
     render :layout => "print"
 
   end  
