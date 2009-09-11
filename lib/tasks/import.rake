@@ -56,6 +56,10 @@ task :load_exhibitors => :environment do
       user = User.new(:login => company_name.normalize, :password => Haddock::Password.generate(10), :email => email, :preference_id => 1)
       user.roles << Role.find_by_title('exhibitor')
 
+      phone = phone.gsub(" ","") if phone
+      mobile_phone = mobile_phone.gsub(" ","") if mobile_phone
+      fax = fax.gsub(" ","") if fax
+
       if user.save!
         town = province.towns.find_by_name(town_name)
         profile = Profile.new(:company_name => company_name, :address => address, :zip_code => zip_code,
