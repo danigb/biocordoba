@@ -1,8 +1,8 @@
 #schedules
   .date
-    = back_link(@date)
-    =" #{I18n.localize(@date, :format => '%A %d')} "
-    = foward_link(@date)
+    = day_link(Event.start_day)
+    = day_link(Event.start_day + 1 )
+    = day_link(Event.start_day + 2)
 
   .schedule
     .user.first

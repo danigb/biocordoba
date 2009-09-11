@@ -20,6 +20,11 @@ module ApplicationHelper
     end
   end
 
+
+  def day_link(date)
+    link_to_if((date != @date), I18n.localize(date, :format => '%A %d'), "?date=#{date}")
+  end 
+
   def current_url(params={})
     url_for :only_path=>false, :overwrite_params=>params
   end
