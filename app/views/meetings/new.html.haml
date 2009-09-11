@@ -27,8 +27,6 @@
     Por tanto
     = estancia_info(@guest)
 
-
-
 - content_for(:right_column) do
   .meeting_request_img
     %h2 Petición de citas
@@ -65,4 +63,7 @@
 
           %p.info.small
             = "Podrá organizar sus citas en horario de la feria (de #{current_user.preference.event_day_start_at.to_s(:hour_only)} h. a #{current_user.preference.event_day_end_at.to_s(:hour_only)} h.)"
+
+          %p.info.small
+            Las citas comerciales internacional contarán con traductores de la lengua de origen del comprador internacional, a excepción del inglés. 
             
