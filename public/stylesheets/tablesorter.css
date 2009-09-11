@@ -31,6 +31,9 @@ table.tablesorter tbody td {
 	background-color: #FFF;
 	vertical-align: top;
 }
+table.tablesorter tbody tr td.actions{
+  width:200px;
+}
 table.tablesorter tbody tr.even td {
 	background-color:#c8c8c8;
 }

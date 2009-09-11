@@ -41,7 +41,7 @@
       #content
         .wrapper
           = render :partial => 'shared/left_column'
-          %div{:class => ['preferences', 'messages'].include?(@controller.controller_name) && ['index', 'received','sent'].include?(@controller.action_name) ? 'main_content preferences' : 'main_content'}
+          %div{:class => ['preferences', 'messages','users'].include?(@controller.controller_name) && ['index', 'received','sent', 'type'].include?(@controller.action_name) ? 'main_content preferences' : 'main_content'}
             = yield
           #right-column 
             - flash.each do |name, msg|

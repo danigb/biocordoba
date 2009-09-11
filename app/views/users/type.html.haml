@@ -19,11 +19,14 @@
               %td= truncate(user.profile.company_name, :length => 20)
               %td= h user.login
               %td= h user.password
-              %td
+              %td.actions
                 = link_to "Editar", edit_user_path(user.id)
                 |
-                = link_to "Eliminar", user_path(user.id, :type => params[:type]), :confirm => '¿Estás seguro?', :method => :delete unless user.login == "admin"
-                |
+
+                - unless user.login == "admin"
+                  = link_to "Eliminar", user_path(user.id, :type => params[:type]), :confirm => '¿Estás seguro?', :method => :delete 
+                  |
+
                 = link_to "Enviar contraseña", send_password_user_path(user.id), :confirm => '¿Estas seguro?', :method => :post
 
 
