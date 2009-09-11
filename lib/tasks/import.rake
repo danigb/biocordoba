@@ -39,3 +39,25 @@ task :load_exhibitors => :environment do
 end
 
 
+desc "Importación de compradores internacionales" 
+task :load_international_buyers => :environment do
+
+  file = File.join(RAILS_ROOT, "resources", "internacional.csv")
+  FasterCSV.read(file).each do |row|
+    country_code, company_name, website, email, contact_person, languages, phone, commercial_profile = row
+
+    user = User.new(:login => company_name.normalize, :password => Haddock::Password.generate(10), :email => email, :preference_id => 3)
+    user.roles << Role.find_by_title('international_buyer')
+
+    if user.save!
+      country = Country.find_by_code(country_code)
+      profile = Profile.new(:company_name => company_name, :phone => phone, :website => website.blank? ? "" : "http://#{website}", :user_id => user.id,
+        :country => country, :contact_person => contact_person, :languages => languages, :commercial_profile => commercial_profile)
+      sleep 0.2
+      profile.sectors << Sector.first
+      profile.save!
+      puts "[#{Time.now.to_s(:short)}] Comprador internacional creado, #{company_name}"
+    end
+    
+  end
+end

@@ -6,7 +6,7 @@
 
 - fields_for(:user) do |u|
   %p
-    = label_tag "Email  <span class ='required'>*</span>"
+    = label_tag "Email"
     = u.text_field :email 
     = error_message_on :user,:email 
     %span.info
