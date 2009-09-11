@@ -23,6 +23,10 @@ class SessionsController < ApplicationController
       render :action => 'new'
     end
   end
+  
+  def new
+    redirect_to root_path if logged_in?
+  end
 
   def destroy
     logout_killing_session!
