@@ -8,8 +8,11 @@ class MainController < ApplicationController
   end
 
   def email
+    @date = Event.start_day_and_hour
+    @user = User.find_by_login("cocacola")
+    @meetings = @user.meetings(@date,1)
+    @meeting= @meetings.first 
     @message = Message.first 
-    @sender = @user = User.find_by_login("elena")
-    render :file => "user_mailer/#{params[:id]}", :layout => "email"
+    render :file => "meeting_mailer/#{params[:id]}", :layout => "email"
   end
 end
