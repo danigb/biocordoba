@@ -37,6 +37,9 @@ class String
     n.gsub!(/Ú/,            'u')
     n.gsub!(/Ñ/,            'n')
     n.gsub!(/'/,            '')
+    n.gsub!(/&/,            '-AND-')
+    n.gsub!(/\(/,            '')
+    n.gsub!(/\)/,            '')
 
     # n.tr!('^ a-z0-9_/\\-',    '')
     n[0..25]
