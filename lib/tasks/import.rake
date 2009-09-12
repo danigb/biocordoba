@@ -72,9 +72,8 @@ task :load_exhibitors => :environment do
         profile.sectors << sector
         profile.save!
         if town.nil?
-          puts "[#{Time.now.to_s(:short)}] Expositor creado, #{company_name}" 
-          puts province_name
-          puts town_name
+          # puts "[#{Time.now.to_s(:short)}] Expositor creado, #{company_name}" 
+          puts "#{company_name} - #{province_name} - #{town_name}"
         end
       end
     end

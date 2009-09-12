@@ -140,11 +140,15 @@ module ApplicationHelper
   end
 
   def estancia_info(user)
-    res = "#{user.profile.company_name} asistirá este día de "
-    res += eval("@guest.preference.day_#{@date.day}_arrival.to_formatted_s(:hour_only)")
-    res += " h. a "
-    res += eval("@guest.preference.day_#{@date.day}_leave.to_formatted_s(:hour_only)")
-    res += " h."
+    if(eval("@guest.preference.day_#{@date.day}_arrival.hour") == 0 && eval("@guest.preference.day_#{@date.day}_leave.hour") == 0)
+      res = "#{user.profile.company_name} no asistirá a la feria en todo el día."
+    else
+      res = "#{user.profile.company_name} asistirá este día de "
+      res += eval("@guest.preference.day_#{@date.day}_arrival.to_formatted_s(:hour_only)")
+      res += " h. a "
+      res += eval("@guest.preference.day_#{@date.day}_leave.to_formatted_s(:hour_only)")
+      res += " h."
+    end
     res
   end
 end
