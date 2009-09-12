@@ -47,6 +47,7 @@ class AjaxController < ApplicationController
   end
 
   def meetings_for
-    redirect_to meetings_for_path(params[:user][:id])
+    @user = User.find(params[:user][:id])
+    redirect_to meetings_for_path(@user.to_param)
   end
 end

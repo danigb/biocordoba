@@ -31,7 +31,6 @@
     = f.label :day_22_leave, "Hora de salida el día 22"
     = f.time_select :day_22_leave, {:minute_step => 60}
     = error_message_on :preference, :day_22_leave
-  %hr/
 %p
   = f.label :day_23_assist, "Asiste el día 23"
   = check_box_tag :day_23_assist, 1, @preference.nil? || @preference.day_23_arrival.hour != 0, :id => 23, :class => 'assistance-checkbox'
@@ -43,7 +42,6 @@
     = f.label :day_23_leave, "Hora de salida el día 23"
     = f.time_select :day_23_leave, {:minute_step => 60}
     = error_message_on :preference, :day_23_leave
-  %hr/
 %p
   = f.label :day_24_assist, "Asiste el día 24"
   = check_box_tag :day_24_assist, 1, @preference.nil? || @preference.day_24_arrival.hour != 0, :id => 24, :class => 'assistance-checkbox'
