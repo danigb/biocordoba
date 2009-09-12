@@ -52,6 +52,7 @@ class UsersController < ApplicationController
         redirect_to users_path
       end
     else
+      @preference = Preference.new(params[:user][:preference_attributes])
       flash.now[:error]  = "Existen errores en el formulario."
       render :action => 'new'
     end
@@ -102,6 +103,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Usuario modificado correctamente."
       redirect_to users_path
     else
+      @preference = @user.preference
       flash[:error] = "Existen errores en el formulario."
       render :action => 'edit'
     end

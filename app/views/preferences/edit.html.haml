@@ -1,7 +1,7 @@
 - title "Editar configuración"
 
 #preferences.edit
-  - form_for :preference, :url => preference_path(@preference), :html => {:method => :put} do |f|
+  - form_for @preference, :url => preference_path(@preference), :html => {:method => :put} do |f|
     = render :partial => 'form', :locals => {:f => f}
     %p.enviar
       = f.submit "Guardar configuración"

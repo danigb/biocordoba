@@ -2,7 +2,7 @@
   = f.label :company_name, "Nombre de la compañía <span class ='required'>*</span>"
   = f.text_field :company_name, :size => 15
   = f.error_message_on :company_name
-  = error_message_on :user,:login
+  -# = error_message_on :user,:login
 
 - fields_for(:user) do |u|
   %p
