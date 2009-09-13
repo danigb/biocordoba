@@ -346,7 +346,7 @@ input.white {
       display: block;
       width: auto;
       cursor: pointer; }
-  #new-message #message_send_all {
+  #new-message #message_send_all, #new-message #message_send_exhibitors, #new-message #message_send_national_buyers, #new-message #message_send_international_buyers, #new-message .assistance-checkbox {
     width: auto;
     background: none; }
   #new-message .formError {

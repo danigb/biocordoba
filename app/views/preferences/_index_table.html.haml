@@ -20,7 +20,7 @@
             - when(3)
               Compradores internacionales
             - else
-              = preference.users.map{|e| link_to(e.login, edit_user_path(e)) + " "}
+              = preference.users.map{|e| link_to_profile(e.profile) + " "}
         %td=h preference.meetings_number 
         %td
           =h preference.meetings_duration
