@@ -6,35 +6,35 @@
   - if profile.address.present?
     %p 
       Dirección:
-      = h profile_value(profile.address)
+      = h profile.address
   - if profile.zip_code.present?
     %p 
       C.P:
-      = h profile_value(profile.zip_code)
+      = h profile.zip_code
   - if !profile.country.nil?
     %p 
       País:
-      = profile.country.name
+      = h profile.country.name
   - if !profile.province.nil?
     %p 
       Provincia:
-      = profile.province.name 
+      = h profile.province.name 
   - if !profile.town.nil?
     %p 
       Localidad:
-      = profile.town.name
+      = h profile.town.name
   - if profile.languages.present?
     %p 
       Idiomas que habla:
-      = profile_value(profile.languages)
+      = h profile.languages
   - if profile.phone.present?
     %p 
       Teléfono:
-      = profile_value(profile.phone)
+      = h profile.phone
   - if profile.fax.present?
     %p 
       Fax:
-      = profile_value(profile.fax)
+      = h profile.fax
   %p 
     Sectores:
     = profile.sectors.inject(""){|sum, e| sum += "#{e.name}, "}.gsub(/, $/, ".")
@@ -42,27 +42,27 @@
     - if profile.products.present?
       %p 
         Productos:
-        = profile_value(profile.products)
+        = profile.products
     - if profile.packages.present?
       %p 
         Envases:
-        = profile_value(profile.packages)
+        = h profile.packages
   - elsif profile.user.is_buyer?
     - if profile.commercial_profile.present?
       %p 
         Perfil comercial:
-        = profile_value(profile.commercial_profile)
+        = h profile.commercial_profile
     
   - if profile.user.email.present?
     %p 
       Email:
-      = profile.user.email
+      = h profile.user.email
   - if profile.website.present?
     %p 
       Web:
-      = profile_value(profile.website)
+      = link_to profile.website, profile.website, :target => '_blank'
   - if profile.stand.present?
     %p 
       Stand de Andalucía Sabor:
-      = profile_value(profile.stand)
+      = h profile.stand
 
