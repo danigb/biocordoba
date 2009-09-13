@@ -29,6 +29,6 @@ class Profile < ActiveRecord::Base
   end
 
   def sectors_string
-    self.sectors.inject(""){|sum, e| sum += "#{e.name}, "}.gsub(/, $/, ".")
+    self.sectors.inject(""){|sum, e| sum += "#{e.name.capitalize}, "}.gsub(/, $/, ".")
   end
 end

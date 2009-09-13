@@ -37,12 +37,13 @@
         - @users_by_sector.each do |country, users_by_country|
           %h3
             = country.capitalize
-          - users_grouped = users_by_country.group_by{|u| u.profile.sectors.first.name}
-          - users_grouped.each do |sector, users|
-            %h4= sector.capitalize unless params[:search][:profile_sectors_id_equals].present?
-            - for user in users
-              %li
-                = link_to user.profile.company_name.upcase, profile_path(user.profile), :class => "profile-link hide-search-button", :id => user.profile.id
-                -# = link_to_profile(user.profile, user.profile.company_name.upcase)
+          -# - users_grouped = users_by_country.group_by{|u| u.profile.sectors.first.name}
+          -# - users_grouped.each do |sector, users|
+          -#   %h4= sector.capitalize unless params[:search][:profile_sectors_id_equals].present?
+          - for user in users_by_country
+            %li
+              = link_to user.profile.company_name.upcase, profile_path(user.profile), :class => "profile-link hide-search-button", :id => user.profile.id
+              .sectors.pink= user.profile.sectors_string
+              -# = link_to_profile(user.profile, user.profile.company_name.upcase)
 
 

@@ -59,6 +59,9 @@ h4 {
   margin-left: 20px;
   list-style: none; }
 
+#results .sectors {
+  margin-left: 10px; }
+
 p {
   margin: 0 0 1em 0; }
   p.green {
