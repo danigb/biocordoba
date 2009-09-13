@@ -8,7 +8,22 @@
 "DE","NIKOLAI GOURMET","www.nikolai-gourmet.de","Alemán, Inglés, Francés, Italiano, Español básico",6
 "DE","HANS KREMERS","www.kremers-wurst.de","Alemán e Inglés",13
 "DE","HANS KREMERS","www.kremers-wurst.de","Alemán e Inglés",4
-"DE","SOLERA LEBENSMITTEL","www.solera-koen.de","Español y Alemán","Todos"
+"DE","SOLERA LEBENSMITTEL","www.solera-koen.de","Español y Alemán",1
+"DE","SOLERA LEBENSMITTEL",,,2
+"DE","SOLERA LEBENSMITTEL",,,3
+"DE","SOLERA LEBENSMITTEL",,,4
+"DE","SOLERA LEBENSMITTEL",,,5
+"DE","SOLERA LEBENSMITTEL",,,6
+"DE","SOLERA LEBENSMITTEL",,,7
+"DE","SOLERA LEBENSMITTEL",,,8
+"DE","SOLERA LEBENSMITTEL",,,9
+"DE","SOLERA LEBENSMITTEL",,,10
+"DE","SOLERA LEBENSMITTEL",,,11
+"DE","SOLERA LEBENSMITTEL",,,12
+"DE","SOLERA LEBENSMITTEL",,,13
+"DE","SOLERA LEBENSMITTEL",,,14
+"DE","SOLERA LEBENSMITTEL",,,15
+"DE","SOLERA LEBENSMITTEL",,,16
 "DE","ALISA GMBH","www.alisafood.com","Alemán, Español e Inglés",1
 "DE","ALISA GMBH","www.alisafood.com","Alemán, Español e Inglés",16
 "DE","ALISA GMBH","www.alisafood.com","Alemán, Español e Inglés",2
@@ -71,7 +86,7 @@
 "CZ","JAROMIR STEINHAUSER SRO","www.steinex.cz","Español e Inglés",2
 "CZ","JAROMIR STEINHAUSER SRO","www.steinex.cz","Español e Inglés",13
 "CZ","JAROMIR STEINHAUSER SRO","www.steinex.cz","Español e Inglés",3
-"CL","CASO Y CIA",,"Español",
+"CL","CASO Y CIA",,"Español",1
 "CL","SUPERMERCADOS MONTSERRAT","www.montserrat.cl","Español",3
 "CL","SUPERMERCADOS MONTSERRAT","www.montserrat.cl","Español",6
 "CL","SUPERMERCADOS MONTSERRAT","www.montserrat.cl","Español",1
@@ -157,7 +172,7 @@
 "MX","COM LAT","www.comlatinc.com","Español",13
 "MX","COM LAT","www.comlatinc.com","Español",6
 "MX","COM LAT","www.comlatinc.com","Español",4
-"MX","SORIANA",,"Español",
+"MX","SORIANA",,"Español",1
 "PA","GRUPO REY","www.smrey.com","Español",1
 "PA","GRUPO REY","www.smrey.com","Español",2
 "PA","GRUPO REY","www.smrey.com","Español",13
@@ -178,19 +193,34 @@
 "PL","POLSKIE MLEKO",,"Inglés y Español básico",6
 "PL","POLSKIE MLEKO",,"Inglés y Español básico",10
 "PL","POLSKIE MLEKO",,"Inglés y Español básico",15
-"PT","EL CORTE INGLES",,"Español",
-"PT","INTERMARCHE",,"Español",
-"PT","SABORES IBERICOS","www.saboresibericos.pt","Español",
+"PT","EL CORTE INGLES",,"Español",1
+"PT","INTERMARCHE",,"Español",1
+"PT","SABORES IBERICOS","www.saboresibericos.pt","Español",1
 "GB","JOHN & PASCALIS","www.johnpasc.co.uk","Inglés y Griego",1
 "GB","JOHN & PASCALIS","www.johnpasc.co.uk","Inglés y Griego",2
 "GB","JOHN & PASCALIS","www.johnpasc.co.uk","Inglés y Griego",6
 "GB","JOHN & PASCALIS","www.johnpasc.co.uk","Inglés y Griego",4
-"GB","BRINDISA",,,
-"GB","THE REAL OLIVE COMPANY","www.therealolivecompany.co.uk","IN, FRANCES","Todo"
-"RU","OOO ALLIGATOR","www.alligator-product.ru","INGLES (Básico)",1
-"RU","OOO ALLIGATOR","www.alligator-product.ru","INGLES (Básico)",2
-"RU","OOO ALLIGATOR","www.alligator-product.ru","INGLES (Básico)",13
-"RU","OOO ALLIGATOR","www.alligator-product.ru","INGLES (Básico)",11
+"GB","BRINDISA",,,1
+"GB","THE REAL OLIVE COMPANY","www.therealolivecompany.co.uk","Inglés y Francés",1
+"GB","THE REAL OLIVE COMPANY",,,2
+"GB","THE REAL OLIVE COMPANY",,,3
+"GB","THE REAL OLIVE COMPANY",,,4
+"GB","THE REAL OLIVE COMPANY",,,5
+"GB","THE REAL OLIVE COMPANY",,,6
+"GB","THE REAL OLIVE COMPANY",,,7
+"GB","THE REAL OLIVE COMPANY",,,8
+"GB","THE REAL OLIVE COMPANY",,,9
+"GB","THE REAL OLIVE COMPANY",,,10
+"GB","THE REAL OLIVE COMPANY",,,11
+"GB","THE REAL OLIVE COMPANY",,,12
+"GB","THE REAL OLIVE COMPANY",,,13
+"GB","THE REAL OLIVE COMPANY",,,14
+"GB","THE REAL OLIVE COMPANY",,,15
+"GB","THE REAL OLIVE COMPANY",,,16
+"RU","OOO ALLIGATOR","www.alligator-product.ru","Inglés básico",1
+"RU","OOO ALLIGATOR","www.alligator-product.ru","Inglés básico",2
+"RU","OOO ALLIGATOR","www.alligator-product.ru","Inglés básico",13
+"RU","OOO ALLIGATOR","www.alligator-product.ru","Inglés básico",11
 "RU","ECOFOOD","www.premier-food.ru","Inglés",1
 "RU","ECOFOOD","www.premier-food.ru","Inglés",16
 "RU","ECOFOOD","www.premier-food.ru","Inglés",2

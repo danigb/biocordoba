@@ -80,8 +80,9 @@ task :load_exhibitors => :environment do
     
   end
 end
+
 desc "Importación de compradores internacionales" 
-task :load_international_buyers => :environment do
+task :old_load_international_buyers => :environment do
 
   file = File.join(RAILS_ROOT, "resources", "internacional.csv")
   FasterCSV.read(file).each do |row|
@@ -100,5 +101,35 @@ task :load_international_buyers => :environment do
       puts "[#{Time.now.to_s(:short)}] Comprador internacional creado, #{company_name}"
     end
     
+  end
+end
+
+desc "Importación de compradores internacionales" 
+task :load_international_buyers => :environment do
+
+  file = File.join(RAILS_ROOT, "resources", "internacional_final.csv")
+  FasterCSV.read(file)[1..-1].each do |row|
+    country_code, company_name, website, languages, sector_id = row
+
+    sector = Sector.find(sector_id)
+    #Comprobamos si existe un usuario con ese mismo nombre
+    #Si existe, el csv nos está diciendo que tiene otro sector
+    if(u = User.find_by_login(company_name.normalize))
+      u.profile.sectors << sector
+    else
+      user = User.new(:login => company_name.normalize, :password => Haddock::Password.generate(10), :preference_id => 3)
+      user.roles << Role.find_by_title('international_buyer')
+
+      if user.save!
+        country = Country.find_by_code(country_code)
+        profile = Profile.new(:company_name => company_name, :website => website.blank? ? "" : "http://#{website}", :user_id => user.id,
+          :country => country, :languages => languages)
+        sleep 0.2
+        profile.sectors << sector
+        profile.save!
+        puts "[#{Time.now.to_s(:short)}] Comprador internacional creado, #{company_name}"
+      end
+    end
+      
   end
 end
