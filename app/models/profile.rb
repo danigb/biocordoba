@@ -28,4 +28,7 @@ class Profile < ActiveRecord::Base
      self[:country_id] || 23
   end
 
+  def sectors_string
+    self.sectors.inject(""){|sum, e| sum += "#{e.name}, "}.gsub(/, $/, ".")
+  end
 end

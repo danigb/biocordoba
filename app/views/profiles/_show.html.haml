@@ -37,7 +37,7 @@
       = h profile.fax
   %p 
     Sectores:
-    = profile.sectors.inject(""){|sum, e| sum += "#{e.name}, "}.gsub(/, $/, ".")
+    = profile.sectors_string
   - if profile.user.is_exhibitor?
     - if profile.products.present?
       %p 
