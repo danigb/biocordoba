@@ -53,9 +53,10 @@
         Perfil comercial:
         = profile_value(profile.commercial_profile)
     
-  %p 
-    Email:
-    = profile.user.email
+  - if profile.user.email.present?
+    %p 
+      Email:
+      = profile.user.email
   - if profile.website.present?
     %p 
       Web:
