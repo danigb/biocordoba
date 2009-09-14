@@ -1,5 +1,6 @@
 class Assistance < ActiveRecord::Base
   belongs_to :preference
+  after_create :default_assistances
 
   validates_presence_of :day, :arrive, :leave, :preference_id
 
@@ -24,5 +25,11 @@ class Assistance < ActiveRecord::Base
     #   errors.add(:leave, "El día está fuera del evento")
     # end
 
+  end
+
+  def default_assistances
+    %w(22 23 24).each do |day|
+      Assistance.create(:day => Date.parse("#{day}-09-2009"), :preference_id => self.id, :arrive => Time.parse("10:00"), :leave => Time.parse("19:00"))
+    end
   end
 end

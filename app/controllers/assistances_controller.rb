@@ -7,7 +7,6 @@ class AssistancesController < ApplicationController
       @preference = Preference.new(Preference.first.attributes)
       @preference.save!
       @preference.users << @user
-      create_default_assistances(@preference)
       redirect_to assistances_path(:preference_id => @preference.id, :user_id => @user.id)
     end
       @assistances = @preference.assistances
@@ -84,9 +83,4 @@ class AssistancesController < ApplicationController
     @assistance = Assistance.find(params[:id]) if params[:id]
   end
 
-  def create_default_assistances(preference)
-    %w(22 23 24).each do |day|
-      Assistance.create(:day => Date.parse("#{day}-09-2009"), :preference_id => preference.id, :arrive => Time.parse("10:00"), :leave => Time.parse("19:00"))
-    end
-  end
 end
