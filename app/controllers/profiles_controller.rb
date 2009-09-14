@@ -15,9 +15,9 @@ class ProfilesController < ApplicationController
         @user = User.find_by_login(params[:id])
         @profile = @user.profile if @user
         if @profile && !@profile.commercial_profile.blank?
-          render :text => "<p class='enviar'>PERFIL COMERCIAL</p>" + @profile.commercial_profile
+          render :text => "<p class='enviar'>PERFIL COMERCIAL</p>" + @profile.commercial_profile + "<p class='enviar'><input type='submit' value='Solicitar cita' name='commit'/> </p>" 
         else
-          render :text => "<div class='pink'>Sin información en su perfil comercial</div>" 
+          render :text => "<div class='pink'>Sin información en su perfil comercial</div><p class='enviar'><input type='submit' value='Solicitar cita' name='commit'/> </p>" 
         end
       }
     end
