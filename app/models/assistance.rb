@@ -16,7 +16,7 @@ class Assistance < ActiveRecord::Base
       errors.add(:leave, "La hora está fuera del horario del evento")
     end
 
-    if self.arrive.hour > self.preference.event_day_start_at.hour
+    if self.arrive.hour < self.preference.event_day_start_at.hour
       errors.add(:arrive, "La hora está fuera del horario del evento")
     end
     #Hay que comprobar que no se pisen
