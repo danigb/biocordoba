@@ -33,7 +33,8 @@ module WeeklyHelper
       @hours = ["10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00"]
       @start_hour = 10 
       @end_hour = 19
-      @intervalo = options[:assistance].present? ? options[:assistance] : (10..19).to_a #Nuestro
+      # @intervalo = options[:assistance].present? ? options[:assistance] : (10..19).to_a #Nuestro
+      @intervalo = options[:assistance] || (10..19).to_a #Nuestro
 
       if options[:days] > 1
         @header_row = "header_row"
