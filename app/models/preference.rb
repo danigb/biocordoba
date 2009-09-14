@@ -1,26 +1,11 @@
 class Preference < ActiveRecord::Base
 
   has_many :users
+  has_many :assistances
 
   validates_presence_of :meetings_number, :meetings_duration, :event_start_day, :event_end_day, :event_day_start_at, :event_day_end_at
   validates_numericality_of :meetings_number, :meetings_duration
 
-  def validate
-    %w(22 23 24).each do |e|
-      #Relación hora entrada/inicio evento, comprobamos que no sea cero, pues cero indica que no va.
-      if(eval("day_#{e}_arrival.hour") != 0 && eval("day_#{e}_arrival") < event_day_start_at)
-        errors.add("day_#{e}_arrival", "La hora de entrada debe estar dentro del horario de la feria")
-      end
-      #Relación hora salida/fin evento
-      if(eval("day_#{e}_leave") != 0 && eval("day_#{e}_leave") > event_day_end_at)
-        errors.add("day_#{e}_leave", "La hora de salida debe estar dentro del horario de la feria")
-      end
-      #Relación hora entrada/salida
-      if(eval("day_#{e}_leave") < eval("day_#{e}_arrival"))
-        errors.add("day_#{e}_leave", "La hora de salida debe ser mayor que la de entrada")
-      end
-    end
-  end
   #Tres configuraciones por defecto
   named_scope :general_for_exhibitor, :conditions => {:id => 1}
   named_scope :general_for_national_buyer, :conditions => {:id => 2}

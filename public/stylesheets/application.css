@@ -707,3 +707,10 @@ input.white {
 .no_assistance {
   background-color: #000;
   background-image: url(../images/grid2_disabled.png); }
+
+#assistances table {
+  text-align: center; }
+  #assistances table td, #assistances table th {
+    padding: 0 5px; }
+  #assistances table th {
+    border-bottom: 2px solid white; }

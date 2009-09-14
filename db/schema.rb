@@ -9,7 +9,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090911104602) do
+ActiveRecord::Schema.define(:version => 20090914151324) do
+
+  create_table "assistances", :force => true do |t|
+    t.date     "day"
+    t.time     "arrive"
+    t.time     "leave"
+    t.integer  "preference_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "countries", :force => true do |t|
     t.string "name"
@@ -65,12 +74,6 @@ ActiveRecord::Schema.define(:version => 20090911104602) do
     t.time     "event_day_end_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.time     "day_22_arrival"
-    t.time     "day_23_arrival"
-    t.time     "day_24_arrival"
-    t.time     "day_22_leave"
-    t.time     "day_23_leave"
-    t.time     "day_24_leave"
   end
 
   create_table "profiles", :force => true do |t|

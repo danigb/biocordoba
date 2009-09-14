@@ -153,31 +153,36 @@ $(document).ready(function() {
   $("#user_profile_attributes_country_id").change(function(){
     if(this.value != 23){
       $("#province-select").hide();
-      $("#town").hide();
+      $("#town").hide()
     }else{
       $("#province-select").show();
     }  
   });
 
-  //Preferences
-  $(".assistance-checkbox").click(function(){
-      if(!this.checked){
-        $("#preference_day_"+this.id+"_arrival_4i option:eq(0)").attr("selected", "selected");
-        $("#preference_day_"+this.id+"_leave_4i option:eq(0)").attr("selected", "selected");
-        //User form
-        $("#user_preference_attributes_day_"+this.id+"_arrival_4i option:eq(0)").attr("selected", "selected");
-        $("#user_preference_attributes_day_"+this.id+"_leave_4i option:eq(0)").attr("selected", "selected");
-        $("#day-"+this.id).hide();
-      }else{
-        $("#preference_day_"+this.id+"_arrival_4i option:eq(10)").attr("selected", "selected");
-        $("#preference_day_"+this.id+"_leave_4i option:eq(19)").attr("selected", "selected");
-        //User
-        $("#user_preference_attributes_day_"+this.id+"_arrival_4i option:eq(10)").attr("selected", "selected");
-        $("#user_preference_attributes_day_"+this.id+"_leave_4i option:eq(19)").attr("selected", "selected");
-        $("#day-"+this.id).show();
-      }
+  //Asistances
+  $("#new_assistance_button").live("click", function(e){
+    $.post('/assistances.js', $("#new_assistance select, #new_assistance input, #preference_id").serialize(), null, "script");
+    e.preventDefault();
   });
-});
+//   //Preferences
+//   $(".assistance-checkbox").click(function(){
+//       if(!this.checked){
+//         $("#preference_day_"+this.id+"_arrival_4i option:eq(0)").attr("selected", "selected");
+//         $("#preference_day_"+this.id+"_leave_4i option:eq(0)").attr("selected", "selected");
+//         //User form
+//         $("#user_preference_attributes_day_"+this.id+"_arrival_4i option:eq(0)").attr("selected", "selected");
+//         $("#user_preference_attributes_day_"+this.id+"_leave_4i option:eq(0)").attr("selected", "selected");
+//         $("#day-"+this.id).hide();
+//       }else{
+//         $("#preference_day_"+this.id+"_arrival_4i option:eq(10)").attr("selected", "selected");
+//         $("#preference_day_"+this.id+"_leave_4i option:eq(19)").attr("selected", "selected");
+//         //User
+//         $("#user_preference_attributes_day_"+this.id+"_arrival_4i option:eq(10)").attr("selected", "selected");
+//         $("#user_preference_attributes_day_"+this.id+"_leave_4i option:eq(19)").attr("selected", "selected");
+//         $("#day-"+this.id).show();
+//       }
+//   });
+ });
 
 function load_town(province_id, f){
   $.get('/ajax/towns', {'province_id': province_id, 'f': f}, null, "script" ); return false;
