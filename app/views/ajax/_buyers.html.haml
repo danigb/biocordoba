@@ -5,7 +5,7 @@
 - else
   = label_tag 'guest_id', "COMPRADORES"
   - form_tag '/ajax/to_meeting' do
-    = select :guest, :id, buyers.map{|b| [b.profile.company_name.capitalize, b.to_param]}, :include_blank => true
+    = select :guest, :id, buyers.map{|b| [b.profile.company_name.capitalize, b.to_param]}, {:include_blank => true}, :onchange => "showOrHideSubmitButton(this.options[this.selectedIndex].value)"
     = hidden_field :host, :id, :value => current_user.to_param
 
     %p#submit.enviar{:style => 'display:none;'}

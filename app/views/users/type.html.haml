@@ -23,6 +23,11 @@
                 - unless user.is_admin? || user.is_extenda?
                   = link_to "Editar", edit_user_path(user.id)
                   |
+                  - if [1,2,3].include?(user.preference.id)
+                    = link_to "Asistencia", assistances_path(:preference_id => user.preference, :user_id => user.id), :confirm => '¿Quiere modificar los parámetros por defecto de asistencia de este usuario?'
+                  - else
+                    = link_to "Asistencia", assistances_path(:preference_id => user.preference, :user_id => user.id)
+                  |
 
                   = link_to "Eliminar", user_path(user.id, :type => params[:type]), :confirm => '¿Estás seguro?', :method => :delete 
                   |

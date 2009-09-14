@@ -1,0 +1,5 @@
+%h2 Cree o modifique la asistencia de este usuario a la feria
+#assistances
+  = render :partial => "assistance_table", :locals => {:assistances => @assistances}
+o
+= link_to "Volver", users_path

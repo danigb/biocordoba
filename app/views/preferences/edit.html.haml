@@ -3,6 +3,9 @@
 #preferences.edit
   - form_for @preference, :url => preference_path(@preference), :html => {:method => :put} do |f|
     = render :partial => 'form', :locals => {:f => f}
+    %h2 Horario de asistencia
+    #assistances
+      = render :partial => "/assistances/assistance_table", :locals => {:assistances => @preference.assistances}
     %p.enviar
       = f.submit "Guardar configuración"
       %span= link_to 'Volver', preferences_path

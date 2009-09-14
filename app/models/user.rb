@@ -202,9 +202,12 @@ class User < ActiveRecord::Base
 
   def assistance_day(dia)
     begin
-      arrive = eval("self.preference.day_#{dia}_arrival.hour")
-      leave = eval("(self.preference.day_#{dia}_leave).hour")
-      res = (arrive.to_i..leave.to_i).to_a
+      assistances = self.preference.assistances.find(:all, :conditions => ["DAY(day) = ?", dia], :order => 'arrive')
+      res = []
+      assistances.each do |e|
+        res += (e.arrive.hour..e.leave.hour).to_a
+      end
+      res
     rescue
       []
     end
