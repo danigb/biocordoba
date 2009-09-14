@@ -157,6 +157,7 @@ class UsersController < ApplicationController
   def send_password
     @user = User.find(params[:id])
     if @user
+      @user.update_attribute(:password, String.password)
       UserMailer.send_later(:deliver_remember_password, @user) 
       flash[:notice] = "Contraseña enviada"
     else

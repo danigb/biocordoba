@@ -27,7 +27,7 @@
                   = link_to "Eliminar", user_path(user.id, :type => params[:type]), :confirm => '¿Estás seguro?', :method => :delete 
                   |
 
-                = link_to "Enviar contraseña", send_password_user_path(user.id), :confirm => '¿Estas seguro?', :method => :post
+                = link_to "Regenerar y enviar contraseña", send_password_user_path(user.id), :confirm => 'Va a regenerar una nueva contraseña y enviarla por email, ¿Estas seguro?', :method => :post
 
 
   = will_paginate @users

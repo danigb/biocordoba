@@ -32,6 +32,7 @@ task :old_load_exhibitors => :environment do
         profile.sectors << sector
         profile.save!
         puts "[#{Time.now.to_s(:short)}] Expositor creado, #{company_name}"
+        sleep 0.5
       end
     end
     
@@ -68,7 +69,7 @@ task :load_exhibitors => :environment do
           :products => products, :packages => packages, :contact_person => "#{contact_person_name} #{contact_person_surname}",
           :province => province, :town => town)
 
-        sleep 0.2
+        sleep 0.5
         profile.sectors << sector
         profile.save!
         if town.nil?
@@ -95,7 +96,7 @@ task :old_load_international_buyers => :environment do
       country = Country.find_by_code(country_code)
       profile = Profile.new(:company_name => company_name, :phone => phone, :website => website.blank? ? "" : "http://#{website}", :user_id => user.id,
         :country => country, :contact_person => contact_person, :languages => languages, :commercial_profile => commercial_profile)
-      sleep 0.2
+      sleep 0.5
       profile.sectors << Sector.first
       profile.save!
       puts "[#{Time.now.to_s(:short)}] Comprador internacional creado, #{company_name}"
@@ -124,7 +125,7 @@ task :load_international_buyers => :environment do
         country = Country.find_by_code(country_code)
         profile = Profile.new(:company_name => company_name, :website => website.blank? ? "" : "http://#{website}", :user_id => user.id,
           :country => country, :languages => languages)
-        sleep 0.2
+        sleep 0.5
         profile.sectors << sector
         profile.save!
         puts "[#{Time.now.to_s(:short)}] Comprador internacional creado, #{company_name}"
