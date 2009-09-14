@@ -18,9 +18,10 @@
   = f.label :event_day_end_at, "Hora final del evento"
   = f.time_select :event_day_end_at 
 <!-- Asistencia -->
-%h2 Asistencia al evento
-#assistances
-  = render :partial => '/assistances/assistance_table', :locals => {:assistances => @preference.assistances}
+-# - if @assistance
+-#   %h2 Asistencia al evento
+-#   #assistances
+-#     = render :partial => '/assistances/assistance_table', :locals => {:assistances => @preference.assistances}
 -# %p
 -#   = f.label :day_22_assist, "Asiste el día 22"
 -#   = check_box_tag :day_22_assist, 1, @preference.nil? || @preference.day_22_arrival.hour != 0, :id => 22, :class => 'assistance-checkbox'

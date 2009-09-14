@@ -1,7 +1,7 @@
 class Preference < ActiveRecord::Base
 
   has_many :users
-  has_many :assistances
+  has_many :assistances, :order => :day
 
   validates_presence_of :meetings_number, :meetings_duration, :event_start_day, :event_end_day, :event_day_start_at, :event_day_end_at
   validates_numericality_of :meetings_number, :meetings_duration

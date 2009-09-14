@@ -1,0 +1,29 @@
+%table
+  %tr
+    %th Día
+    %th Hora entrada
+    %th Hora salida
+    %th Opciones
+  - assistances.each do |a|
+    %tr
+      %td= a.day.to_s(:short)
+      %td= a.arrive.to_s(:hour_only)
+      %td= a.leave.to_s(:hour_only)
+      %td
+        = link_to_remote "Editar", :url => edit_assistance_path(:id => a.id, :preference_id => @preference.id), :method => :get
+        |
+        = link_to_remote "Eliminar", :url => assistance_path(:id => a.id, :preference_id => @preference.id), :method => :delete
+%p= link_to "Crear nuevo intervalo de asistencia", "#", :onclick => "$('#new_assistance').show();"
+#new_assistance{:style => "display:none;"}
+  %p
+    = hidden_field_tag "preference_id", @preference.id
+    = label :assistance, "Día"
+    = date_select :assistance, :day
+  %p
+    = label :assistance, "Hora llegada"
+    = time_select :assistance, :arrive, :minute_step => 60
+  %p
+    = label :assistance, "Hora de salida"
+    = time_select :assistance, :leave, :minute_step => 60
+  %p
+    = submit_tag "Crear", :id => 'new_assistance_button'
