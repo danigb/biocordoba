@@ -20,10 +20,10 @@
               %td= h user.login
               %td= h user.password
               %td.actions
-                = link_to "Editar", edit_user_path(user.id)
-                |
+                - unless user.is_admin? || user.is_extenda?
+                  = link_to "Editar", edit_user_path(user.id)
+                  |
 
-                - unless user.login == "admin"
                   = link_to "Eliminar", user_path(user.id, :type => params[:type]), :confirm => '¿Estás seguro?', :method => :delete 
                   |
 
