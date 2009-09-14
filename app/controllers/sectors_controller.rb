@@ -7,7 +7,7 @@ class SectorsController < ApplicationController
     @sectors = Sector.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html {render :layout => "admin"} # index.html.erb
       format.xml  { render :xml => @sectors }
     end
   end

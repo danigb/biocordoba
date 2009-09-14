@@ -21,13 +21,13 @@ class MessagesController < ApplicationController
     
     # @messages.reverse! if waps.last == "desc"
     @messages = @messages.paginate(:per_page => 40, :page => params[:page])
-    render :action => 'index'
+    render :action => 'index', :layout => 'admin'
   end
 
   def sent
     @messages = current_user.messages_sent.paginate(:per_page => 40, :page => params[:page],
       :include => {:receivers => :profile})
-    render :action => 'index'
+    render :action => 'index', :layout => 'admin'
   end
   
   def new

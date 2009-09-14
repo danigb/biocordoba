@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def index
     @roles = Role.all
+    render :layout => "application"
   end
 
   def new
@@ -114,6 +115,7 @@ class UsersController < ApplicationController
   def type
     @role = Role.find_by_title(params[:type])
     @users = @role.users.paginate(:per_page => 20, :page => params[:page], :order => params[:sort])
+    render :layout => "admin"
   end
 
   def destroy

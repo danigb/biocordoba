@@ -41,12 +41,10 @@
       #content
         .wrapper
           = render :partial => 'shared/left_column'
-          .main_content
-            = yield
-          #right-column 
+          .main_content.preferences
             - flash.each do |name, msg|
               = content_tag :div, msg, :id => "flash_#{name}", :class => 'flash-message'
-            = render :partial => 'shared/right_column'
+            = yield
 
       #footer
         .wrapper
@@ -55,3 +53,4 @@
             = mail_to "andaluciasabor@andaluciasabor.es", "andaluciasabor@andaluciasabor.es"
             = " | "
             = link_to "Aviso legal","http://www.andaluciasabor.es/index.php?section=aviso-legal"
+
