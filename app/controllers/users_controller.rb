@@ -157,9 +157,13 @@ class UsersController < ApplicationController
   def send_password
     @user = User.find(params[:id])
     if @user
-      @user.update_attribute(:password, String.password)
-      UserMailer.send_later(:deliver_remember_password, @user) 
-      flash[:notice] = "Contraseña enviada"
+      @user.update_attribute(:password, String.password) 
+      if @user.email.present?
+        UserMailer.send_later(:deliver_remember_password, @user)
+        flash[:notice] = "Contraseña enviada"
+      else
+        flash[:notice] = "Atención: No se le puede enviar pues no tiene definida una cuenta de email."
+      end
     else
       flash[:error] = "Error al enviar la contraseña"
     end
