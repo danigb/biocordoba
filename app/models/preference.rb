@@ -25,21 +25,4 @@ class Preference < ActiveRecord::Base
     end
   end
 
-  # def event_start_day
-  #   self[:event_start_day] || Event.start_day
-  # end
-
-  # def event_end_day
-  #   self[:event_end_day] || Event.end_day
-  # end
-
-  # %w(22 23 24).each do |n|
-  #   define_method "day_#{n}_arrival" do
-  #     self["day_#{n}_arrival"] || Event.start_day_and_hour
-  #   end
-
-  #   define_method "day_#{n}_leave" do
-  #     self["day_#{n}_leave"] || Event.end_day_and_hour
-  #   end
-  # end
 end
