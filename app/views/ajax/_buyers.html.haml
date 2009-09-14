@@ -8,5 +8,6 @@
     = select :guest, :id, buyers.map{|b| [b.profile.company_name.capitalize, b.to_param]}, :include_blank => true
     = hidden_field :host, :id, :value => current_user.to_param
 
-    #commercial-profile
+    %p#submit.enviar{:style => 'display:none;'}
+      = submit_tag 'Solicitar cita'
 

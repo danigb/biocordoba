@@ -9,19 +9,19 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def commercial_profile
-    respond_to do |format|
-      format.js{
-        @user = User.find_by_login(params[:id])
-        @profile = @user.profile if @user
-        if @profile && !@profile.commercial_profile.blank?
-          render :text => "<p class='enviar'>PERFIL COMERCIAL</p>" + @profile.commercial_profile + "<p class='enviar'><input type='submit' value='Solicitar cita' name='commit'/> </p>" 
-        else
-          render :text => "<div class='pink'>Sin información en su perfil comercial</div><p class='enviar'><input type='submit' value='Solicitar cita' name='commit'/> </p>" 
-        end
-      }
-    end
-  end
+  # def commercial_profile
+  #   respond_to do |format|
+  #     format.js{
+  #       @user = User.find_by_login(params[:id])
+  #       @profile = @user.profile if @user
+  #       if @profile && !@profile.commercial_profile.blank?
+  #         render :text => "<p class='enviar'>PERFIL COMERCIAL</p>" + @profile.commercial_profile + "<p class='enviar'><input type='submit' value='Solicitar cita' name='commit'/> </p>" 
+  #       else
+  #         render :text => "<div class='pink'>Sin información en su perfil comercial</div><p class='enviar'><input type='submit' value='Solicitar cita' name='commit'/> </p>" 
+  #       end
+  #     }
+  #   end
+  # end
 
   def new_external
     respond_to do |format|

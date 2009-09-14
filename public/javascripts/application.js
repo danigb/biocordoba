@@ -125,11 +125,16 @@ $(document).ready(function() {
   
   // /citas selector de empresa, mostramos su perfil comercial
   $("#guest_id:select").live("change", function(e){
-    $("#commercial-profile").load('/profiles/commercial_profile/'+this.value)
-    // $.get('/profiles/commercial_profile/'+this.value, {}, 
-    //   function(data){
-    //     $("#commercial-profile").html(data);
-    //   }, "text" ); 
+    if($(this).val() != ''){
+      $("#meetings #buyers #submit").show();
+    }else{
+      $("#meetings #buyers #submit").hide();
+    }
+    // $("#commercial-profile").load('/profiles/commercial_profile/'+this.value)
+    // // $.get('/profiles/commercial_profile/'+this.value, {}, 
+    // //   function(data){
+    // //     $("#commercial-profile").html(data);
+    // //   }, "text" ); 
   });
 
   //Ajax global options
@@ -178,8 +183,15 @@ function load_town(province_id, f){
   $.get('/ajax/towns', {'province_id': province_id, 'f': f}, null, "script" ); return false;
 }
 
-function load_buyers(sector_id){
-  $.get('/ajax/buyers', {'sector_id': sector_id}, null, "script" ); return false;
+$("#meetings #sector_id:select, #meetings #country_id:select").live("change", function(e){
+
+  if($("#sector_id").val() != ''){
+    load_buyers($("#meetings #sector_id:select").val(), $("#meetings #country_id:select").val());
+  }
+});
+
+function load_buyers(sector_id, country_id){
+  $.get('/ajax/buyers', {'sector_id': sector_id, 'country_id':country_id}, null, "script" ); return false;
 }
 
 function getMeetings(host_id, guest, date){

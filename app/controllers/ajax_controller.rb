@@ -13,11 +13,16 @@ class AjaxController < ApplicationController
   end
 
   def buyers
-    #Los ids de los usuarios con los que ya tenemos citas (1,2,3)
-    @buyers = User.buyers.find(:all, :include => {:profile => :sectors}, 
-      :conditions => ["sectors.id = ? AND users.id NOT IN (select m.guest_id from meetings m where m.host_id = #{current_user.id} 
-                     AND m.state != 'canceled')", params[:sector_id]] )
+    if params[:country_id].present?
+      conditions = ["sectors.id = ? AND users.id NOT IN (select m.guest_id from meetings m where m.host_id = #{current_user.id} 
+                     AND m.state != 'canceled') AND profiles.country_id = ?", params[:sector_id], params[:country_id]] 
+    else
+      conditions = ["sectors.id = ? AND users.id NOT IN (select m.guest_id from meetings m where m.host_id = #{current_user.id} 
+                     AND m.state != 'canceled')", params[:sector_id]] 
+    end
 
+    #Los ids de los usuarios con los que ya tenemos citas (1,2,3)
+    @buyers = User.buyers.find(:all, :include => {:profile => :sectors}, :conditions => conditions)
     respond_to do |format|
       format.js {
         render :update do |page|
