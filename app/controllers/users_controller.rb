@@ -138,7 +138,7 @@ class UsersController < ApplicationController
       @search = User.search(params[:search])
       @search.roles_title_like_any(current_user.is_exhibitor? ? ["international_buyer", "national_buyer"] : ["exhibitor"]) 
       @search.state_equals("enabled")
-      @users = @search.all(:include => [{:profile => :sectors, :profile => :country}, :roles])
+      @users = @search.all(:include => [{:profile => [:sectors, :country]}, :roles])
       # @users_by_sector = @users.group_by{|u| u.profile.sectors.first.name }
       @users_by_sector = @users.group_by{|u| u.profile.country.name }
     end

@@ -40,7 +40,7 @@
           -# - users_grouped = users_by_country.group_by{|u| u.profile.sectors.first.name}
           -# - users_grouped.each do |sector, users|
           -#   %h4= sector.capitalize unless params[:search][:profile_sectors_id_equals].present?
-          - for user in users_by_country
+          - for user in users_by_country.sort_by{|e| e.profile.company_name}
             %li
               = link_to user.profile.company_name.upcase, profile_path(user.profile), :class => "profile-link hide-search-button", :id => user.profile.id
               .sectors.pink= user.profile.sectors_string

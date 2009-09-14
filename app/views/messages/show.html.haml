@@ -14,7 +14,7 @@
         #flash_notice= "Este mensaje iba dirigido al comprador internacional #{link_to_profile @indirect_receiver.profile}"
       - else
         Para:
-        = current_user.profile.company_name
+        = h current_user.profile.company_name
 %p
   %strong
     Asunto:

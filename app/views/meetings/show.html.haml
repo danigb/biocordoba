@@ -4,7 +4,7 @@
     #flash_error
       Esta cita está cancelada.
     %p
-      = @meeting.cancel_reason.blank? ? "El interlocutor no ha dado ninguna razón para su cancelación" : "Razón: #{@meeting.cancel_reason}"
+      = @meeting.cancel_reason.blank? ? "El interlocutor no ha dado ninguna razón para su cancelación" : "Razón: #{h @meeting.cancel_reason}"
   - elsif @meeting.pending?
     #flash_error
       Esta cita está pendiente de aceptación.
@@ -35,7 +35,7 @@
   - if @guest || @admin_extenda
     #host-info-mini
       %p
-        = "Expositor: #{@meeting.host.profile.company_name.upcase} ("
+        = "Expositor: #{h @meeting.host.profile.company_name.upcase} ("
         = link_to "Más información"
         )
     #host-info= render :partial => 'profiles/show', :locals => {:profile => @meeting.host.profile}
