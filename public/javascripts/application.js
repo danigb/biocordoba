@@ -148,6 +148,7 @@ $(document).ready(function() {
   $("#user_profile_attributes_country_id").change(function(){
     if(this.value != 23){
       $("#province-select").hide();
+      $("#town").hide();
     }else{
       $("#province-select").show();
     }  
