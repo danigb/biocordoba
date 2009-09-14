@@ -20,7 +20,7 @@ task :old_load_exhibitors => :environment do
     if(u = User.find_by_login(company_name.normalize))
       u.profile.sectors << sector
     else
-      user = User.new(:login => company_name.normalize, :password => Haddock::Password.generate(10), :email => email, :preference_id => 1)
+      user = User.new(:login => company_name.normalize, :password => String.password, :email => email, :preference_id => 1)
       user.roles << Role.find_by_title('exhibitor')
 
       if user.save!
@@ -53,7 +53,7 @@ task :load_exhibitors => :environment do
     if(u = User.find_by_login(company_name.normalize))
       u.profile.sectors << sector
     else
-      user = User.new(:login => company_name.normalize, :password => Haddock::Password.generate(10), :email => email, :preference_id => 1)
+      user = User.new(:login => company_name.normalize, :password => String.password, :email => email, :preference_id => 1)
       user.roles << Role.find_by_title('exhibitor')
 
       phone = phone.gsub(" ","") if phone
@@ -88,7 +88,7 @@ task :old_load_international_buyers => :environment do
   FasterCSV.read(file).each do |row|
     country_code, company_name, website, email, contact_person, languages, phone, commercial_profile = row
 
-    user = User.new(:login => company_name.normalize, :password => Haddock::Password.generate(10), :email => email, :preference_id => 3)
+    user = User.new(:login => company_name.normalize, :password => String.password, :email => email, :preference_id => 3)
     user.roles << Role.find_by_title('international_buyer')
 
     if user.save!
@@ -117,7 +117,7 @@ task :load_international_buyers => :environment do
     if(u = User.find_by_login(company_name.normalize))
       u.profile.sectors << sector
     else
-      user = User.new(:login => company_name.normalize, :password => Haddock::Password.generate(10), :preference_id => 3)
+      user = User.new(:login => company_name.normalize, :password => String.password, :preference_id => 3)
       user.roles << Role.find_by_title('international_buyer')
 
       if user.save!

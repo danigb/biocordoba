@@ -21,7 +21,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    @user.password = Haddock::Password.generate(10)
+    # @user.password = Haddock::Password.generate(10)
+    @user.password = String.password
 
     unless @user.profile.company_name.blank?
       @user.login = @user.profile.company_name.normalize 
@@ -60,7 +61,7 @@ class UsersController < ApplicationController
 
   def create_admin_extenda
     @user = User.new(params[:user])
-    @user.password = Haddock::Password.generate(10)
+    @user.password = String.password
 
     if @user.save
       unless @user.login.blank?

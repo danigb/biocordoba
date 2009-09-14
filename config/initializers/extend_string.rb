@@ -56,4 +56,9 @@ class String
     end
     self
   end
+
+  def self.password(length=5)
+    Digest::MD5.hexdigest(Time.now.to_s)[0..length]
+    #Haddock::Password.generate(length)
+  end
 end
