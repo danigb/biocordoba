@@ -3,6 +3,7 @@ class PreferencesController < ApplicationController
 
   def index
     @preferences = Preference.all
+    render :layout => "admin"
   end
   
   def edit
