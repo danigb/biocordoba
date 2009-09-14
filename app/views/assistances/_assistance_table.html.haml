@@ -14,7 +14,9 @@
         |
         = link_to_remote "Eliminar", :url => assistance_path(:id => a.id, :preference_id => @preference.id), :method => :delete
 %p= link_to "Crear nuevo intervalo de asistencia", "#", :onclick => "$('#new_assistance').show();"
+
 #new_assistance{:style => "display:none;"}
+  #errors
   %p
     = hidden_field_tag "preference_id", @preference.id
     = label :assistance, "Día"

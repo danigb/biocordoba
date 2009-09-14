@@ -34,8 +34,17 @@ class AssistancesController < ApplicationController
           end
         }
       end
+    else
+      respond_to do |format|
+        format.js{
+          render :update do |page|
+            page[:errors].replace_html("<div class='flash-message' id='flash_error'>Las fechas no son correctas</div>")
+          end
+        }
+      end
     end
   end
+
 
   def destroy
     @assistance = @preference.assistances.find(params[:id])
@@ -53,14 +62,18 @@ class AssistancesController < ApplicationController
 
   def create
     @assistance = @preference.assistances.build(params[:assistance])
-    if @assistance.save
-      respond_to do |format|
-        format.js{
+    respond_to do |format|
+      format.js{
+        if @assistance.save
           render :update do |page|
             page[:assistances].replace_html(:partial => "/assistances/assistance_table", :locals => {:assistances => @preference.assistances} )
           end
-        }
-      end
+        else
+          render :update do |page|
+            page[:errors].replace_html("<div class='flash-message' id='flash_error'>Las fechas no son correctas</div>")
+          end
+        end
+      }
     end
   end
 
