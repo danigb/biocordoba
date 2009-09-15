@@ -13,7 +13,8 @@
         = link_to_remote "Editar", :url => edit_assistance_path(:id => a.id, :preference_id => @preference.id), :method => :get
         |
         = link_to_remote "Eliminar", :url => assistance_path(:id => a.id, :preference_id => @preference.id), :method => :delete
-%p= link_to "Crear nuevo intervalo de asistencia", "#", :onclick => "$('#new_assistance').show();"
+%p
+  %span.button.pink= link_to "Crear nuevo intervalo de asistencia", "#", :onclick => "$('#new_assistance').show();"
 
 #new_assistance{:style => "display:none;"}
   #errors
@@ -27,5 +28,6 @@
   %p
     = label :assistance, "Hora de salida"
     = time_select :assistance, :leave, :minute_step => 60
-  %p
+
+  %p.enviar
     = submit_tag "Crear", :id => 'new_assistance_button'
