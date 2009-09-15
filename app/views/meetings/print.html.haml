@@ -1,15 +1,19 @@
-%h2 Tu agenda de citas para el evento
+%h2
+  - if @user == current_user
+    Tu agenda de citas para el evento
+  - else
+    = "Agenda de #{@user.profile.company_name.capitalize}"
 - 1.upto(@days) do |d|
   - date = @date + (d - 1).days
   %h3= date.to_date.localize
-  - @meetings = @current_user.meetings(date, 1)
+  - @meetings = @user.meetings(date, 1)
   - if @meetings.blank?
     %p No tienes citas para este día.
   - else
     - @meetings.each do |meeting|
       %h4
         = "[#{meeting.date({:include_month => false, :include_week_day => false})}]"
-        = "cita #{MEETING_STATE[meeting.state.to_sym]} con #{meeting.partner(current_user).profile.company_name}"
+        = "cita #{MEETING_STATE[meeting.state.to_sym]} con #{meeting.partner(@user).profile.company_name}"
       - unless eval("h meeting.note_#{@role}").blank?
         %p
           Anotación sobre la cita:
