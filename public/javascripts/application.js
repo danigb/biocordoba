@@ -58,7 +58,8 @@ $(document).ready(function() {
  //Message Autocomplete
   if($("textarea#message_receivers_string").length > 0){
     $("textarea#message_receivers_string").autocomplete("auto_complete_for_profile_company_name", 
-      {multiple:true});
+      {multiple:true,
+       multipleSeparator:'; '});
   }
 
 
