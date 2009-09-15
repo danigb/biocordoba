@@ -53,7 +53,7 @@
         Perfil comercial:
         = h profile.commercial_profile
     
-  - if profile.user.email.present? && !profile.user.is_national_buyer?
+  - if profile.user.email.present? && !profile.user.is_national_buyer? && !profile.user.is_international_buyer?
     %p 
       Email:
       = h profile.user.email
