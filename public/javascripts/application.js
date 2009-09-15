@@ -26,6 +26,14 @@ $(document).ready(function() {
     }
   });
 
+  //All sectors
+  $("#all_sectors:checkbox").click(function(){
+    if(this.checked == true){
+      $("#sectors input").attr("checked", true);
+    }else{
+      $("#sectors input").attr("checked", false);
+    }
+  })
   //Seleccionar todos
   $("#message_send_all").click(function(e){
     if(this.checked == true){
