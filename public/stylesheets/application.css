@@ -390,7 +390,8 @@ input.white {
 #meetings_confirm div {
   background: #c8c8c8;
   padding: 15px;
-  color: #000; }
+  color: #000;
+  margin-bottom: 10px; }
 #meetings_confirm h2 {
   margin: 0 0 40px 10px; }
 #meetings_confirm span.button {
