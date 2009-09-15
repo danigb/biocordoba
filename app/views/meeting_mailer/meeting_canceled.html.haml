@@ -2,11 +2,14 @@
 
 %tr
   %td{:colspan => colspan}
-    %h2{:style => "color: #70B120;padding-left: 20px;"} Cita cancelada
+    %div{:style => "color: #70B120;padding-left: 20px;font-size: 20px; font-weight: bolder;"} Cita cancelada
+
+%tr
+  %td &nbsp;
 
 %tr
   %td{:colspan => colspan}
-    %p{:style => "padding-left: 20px;"}
+    %div{:style => "padding-left: 20px;"}
       La cita entre
       = link_to @meeting.host.profile.company_name, profile_url(@meeting.host.profile), :style => "color: #D41E67;"
       y
@@ -14,13 +17,20 @@
       ha sido cancelada.
 
 - unless @meeting.cancel_reason.blank?
+
+  %tr
+    %td &nbsp;
+
   %tr
     %td{:colspan => colspan}
-      %p{:style => "padding-left: 20px;"}
+      %div{:style => "padding-left: 20px;"}
         Existe una nota explicativa de la cancelación:
         = @meeting.cancel_reason
 
 %tr
+  %td &nbsp;
+
+%tr
   %td{:colspan => colspan}
-    %p{:style => "padding-left: 20px;"}
+    %div{:style => "padding-left: 20px;"}
       = link_to "Ver cita cancelada", meeting_url(@meeting), :style => "color: #70B120;"

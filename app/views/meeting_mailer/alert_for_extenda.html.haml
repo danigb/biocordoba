@@ -2,17 +2,23 @@
 
 %tr
   %td{:colspan => colspan}
-    %h2{:style => "color: #70B120;padding-left: 20px;"} Nueva cita
+    %div{:style => "color: #70B120;padding-left: 20px;font-size: 20px; font-weight: bolder;"} Nueva cita
+
+%tr
+  %td &nbsp;
 
 %tr
   %td{:colspan => colspan}
-    %p{:style => "padding-left: 20px;"}
+    %div{:style => "padding-left: 20px;"}
       Se ha creado una cita entre el expositor 
       %b{:style => "color: #D41E67;"}= @meeting.host.profile.company_name 
       y el comprador internacional 
       %b{:style => "color: #D41E67;"}= @meeting.guest.profile.company_name
 
 %tr
+  %td &nbsp;
+
+%tr
   %td{:colspan => colspan}
-    %p{:style => "padding-left: 20px;"}
+    %div{:style => "padding-left: 20px;"}
       Esta cita está pendiente de ser aceptada.
