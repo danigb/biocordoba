@@ -58,10 +58,10 @@ module WeeklyHelper
             concat(tag("div", :class => "#{@day_row} #{'no_assistance' unless @intervalo.include?(h.to_i)}"))
               (@start_date..@end_date).each_with_index do |day, index|
                 to_delete = []
-                @objects.each do |event|
+                @objects.each_with_index do |event,i|
                   if event.starts_at.strftime('%j').to_s == day.strftime('%j').to_s
                     if event.starts_at.strftime('%H').to_i == h.to_i
-                      concat(tag("div", :id => "week_event_#{event.id}", :style =>"left:#{143 * index}px;top:#{left(event.starts_at,options[:business_hours])}px;width:138px;", :class => "item_#{left(event.starts_at,options[:business_hours]).round} week_event #{event.pending? ? 'pending' : 'accepted'}"))
+                      concat(tag("div", :id => "week_event_#{event.id}", :style =>"left:#{143 * index}px;top:#{left(event.starts_at,options[:business_hours])}px;width:138px;", :class => "item_#{left(event.starts_at,options[:business_hours]).round} week_event #{event.pending? ? 'pending' : 'accepted'} #{i%2==0 ? 'odd' : 'even'}"))
                       truncate = width(event.starts_at,event.ends_at)
                       yield(event,truncate)
                       concat("</div>")

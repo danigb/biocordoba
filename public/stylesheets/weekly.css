@@ -16,7 +16,9 @@
 
 .week_event{background:#ff87c1;float:left;position:absolute;height:15px;color:#000;border-left:4px solid #d40067;cursor:pointer;}
 .week_event span{display:block; height:14.5px;}
-.week_event.pending{background:#F9F89E; border-left:4px solid #d40067;}
+.week_event.accepted.even{background:#fc5ca9; border-left: 4px solid #d40067;}
+.week_event.pending.odd{background:#f8f7b4; border-left:4px solid #d40067;}
+.week_event.pending.even {background:#f7f687; border-left:4px solid #d40067;}
 .week_event a{color:#000; text-decoration:none; font-weight: bolder;font-size:10px; padding-left: 3px; width: inherit; display:block;}
 .week_event a:hover{background: #d40067;height: 14.5px; width: auto; color:#000;}
 .day_row #click_hour{height:57px;width:55px;border-right:1px solid #cfe6ec;padding:17px 1px 0px 18px;float:left;}
