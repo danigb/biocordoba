@@ -2,10 +2,13 @@
 
 %tr
   %td{:colspan => colspan}
-    %h2{:style => "color: #70B120;padding-left: 20px;"} Usuario desactivado
+    %div{:style => "color: #70B120;padding-left: 20px;font-size:20px;font-weight:bolder;"} Usuario desactivado
+
+%tr
+  %td &nbsp;
 
 %tr
   %td{:colspan => colspan}
-    %p{:style => "padding-left: 20px;"}
+    %div{:style => "padding-left: 20px;"}
       Su usuario ha sido desactivado, para conocer las causas póngase en contacto con el 
       = "<a href='mailto:#{CONFIG[:admin][:email]}&subject=Usuario desactivado' style='color:#70B120' >administrador.</a>"

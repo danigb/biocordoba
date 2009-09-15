@@ -2,13 +2,15 @@
 
 %tr
   %td{:colspan => colspan}
-    %h2{:style => "color: #70B120;padding-left: 20px;"} Nuevo mensaje recibido
+    %div{:style => "color: #70B120;padding-left: 20px; font-size: 20px; font-weight: bolder;"} Nuevo mensaje recibido
+
+%tr
+  %td &nbsp;
 
 %tr
   %td{:colspan => colspan}
     %span{:style => "padding-left: 20px;"} Remitente: 
     %span{:style => "color: #D41E67"}= @sender.profile.company_name
-
 
 %tr
   %td{:colspan => colspan}
@@ -16,12 +18,18 @@
     %span{:style => "color: #D41E67"}= @message.subject
 
 %tr
-  %td{:colspan => colspan}
-    %p{:style => "padding-left: 20px;"}
-      = @message.message
+  %td &nbsp;
 
 %tr
   %td{:colspan => colspan}
-    %p{:style => "padding-left: 20px;"}
+    %div{:style => "padding-left: 20px;"}
+      = @message.message
+
+%tr
+  %td &nbsp;
+
+%tr
+  %td{:colspan => colspan}
+    %div{:style => "padding-left: 20px;"}
       Puede acceder al mensaje usando este enlace:
       = link_to message_url(:id => @message.id, :type => 'received'), message_url(:id => @message.id, :type => 'received'), :style => "color: #70B120;"

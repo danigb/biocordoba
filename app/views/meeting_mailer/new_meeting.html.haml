@@ -2,16 +2,23 @@
 
 %tr
   %td{:colspan => colspan}
-    %h2{:style => "color: #70B120;padding-left: 20px;"} Nueva cita
+    %div{:style => "color: #70B120;padding-left: 20px;font-size: 20px; font-weight: bolder;"} Nueva cita
+
+%tr
+  %td &nbsp;
 
 %tr
   %td{:colspan => colspan}
-    %p{:style => "padding-left: 20px;"}
+    %div{:style => "padding-left: 20px;"}
       La empresa 
       = link_to @meeting.host.profile.company_name, profile_url(@meeting.host.profile), :style => "color: #D41E67;"
       ha creado una cita con usted para el día
       %span{:style => "color: #D41E67;"}= @meeting.starts_at.to_s(:short) 
+
+%tr
+  %td &nbsp;
+
 %tr
   %td{:colspan => colspan}
-    %p{:style => "padding-left: 20px;"}
+    %div{:style => "padding-left: 20px;"}
       = link_to "Ver cita", meeting_url(@meeting), :style => "color: #70B120;"

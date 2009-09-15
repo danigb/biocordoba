@@ -2,16 +2,22 @@
 
 %tr
   %td{:colspan => colspan}
-    %h2{:style => "color: #70B120;padding-left: 20px;"} Cita aceptada
+    %div{:style => "color: #70B120;padding-left: 20px;font-size: 20px; font-weight: bolder;"} Cita aceptada
+
+%tr
+  %td &nbsp;
 
 %tr
   %td{:colspan => colspan}
-    %p{:style => "padding-left: 20px;"}
+    %div{:style => "padding-left: 20px;"}
       Su cita con el comprador internacional
       = link_to @meeting.guest.profile.company_name, profile_url(@meeting.guest.profile), :style => "color: #D41E67;"
       ha sido aceptada.
 
 %tr
+  %td &nbsp;
+
+%tr
   %td{:colspan => colspan}
-    %p{:style => "padding-left: 20px;"}
+    %div{:style => "padding-left: 20px;"}
       = link_to "Ver cita", meeting_url(@meeting), :style => "color: #70B120;"
