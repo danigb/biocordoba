@@ -21,7 +21,7 @@
   %span.pink= h @message.subject
 
 %p
-  = h @message.message
+  = simple_format h @message.message
 
 %p
   - if params[:type] == "received"

@@ -15,7 +15,7 @@
 %tr
   %td{:colspan => colspan}
     %span{:style => "padding-left: 20px;"} Asunto: 
-    %span{:style => "color: #D41E67"}= @message.subject
+    %span{:style => "color: #D41E67"}= h @message.subject
 
 %tr
   %td &nbsp;
@@ -23,7 +23,7 @@
 %tr
   %td{:colspan => colspan}
     %div{:style => "padding-left: 20px;"}
-      = @message.message
+      = simple_format(h @message.message)
 
 %tr
   %td &nbsp;
