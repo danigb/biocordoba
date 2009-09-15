@@ -137,7 +137,7 @@ end
 
 desc "welcome email"
 task :welcome_email => :environment do
-  User.all.each do |u|
+  User.find(:all, :conditions => ["state = 'enabled' AND roles.title != 'international_buyer'"], :joins => :roles).each do |u|
     if u.email
       UserMailer.deliver_welcome_email(u) 
       puts "#{u.login} - Email sent"
