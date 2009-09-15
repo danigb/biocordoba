@@ -391,6 +391,11 @@ input
       :margin-right 20px
   #receivers
     :clear both
+    textarea
+      :width 420px
+      :height 150px
+    select
+      :width 420px
     label
       :width 455px
       :clear both
@@ -548,7 +553,7 @@ input
     :margin-right 10px
 
 
-.users.new, .users.edit, #sectors.edit, #sectors.new, #preferences.edit
+.users.new, .users.edit, #sectors.edit, #sectors.new, #preferences.edit, #assistances
   :background = !green url("/images/content-display-bg.png")
   :padding 20px
   a
@@ -605,6 +610,16 @@ input
       :width 50px
     .formError
       :margin-left 50px
+
+#assistances
+  span.button
+    a
+      :color #fff
+  table
+    :margin-bottom 20px
+
+#new_assistance
+  :margin 20px 0 40px 0 
 
 #external.new
   :background none
