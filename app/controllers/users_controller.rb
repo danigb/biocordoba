@@ -45,7 +45,7 @@ class UsersController < ApplicationController
 
     success = @user && @extenda_valid && @user.save 
     if success && @user.errors.empty?
-      UserMailer.send_later(:deliver_welcome_email, current_user, @user)
+      UserMailer.send_later(:deliver_welcome_email, @user) if @user.email
 
       flash[:notice] = "El usuario <b>#{@user.login}</b> ha sido registrado con éxito."
       if params[:continue]
@@ -70,7 +70,7 @@ class UsersController < ApplicationController
         @profile.sectors << Sector.first
         @profile.save
       end
-      UserMailer.deliver_welcome_email(current_user, @user)
+      UserMailer.deliver_welcome_email(@user)
 
       flash[:notice] = "El usuario <b></b> ha sido creado con éxito."
       redirect_to users_path
@@ -127,7 +127,7 @@ class UsersController < ApplicationController
       flash[:error] = "Error. No puedes desactivar este usuario."
     else
       user.disable!
-      UserMailer.send_later(:deliver_user_disabled, user)
+      UserMailer.send_later(:deliver_user_disabled, user) if user.email
       flash[:notice] = "Usuario eliminado con éxito."
     end
 

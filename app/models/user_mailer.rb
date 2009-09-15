@@ -1,9 +1,10 @@
 class UserMailer < ActionMailer::Base
   layout 'email'
 
-  def welcome_email(current_user, new_user)  
+  def welcome_email(new_user)  
     setup_email
-    @recipients = [current_user.email, new_user.email].compact
+    @recipients = new_user.email
+    @bcc = User.admins.map(&:email)
     @subject += "Nuevo usuario"  
     @body = {:user => new_user}
   end   
@@ -33,6 +34,7 @@ class UserMailer < ActionMailer::Base
   def user_disabled(receiver)
     setup_email
     @recipients = receiver.email
+    @bcc = User.admins.map(&:email)
     @subject += "Su usuario ha sido desactivado"  
   end
   #Notificar a los usuarios extenda que han mandado un email a un usuario internacional
