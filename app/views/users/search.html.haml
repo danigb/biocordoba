@@ -20,7 +20,7 @@
     - restrict_to "exhibitor" do
       %p
         = f.label :profile_country_id_equals, "PAÍS"
-        = f.select :profile_country_id_equals, Country.all.collect {|t| [t.name, t.id]}, {:include_blank => "Todos"}
+        = f.select :profile_country_id_equals, Country.with_profiles.collect {|t| [t.name, t.id]}, {:include_blank => "Todos"}
 
     %p.enviar
       = f.submit "Buscar"

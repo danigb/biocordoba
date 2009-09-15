@@ -13,12 +13,18 @@ class AjaxController < ApplicationController
   end
 
   def buyers
-    if params[:country_id].present?
+    if params[:country_id].present? && params[:sector_id].present?
       conditions = ["sectors.id = ? AND users.id NOT IN (select m.guest_id from meetings m where m.host_id = #{current_user.id} 
                      AND m.state != 'canceled') AND profiles.country_id = ?", params[:sector_id], params[:country_id]] 
-    else
+    elsif params[:country_id].present? 
+      conditions = ["users.id NOT IN (select m.guest_id from meetings m where m.host_id = #{current_user.id} 
+                     AND m.state != 'canceled') AND profiles.country_id = ?", params[:country_id]] 
+    elsif params[:sector_id].present?
       conditions = ["sectors.id = ? AND users.id NOT IN (select m.guest_id from meetings m where m.host_id = #{current_user.id} 
                      AND m.state != 'canceled')", params[:sector_id]] 
+    else
+      conditions = ["users.id NOT IN (select m.guest_id from meetings m where m.host_id = #{current_user.id} 
+                     AND m.state != 'canceled')"] 
     end
 
     #Los ids de los usuarios con los que ya tenemos citas (1,2,3)

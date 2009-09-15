@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090914151324) do
+ActiveRecord::Schema.define(:version => 20090915160123) do
 
   create_table "assistances", :force => true do |t|
     t.date     "day"
@@ -21,8 +21,9 @@ ActiveRecord::Schema.define(:version => 20090914151324) do
   end
 
   create_table "countries", :force => true do |t|
-    t.string "name"
-    t.string "code"
+    t.string  "name"
+    t.string  "code"
+    t.integer "profiles_count", :default => 0
   end
 
   create_table "delayed_jobs", :force => true do |t|

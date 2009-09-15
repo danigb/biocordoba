@@ -15,10 +15,10 @@
 
   %p
     = label_tag :country_id, "PAÍS"
-    = select :country, :id, Country.all.collect {|t| [t.name, t.id]}, {:include_blank => "Todos"}
+    = select :country, :id, Country.with_profiles.collect {|t| [t.name, t.id]}, {:include_blank => "Todos"}
   %p
     = label_tag "sector_id", "SECTOR"
-    = select :sector, :id, Sector.all.map{|s| [s.name.capitalize, s.id]}, {:include_blank => true}
+    = select :sector, :id, Sector.all.map{|s| [s.name.capitalize, s.id]}, {:include_blank => "Todos"}
     #buyers
 
 

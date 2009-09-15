@@ -18,7 +18,7 @@ $(document).ready(function() {
     var text_field = $("#message_receivers_string");
     if($(this).val() != ''){
       text_field.val(
-        text_field.val() + $(this).val() + ", "
+        text_field.val() + $(this).val() + "; "
       );
       /* $("#receivers span").text("Destinatario añadido").show().effect("highlight",null, 2000).fadeOut(1000) */
       text_field.effect("highlight", null, 2000); 
@@ -178,11 +178,13 @@ $(document).ready(function() {
 //       }
 //   });
 //
+//Lo lanzamos al principio
+if($("#meetings #sector_id :selected").length > 0 && $("#meetings #country_id :selected").length > 0){
+  load_buyers($("#meetings #sector_id :selected").val(), $("#meetings #country_id :selected").val());
+}
 
 $("#sector_id:select, #meetings #country_id:select").change(function(e){
-  if($("#sector_id :selected").val() != ''){
-    load_buyers($("#meetings #sector_id :selected").val(), $("#meetings #country_id :selected").val());
-  }
+  load_buyers($("#meetings #sector_id :selected").val(), $("#meetings #country_id :selected").val());
 });
  });
 
