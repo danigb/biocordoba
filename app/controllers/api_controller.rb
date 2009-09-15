@@ -28,8 +28,12 @@ class ApiController < ApplicationController
   end
 
   def exhibitor
-    @exhibitor = User.exhibitors.find(params[:id])
-    @profile = @exhibitor.profile if @exhibitor
+    @exhibitor = User.find(params[:id])
+    if @exhibitor.is_exhibitor?
+      @profile = @exhibitor.profile if @exhibitor
+    else
+      head :status => 403 and return
+    end
   end
 
   def sectors
