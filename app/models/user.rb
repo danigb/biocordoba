@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
   validates_presence_of     :role_id
 
   named_scope :admins, :joins => :roles, :include => :profile, 
-    :conditions => ["(roles.title = 'admin') AND state = 'enabled'"],
+    :conditions => ["(roles.title = 'admin') AND state = 'enabled'"]
   named_scope :buyers, :joins => :roles, :include => :profile, 
     :conditions => ["(roles.title = 'national_buyer' OR roles.title = 'international_buyer') AND state = 'enabled'"],
     :order => 'profiles.company_name' 
