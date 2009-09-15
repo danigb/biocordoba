@@ -9,10 +9,10 @@ class MainController < ApplicationController
 
   def email
     @date = Event.start_day_and_hour
-    @user = User.find_by_login("cocacola")
+    @user = User.first
     @meetings = @user.meetings(@date,1)
     @meeting= @meetings.first 
     @message = Message.first 
-    render :file => "meeting_mailer/#{params[:id]}", :layout => "email"
+    render :file => "user_mailer/#{params[:id]}", :layout => "email"
   end
 end
