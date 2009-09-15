@@ -207,7 +207,7 @@ class User < ActiveRecord::Base
       assistances = self.preference.assistances.find(:all, :conditions => ["DAY(day) = ?", dia], :order => 'arrive')
       res = []
       assistances.each do |e|
-        res += (e.arrive.hour..e.leave.hour).to_a
+        res += (e.arrive.hour..(e.leave.hour - 1)).to_a
       end
       res
     rescue
