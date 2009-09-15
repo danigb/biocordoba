@@ -4,7 +4,7 @@ class Profile < ActiveRecord::Base
   has_and_belongs_to_many :sectors
   belongs_to :province
   belongs_to :town
-  belongs_to :country
+  belongs_to :country, :counter_cache => true
 
 
   validates_presence_of :company_name
