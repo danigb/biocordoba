@@ -134,3 +134,16 @@ task :load_international_buyers => :environment do
       
   end
 end
+
+desc "welcome email"
+task :welcome_email => :environment do
+  User.all.each do |u|
+    if u.email
+      UserMailer.deliver_welcome_email(u) 
+      puts "#{u.login} - Email sent"
+      sleep 0.5
+    else
+      puts "#{u.login} - skip, no email"
+    end
+  end
+end
