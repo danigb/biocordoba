@@ -9,7 +9,7 @@ class MainController < ApplicationController
 
   def email
     @date = Event.start_day_and_hour
-    @user = User.find_by_login("cocacola")
+    @user = User.find_by_login("acesur")
     @meetings = @user.meetings(@date,1)
     @meeting= @meetings.first 
     @message = Message.first 
