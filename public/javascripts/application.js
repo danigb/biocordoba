@@ -18,7 +18,7 @@ $(document).ready(function() {
     var text_field = $("#message_receivers_string");
     if($(this).val() != ''){
       text_field.val(
-        text_field.val() + $(this).val() + ", "
+        text_field.val() + $(this).val() + "; "
       );
       /* $("#receivers span").text("Destinatario añadido").show().effect("highlight",null, 2000).fadeOut(1000) */
       text_field.effect("highlight", null, 2000); 
