@@ -32,7 +32,7 @@
         = select_tag :receivers_select, select_options_buyers_exhibitors
       %p
         = f.label :receivers_string, "DESTINATARIOS DEL MENSAJE (separados por comas)"
-        = f.text_area :receivers_string, :size => 50, :autocomplete =>"off", :value => (params[:receiver] ? "#{params[:receiver]}, " : "")
+        = f.text_area :receivers_string, :autocomplete =>"off", :value => (params[:receiver] ? "#{params[:receiver]}, " : "")
         = f.error_message_on :sender_id
 
     %span.submit= f.submit "ENVIAR" 

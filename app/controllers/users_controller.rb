@@ -45,7 +45,7 @@ class UsersController < ApplicationController
 
     success = @user && @extenda_valid && @user.save 
     if success && @user.errors.empty?
-      UserMailer.send_later(:deliver_welcome_email, current_user, @user) if @user.email
+      UserMailer.send_later(:deliver_welcome_email, @user) if @user.email
 
       flash[:notice] = "El usuario <b>#{@user.login}</b> ha sido registrado con éxito."
       if params[:continue]
@@ -70,7 +70,7 @@ class UsersController < ApplicationController
         @profile.sectors << Sector.first
         @profile.save
       end
-      UserMailer.deliver_welcome_email(current_user, @user)
+      UserMailer.deliver_welcome_email(@user)
 
       flash[:notice] = "El usuario <b></b> ha sido creado con éxito."
       redirect_to users_path
