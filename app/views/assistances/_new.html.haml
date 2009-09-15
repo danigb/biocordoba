@@ -1,0 +1,14 @@
+#errors
+- form_remote_for @assistance, :url => assistances_path(:preference_id => @preference.id) do |f|
+  %p
+    = hidden_field_tag "preference_id", @preference.id
+    = label :assistance, "Día"
+    = f.date_select :day
+  %p
+    = label :assistance, "Hora llegada"
+    = f.time_select :arrive, :minute_step => 60
+  %p
+    = label :assistance, "Hora de salida"
+    = f.time_select :leave, :minute_step => 60
+  %p.enviar
+    = submit_tag "Crear"
