@@ -41,7 +41,7 @@ class UserMailer < ActionMailer::Base
 
   def setup_email
     @from = "Andalucía Sabor international fine food exhibition <andaluciasabor@andaluciasabor.es>"  
-    @subject = "[Andalucía Sabor] "  
+    @subject = "[Agenda Andalucía Sabor] "  
     @sent_on = Time.now 
     @content_type = "text/html"
   end
