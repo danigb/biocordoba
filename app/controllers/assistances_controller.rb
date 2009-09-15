@@ -23,6 +23,18 @@ class AssistancesController < ApplicationController
     end
   end
 
+  def new
+    respond_to do |format|
+      format.js{
+        @assistance = Assistance.new
+        render :update do |page|
+          page[:new_assistance].replace_html(:partial => 'new')
+          page[:new_assistance].show
+        end 
+      }
+    end
+  end
+
   def update
     if @assistance.update_attributes(params[:assistance])
       respond_to do |format|

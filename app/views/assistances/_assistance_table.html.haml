@@ -14,7 +14,7 @@
         |
         = link_to_remote "Eliminar", :url => assistance_path(:id => a.id, :preference_id => @preference.id), :method => :delete
 %p
-  %span.button.pink= link_to "Crear nuevo intervalo de asistencia", "#", :onclick => "$('#new_assistance').show();"
+  %span.button.pink= link_to_remote "Crear nuevo intervalo de asistencia", :url => new_assistance_path(:preference_id => @preference.id), :method => :get
 
 #new_assistance{:style => "display:none;"}
   #errors
