@@ -29,6 +29,7 @@
                     = link_to "Asistencia", assistances_path(:preference_id => user.preference, :user_id => user.id)
                   |
 
+                - unless user.login == "admin"
                   = link_to "Eliminar", user_path(user.id, :type => params[:type]), :confirm => '¿Estás seguro?', :method => :delete 
                   |
 

@@ -73,6 +73,9 @@
 %p
   = f.label :sector_ids, "Sectores: <span class ='required'>*</span>"
   .none-margin= f.error_message_on :sectors
+  %p.checkbox
+    -# = check_box_tag "all_sectors", 1, false, :id => 'all_sectors'
+    -# %span Todos
   - Sector.all.each do |s|
     %p.checkbox
       = check_box_tag "user[profile_attributes][sector_ids][]", s.id, eval("@user.new_record? ? [] : @user.profile.sectors").map(&:id).include?(s.id)
