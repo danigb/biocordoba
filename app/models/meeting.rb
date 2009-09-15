@@ -61,9 +61,9 @@ class Meeting < ActiveRecord::Base
       "Ocupado"
     else
       if user.login == host.login 
-        guest.profile.company_name
+        guest.profile.company_name.capitalize
       elsif user.login == guest.login
-        host.profile.company_name
+        host.profile.company_name.capitalize
       # else
       #   "Ocupado"
       end
