@@ -95,12 +95,12 @@ describe Meeting do
     #   meeting.errors.on(:starts_at).should == "La cita debe estar dentro de las jornadas del evento."
     # end
 
-    it "should not have a meeting out of guest assistance" do
-      meeting =  Meeting.make_unsaved(:starts_at => Event.start_day_and_hour)
-      meeting.guest.preference.update_attribute(:day_22_arrival, Event.start_day_and_hour + 3.hours)
-      meeting.should have(1).errors_on(:starts_at)     
-      meeting.errors.on(:starts_at).should == "El comprador no asiste a esa hora al evento."
-    end
+    #it "should not have a meeting out of guest assistance" do
+    #  meeting =  Meeting.make_unsaved(:starts_at => Event.start_day_and_hour)
+    #  meeting.guest.preference.update_attribute(:day_22_arrival, Event.start_day_and_hour + 3.hours)
+    #  meeting.should have(1).errors_on(:starts_at)
+    #  meeting.errors.on(:starts_at).should == "El comprador no asiste a esa hora al evento."
+    #end
 
     it "valid_date behaviour" do
       meeting = Meeting.new(:host => User.make, :guest => @guest, :starts_at => @meeting.starts_at)
@@ -212,5 +212,16 @@ describe Meeting do
     end
   end
 
+  describe "Assistance" do
+    before do
+      @meeting = Meeting.make
+      @host = @meeting.host
+      @guest = @meeting.guest
+    end
+    
+    it "When i create a new assistante the meetings should be canceled" do
+
+    end
+  
 end
 

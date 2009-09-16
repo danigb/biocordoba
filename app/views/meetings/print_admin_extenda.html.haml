@@ -17,7 +17,7 @@
             %li
               = "[#{meeting.starts_at.to_s(:hour_only)}]"
               = "cita #{MEETING_STATE[meeting.state.to_sym]} con"
-              = meeting.host.profile.company_name.upcase
+              = meeting.partner(host).profile.company_name.upcase
 
     - else
       %span No existen citas para ese día

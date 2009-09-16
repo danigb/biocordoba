@@ -46,13 +46,9 @@ Preference.blueprint do
   event_day_start_at {Time.parse("10:00")}
   event_day_end_at {Time.parse("19:00")}
   meetings_number 4
-  day_22_arrival {Time.parse("10:00")}
-  day_23_arrival {Time.parse("10:00")}
-  day_24_arrival {Time.parse("10:00")}
-  day_22_leave {Time.parse("19:00")}
-  day_23_leave {Time.parse("19:00")}
-  day_24_leave {Time.parse("19:00")}
 end
+
+
 
 Meeting.blueprint do
   host User.make(:exhibitor)

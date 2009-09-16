@@ -17,7 +17,7 @@ class Assistance < ActiveRecord::Base
     end
 
     if self.arrive.hour < self.preference.event_day_start_at.hour
-      errors.add(:arrive, "La hora está fuera del horario del evento")
+      errors.add(:arrive, "La hora está fuera del horario del evento")  
     end
     #Hay que comprobar que no se pisen
     # if self.day > self.preference.event_end_day || self.day < self.preference.event_start_day
@@ -26,4 +26,17 @@ class Assistance < ActiveRecord::Base
 
   end
 
+
+  #Tras guardar buscamos las citas de ese usuario a esa hora ese día, si existe alguna la cancelamos
+#  def after_save
+#    self.preference.users.each do |user|
+#      assistance = user.assistance_day(self.day)
+#      user.meetings(self.day).each do |m|
+#        if !assistance.include?(m.starts_at.hour)
+#          m.update_attribute(:cancel_reason, "La empresa con la que tenías concertada la cita ha modificado su horario de asistencia a la feria.")
+#          m.cancel!
+#        end
+#      end
+#    end
+#  end
 end

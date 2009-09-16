@@ -69,9 +69,7 @@ begin
     start_at = CONFIG[:admin][:preferences][:event_day_start_at]
     end_at = CONFIG[:admin][:preferences][:event_day_end_at]
     3.times do
-      Preference.create(CONFIG[:admin][:preferences].merge(:day_22_arrival => start_at,
-        :day_23_arrival => start_at, :day_24_arrival => start_at, :day_22_leave => end_at, :day_23_leave => end_at,
-        :day_24_leave => end_at)) 
+      Preference.create(CONFIG[:admin][:preferences]) 
     end
   end
 

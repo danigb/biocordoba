@@ -30,7 +30,7 @@ describe Message do
   end
 
   it "should be accept a receivers' string" do
-    message = Message.make(:receivers_string => "#{@user.profile.company_name}, foobar")
+    message = Message.make(:receivers_string => "#{@user.profile.company_name}; foobar")
     message.receivers.count.should == 1
   end
 
