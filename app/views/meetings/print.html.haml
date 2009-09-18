@@ -6,7 +6,7 @@
 - 1.upto(@days) do |d|
   - date = @date + (d - 1).days
   %h3= date.to_date.localize
-  - @meetings = @user.meetings(date, 1)
+  - @meetings = @user.meetings(date)
   - if @meetings.blank?
     %p No tienes citas para este día.
   - else

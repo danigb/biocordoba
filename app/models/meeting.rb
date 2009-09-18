@@ -10,7 +10,8 @@ class Meeting < ActiveRecord::Base
   named_scope :with_type, lambda {|type| {:from => "roles_users as ru, roles as r, meetings as m",
     :conditions => ["(m.guest_id = ru.user_id or m.host_id = ru.user_id) and ru.role_id = r.id and r.title = ?", type] } }
   named_scope :with_state, lambda{|state| {:conditions => ["state = ?", state]}}
-  named_scope :in, lambda {|date| {:conditions => ["DATE(starts_at) = ?", date]}}
+  named_scope :not_canceled, :conditions => ["state != 'canceled'"]
+  named_scope :in, lambda {|date| {:conditions => ["DATE(starts_at) = ?", date], :order => 'starts_at'}}
 
   def validate
     errors.add("host_id", "Usted debe ser un expositor.") unless self.host && self.host.is_exhibitor?
