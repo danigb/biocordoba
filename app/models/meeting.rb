@@ -144,7 +144,7 @@ class Meeting < ActiveRecord::Base
 
   def cancel_message
     m = Message.new(:sender => User.first, :subject => "Cita cancelada", 
-      :message => "La cita entre #{self.host.profile.company_name} y #{self.guest.profile.company_name} ha sido cancelada. Razón:#{self.cancel_reason}")
+      :message => "La cita entre #{self.host.profile.company_name} y #{self.guest.profile.company_name} ha sido cancelada. Razón: #{self.cancel_reason.present? ? self.cancel_reason : 'No indicada.'}")
     m.receivers = [self.host, self.guest]
     m.save
     debugger
