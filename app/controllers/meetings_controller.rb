@@ -87,7 +87,7 @@ class MeetingsController < ApplicationController
     @name = params[:type].chop # exhibitors -> exhibitor
     meetings = @name == "exhibitor" ? Meeting.in(@date).not_canceled : Meeting.in(@date).with_type(@name).not_canceled
     @guest = true unless @name == "exhibitor"
-    @meetings_by_host = meetings.group_by{|m| @guest ? m.guest : m.host }.sort{|k,v| k[0].login<=>v[0].login}.paginate(:per_page => 10, :page => params[:page])
+    @meetings_by_host = meetings.group_by{|m| @guest ? m.guest : m.host }.sort{|k,v| k[0].login<=>v[0].login}.paginate(:per_page => 20, :page => params[:page])
   end
 
   def for_user
