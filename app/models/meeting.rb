@@ -45,7 +45,10 @@ class Meeting < ActiveRecord::Base
 
   aasm_state :pending
   aasm_state :accepted #En determinados casos se aceptará automáticamente
-  aasm_state :canceled, :enter => Proc.new{ |m| MeetingMailer.send_later(:deliver_meeting_canceled, m) }
+  aasm_state :canceled, :enter => Proc.new{ |m| 
+    MeetingMailer.send_later(:deliver_meeting_canceled, m)
+    m.cancel_message
+  }
   
 
   aasm_event :accept do
@@ -137,5 +140,13 @@ class Meeting < ActiveRecord::Base
   #Duración de la cita
   def duration
     (self.ends_at - self.starts_at)/60
+  end
+
+  def cancel_message
+    m = Message.new(:sender => User.first, :subject => "Cita cancelada", 
+      :message => "La cita entre #{self.host.profile.company_name} y #{self.guest.profile.company_name} ha sido cancelada. Razón:#{self.cancel_reason}")
+    m.receivers = [self.host, self.guest]
+    m.save
+    debugger
   end
 end
