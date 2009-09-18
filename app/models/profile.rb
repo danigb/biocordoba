@@ -31,4 +31,13 @@ class Profile < ActiveRecord::Base
   def sectors_string
     self.sectors.inject(""){|sum, e| sum += "#{e.name.capitalize}, "}.gsub(/, $/, ".")
   end
+
+  def website
+    w = read_attribute(:website)
+    if w.match("^www")
+      "http://#{w}"
+    else
+      w
+    end
+  end
 end
