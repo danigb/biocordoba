@@ -34,7 +34,7 @@ class Profile < ActiveRecord::Base
 
   def website
     w = read_attribute(:website)
-    if w.match("^www")
+    if w && w.match("^www")
       "http://#{w}"
     else
       w
