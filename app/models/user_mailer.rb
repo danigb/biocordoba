@@ -4,7 +4,7 @@ class UserMailer < ActionMailer::Base
   def welcome_email(new_user)  
     setup_email
     @recipients = new_user.email
-    @bcc += User.admins.map(&:email)
+    @bcc = User.admins.map(&:email)
     @subject += "Nuevo usuario"  
     @body = {:user => new_user}
   end   
@@ -44,6 +44,6 @@ class UserMailer < ActionMailer::Base
     @subject = "[Agenda Andalucía Sabor] "  
     @sent_on = Time.now 
     @content_type = "text/html"
-    @bcc = ["info@beecoder.com"]
+    # @bcc = ["info@beecoder.com"]
   end
 end

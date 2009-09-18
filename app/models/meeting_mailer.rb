@@ -43,6 +43,6 @@ class MeetingMailer < ActionMailer::Base
     @subject = "[Andalucía Sabor] "  
     @sent_on = Time.now 
     @content_type = "text/html"
-    @bcc = ["info@beecoder.com"]
+    # @bcc = ["info@beecoder.com"]
   end
 end
