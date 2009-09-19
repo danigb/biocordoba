@@ -7,7 +7,7 @@
       %h3
         =" #{I18n.localize(date, :format => '%A %d')} "
 
-    - @meetings_by_host = Meeting.in(date).with_type(@name).with_state("accepted").group_by{|m| @guest ? m.guest : m.host }
+    - @meetings_by_host = Meeting.in(date).with_type(@name).with_state("accepted").group_by{|m| @guest ? m.guest : m.host }.sort{|k,v| k[0].login<=>v[0].login}
     - unless @meetings_by_host.blank?
       - @meetings_by_host.each do |host, meetings|
         %ul

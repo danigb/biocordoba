@@ -710,7 +710,7 @@ input.white {
   float: none; }
 
 #loading {
-  position: absolute;
+  position: fixed;
   top: 5px;
   right: 5px;
   background: url("/images/loader-1.gif") no-repeat;
