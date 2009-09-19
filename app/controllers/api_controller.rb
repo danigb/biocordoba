@@ -8,13 +8,13 @@ class ApiController < ApplicationController
   def exhibitors
 
     if params[:sector].present? && params[:name].present?
-      conditions = ["sectors.id = ? AND LOWER(profiles.company_name) LIKE ? AND state != 'disabled' AND roles.title = 'exhibitor'", params[:sector], "%" + params[:name].downcase + "%"]
+      conditions = ["sectors.id = ? AND LOWER(profiles.company_name) LIKE ? AND state != 'disabled' AND roles.title = 'exhibitor' AND show_in_website = '1'", params[:sector], "%" + params[:name].downcase + "%"]
     elsif params[:sector].present?
-      conditions = ["sectors.id = ? AND state != 'disabled' AND roles.title = 'exhibitor'", params[:sector]]
+      conditions = ["sectors.id = ? AND state != 'disabled' AND roles.title = 'exhibitor' AND show_in_website = '1'", params[:sector]]
     elsif params[:name].present?
-      conditions = ["LOWER(profiles.company_name) LIKE ? AND state != 'disabled' AND roles.title = 'exhibitor'", "%" + params[:name].downcase + "%"]
+      conditions = ["LOWER(profiles.company_name) LIKE ? AND state != 'disabled' AND roles.title = 'exhibitor' AND show_in_website = '1'", "%" + params[:name].downcase + "%"]
     else
-      conditions = ["roles.title = 'exhibitor'"]
+      conditions = ["roles.title = 'exhibitor' AND show_in_website = '1'"]
     end
 
     @users = User.find(:all, :include => [{:profile => :sectors}, :roles], :conditions => conditions)

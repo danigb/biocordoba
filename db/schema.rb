@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090915160123) do
+ActiveRecord::Schema.define(:version => 20090919125328) do
 
   create_table "assistances", :force => true do |t|
     t.date     "day"
@@ -175,6 +175,7 @@ ActiveRecord::Schema.define(:version => 20090915160123) do
     t.string   "password",                  :limit => 40
     t.string   "state"
     t.boolean  "external",                                 :default => false
+    t.boolean  "show_in_website",                          :default => true
   end
 
   add_index "users", ["login"], :name => "users_login"

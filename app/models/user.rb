@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
   named_scope :type, lambda {|type| {:joins => :roles, :include => :profile, 
     :conditions => ["roles.title = ? AND state = 'enabled'", type] , :order => "profiles.company_name" }}
 
-  attr_accessible :login, :email, :name, :password, :password_confirmation, :role_id, :profile_attributes, :preference_attributes, :preference_id, :state, :external
+  attr_accessible :login, :email, :name, :password, :password_confirmation, :role_id, :profile_attributes, :preference_attributes, :preference_id, :state, :external, :show_in_website
   accepts_nested_attributes_for :profile, :preference
 
 

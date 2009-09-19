@@ -11,6 +11,10 @@
     = error_message_on :user,:email 
     %span.info
       Facilitando el email podrá recibir notificaciones de las citas y de los mensajes que reciba de otras empresas.
+  %p
+    = label_tag "Aparecer en la web de andalucía sabor"
+    = u.check_box :show_in_website 
+    = error_message_on :user,:show_in_website
 
 %p
   = f.label :country_id, "País"
