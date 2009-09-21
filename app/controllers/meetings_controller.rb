@@ -76,8 +76,8 @@ class MeetingsController < ApplicationController
   def change_note
     if(@meeting.update_attributes(params[:meeting]))
       flash[:notice] = "Nota actualizada"
-      redirect_to root_path
     end
+    redirect_to root_path
   end
 
   def type
