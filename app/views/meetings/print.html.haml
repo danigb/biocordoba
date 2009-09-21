@@ -2,7 +2,7 @@
   - if @user == current_user
     Tu agenda de citas para el evento
   - else
-    = "Agenda de #{@user.profile.company_name.capitalize}"
+    = "Agenda de #{@user.profile.company_name.titleize}"
 - 1.upto(@days) do |d|
   - date = @date + (d - 1).days
   %h3= date.to_date.localize
