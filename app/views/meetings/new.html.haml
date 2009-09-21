@@ -10,10 +10,10 @@
 
     - weekly_calendar(@host.meetings(@date), :date => @date, :without_days => true) do |w|
       - w.week(:clickable_hours => true) do |event,truncate|
-        =  link_to truncate(event.name(current_user, false), :omission => "..", :length => 22), meeting_path(event), :id => event.id, :class => 'meeting-link' 
+        =  link_to truncate(event.name(current_user, false).upcase, :omission => "..", :length => 19), meeting_path(event), :id => event.id, :class => 'meeting-link' 
   .schedule
     .user
-      = truncate(@guest.profile.company_name.capitalize, :omission => "..",:length => 35)
+      = truncate(@guest.profile.company_name.upcase, :omission => "..",:length => 29)
 
     - weekly_calendar(@guest.meetings(@date), :date => @date, :without_days => true, :without_hours => true, :assistance => @guest.assistance_day(@date.day)) do |w|
       - w.week(:clickable_hours => true) do |event,charifluflis|
