@@ -4,6 +4,6 @@
       Ver agenda del usuario:
     - form_for :user, :url => '/ajax/meetings_for', :html => {:method => :get, :id => 'select-schedule'} do |f|
       %p
-        = f.select :id, User.type(role_name).map{|u| [u.profile.company_name, u.id]} , :include_blank => true
+        = f.select :id, User.type(role_name).map{|u| [u.profile.company_name.upcase, u.id]} , :include_blank => true
       %p.enviar
         = submit_tag "Ver"
