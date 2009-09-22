@@ -139,6 +139,7 @@ class UsersController < ApplicationController
     @sectors = Sector.find(:all, :select => 'id, name')
     unless params[:search].blank?
       @search = User.search(params[:search])
+      @search.profile_company_name_like(params[:search][:profile_company_name_like].gsub("."," "))
       @search.roles_title_like_any(current_user.is_exhibitor? ? ["international_buyer", "national_buyer"] : ["exhibitor"]) 
       @search.state_equals("enabled")
       @users = @search.all(:include => [{:profile => [:sectors, :country]}, :roles])
