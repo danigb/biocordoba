@@ -1,5 +1,5 @@
 %h2
-  = "Agenda del usuario #{@user.profile.company_name}"
+  = "Agenda del usuario #{@user.profile.company_name.upcase}"
 = render :partial => 'meetings/my_meetings', :locals => {:user => @user}
 %p.imprimir
   = link_to "Imprimir agenda", print_path(:user_id => @user.id), :target => '_blank'
