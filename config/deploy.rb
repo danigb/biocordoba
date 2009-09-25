@@ -1,6 +1,6 @@
 #Multi Stage#
 
-set :default_stage, "production"
+set :default_stage, "development"
 set :stages, %w(production development)
 require 'capistrano/ext/multistage'
 
@@ -35,7 +35,7 @@ set :user, "deploy"
 set :scm, :git
 set :branch, "master"
 set :scm_user, 'git'
-set :repository,  'git@git.beecoder.com:agenda-eventos/mainline.git'
+set :repository,  'git@gitorius.beecoder.com:agenda-virtual-andalucia-sabor/mainline.git'
 set :deploy_via, :remote_cache
  
 #############################################################

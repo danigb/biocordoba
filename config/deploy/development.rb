@@ -1,6 +1,6 @@
 set :application, "eventos86"
-set :deploy_to, "/srv/http/staging/#{application}"
-set :domain, "beecoder.com"
+set :deploy_to, "/var/www/#{application}"
+set :domain, "wiki.beecoder.com"
 server domain, :app, :web
 role :db, domain, :primary => true
 
