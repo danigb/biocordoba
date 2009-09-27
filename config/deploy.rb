@@ -7,14 +7,10 @@ require 'capistrano/ext/multistage'
 #############################################################
 #	Application
 #############################################################
- 
 set :rails_env, 'production'
- 
 #############################################################
 #	Settings
 #############################################################
- # 
-# default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 ssh_options[:paranoid] = false
 ssh_options[:port] = 22
