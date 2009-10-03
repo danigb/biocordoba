@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
 
   helper :all # include all helpers, all the time
   # protect_from_forgery # See ActionController::RequestForgeryProtection for details
+  before_filter :authenticate
   before_filter :login_required
 
   # Scrub sensitive parameters from your log
@@ -26,6 +27,12 @@ class ApplicationController < ActionController::Base
   def permission_denied
     flash.now[:notice] = "Acceso denegado"
     return redirect_back_or("/")
+  end
+
+  def authenticate
+    authenticate_or_request_with_http_basic do |username, password|
+      username == "agenda" && password == "virtual"
+    end
   end
 
 end
