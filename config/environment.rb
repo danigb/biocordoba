@@ -26,7 +26,7 @@ Haddock::Password.diction = File.join(Rails.root, "config", "dictionary.txt")
 WillPaginate::ViewHelpers.pagination_options[:prev_label] = 'Anterior'
 WillPaginate::ViewHelpers.pagination_options[:next_label] = 'Siguiente'
 #Consulta de nuevos trabajos cada 15 segundos [Default = 5]
-Delayed::Worker::SLEEP = 15
+# Delayed::Worker::SLEEP = 15
 
 ActionController::Base.cache_store = :mem_cache_store
 ActiveSupport::CoreExtensions::Time::Conversions::DATE_FORMATS.merge!(:hour_only => "%H:%M")
