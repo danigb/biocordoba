@@ -1,2 +1,5 @@
 BioCórdoba 
 
+# Deploy
+gem install capistrano-ext
+

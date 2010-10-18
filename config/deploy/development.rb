@@ -1,6 +1,6 @@
-set :application, "eventos86"
-set :deploy_to, "/var/www/#{application}"
-set :domain, "wiki.beecoder.com"
+set :application, "biocordoba"
+set :deploy_to, "/home/superage/produccion/#{application}"
+set :domain, "superagencia86.com"
 server domain, :app, :web
 role :db, domain, :primary => true
 

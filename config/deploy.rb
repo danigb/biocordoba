@@ -8,7 +8,6 @@ require 'capistrano/ext/multistage'
 #	Application
 #############################################################
 set :rails_env, 'production'
-set :application, "biocordoba"
 #############################################################
 #	Settings
 #############################################################
