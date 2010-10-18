@@ -49,24 +49,24 @@
   = f.label :website, "Página web"
   = f.text_field :website, :size => 20
   = f.error_message_on :website
-%p 
-  = f.label :stand, "Stand Andalucía Sabor"
-  = f.text_field :stand, :size => 10
-  = f.error_message_on :stand
+-#%p
+-#  = f.label :stand, "Stand Andalucía Sabor"
+-#  = f.text_field :stand, :size => 10
+-#  = f.error_message_on :stand
 %p
   = f.label :languages, "Idiomas que habla"
   = f.text_field :languages, :value => @user.profile.languages || "Español"
   = f.error_message_on :languages
 
 #exhibitor{:style => @user.is_exhibitor? ? '' : 'display:none'}
-  %p
-    = f.label :products, "Productos"
-    = f.text_field :products
-    = f.error_message_on :products
-  %p
-    = f.label :packages, "Envases"
-    = f.text_field :packages
-    = f.error_message_on :packages
+-#  %p
+-#    = f.label :products, "Productos"
+-#    = f.text_field :products
+-#    = f.error_message_on :products
+-#  %p
+-#    = f.label :packages, "Envases"
+-#    = f.text_field :packages
+-#    = f.error_message_on :packages
 
 #buyer{:style => (@user.is_international_buyer? || @user.is_national_buyer?) ? '' : 'display:none'}
   %p
