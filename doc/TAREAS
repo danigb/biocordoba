@@ -1,0 +1,115 @@
+
+Calendario
+
+27 de octubre: volcado de la base de datos
+
+2 de noviembre: aplicación desplegada
+
+
+Diseño
+
+Recibida la imagen de la feria
+
+Respetando la maqueta de Andalucía Sabor, te haremos llegar diseños para cada tipo de
+usuario.
+
+Antes de enviar al cliente para su visto bueno, te lo pasaremos a ti para que verifiques
+viabilidad.
+
+Nos falta el texto + contacto de introducción (index)
+
+Sectores
+
+Aderezo
+
+Carnes frescas, mataderos y salas de despiece
+
+Conservas, semiconservas y zumos vegetales
+
+Embutidos y jamones
+
+Galletas, confitería y pastelería
+
+Hortofrutícolas
+
+Leche, quesos y derivados lácteos
+
+Panificación y pastas alimenticias
+
+Preparados alimenticios
+
+Aceite
+
+Comercializadoras
+
+Especias, aromáticas y medicinales
+
+Frutos secos
+
+Granos y legumbres
+
+Huevos
+
+Miel y otros productos apícolas
+
+Piscicultura
+
+Vinos, cavas, brandys, y licores
+
+Vinagres
+
+Otros
+
+Datos expositores
+
+Idem Andalucía Sabor excepto:
+
+Añadir: “Persona de contacto”, “Actividad”, “Cargo”. En lugar de un sector existirán tres
+opciones “Sector 1”, “Sector 2” y “Sector 3”
+
+Eliminar: “Stand”, “Productos”, “Envases”
+
+Datos compradores
+
+Se queda igual que Andalucía Sabor, excepto:
+
+En lugar de un sector existirán tres opciones “Sector 1”, “Sector 2” y “Sector 3”
+
+Documentos para imprimir y exportar
+
+Expositores y compradores y Extenda:
+
+Pueden imprimir / exportar (pdf y/o Excel):
+
+Su propia agenda (en formato tabla tipo “calendario”, tal y como se refleja
+gráficamente en la aplicación)
+Ficha de cada empresa (te pasaremos un diseño)
+Todas las fichas
+
+-
+
+-
+-
+
+Superadministrador:
+
+-
+
+Informe resultados (nº de compradores, nº de compradores int., nº de expositores, nº
+de citas)
+Informe con la ficha de todos los compradores
+Informe con la ficha de todos los compradores internacionales
+Informe con la ficha de todos los expositores
+
+-
+-
+-
+
+Registrar usuarios sin actividad
+
+En “Monitorización de usuarios” que aparezca un ranking con la actividad (citas) de las
+empresas. Dividida por compradores, compradores internacionales y expositores.
+
+Regeneración y reenvío de contraseñas
+
+Esta opción ya está implementada en la agenda Famar.
