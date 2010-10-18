@@ -5,7 +5,6 @@ log/*.log
 log/*.pid
 db/*.db
 db/*.sqlite3
-db/schema.rb
 tmp/**/*
 tmp/*.sql
 .DS_Store

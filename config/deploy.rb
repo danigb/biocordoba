@@ -8,6 +8,7 @@ require 'capistrano/ext/multistage'
 #	Application
 #############################################################
 set :rails_env, 'production'
+set :application, "biocordoba"
 #############################################################
 #	Settings
 #############################################################
@@ -31,7 +32,7 @@ set :user, "deploy"
 set :scm, :git
 set :branch, "master"
 set :scm_user, 'git'
-set :repository,  'git@gitorius.beecoder.com:agenda-virtual-andalucia-sabor/mainline.git'
+set :repository,  'git://github.com/danigb/biocordoba.git'
 set :deploy_via, :remote_cache
  
 #############################################################

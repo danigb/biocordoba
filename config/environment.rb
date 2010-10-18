@@ -10,14 +10,16 @@ Rails::Initializer.run do |config|
   config.time_zone = 'Madrid'
   config.gem "rubyist-aasm", :lib => "aasm", :source => 'http://gems.github.com'
   config.gem "binarylogic-searchlogic", :lib => "searchlogic", :source => 'http://gems.github.com'
-  config.gem "haml", :version => ">=2.2.2"
+  config.gem "haml", :version => ">=3.0.21" #">=2.2.2"
   config.gem "haddock"
   config.gem 'mislav-will_paginate', :lib => "will_paginate", :source => 'http://gems.github.com'
 
   config.i18n.default_locale = :es 
   config.active_record.observers = :meeting_observer
 
-  config.load_paths += %W( #{RAILS_ROOT}/app/sweepers )
+  config.autoload_paths += %W( #{RAILS_ROOT}/app/sweepers )
+  config.action_controller.resources_path_names = { :new => 'nuevo', :edit => 'editar' }
+
 end
 
 Haddock::Password.diction = File.join(Rails.root, "config", "dictionary.txt")

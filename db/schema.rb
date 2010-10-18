@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(:version => 20090919125328) do
 
   add_index "meetings", ["guest_id"], :name => "index_meetings_on_guest_id"
   add_index "meetings", ["host_id"], :name => "index_meetings_on_host_id"
-  add_index "meetings", ["state"], :name => "meetings_state"
+  add_index "meetings", ["state"], :name => "meetings_state", :length => {"state"=>"4"}
 
   create_table "messages", :force => true do |t|
     t.integer  "sender_id"
@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(:version => 20090919125328) do
     t.string   "mobile_phone"
   end
 
-  add_index "profiles", ["company_name"], :name => "profiles_company_name"
+  add_index "profiles", ["company_name"], :name => "profiles_company_name", :length => {"company_name"=>"4"}
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
 
   create_table "profiles_sectors", :id => false, :force => true do |t|
@@ -107,15 +107,16 @@ ActiveRecord::Schema.define(:version => 20090919125328) do
     t.integer "sector_id"
   end
 
-  create_table "provinces", :force => true do |t|
-    t.string "name"
+  create_table "provinces", :id => false, :force => true do |t|
+    t.integer "id"
+    t.string  "name"
   end
 
   create_table "roles", :force => true do |t|
     t.string "title"
   end
 
-  add_index "roles", ["title"], :name => "roles_title"
+  add_index "roles", ["title"], :name => "roles_title", :length => {"title"=>"4"}
 
   create_table "roles_users", :id => false, :force => true do |t|
     t.integer "role_id"
@@ -146,9 +147,10 @@ ActiveRecord::Schema.define(:version => 20090919125328) do
     t.datetime "updated_at"
   end
 
-  add_index "timeline_events", ["actor_type", "actor_id"], :name => "timeline_events_actor_type_id"
+  add_index "timeline_events", ["actor_type", "actor_id"], :name => "timeline_events_actor_type_id", :length => {"actor_id"=>nil, "actor_type"=>"4"}
 
-  create_table "towns", :force => true do |t|
+  create_table "towns", :id => false, :force => true do |t|
+    t.integer "id"
     t.string  "name"
     t.integer "province_id"
   end
@@ -161,8 +163,8 @@ ActiveRecord::Schema.define(:version => 20090919125328) do
   end
 
   add_index "user_messages", ["message_id"], :name => "index_user_messages_on_message_id"
-  add_index "user_messages", ["receiver_id", "state"], :name => "user_messages_receiver_state"
-  add_index "user_messages", ["state", "receiver_id"], :name => "user_messages_state_receiver"
+  add_index "user_messages", ["receiver_id", "state"], :name => "user_messages_receiver_state", :length => {"receiver_id"=>nil, "state"=>"4"}
+  add_index "user_messages", ["state", "receiver_id"], :name => "user_messages_state_receiver", :length => {"receiver_id"=>nil, "state"=>"4"}
 
   create_table "users", :force => true do |t|
     t.string   "login",                     :limit => 40
@@ -178,6 +180,6 @@ ActiveRecord::Schema.define(:version => 20090919125328) do
     t.boolean  "show_in_website",                          :default => true
   end
 
-  add_index "users", ["login"], :name => "users_login"
+  add_index "users", ["login"], :name => "users_login", :length => {"login"=>"4"}
 
 end
