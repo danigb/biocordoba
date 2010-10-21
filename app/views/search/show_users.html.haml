@@ -1,0 +1,30 @@
+- restrict_to "national_buyer | international_buyer" do
+  - @name = "Información sobre expositores"
+- restrict_to "exhibitor" do
+  - @name = "Información sobre compradores"
+- restrict_to "admin | extenda" do
+  - @name = "Información sobre empresas"
+
+- title @name
+%h2= @name
+
+#search
+  - form_for @search, :url => search_path do |f|
+    %p
+      = f.label 'profile_company_name_like', "NOMBRE EMPRESA"
+      = f.text_field :profile_company_name_like, :class => "white"
+
+    %p
+      = f.label 'profile_sectors_id_equals', "SECTOR"
+      = f.select :profile_sectors_id_equals, @sectors.map{|s| [s.name.capitalize, s.id]}, :include_blank => "Todos"
+    - restrict_to "exhibitor" do
+      %p
+        = f.label :profile_country_id_equals, "PAÍS"
+        = f.select :profile_country_id_equals, Country.with_profiles.collect {|t| [t.name, t.id]}, {:include_blank => "Todos"}
+
+    %p.enviar
+      = f.submit "Buscar"
+= render 'users_results'
+= link_to 'Imprimir', print_search_path
+
+

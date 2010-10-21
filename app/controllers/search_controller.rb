@@ -1,6 +1,16 @@
 
 class SearchController < ApplicationController
-  def search_users
+  def show_users
+    find_users
+  end
+  
+  def print_users
+    find_users
+    render :layout => 'print'
+  end
+
+  private
+  def find_users
     @sectors = Sector.find(:all, :select => 'id, name')
     profile_company_name = params[:search] ? params[:search][:profile_company_name_like] : ''
     @search = User.search()

@@ -14,13 +14,16 @@ ActionController::Routing::Routes.draw do |map|
   # Citas
   map.meeting_into_and '/citas/entre/:host_id/y/:guest_id', :controller => 'meetings', :action => 'new'
   map.meetings_type '/citas/:type', :controller => 'meetings', :action => 'type', 
-    :requirements => {:type => /exhibitors|international_buyers|national_buyers/}
+    :requirements => {:type => /expositores|compradores_internacionales|compradores_nacionales/}
   map.meetings_for '/citas/para/:id', :controller => 'meetings', :action => 'for_user'
   map.meetings_to_confirm '/citas/a/confirmar', :controller => 'meetings', :action => 'to_confirm'
   map.print '/imprimir', :controller => 'meetings', :action => 'print'
   map.print_admin '/imprimir_admin', :controller => 'meetings', :action => 'print_admin_extenda'
 
-  map.search '/buscar', :controller => 'search', :action => 'search_users'
+  # BÚSQUEDAS
+  map.search '/buscar', :controller => 'search', :action => 'show_users'
+  map.print_search '/imprimir_busqueda', :controller => 'search', :action => 'print_users'
+
   map.development '/changelog', :controller => 'development', :action => 'changelog'
   map.resumen '/resumen/:date', :controller => 'event_days', :action => 'show'
 

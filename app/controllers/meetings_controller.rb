@@ -84,7 +84,14 @@ class MeetingsController < ApplicationController
     @date = params[:date].present? ? Date.parse(params[:date]) : Date.parse(CONFIG[:admin][:preferences][:event_start_day])
     !valid_event_date?(@date)
 
-    @name = params[:type].chop # exhibitors -> exhibitor
+    if params[:type] == 'expositores'
+      @name = 'exhibitor'
+    elsif params[:type] == 'compradores_nacionales'
+      @name = 'national_buyer'
+    elsif params[:type] == 'compradores_internacionales'
+      @name = 'national_buyer'
+    end
+
     meetings = @name == "exhibitor" ? Meeting.in(@date).not_canceled : Meeting.in(@date).with_type(@name).not_canceled
     @guest = true unless @name == "exhibitor"
     @meetings_by_host = meetings.group_by{|m| @guest ? m.guest : m.host }.sort{|k,v| k[0].login<=>v[0].login}.paginate(:per_page => 20, :page => params[:page])
