@@ -1,6 +1,6 @@
 !!! Strict
 %html{html_attrs}
-  
+  / Admin layout
   %head
     %title
       = h(yield(:title) || "AGENDA VIRTUAL")
@@ -40,7 +40,7 @@
 
       #content
         .wrapper
-          = render :partial => 'shared/left_column'
+          = render :partial => 'layouts/left_column'
           .main_content.preferences
             - flash.each do |name, msg|
               = content_tag :div, msg, :id => "flash_#{name}", :class => 'flash-message'

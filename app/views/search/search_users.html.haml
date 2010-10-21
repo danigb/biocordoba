@@ -9,7 +9,7 @@
 %h2= @name
 
 #search
-  - form_for :search, :url => search_path do |f|
+  - form_for @search, :url => search_path do |f|
     %p
       = f.label 'profile_company_name_like', "NOMBRE EMPRESA"
       = f.text_field :profile_company_name_like, :class => "white"

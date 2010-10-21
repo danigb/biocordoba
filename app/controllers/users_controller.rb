@@ -34,12 +34,12 @@ class UsersController < ApplicationController
 
     if params[:default_preferences] == "1"
       case(params[:user][:role_id])
-        when("5") #Expositor
-          @user.preference = Preference.general_for_exhibitor.first
-        when("3") #Comprador nacional
-          @user.preference = Preference.general_for_national_buyer.first
-        when("4") #Comprador internacional
-          @user.preference = Preference.general_for_international_buyer.first
+      when("5") #Expositor
+        @user.preference = Preference.general_for_exhibitor.first
+      when("3") #Comprador nacional
+        @user.preference = Preference.general_for_national_buyer.first
+      when("4") #Comprador internacional
+        @user.preference = Preference.general_for_international_buyer.first
       end
     end
 
@@ -135,41 +135,30 @@ class UsersController < ApplicationController
   end
 
 
-  def search
-    @sectors = Sector.find(:all, :select => 'id, name')
-    unless params[:search].blank?
-      @search = User.search(params[:search])
-      @search.profile_company_name_like(params[:search][:profile_company_name_like].gsub("."," "))
-      @search.roles_title_like_any(current_user.is_exhibitor? ? ["international_buyer", "national_buyer"] : ["exhibitor"]) 
-      @search.state_equals("enabled")
-      @users = @search.all(:include => [{:profile => [:sectors, :country]}, :roles])
-      # @users_by_sector = @users.group_by{|u| u.profile.sectors.first.name }
-      @users_by_sector = @users.group_by{|u| u.profile.country.name }
-    end
-  end
 
-  def print
-    redirect_to root_path and return if (current_user.is_extenda? && !["international_buyer", "extenda"].include?(params[:type]))
-    @users = User.find(:all, :include => [:profile, :roles], :order => "profiles.company_name", 
-      :conditions => ["roles.title = ?", params[:type]])
 
-    @users = @users.group_by{|u| u.roles.first.title }
-    render :layout => false
-  end
+def print
+  redirect_to root_path and return if (current_user.is_extenda? && !["international_buyer", "extenda"].include?(params[:type]))
+  @users = User.find(:all, :include => [:profile, :roles], :order => "profiles.company_name",
+    :conditions => ["roles.title = ?", params[:type]])
 
-  def send_password
-    @user = User.find(params[:id])
-    if @user
-      @user.update_attribute(:password, String.password) 
-      if @user.email.present?
-        UserMailer.send_later(:deliver_remember_password, @user)
-        flash[:notice] = "Contraseña enviada"
-      else
-        flash[:notice] = "Atención: No se le puede enviar pues no tiene definida una cuenta de email."
-      end
+  @users = @users.group_by{|u| u.roles.first.title }
+  render :layout => false
+end
+
+def send_password
+  @user = User.find(params[:id])
+  if @user
+    @user.update_attribute(:password, String.password)
+    if @user.email.present?
+      UserMailer.send_later(:deliver_remember_password, @user)
+      flash[:notice] = "Contraseña enviada"
     else
-      flash[:error] = "Error al enviar la contraseña"
+      flash[:notice] = "Atención: No se le puede enviar pues no tiene definida una cuenta de email."
     end
-    redirect_to :back
+  else
+    flash[:error] = "Error al enviar la contraseña"
   end
+  redirect_to :back
+end
 end

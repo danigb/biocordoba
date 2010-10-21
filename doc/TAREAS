@@ -1,96 +1,37 @@
+Diseño gráfico
 
-Calendario
-
-27 de octubre: volcado de la base de datos
-
-2 de noviembre: aplicación desplegada
+ Adaptación de la Agenda Virtual Andalucía Sabor a la identidad visual de BioCórdoba. Para ello requeriremos del material gráfico necesario.
 
 
-Diseño
+ Programación
 
-Recibida la imagen de la feria
 
-Respetando la maqueta de Andalucía Sabor, te haremos llegar diseños para cada tipo de
-usuario.
+ Adaptación de la Agenda Virtual Andalucía Sabor a las características y necesidades de BioCórdoba:
 
-Antes de enviar al cliente para su visto bueno, te lo pasaremos a ti para que verifiques
-viabilidad.
+ * Nueva base de datos (basada en los mismos campos que Andalucía Sabor) - HECHO
 
-Nos falta el texto + contacto de introducción (index)
+* Nuevos sectores - HECHO
 
-Sectores
+* Posibilidad de envío de usuario y contraseña manualmente / vía mail
 
-- Aderezo
-- Carnes frescas, mataderos y salas de despiece
-- Conservas, semiconservas y zumos vegetales
-- Embutidos y jamones
-- Galletas, confitería y pastelería
-- Hortofrutícolas
-- Leche, quesos y derivados lácteos
-- Panificación y pastas alimenticias
-- Preparados alimenticios
-- Aceite
-- Comercializadoras
-- Especias, aromáticas y medicinales
-- Frutos secos
-- Granos y legumbres
-- Huevos
-- Miel y otros productos apícolas
-- Piscicultura
-- Vinos, cavas, brandys, y licores
-- Vinagres
-- Otros
+ * Informe de salida (impresión, no exportación):
 
-Datos expositores
+ - Opción de impresión en los resultados de búsqueda (mejorando la visualización de este listado)
 
-Idem Andalucía Sabor excepto:
+- Mejorar el diseño de los resultados de búsqueda
 
-Añadir: “Persona de contacto”, “Actividad”, “Cargo”. En lugar de un sector existirán tres
-opciones “Sector 1”, “Sector 2” y “Sector 3”
+- Mejorar el diseño de impresión de la agenda de cada usuario
 
-Eliminar: “Stand”, “Productos”, “Envases”
+- Impresión de las citas de cada usuario (mejorando el diseño actual que es un listado)
 
-Datos compradores
+ * Nuevas competencias Superadministrador:
 
-Se queda igual que Andalucía Sabor, excepto:
+ - Informe resultados (nº de compradores totales, nº de compradores internacionales totales, nº de expositores totales, nº de citas totales)
 
-En lugar de un sector existirán tres opciones “Sector 1”, “Sector 2” y “Sector 3”
-
-Documentos para imprimir y exportar
-
-Expositores y compradores y Extenda:
-
-Pueden imprimir / exportar (pdf y/o Excel):
-
-Su propia agenda (en formato tabla tipo “calendario”, tal y como se refleja
-gráficamente en la aplicación)
-Ficha de cada empresa (te pasaremos un diseño)
-Todas las fichas
-
--
-
--
--
-
-Superadministrador:
-
--
-
-Informe resultados (nº de compradores, nº de compradores int., nº de expositores, nº
-de citas)
-Informe con la ficha de todos los compradores
-Informe con la ficha de todos los compradores internacionales
-Informe con la ficha de todos los expositores
-
--
--
--
+- Realizar diseño de pantalla de informe de resultados
 
 Registrar usuarios sin actividad
 
-En “Monitorización de usuarios” que aparezca un ranking con la actividad (citas) de las
-empresas. Dividida por compradores, compradores internacionales y expositores.
+- En “Monitorización de usuarios”, registro de la actividad (nº de citas) de cada usuario
 
-Regeneración y reenvío de contraseñas
-
-Esta opción ya está implementada en la agenda Famar.
+- Diseño de la pantalla de “Monitorización de usuarios”

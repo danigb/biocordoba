@@ -9,7 +9,8 @@ require File.join(File.dirname(__FILE__), 'boot')
 Rails::Initializer.run do |config|
   config.time_zone = 'Madrid'
   config.gem "rubyist-aasm", :lib => "aasm", :source => 'http://gems.github.com'
-  config.gem "binarylogic-searchlogic", :lib => "searchlogic", :source => 'http://gems.github.com'
+  config.gem 'searchlogic'
+  #config.gem "binarylogic-searchlogic", :lib => "searchlogic", :source => 'http://gems.github.com', :version => ">=2.4.27"
   config.gem "haml", :version => ">=3.0.21" #">=2.2.2"
   config.gem "haddock"
   config.gem 'mislav-will_paginate', :lib => "will_paginate", :source => 'http://gems.github.com'

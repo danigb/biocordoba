@@ -20,7 +20,7 @@ ActionController::Routing::Routes.draw do |map|
   map.print '/imprimir', :controller => 'meetings', :action => 'print'
   map.print_admin '/imprimir_admin', :controller => 'meetings', :action => 'print_admin_extenda'
 
-  map.search '/buscador', :controller => 'users', :action => 'search'
+  map.search '/buscar', :controller => 'search', :action => 'search_users'
   map.development '/changelog', :controller => 'development', :action => 'changelog'
   map.resumen '/resumen/:date', :controller => 'event_days', :action => 'show'
 
