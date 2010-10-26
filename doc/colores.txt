@@ -6,6 +6,12 @@ FONDO: #FEBBEA;
 EVEN: #FFE375;
 ODD: ##FFC581;
 
+WEEKLY:
+ff87c1 -> d98f92 (rosa oscuro)
+fc5ca9 -> f0d2d4 (rosa claro)
+f9f89e -> 687cf4
+verde claro: 80ba37
+
 Lo que está en verde (#70b120) poner en naranja (#ff8f17).
 Los rollOver en vez de rosas (#d41e67) que sean naranja más claro (#b32026).
 **/

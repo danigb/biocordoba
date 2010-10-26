@@ -1,11 +1,11 @@
 .pink {
-  color: #ffcc01; }
+  color: #d98f92; }
 
 .violet {
   color: #b32026; }
 
 .yellow {
-  color: #f9f89e; }
+  color: #687cf4; }
 
 body {
   background: #FEFBEA url('/images/img_fondo.jpg') repeat-x;
@@ -298,19 +298,19 @@ input.white {
   #right-column .box_dark_green {
     background-color: #ffcc01;
     min-height: 423px;
-    color: #black;
+    color: black;
     padding: 1px 0 5px 0; }
     #right-column .box_dark_green .last_messages {
       margin: 15px 35px 15px 15px;
       padding-bottom: 15px;
-      border-bottom: 1px dotted #black; }
+      border-bottom: 1px dotted black; }
       #right-column .box_dark_green .last_messages span {
         font-style: italic; }
       #right-column .box_dark_green .last_messages a {
-        color: #black;
+        color: black;
         text-decoration: none; }
         #right-column .box_dark_green .last_messages a:hover {
-          color: #ffcc01;
+          color: #b32026;
           text-decoration: underline; }
       #right-column .box_dark_green .last_messages.link {
         border-bottom: none; }
@@ -465,14 +465,18 @@ input.white {
   clear: both;
   padding-left: 5px; }
   #results a {
-    color: #fff; }
+    color: #b32026; text-decoration: none; font-weight: bold; }
     #results a:hover {
-      color: #ff8f17; }
+      text-decoration: underline; }
   #results h3 {
     color: #b81d88;
     margin-bottom: 20px; }
   #results ul li {
-    margin-bottom: 5px; }
+    margin-bottom: 5px; padding: 6px 12px;}
+/* DANI */
+#results li.even {background-color: #FFE375;}
+#results li.odd {background-color: #FFC581;}
+
 
 #schedules .date {
   margin-bottom: 20px;
@@ -731,5 +735,12 @@ input.white {
   #assistances table th {
     border-bottom: 2px solid white; }
 
+  /** DANI **/
+
   input#login, input#password {width: 180px; color: black; padding: 1px 2px; border: 1px solid #ff8f17;}
   div.access label {padding-top: 2px;}
+
+  #banner-top {width: 100%; height: 21px; background-color: #ff8f17;
+  background-image: url(/images/img_cabecera.jpg);   }
+#footer .wrapper { background-image: url(/images/img_pie.jpg); background-repeat: repeat-x; }
+
