@@ -164,10 +164,9 @@ label {
   margin: 5px 0; }
 
 input {
-  background: #ff8f17;
+  background-color: #b32026;
   border: none;
-  color: #fff;
-  font-weight: bold;
+  color: white;
   float: left;
   width: 190px;
   margin: 5px 0; }
@@ -299,16 +298,16 @@ input.white {
   #right-column .box_dark_green {
     background-color: #ffcc01;
     min-height: 423px;
-    color: #fff;
+    color: #black;
     padding: 1px 0 5px 0; }
     #right-column .box_dark_green .last_messages {
       margin: 15px 35px 15px 15px;
       padding-bottom: 15px;
-      border-bottom: 1px dotted #fff; }
+      border-bottom: 1px dotted #black; }
       #right-column .box_dark_green .last_messages span {
         font-style: italic; }
       #right-column .box_dark_green .last_messages a {
-        color: #fff;
+        color: #black;
         text-decoration: none; }
         #right-column .box_dark_green .last_messages a:hover {
           color: #ffcc01;
@@ -603,10 +602,10 @@ input.white {
   #footer .wrapper p {
     margin: 25px 0px 0px 0px;
     font: normal normal 10px Verdana, Arial;
-    color: #ffffff;
+    color: black;
     text-align: center; }
     #footer .wrapper p a {
-      color: #ff8f17; }
+      color: #b32026; }
 
 /* Images */
 .last_messages_img {
@@ -647,8 +646,8 @@ input.white {
 
 #flash_notice,
 #flash_notice_login {
-  background-color: #CFC;
-  border: solid 1px #6C6; }
+  background-color: #ffcc01;
+  border: solid 1px #ff8f17; }
 
 #flash_error,
 #flash_error_login {
@@ -731,3 +730,6 @@ input.white {
     padding: 0 5px; }
   #assistances table th {
     border-bottom: 2px solid white; }
+
+  input#login, input#password {width: 180px; color: black; padding: 1px 2px; border: 1px solid #ff8f17;}
+  div.access label {padding-top: 2px;}
