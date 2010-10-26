@@ -101,3 +101,22 @@ protected
     record
   end
 end
+
+# == Schema Information
+#
+# Table name: users
+#
+#  id                        :integer(4)      not null, primary key
+#  login                     :string(40)
+#  email                     :string(100)
+#  created_at                :datetime
+#  updated_at                :datetime
+#  remember_token            :string(40)
+#  remember_token_expires_at :datetime
+#  preference_id             :integer(4)
+#  password                  :string(40)
+#  state                     :string(255)
+#  external                  :boolean(1)      default(FALSE)
+#  show_in_website           :boolean(1)      default(TRUE)
+#
+

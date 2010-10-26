@@ -6,3 +6,12 @@ class Role < ActiveRecord::Base
 
   named_scope :public_roles, :conditions => ["title != 'admin' && title != 'extenda'"]
 end
+
+# == Schema Information
+#
+# Table name: roles
+#
+#  id    :integer(4)      not null, primary key
+#  title :string(255)
+#
+

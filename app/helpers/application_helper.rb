@@ -90,7 +90,7 @@ module ApplicationHelper
     User.find(:all, :include => [:profile, :roles], :conditions => {:state => "enabled"}, :order => 'profiles.company_name').group_by{|e| e.role.title}.each do |role, users|
       html += "<optgroup label='#{ROLES[role.to_sym]}'>"
       for user in users
-        html += "<option>#{user.profile.company_name}</option>"
+        html += "<option>#{user.profile.company_name}</option>" if user.profile
       end
       html += "</optgroup>"
     end

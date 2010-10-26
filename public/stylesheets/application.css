@@ -1,15 +1,15 @@
 .pink {
-  color: #d41e67; }
+  color: #ffcc01; }
 
 .violet {
-  color: #b81d88; }
+  color: #b32026; }
 
 .yellow {
   color: #f9f89e; }
 
 body {
-  background: #191918 url('/images/body-bg.jpg') center top no-repeat;
-  color: #fff;
+  background: #FEFBEA url('/images/img_fondo.jpg') repeat-x;
+  color: #000;
   font-family: Verdana, Arial;
   font-size: 11px;
   font-variant: normal;
@@ -27,9 +27,9 @@ body {
   display: none; }
 
 a {
-  color: #70b120; }
+  color: #ff8f17; }
   a:hover {
-    color: #d41e67; }
+    color: #ffcc01; }
   a img {
     border: none; }
 
@@ -50,7 +50,7 @@ h4 {
   font-size: 14px;
   margin-bottom: 10px;
   font-weight: normal;
-  color: #d41e67; }
+  color: #ffcc01; }
 
 #results h4 {
   margin-left: 10px; }
@@ -65,7 +65,7 @@ h4 {
 p {
   margin: 0 0 1em 0; }
   p.green {
-    color: #70b120; }
+    color: #ff8f17; }
 
 span.info {
   font-size: 0.9em; }
@@ -75,7 +75,9 @@ span.info {
   margin: 0 auto;
   height: 1%;
   position: relative;
-  overflow: hidden; }
+  overflow: hidden; 
+  background-color: #FEFBEA;
+}
 
 .separata {
   clear: both; }
@@ -162,7 +164,7 @@ label {
   margin: 5px 0; }
 
 input {
-  background: #70b120;
+  background: #ff8f17;
   border: none;
   color: #fff;
   font-weight: bold;
@@ -181,7 +183,7 @@ p.enviar span a {
     color: #fff; }
 
 span.button {
-  background: #70b120;
+  background: #ff8f17;
   padding: 2px 5px;
   font-size: 12px;
   cursor: pointer; }
@@ -191,9 +193,9 @@ span.button {
     span.button a:hover {
       color: #fff; }
   span.button.violet {
-    background: #b81d88; }
+    background: #b32026; }
   span.button.pink {
-    background: #d41e67; }
+    background: #ffcc01; }
   span.button.dark_green {
     background: #4c800c; }
 
@@ -226,7 +228,7 @@ input.white {
   #header h2.claim .version {
     margin-top: 55px; }
     #header h2.claim .version span {
-      background: #4c800c;
+      background-color: #ffcc01;
       display: inline;
       padding: 3px 10px; }
 
@@ -272,30 +274,30 @@ input.white {
 #left-column {
   margin-left: 25px; }
   #left-column ul li {
-    border-top: #70b120 2px solid;
-    border-left: #70b120 2px solid;
-    border-right: #70b120 2px solid;
-    border-bottom: #70b120 0.01px solid;
+    border-top: #ff8f17 2px solid;
+    border-left: #ff8f17 2px solid;
+    border-right: #ff8f17 2px solid;
+    border-bottom: #ff8f17 0.01px solid;
     height: 77px;
-    background-color: #000;
+    background-color: #ffcc01; /* naranja claro */
     list-style: none;
     padding: 10px 20px; }
     #left-column ul li.last {
-      border-bottom: #70b120 2px solid; }
+      border-bottom: #ff8f17 2px solid; }
     #left-column ul li a {
-      color: #fff;
+      color: #b32026; /* rojo */
       text-decoration: none; }
       #left-column ul li a:hover {
-        color: #d41e67;
+        color: #b32026;
         text-decoration: underline; }
     #left-column ul li p {
-      color: #70b120;
+      color: black;
       margin-top: 10px; }
 
 #right-column {
   margin-left: 10px; }
   #right-column .box_dark_green {
-    background: #4c800c;
+    background-color: #ffcc01;
     min-height: 423px;
     color: #fff;
     padding: 1px 0 5px 0; }
@@ -309,7 +311,7 @@ input.white {
         color: #fff;
         text-decoration: none; }
         #right-column .box_dark_green .last_messages a:hover {
-          color: #d41e67;
+          color: #ffcc01;
           text-decoration: underline; }
       #right-column .box_dark_green .last_messages.link {
         border-bottom: none; }
@@ -325,7 +327,7 @@ input.white {
           width: 180px; }
 
 #new-message {
-  background: #70b120 url(/images/content-display-bg.png) left top;
+  background: #ff8f17 url(/images/content-display-bg.png) left top;
   padding: 10px; }
   #new-message input, #new-message textarea {
     background: #fff;
@@ -333,7 +335,7 @@ input.white {
     border: none;
     width: 350px; }
   #new-message span input {
-    background: #70b120;
+    background: #ff8f17;
     color: #fff; }
   #new-message span.info {
     margin-left: 70px; }
@@ -342,7 +344,8 @@ input.white {
     clear: both;
     display: block; }
     #new-message span.submit input {
-      background: #d41e67;
+      background: #b32026; /* rojo */
+      padding: 3px 5px;
       display: block;
       width: auto;
       cursor: pointer; }
@@ -441,7 +444,7 @@ input.white {
       .my_meetings_footer p.imprimir a {
         color: #fff; }
         .my_meetings_footer p.imprimir a:hover {
-          color: #d41e67; }
+          color: #ffcc01; }
 
 #preferences table {
   margin-bottom: 30px; }
@@ -465,7 +468,7 @@ input.white {
   #results a {
     color: #fff; }
     #results a:hover {
-      color: #70b120; }
+      color: #ff8f17; }
   #results h3 {
     color: #b81d88;
     margin-bottom: 20px; }
@@ -503,7 +506,7 @@ input.white {
   margin-bottom: 10px; }
   #sectors table th {
     text-align: left;
-    color: #d41e67;
+    color: #ffcc01;
     font-size: 14px; }
 
 .users h2.mtop {
@@ -514,10 +517,10 @@ input.white {
   margin-right: 10px; }
 
 .users.new, .users.edit, #sectors.edit, #sectors.new, #preferences.edit, #assistances {
-  background: #70b120 url(/images/content-display-bg.png);
+  background: #ff8f17 url(/images/content-display-bg.png);
   padding: 20px; }
   .users.new a, .users.edit a, #sectors.edit a, #sectors.new a, #preferences.edit a, #assistances a {
-    color: #d41e67; }
+    color: #ffcc01; }
     .users.new a:hover, .users.edit a:hover, #sectors.edit a:hover, #sectors.new a:hover, #preferences.edit a:hover, #assistances a:hover {
       color: #fff; }
   .users.new input, .users.edit input, #sectors.edit input, #sectors.new input, #preferences.edit input, #assistances input {
@@ -549,7 +552,7 @@ input.white {
     .users.new p.enviar input, .users.edit p.enviar input, #sectors.edit p.enviar input, #sectors.new p.enviar input, #preferences.edit p.enviar input, #assistances p.enviar input {
       margin-right: 10px;
       width: auto;
-      background: #d41e67;
+      background: #ffcc01;
       color: #fff; }
   .users.new span.info, .users.edit span.info, #sectors.edit span.info, #sectors.new span.info, #preferences.edit span.info, #assistances span.info {
     width: 275px;
@@ -580,7 +583,7 @@ input.white {
   #external.new input {
     float: none; }
   #external.new p.enviar input {
-    background: #d41e67; }
+    background: #ffcc01; }
 
 #preferences.edit label {
   width: 200px; }
@@ -594,7 +597,7 @@ input.white {
 
 /* Footer */
 #footer .wrapper {
-  background-color: #000000;
+  background-color: #ff8f17;
   height: 58px;
   margin-top: 25px; }
   #footer .wrapper p {
@@ -603,7 +606,7 @@ input.white {
     color: #ffffff;
     text-align: center; }
     #footer .wrapper p a {
-      color: #70b120; }
+      color: #ff8f17; }
 
 /* Images */
 .last_messages_img {
@@ -617,7 +620,7 @@ input.white {
 .oil_img {
   background: transparent url("/images/oil.jpg") left top;
   height: 263px;
-  border: 2px #70b120 solid; }
+  border: 2px #ff8f17 solid; }
 
 .meeting_request_img {
   background: transparent url("/images/meetings_request.jpg") left top;
@@ -667,7 +670,7 @@ input.white {
 
 /* Error 400 - 500 */
 #err_404_500 {
-  background: #70b120 url('/images/content-display-bg.png') left top;
+  background: #ff8f17 url('/images/content-display-bg.png') left top;
   width: 428px;
   margin: 0 auto;
   min-height: 400px;

@@ -6,3 +6,12 @@ class RoleTest < ActiveSupport::TestCase
     assert true
   end
 end
+
+# == Schema Information
+#
+# Table name: roles
+#
+#  id    :integer(4)      not null, primary key
+#  title :string(255)
+#
+

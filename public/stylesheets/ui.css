@@ -50,9 +50,11 @@
 ----------------------------------*/
 .ui-widget { font-family: segoe ui, Arial, sans-serif; font-size: 1.1em; }
 .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { font-family: segoe ui, Arial, sans-serif; font-size: 1em; }
-.ui-widget-content { border: 1px solid #dfd9c3; background: #f5f3e5 url(images/ui-bg_highlight-hard_100_f5f3e5_1x100.png) 50% top repeat-x; color: #312e25; }
+#original .ui-widget-content { border: 1px solid #b32026; background: white url(images/ui-bg_highlight-hard_100_f5f3e5_1x100.png) 50% top repeat-x; color: #312e25; }
+.ui-widget-content { border: 1px solid #b32026; background-color: white; color: #312e25; }
 .ui-widget-content a { color: #312e25; }
-.ui-widget-header { border: 1px solid #327E04; background: #70B120 url(images/ui-bg_gloss-wave_75_70B120_500x100.png) 50% 50% repeat-x; color: #433f38; font-weight: bold; }
+#original .ui-widget-header { border: 1px solid #327E04; background: white url(images/ui-bg_gloss-wave_75_70B120_500x100.png) 50% 50% repeat-x; color: #433f38; font-weight: bold; }
+.ui-widget-header { border: 1px solid #327E04; background: #ff8f17; color: #433f38; font-weight: bold; }
 .ui-widget-header a { color: #433f38; }
 
 /* Interaction states
@@ -81,9 +83,9 @@
 /* states and images */
 .ui-icon { width: 16px; height: 16px; background-image: url(images/ui-icons_808080_256x240.png); }
 .ui-widget-content .ui-icon {background-image: url(images/ui-icons_808080_256x240.png); }
-.ui-widget-header .ui-icon {background-image: url(images/ui-icons_847e71_256x240.png); }
+.ui-widget-header .ui-icon {background-image: url(images/ui-icons_ffffff_256x240.png); }
 .ui-state-default .ui-icon { background-image: url(images/ui-icons_eeeeee_256x240.png); }
-.ui-state-hover .ui-icon, .ui-state-focus .ui-icon {background-image: url(images/ui-icons_ffffff_256x240.png); }
+.ui-state-hover .ui-icon, .ui-state-focus .ui-icon {background-image: url(images/ui-icons_847e71_256x240.png); }
 .ui-state-active .ui-icon {background-image: url(images/ui-icons_8DC262_256x240.png); }
 .ui-state-highlight .ui-icon {background-image: url(images/ui-icons_8DC262_256x240.png); }
 .ui-state-error .ui-icon, .ui-state-error-text .ui-icon {background-image: url(images/ui-icons_cd0a0a_256x240.png); }

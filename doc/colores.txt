@@ -1,0 +1,13 @@
+
+NARANJA: #ff8f17
+NARAJNA CLARO: #ffcc01
+ROJO: #b32026
+FONDO: #FEBBEA;
+EVEN: #FFE375;
+ODD: ##FFC581;
+
+Lo que está en verde (#70b120) poner en naranja (#ff8f17).
+Los rollOver en vez de rosas (#d41e67) que sean naranja más claro (#b32026).
+**/
+
+VERDE #70b120 > NARANJA

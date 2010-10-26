@@ -10,7 +10,7 @@
       - @meetings_by_host.each do |host, meetings|
         %li
           .plus-icon
-            = link_to_function image_tag("plus_green.png", :alt => "Leer más"), "getMeetings(#{host.id}, #{@guest ? '1' : '0'}, '#{params[:date]}')"
+            = link_to_function image_tag("icon_mas.png", :alt => "Leer más"), "getMeetings(#{host.id}, #{@guest ? '1' : '0'}, '#{params[:date]}')"
           %strong= host.profile.company_name.upcase
           ="<div id='meetings-#{host.id}' class='meetings-summary'></div>"
     = will_paginate @meetings_by_host

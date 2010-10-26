@@ -33,3 +33,19 @@ class Preference < ActiveRecord::Base
     end
   end
 end
+
+# == Schema Information
+#
+# Table name: preferences
+#
+#  id                 :integer(4)      not null, primary key
+#  meetings_number    :integer(4)
+#  meetings_duration  :integer(4)
+#  event_start_day    :date
+#  event_end_day      :date
+#  event_day_start_at :time
+#  event_day_end_at   :time
+#  created_at         :datetime
+#  updated_at         :datetime
+#
+

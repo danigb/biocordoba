@@ -31,6 +31,7 @@ class MessagesController < ApplicationController
   end
   
   def new
+    logger.debug "********** CREAR!"
     @message = Message.new
   end
   

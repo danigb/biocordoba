@@ -6,3 +6,16 @@ class MessageTest < ActiveSupport::TestCase
     assert true
   end
 end
+
+# == Schema Information
+#
+# Table name: messages
+#
+#  id         :integer(4)      not null, primary key
+#  sender_id  :integer(4)
+#  message    :text
+#  created_at :datetime
+#  updated_at :datetime
+#  subject    :string(255)
+#
+
