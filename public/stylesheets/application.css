@@ -93,6 +93,7 @@ span.info {
 
 .pagination {
   margin-bottom: 20px; }
+#search_results {clear: both;}
 
 p.button {
   margin-top: 15px;

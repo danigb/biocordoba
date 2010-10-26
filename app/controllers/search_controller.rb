@@ -17,7 +17,8 @@ class SearchController < ApplicationController
     @search.profile_company_name_like(profile_company_name.gsub("."," "))
     @search.roles_title_like_any(current_user.is_exhibitor? ? ["international_buyer", "national_buyer"] : ["exhibitor"])
     @search.state_equals("enabled")
-    @users = @search.all(:include => [{:profile => [:sectors, :country]}, :roles])
+    #paginate(:per_page => 20, :page => params[:page], :order => params[:sort])
+    @users = @search.paginate(:include => [{:profile => [:sectors, :country]}, :roles], :per_page => 20, :page => params[:page])
     @users_by_sector = @users.group_by{|u| u.profile.sectors.first.name }
     @users_by_sector = @users.group_by{|u| u.profile.country.name }
   end

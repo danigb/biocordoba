@@ -24,7 +24,17 @@
 
     %p.enviar
       = f.submit "Buscar"
+
+#search_results
+  - if @users
+  - if @users.blank?
+    %p No se han encontrado coincidencias.
+  - else
+    %p
+    Se han encontrado los siguientes resultados:
+    = will_paginate @users
+
 = render 'users_results'
-= link_to 'Imprimir', print_search_path
+= link_to 'Imprimir', print_search_path(:page => params[:page])
 
 
