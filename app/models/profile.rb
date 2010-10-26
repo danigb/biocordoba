@@ -1,3 +1,28 @@
+# == Schema Information
+#
+# Table name: profiles
+#
+#  id                 :integer(4)      not null, primary key
+#  company_name       :string(255)
+#  address            :string(255)
+#  zip_code           :integer(4)
+#  province_id        :integer(4)
+#  products           :string(255)
+#  packages           :string(255)
+#  commercial_profile :string(255)
+#  user_id            :integer(4)
+#  created_at         :datetime
+#  updated_at         :datetime
+#  town_id            :integer(4)
+#  phone              :integer(4)
+#  fax                :integer(4)
+#  website            :string(255)
+#  stand              :string(255)
+#  country_id         :integer(4)      default(23)
+#  languages          :string(255)
+#  contact_person     :string(255)
+#  mobile_phone       :string(255)
+#
 class Profile < ActiveRecord::Base
 
   belongs_to :user
@@ -41,30 +66,4 @@ class Profile < ActiveRecord::Base
     end
   end
 end
-
-# == Schema Information
-#
-# Table name: profiles
-#
-#  id                 :integer(4)      not null, primary key
-#  company_name       :string(255)
-#  address            :string(255)
-#  zip_code           :integer(4)
-#  province_id        :integer(4)
-#  products           :string(255)
-#  packages           :string(255)
-#  commercial_profile :string(255)
-#  user_id            :integer(4)
-#  created_at         :datetime
-#  updated_at         :datetime
-#  town_id            :integer(4)
-#  phone              :integer(4)
-#  fax                :integer(4)
-#  website            :string(255)
-#  stand              :string(255)
-#  country_id         :integer(4)      default(23)
-#  languages          :string(255)
-#  contact_person     :string(255)
-#  mobile_phone       :string(255)
-#
 

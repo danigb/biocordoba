@@ -6,6 +6,8 @@ FONDO: #FEBBEA;
 EVEN: #FFE375;
 ODD: ##FFC581;
 
+NARANJA CLARO IMPRIMIR: #FCF7CD;
+
 WEEKLY:
 ff87c1 -> d98f92 (rosa oscuro)
 fc5ca9 -> f0d2d4 (rosa claro)

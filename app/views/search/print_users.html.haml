@@ -1,1 +1,27 @@
-= render 'users_results'
+#results
+  %ul
+    - page_break = 'do_not_page_break'
+    - @users_by_sector.each do |country, users_by_country|
+      %h3{:class => "#{page_break}"}
+        = country.capitalize if current_user.is_exhibitor?
+      - page_break = 'page_break'
+      -# - users_grouped = users_by_country.group_by{|u| u.profile.sectors.first.name}
+      -# - users_grouped.each do |sector, users|
+      -#   %h4= sector.capitalize unless params[:search][:profile_sectors_id_equals].present?
+      - for user in users_by_country.sort_by{|e| e.profile.company_name}
+        %li{:class => "#{cycle('odd', 'even')}"}
+          %h4{:class => "company_name"}= user.profile.company_name.upcase
+          = print_data 'Dirección:', user.profile.address
+          = print_data 'C.P.:', user.profile.zip_code
+          = print_data 'País:', user.profile.country.name if user.profile.country
+          = print_data 'Provincia:', user.profile.province.name if user.profile.province
+          = print_data 'Localidad:', user.profile.town.name if user.profile.town
+          = print_data 'Teléfono:', user.profile.phone
+          = print_data 'Fax:', user.profile.fax
+          = print_data 'Sectores:', user.profile.sectors_string
+          = print_data 'Productos:', user.profile.products
+          = print_data 'Envases:', user.profile.packages
+          = print_data 'Email:', user.email
+          = print_data 'Web:', user.profile.website
+          = print_data 'Stand de BIOCórdoba:', user.profile.stand
+          

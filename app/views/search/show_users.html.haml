@@ -35,6 +35,6 @@
     = will_paginate @users
 
 = render 'users_results'
-= link_to 'Imprimir', print_search_path(:page => params[:page])
+= link_to 'Imprimir', print_search_path(:page => params[:page], :search => params[:search])
 
 
