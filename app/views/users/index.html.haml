@@ -4,8 +4,6 @@
   %h2.pink Usuarios
   %ul
     - restrict_to "admin" do
-        %li
-        -# = link_to 'Todos',
       - for role in @roles[2..-1]
         %li
           = link_to ROLES[role.title.to_sym], type_users_path(role.title)
