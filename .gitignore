@@ -11,6 +11,7 @@ tmp/*.sql
 .DS_Store
 doc/api
 doc/app
+doc/secrets
 config/config.yml
 config/database.yml
 coverage/
