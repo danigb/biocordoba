@@ -29,7 +29,7 @@ body {
 a {
   color: #ff8f17; }
   a:hover {
-    color: #ffcc01; }
+    color: #b32026; }
   a img {
     border: none; }
 
@@ -386,7 +386,7 @@ input.white {
   clear: both; }
 
 #meeting h2 {
-  color: #b81d88; }
+  color: #b32026; }
 #meeting p.enviar input {
   margin-bottom: 20px; }
 
@@ -442,9 +442,9 @@ input.white {
       font-size: 12px;
       margin: 0; }
       .my_meetings_footer p.imprimir a {
-        color: #fff; }
+        color: #ff8f17; }
         .my_meetings_footer p.imprimir a:hover {
-          color: #ffcc01; }
+          color: #b32026; }
 
 #preferences table {
   margin-bottom: 30px; }
@@ -470,7 +470,7 @@ input.white {
     #results a:hover {
       text-decoration: underline; }
   #results h3 {
-    color: #b81d88;
+    color: #b32026;
     margin-bottom: 20px; }
   #results ul li {
     margin-bottom: 5px; padding: 6px 12px;}
@@ -680,7 +680,7 @@ input.white {
   min-height: 400px;
   padding: 30px 30px 30px 20px; }
   #err_404_500 span {
-    background: #b81d88;
+    background: #b32026;
     color: #fff;
     width: 283px;
     padding: 3px 5px 3px 20px;

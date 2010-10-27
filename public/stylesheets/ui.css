@@ -61,7 +61,9 @@
 ----------------------------------*/
 .ui-state-default, .ui-widget-content .ui-state-default { border: 1px solid #D41E67; background: #D41E67 url(images/ui-bg_highlight-hard_15_D41E67_1x100.png) 50% 50% repeat-x; font-weight: bold; color: #ffffff; outline: none; }
 .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #ffffff; text-decoration: none; outline: none; }
-.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus { border: 1px solid #327E04; background: #70B120 url(images/ui-bg_highlight-soft_25_70B120_1x100.png) 50% 50% repeat-x; font-weight: bold; color: #ffffff; outline: none; }
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus { 
+  border: 1px solid #b32026; background: #b32026;
+  font-weight: bold; color: #ffffff; outline: none; }
 .ui-state-hover a, .ui-state-hover a:hover { color: #ffffff; text-decoration: none; outline: none; }
 .ui-state-active, .ui-widget-content .ui-state-active { border: 1px solid #d4ccb0; background: #D41E67 url(images/ui-bg_highlight-hard_100_D41E67_1x100.png) 50% 50% repeat-x; font-weight: bold; color: #222; outline: none; }
 .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #222; outline: none; text-decoration: none; }
@@ -342,15 +344,15 @@
 
 /* IE6 IFRAME FIX (taken from datepicker 1.5.3 */
 .ui-datepicker-cover {
-    display: none; /*sorry for IE5*/
-    display/**/: block; /*sorry for IE5*/
-    position: absolute; /*must have*/
-    z-index: -1; /*must have*/
-    filter: mask(); /*must have*/
-    top: -4px; /*must have*/
-    left: -4px; /*must have*/
-    width: 200px; /*must have*/
-    height: 200px; /*must have*/
+  display: none; /*sorry for IE5*/
+  display/**/: block; /*sorry for IE5*/
+  position: absolute; /*must have*/
+  z-index: -1; /*must have*/
+  filter: mask(); /*must have*/
+  top: -4px; /*must have*/
+  left: -4px; /*must have*/
+  width: 200px; /*must have*/
+  height: 200px; /*must have*/
 }/* Dialog
 ----------------------------------*/
 .ui-dialog { position: relative; padding: .2em; width: 300px; }
