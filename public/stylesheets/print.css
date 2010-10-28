@@ -63,5 +63,45 @@ span{
 }
 
 li h4 {color: #ff8f17; margin: 0 0 5px 0; font-size: 16pt; font-weight: bold;}
-li p {margin: 0.3em 0;}
-li label {padding-right: 0.5em; color: #b32026;}
+p.print-data {margin: 0.3em 0 0.3em 1em;}
+p.print-data label {padding-right: 0.5em; color: #b32026;}
+
+
+#data h3 {color: #ffcc01; border: 0; padding-top: 50px;}
+div.meeting { display: block; width: 100%; overflow: hidden; 
+  background-color: #ffcc01; color: black; margin: 5px 0; font-size: 13pt; padding: 4pt 0;}
+div.meeting-date {color: #b32026; display: block; float: left; width: 7em; margin-left: 1em;}
+div.meeting-company {display: block; margin-left: 8em;}
+.meeting-data {margin-bottom: 2em;}
+
+/* -- WeeklyBuilder -- */
+#calendar{display: block; clear: both; margin: 10px 0 100px 100px;}
+#data {display: block; clear: both; margin: 200px 0 0 0;}
+.meeting {font-size: 10pt; margin-left: 2px; overflow: hidden;}
+/* layout */
+#week{background:#FFF;width:484px;}
+.days{float:left;}
+#hours{width:143px;float:left;}
+.grid{background-color:#FFEDCA;background-image:url(../images/grid2.png);background-attachment:inherit;width:429px;}
+
+
+
+/* boxes */
+.header_row{width:429px;height:30px;background-color:#ff8f17;color:white; margin-bottom:1px;text-align:center;}
+.header_box{height:36px;width:123px;border-right:1px solid #cfe6ec;padding:7px 8px 0px 11px;float:left;}
+.header_box a{color:white;}
+#hour{height:50px;width:55px;padding:25px 0px 0px 20px;float:left;}
+.day{height:37px;border-right:1px solid #8F8F8F;border-bottom:1px solid #ccc;padding:16px 10px 1px 8px;background-color:#b32026;color:white;}
+#placeholder{height:30px;border-right:1px; border-bottom: 1px solid #FFF; solid #ccc;background-color:#ffcc01;}
+.day_row{width:42px;height:55px;position:relative;}
+
+.week_event{background:#d98f92;float:left;position:absolute;height:15px;color:#000;border-left:4px solid #b32026;cursor:pointer;}
+.week_event span{display:block; height:14.5px;}
+.week_event.accepted.even{background:#f0d2d4; border-left: 4px solid #b32026;}
+.week_event.pending.odd{background:#f8f7b4; border-left:4px solid #b32026;}
+.week_event.pending.even {background:#f7f687; border-left:4px solid #b32026;}
+.week_event a{color:#000; text-decoration:none; font-weight: bolder;font-size:10px; padding-left: 3px; width: inherit; display:block;}
+.week_event a:hover{background: #b32026;height: 14.5px; width: auto; color:#000;}
+.day_row #click_hour{height:57px;width:55px;border-right:1px solid #cfe6ec;padding:17px 1px 0px 18px;float:left;}
+.day_row #click_hour a{color:#000;}
+.day_row #click_hour:hover{background:#C7F980;}

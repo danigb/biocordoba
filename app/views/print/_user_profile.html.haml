@@ -1,0 +1,13 @@
+= print_data 'Dirección:', user.profile.address
+= print_data 'C.P.:', user.profile.zip_code
+= print_data 'País:', user.profile.country.name if user.profile.country
+= print_data 'Provincia:', user.profile.province.name if user.profile.province
+= print_data 'Localidad:', user.profile.town.name if user.profile.town
+= print_data 'Teléfono:', user.profile.phone
+= print_data 'Fax:', user.profile.fax
+= print_data 'Sectores:', user.profile.sectors_string
+= print_data 'Productos:', user.profile.products
+= print_data 'Envases:', user.profile.packages
+= print_data 'Email:', user.email
+= print_data 'Web:', user.profile.website
+= print_data 'Stand de BIOCórdoba:', user.profile.stand

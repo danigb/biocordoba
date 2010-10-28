@@ -3,21 +3,31 @@
     Tu agenda de citas para el evento
   - else
     = "Agenda de #{@user.profile.company_name.upcase}"
-- 1.upto(@days) do |d|
-  - date = @date + (d - 1).days
-  %h3= date.to_date.localize
-  - @meetings = @user.meetings(date)
-  - if @meetings.blank?
-    %p No tienes citas para este día.
-  - else
-    - @meetings.each do |meeting|
-      %h4
-        = "[#{meeting.date({:include_month => false, :include_week_day => false})}]"
-        = "cita #{MEETING_STATE[meeting.state.to_sym]} con #{meeting.partner(@user).profile.company_name}"
-      - unless eval("h meeting.note_#{@role}").blank?
-        %p
-          Anotación sobre la cita:
-        %p
-          = eval("h meeting.note_#{@role}")
+
+- @meetings = @user.meetings(@date)
+- unless @meetings.blank?
+  %div#calendar
+    - weekly_calendar(@meetings, :date => @date, :days => @days) do |w|
+      - w.week(:clickable_hours => false) do |event,truncate|
+        %span.meeting=  truncate(event.name(@user, false).upcase,:omission => ".." ,:length => 19)
+
+%div#data
+  - 1.upto(@days) do |d|
+    - date = @date + (d - 1).days
+    %h3= date.to_date.localize
+    - if @meetings.blank?
+      %p No tienes citas para este día.
+    - else
+      - @meetings.each do |meeting|
+        %div.meeting
+          %div.meeting-date= "[#{meeting.date({:include_month => false, :include_week_day => false})}]"
+          %div.meeting-company= "cita #{MEETING_STATE[meeting.state.to_sym]} con #{meeting.partner(@user).profile.company_name}"
+        %div.meeting-data
+          = render :partial => 'print/user_profile', :locals => {:user => meeting.partner(@user)}
+        - unless eval("h meeting.note_#{@role}").blank?
+          %p
+            Anotación sobre la cita:
+          %p
+            = eval("h meeting.note_#{@role}")
 
 
