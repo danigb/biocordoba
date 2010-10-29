@@ -6,11 +6,9 @@
   %table
     %tr
       %th Nombre del sector
-      %th Sector name
     - @sectors.each do |sector|
       %tr
         %td=h sector.name 
-        %td=h sector.english_name 
         %td= link_to 'Editar', edit_sector_path(sector) 
 
   %p

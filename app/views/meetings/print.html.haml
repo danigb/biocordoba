@@ -21,7 +21,9 @@
       - @meetings.each do |meeting|
         %div.meeting
           %div.meeting-date= "[#{meeting.date({:include_month => false, :include_week_day => false})}]"
-          %div.meeting-company= "cita #{MEETING_STATE[meeting.state.to_sym]} con #{meeting.partner(@user).profile.company_name}"
+          %div.meeting-company
+            %label= "cita #{MEETING_STATE[meeting.state.to_sym]} con "
+            = meeting.partner(@user).profile.company_name
         %div.meeting-data
           = render :partial => 'print/user_profile', :locals => {:user => meeting.partner(@user)}
         - unless eval("h meeting.note_#{@role}").blank?

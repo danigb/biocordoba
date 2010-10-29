@@ -1,5 +1,5 @@
 .pink {
-  color: #d98f92; }
+  color: #ff8f17; }
 
 .violet {
   color: #b32026; }
@@ -27,9 +27,9 @@ body {
   display: none; }
 
 a {
-  color: #ff8f17; }
+  color: #b32026; }
   a:hover {
-    color: #b32026; }
+    color: #ff8f17; }
   a img {
     border: none; }
 
@@ -195,7 +195,7 @@ span.button {
   span.button.violet {
     background: #b32026; }
   span.button.pink {
-    background: #ffcc01; }
+    background: #b32026; }
   span.button.dark_green {
     background: #4c800c; }
 
@@ -442,9 +442,9 @@ input.white {
       font-size: 12px;
       margin: 0; }
       .my_meetings_footer p.imprimir a {
-        color: #ff8f17; }
+        color:  #b32026; }
         .my_meetings_footer p.imprimir a:hover {
-          color: #b32026; }
+          color: #ff8f17; }
 
 #preferences table {
   margin-bottom: 30px; }
@@ -556,7 +556,7 @@ input.white {
     .users.new p.enviar input, .users.edit p.enviar input, #sectors.edit p.enviar input, #sectors.new p.enviar input, #preferences.edit p.enviar input, #assistances p.enviar input {
       margin-right: 10px;
       width: auto;
-      background: #ffcc01;
+      background: #b32026;
       color: #fff; }
   .users.new span.info, .users.edit span.info, #sectors.edit span.info, #sectors.new span.info, #preferences.edit span.info, #assistances span.info {
     width: 275px;
@@ -744,4 +744,4 @@ input.white {
   #banner-top {width: 100%; height: 21px; background-color: #ff8f17;
   background-image: url(/images/img_cabecera.jpg);   }
 #footer .wrapper { background-image: url(/images/img_pie.jpg); background-repeat: repeat-x; }
-
+th.password {color: white;}

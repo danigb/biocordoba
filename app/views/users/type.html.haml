@@ -12,7 +12,7 @@
             = sorter_header "Empresa", "profiles.company_name", true
             = sorter_header "Nombre de usuario", "login"
             -# %th.header= "Email"
-            %th= "Contraseña"
+            %th.password= "Contraseña"
         %tbody
           - for user in @users
             %tr{:class => "#{cycle('odd', 'even')}"}

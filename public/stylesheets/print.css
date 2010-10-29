@@ -35,7 +35,7 @@ h1 img{
 }
 
 h2{
-  color: #70b120;
+  color: #b32026;
   font-weight: bolder;
 }
 
@@ -71,7 +71,8 @@ p.print-data label {padding-right: 0.5em; color: #b32026;}
 div.meeting { display: block; width: 100%; overflow: hidden; 
   background-color: #ffcc01; color: black; margin: 5px 0; font-size: 13pt; padding: 4pt 0;}
 div.meeting-date {color: #b32026; display: block; float: left; width: 7em; margin-left: 1em;}
-div.meeting-company {display: block; margin-left: 8em;}
+div.meeting-company {display: block; margin-left: 9em; font-weight: bold;}
+div.meeting-company label {font-weight: normal;}
 .meeting-data {margin-bottom: 2em;}
 
 /* -- WeeklyBuilder -- */

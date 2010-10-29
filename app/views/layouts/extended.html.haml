@@ -22,6 +22,7 @@
     = yield(:head)
   
   %body
+    #banner-top
     #container
       #header
         .wrapper
@@ -42,16 +43,8 @@
       #footer
         .wrapper
           %p
-            = "Todos los derechos reservados © 2009 Andalucía Sabor International Fine Food Exhibition |"
-            = mail_to "andaluciasabor@andaluciasabor.es", "andaluciasabor@andaluciasabor.es"
-            = " | "
-            = link_to "Aviso legal", "http://www.andaluciasabor.es/index.php?section=aviso-legal"
-<script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-try {
-var pageTracker = _gat._getTracker("UA-10672688-1");
-pageTracker._trackPageview();
-} catch(err) {}</script>
+            = "Todos los derechos reservados © 2010 Biocórdoba. Organic food trade show | "
+            = "Mónica García Paredes - 637.771.273 - "
+            = mail_to "info@biocordoba.com", "info@biocordoba.com"
+
+    = render :partial => 'layouts/ga'
