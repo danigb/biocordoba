@@ -524,9 +524,9 @@ input.white {
   background: #ff8f17 url(/images/content-display-bg.png);
   padding: 20px; }
   .users.new a, .users.edit a, #sectors.edit a, #sectors.new a, #preferences.edit a, #assistances a {
-    color: #ffcc01; }
+    color: #b32026; }
     .users.new a:hover, .users.edit a:hover, #sectors.edit a:hover, #sectors.new a:hover, #preferences.edit a:hover, #assistances a:hover {
-      color: #fff; }
+      color: #ffcc01; }
   .users.new input, .users.edit input, #sectors.edit input, #sectors.new input, #preferences.edit input, #assistances input {
     width: 235px;
     background: #fff;
