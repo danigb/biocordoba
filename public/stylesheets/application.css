@@ -745,3 +745,5 @@ input.white {
   background-image: url(/images/img_cabecera.jpg);   }
 #footer .wrapper { background-image: url(/images/img_pie.jpg); background-repeat: repeat-x; }
 th.password {color: white;}
+
+p.contacto {color: #b32026;}

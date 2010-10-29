@@ -4,9 +4,10 @@
     %title
       = h(yield(:title) || "AGENDA VIRTUAL")
     %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}/
-    = stylesheet_link_tag 'print', :media => "print"
     = stylesheet_link_tag 'print'
-  
+    = stylesheet_link_tag 'print', :media => "print"
+    = javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js'
+    = javascript_include_tag 'print.js'
   %body
     #container
       #header
