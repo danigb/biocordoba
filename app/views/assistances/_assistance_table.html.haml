@@ -24,10 +24,10 @@
     = date_select :assistance, :day
   %p
     = label :assistance, "Hora llegada"
-    = time_select :assistance, :arrive, :minute_step => 60
+    = time_select :assistance, :arrive, :minute_step => 30
   %p
     = label :assistance, "Hora de salida"
-    = time_select :assistance, :leave, :minute_step => 60
+    = time_select :assistance, :leave, :minute_step => 30
 
   %p.enviar
     = submit_tag "Crear", :id => 'new_assistance_button'
