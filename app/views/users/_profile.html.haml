@@ -29,6 +29,10 @@
   = f.label :address, "Dirección"
   = f.text_field :address
   = f.error_message_on :address
+%p
+  = f.label :address, "Persona de contacto"
+  = f.text_field :contact_person
+  = f.error_message_on :contact_person
 %p 
   = f.label :zip_code, "Código postal"
   = f.text_field :zip_code, :size => 5
