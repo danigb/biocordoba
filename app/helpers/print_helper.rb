@@ -1,6 +1,6 @@
 module PrintHelper
   def print_data(label, value)
-    "<p class='print-data'><label>#{label}</label>#{value}</p>" #if value.present?
+    "<p class='print-data'><label>#{label}</label>#{value}</p>" if value.present?
   end
 
   def print_calendar(objects, options = {})

@@ -3,7 +3,7 @@
 
     = day_link(Event.start_day)
     = day_link(Event.start_day + 1 )
-    = day_link(Event.start_day + 2)
+    -#= day_link(Event.start_day + 2)
 
   - unless @meetings_by_host.blank?
     %ul

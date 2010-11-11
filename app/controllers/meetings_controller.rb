@@ -100,7 +100,7 @@ class MeetingsController < ApplicationController
   def for_user
     if @user = User.find_by_login(params[:id]) 
       @date = Time.parse("#{CONFIG[:admin][:preferences][:event_start_day]} #{CONFIG[:admin][:preferences][:event_day_start_at]}")
-      @days = 3
+      @days = 2 # TODO: hack hack hack
       @meetings = @user.meetings(@date, @days)
     else
       redirect_back_or("/") and return

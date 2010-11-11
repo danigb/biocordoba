@@ -3,6 +3,10 @@
     %h2.violet
       PERFIL DE
       = h profile.company_name.upcase
+  - if profile.contact_person.present?
+    %p
+      Persona de contacto:
+      = h profile.contact_person
   - if profile.address.present?
     %p 
       Dirección:
