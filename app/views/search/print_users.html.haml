@@ -1,10 +1,9 @@
 #results
   %ul
-    - page_break = 'do_not_page_break'
     - @users_by_sector.each do |country, users_by_country|
-      %h3{:class => "#{page_break}"}
+      %h3
         = country.capitalize if current_user.is_exhibitor?
-      - page_break = 'page_break'
+        = "Resultados de la búsqueda" unless current_user.is_exhibitor?
       -# - users_grouped = users_by_country.group_by{|u| u.profile.sectors.first.name}
       -# - users_grouped.each do |sector, users|
       -#   %h4= sector.capitalize unless params[:search][:profile_sectors_id_equals].present?
