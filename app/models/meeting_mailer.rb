@@ -39,7 +39,7 @@ class MeetingMailer < ActionMailer::Base
   end
 
   def setup_email
-    @from = "Biocórdoba. Organic food trade show"
+    @from = "Biocórdoba. Organic food trade show <info@agendabiocordoba.com>"
     @subject = "[Biocórdoba] "
     @sent_on = Time.now 
     @content_type = "text/html"
