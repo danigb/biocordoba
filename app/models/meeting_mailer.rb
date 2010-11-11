@@ -39,8 +39,8 @@ class MeetingMailer < ActionMailer::Base
   end
 
   def setup_email
-    @from = "Andalucía Sabor international fine food exhibition <andaluciasabor@andaluciasabor.es>"  
-    @subject = "[Andalucía Sabor] "  
+    @from = "Biocórdoba. Organic food trade show"
+    @subject = "[Biocórdoba] "
     @sent_on = Time.now 
     @content_type = "text/html"
     # @bcc = ["info@beecoder.com"]

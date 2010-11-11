@@ -30,6 +30,10 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate
+
+  end
+
+  def authenticate_required
     authenticate_or_request_with_http_basic do |username, password|
       username == "agenda" && password == "virtual"
     end

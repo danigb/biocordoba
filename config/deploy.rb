@@ -1,8 +1,11 @@
 #Multi Stage#
+require 'yaml'
+GIT = YAML.load_file("#{File.dirname(__FILE__)}/git.yml")
 
 set :default_stage, "development"
 set :stages, %w(production development)
 require 'capistrano/ext/multistage'
+set :scm_passphrase, GIT['password']
 
 #############################################################
 #	Application

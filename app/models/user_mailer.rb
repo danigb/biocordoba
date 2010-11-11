@@ -40,8 +40,8 @@ class UserMailer < ActionMailer::Base
   #Notificar a los usuarios extenda que han mandado un email a un usuario internacional
 
   def setup_email
-    @from = "Andalucía Sabor international fine food exhibition <andaluciasabor@andaluciasabor.es>"  
-    @subject = "[Agenda Andalucía Sabor] "  
+    @from = "Biocórdoba. Organic food trade show"
+    @subject = "[Biocórdoba] "
     @sent_on = Time.now 
     @content_type = "text/html"
     # @bcc = ["info@beecoder.com"]
