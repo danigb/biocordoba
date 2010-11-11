@@ -2,6 +2,10 @@
 %h2= yield :title
 
 .users
+  - if @role.id == 4
+    %p.pink
+      <b>NOTA ACLARATORIA MISIÓN COMERCIAL INVERSA INTERNACIONAL</b><br/>
+      Debido al patrocinio y organización de estas misiones por la Junta de Andalucía, las empresas participantes deberán realizar su actividad productiva en Andalucía. Por consiguiente sólo podrán concretar reuniones con los compradores internacionales las empresas andaluzas que cumplan los criterios de participación. Las citas comerciales internacional no contarán con traductores, por lo que la reunión se realizará en el idioma del comprador.
   %p.pink
     - if @users.empty?
       No existen usuarios de este tipo.
