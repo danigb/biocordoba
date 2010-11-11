@@ -48,7 +48,7 @@ def from_yml_to_db_user
     user = User.new(info) 
     user.roles << Role.find_by_title('admin')
     user.save!
-    profile = Profile.new(:company_name => "Andalucía Sabor", :user_id => user.id)
+    profile = Profile.new(:company_name => "Biocordoba", :user_id => user.id)
     profile.sectors << Sector.first
     profile.save
   else

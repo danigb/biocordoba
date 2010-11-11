@@ -1,0 +1,48 @@
+development: &development
+  :host: agendabiocordoba.com
+  :admin:
+    :login: admin
+    :password: eventos86
+    :email: ex@example.com
+    :preferences:
+      :meetings_number: 5
+      :meetings_duration: 20
+      :event_start_day: "2010-11-18"
+      :event_end_day: "2010-11-19"
+      :event_day_start_at: "10:00"
+      :event_day_end_at: "20:00"
+  :roles:
+    - admin
+    - extenda
+    - national_buyer
+    - international_buyer
+    - exhibitor
+  :sectors:
+    - Aderezo
+    - Carnes frescas, mataderos y salas de despiece
+    - Conservas, semiconservas y zumos vegetales
+    - Embutidos y jamones
+    - Galletas, confitería y pastelería
+    - Hortofrutícolas
+    - Leche, quesos y derivados lácteos
+    - Panificación y pastas alimenticias
+    - Pastelería
+    - Preparados alimenticios
+    - Aceite
+    - Comercializadoras
+    - Especias, aromáticas y medicinales
+    - Frutos secos
+    - Granos y legumbres
+    - Huevos
+    - Miel y otros productos apícolas
+    - Piscicultura
+    - Vinos, cavas, brandys, y licores
+    - Vinagres
+    - Aceitunas y encurtidos
+    - Otros
+        
+test:
+    <<: *development
+    
+production:
+    <<: *development
