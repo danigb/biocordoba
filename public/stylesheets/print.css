@@ -67,7 +67,7 @@ span{
 li h4 {color: #ff8f17; margin: 0 0 5px 0; font-size: 16pt; font-weight: bold;}
 p.print-data {margin: 0.3em 0 0.3em 1em;}
 p.print-data label {padding-right: 0.5em; color: #b32026;}
-
+.print-data.notes {height: 4em;}
 
 #data h3 {color: #ffcc01; border: 0; padding-top: 50px;}
 div.meeting { display: block; width: 100%; overflow: hidden; 

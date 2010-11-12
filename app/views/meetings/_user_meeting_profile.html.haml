@@ -1,0 +1,7 @@
+= print_data 'Persona de contacto:', user.profile.contact_person
+= print_data 'País:', user.profile.country.name if user.profile.country
+= print_data 'Provincia:', user.profile.province.name if user.profile.province
+= print_data 'Teléfono:', user.profile.phone
+= print_data 'Productos:', user.profile.products
+%p.print-data.notes
+  %label Notas:

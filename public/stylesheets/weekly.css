@@ -9,6 +9,7 @@
 .header_row{width:429px;height:30px;background-color:#ff8f17;color:white; margin-bottom:1px;text-align:center;}
 .header_box{height:36px;width:123px;border-right:1px solid #cfe6ec;padding:7px 8px 0px 11px;float:left;}
 .header_box a{color:white;}
+.header_box a:hover {color: #b32026;}
 #hour{height:50px;width:55px;padding:25px 0px 0px 20px;float:left;}
 .day{height:37px;border-right:1px solid #8F8F8F;border-bottom:1px solid #ccc;padding:16px 10px 1px 8px;background-color:#b32026;color:white;}
 #placeholder{height:30px;border-right:1px; border-bottom: 1px solid #FFF; solid #ccc;background-color:#ffcc01;}

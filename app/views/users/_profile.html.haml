@@ -11,11 +11,12 @@
     = error_message_on :user,:email 
     %span.info
       Facilitando el email podrá recibir notificaciones de las citas y de los mensajes que reciba de otras empresas.
+  -#%p
+    -#= label_tag "Aparecer en la web de Biocóroba"
+    -#= u.check_box :show_in_website
+    -#= error_message_on :user,:show_in_website
   %p
-    = label_tag "Aparecer en la web de Biocóroba"
-    = u.check_box :show_in_website 
-    = error_message_on :user,:show_in_website
-
+    &nbsp;
 %p
   = f.label :country_id, "País"
   = f.select :country_id, Country.all.collect {|t| [t.name, t.id]}, {:include_blank => "--"}

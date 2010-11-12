@@ -25,7 +25,7 @@
             %label= "cita #{MEETING_STATE[meeting.state.to_sym]} con "
             = meeting.partner(@user).profile.company_name
         %div.meeting-data
-          = render :partial => 'print/user_profile', :locals => {:user => meeting.partner(@user)}
+          = render :partial => 'user_meeting_profile', :locals => {:user => meeting.partner(@user)}
         - unless eval("h meeting.note_#{@role}").blank?
           %p
             Anotación sobre la cita:

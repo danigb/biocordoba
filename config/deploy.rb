@@ -43,13 +43,13 @@ set :deploy_via, :remote_cache
  
 require 'erb'
  
-  before "deploy:setup", :db
-  after "deploy:update_code", "db:symlink"
+before "deploy:setup", :db
+after "deploy:update_code", "db:symlink"
  
-  namespace :db do
-    desc "Create database yaml in shared path"
-    task :default do
-      db_config = ERB.new <<-EOF
+namespace :db do
+  desc "Create database yaml in shared path"
+  task :default do
+    db_config = ERB.new <<-EOF
       base: &base
         adapter: mysql
         username: root
@@ -63,18 +63,18 @@ require 'erb'
       production:
         database: #{application}_production
         <<: *base
-      EOF
+    EOF
  
-      run "mkdir -p #{shared_path}/config"
-      put db_config.result, "#{shared_path}/config/database.yml"
-    end
- 
-    desc "Make symlink for database yaml, mongrel cluster"
-    task :symlink do     
-      run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"      
-      run "ln -nfs #{shared_path}/config/config.yml #{release_path}/config/config.yml"      
-    end   
+    run "mkdir -p #{shared_path}/config"
+    put db_config.result, "#{shared_path}/config/database.yml"
   end
+ 
+  desc "Make symlink for database yaml, mongrel cluster"
+  task :symlink do
+    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+    run "ln -nfs #{shared_path}/config/config.yml #{release_path}/config/config.yml"
+  end
+end
  
  
 # Capistrano Recipes for managing delayed_job
@@ -105,9 +105,26 @@ namespace :delayed_job do
 end
 
 
+namespace :mysql do
+  task :download, :roles => :db, :only => { :primary => true } do
+    filename = "#{application}.dump.sql"
+    file = "/tmp/#{filename}"
+    on_rollback { delete file }
+    db = YAML::load(ERB.new(IO.read(File.join(File.dirname(__FILE__), 'database.yml'))).result)
+    production = db['production']
+    run "mysqldump -u #{production['username']} --password=#{production['password']} #{production['database']} > #{file}"  do |ch, stream, data|
+      puts data
+    end
+    get file, "tmp/#{filename}"
+    puts "mysql -u root -p #{db['development']['database']} < tmp/#{filename}"
+    #`mysql -u root -p booka < tmp/#{filename}`
+    # delete file
+  end
+end
+
 desc "Create asset packages for production" 
 task :after_update_code do
- run <<-EOF
+  run <<-EOF
    cd #{release_path} && rake asset:packager:build_all
- EOF
+  EOF
 end
