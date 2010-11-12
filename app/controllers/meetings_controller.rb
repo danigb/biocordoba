@@ -89,7 +89,7 @@ class MeetingsController < ApplicationController
     elsif params[:type] == 'compradores_nacionales'
       @name = 'national_buyer'
     elsif params[:type] == 'compradores_internacionales'
-      @name = 'national_buyer'
+      @name = 'international_buyer'
     end
 
     meetings = @name == "exhibitor" ? Meeting.in(@date).not_canceled : Meeting.in(@date).with_type(@name).not_canceled
