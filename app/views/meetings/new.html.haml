@@ -20,9 +20,9 @@
         =  truncate(event.name(current_user, true), :omission => "..", :length => 22)
 
 .my_meetings_footer
-  %p.green
-    * Las citas aceptadas (en rosa) podrán ser canceladas durante los días previos a la feria.
-  %p.green
+  %p
+    * Las citas aceptadas (en verde) podrán ser canceladas durante los días previos a la feria.
+  %p
     * Una zona sombreada indica que el comprador no asistirá a la feria durante ese periodo.
     -# Por tanto
     -# = estancia_info(@guest)
@@ -35,7 +35,8 @@
       - if @remaining.nil? || @remaining > 0
         - form_for @meeting do |f|
           = label_tag "start_at", "HORA DE LA CITA"
-          %p= f.time_select :starts_at, {:minute_step => 15}
+          %p= f.time_select :starts_at, {:minute_step => 20}
+          -# FIXME: hack hack hack
 
           %p.input= @guest.profile.company_name.upcase
           %span.button= link_to 'Ver perfil', profile_path(@guest.profile.id), :class => "profile-link hide-meeting-button", :id => @guest.profile.id
