@@ -126,7 +126,8 @@ class Meeting < ActiveRecord::Base
     res = ""
     res += "#{I18n.localize(self.starts_at, :format => '%A %d')} de " if options[:include_week_day] != false
     res += "#{I18n.localize(self.starts_at, :format => '%B')} de " if options[:include_month] != false
-    res += "#{self.starts_at.strftime("%H:%M")} a #{(self.starts_at + 15.minutes).strftime("%H:%M")}"
+    # TODO: hack hack hack 20 min
+    res += "#{self.starts_at.strftime("%H:%M")} a #{self.ends_at.strftime("%H:%M")}"
   end
 
   #Obtención del interlocutor de la quedada, insertamos mi usuario como parámetro de entrada
