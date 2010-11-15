@@ -15,11 +15,10 @@
 #placeholder{height:30px;border-right:1px; border-bottom: 1px solid #FFF; solid #ccc;background-color:#ffcc01;}
 .day_row{width:42px;height:55px;position:relative;}
 
-.week_event{background:#d98f92;float:left;position:absolute;height:15px;color:#000;border-left:4px solid #b32026;cursor:pointer;}
+.week_event{background:#ff8f17;float:left;position:absolute;height:15px;color:#000;border-left:4px solid #b32026;cursor:pointer;}
 .week_event span{display:block; height:14.5px;}
-.week_event.accepted.even{background:#f0d2d4; border-left: 4px solid #b32026;}
-.week_event.pending.odd{background:#f8f7b4; border-left:4px solid #b32026;}
-.week_event.pending.even {background:#f7f687; border-left:4px solid #b32026;}
+.week_event.accepted {background:#80ba37; border-left: 4px solid #b32026;}
+.week_event.pending.odd{background:#ff8f17; border-left:4px solid #b32026;}
 .week_event a{color:#000; text-decoration:none; font-weight: bolder;font-size:10px; padding-left: 3px; width: inherit; display:block;}
 .week_event a:hover{background: #b32026;height: 14.5px; width: auto; color:#000;}
 .day_row #click_hour{height:57px;width:55px;border-right:1px solid #cfe6ec;padding:17px 1px 0px 18px;float:left;}
