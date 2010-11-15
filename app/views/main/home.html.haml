@@ -1,9 +1,13 @@
 - restrict_to "national_buyer | exhibitor" do
   - title "Mi agenda"
+  %p
+    El Comité Organizador le informa que el jueves 18 de noviembre, debido a la agenda de actividades, el espacio para las reuniones se encuentra más limitado.
   = render :partial => 'meetings/my_meetings', :locals => {:user => current_user}
 
 - restrict_to "admin | extenda" do
   - title "Versión administrador"
+  %p
+    El Comité Organizador le informa que el jueves 18 de noviembre, debido a la agenda de actividades, el espacio para las reuniones se encuentra más limitado.
   -# .oil_img
 
 
@@ -11,7 +15,7 @@
   /*Comprador nacional*/
   - restrict_to "national_buyer" do
     %p
-      *Cada comprador nacional deberá reservar 3 horas cada día en sus agendas para citas. 
+      Cada comprador nacional deberá reservar 3 horas cada día en sus agendas para citas. 
     /*%p*/
     /*  Si su empresa no está registrada, pero acudirá a la feria, debe establecer también un tiempo mínimo de X horas / día (por definir).*/
     %p.imprimir
@@ -19,10 +23,6 @@
 
   /*Expositor*/
   - restrict_to "exhibitor" do
-    /*%p*/
-    /*  = link_to_create_external_meeting("¿Desea dar de alta una cita con un comprador que no está registrado?")*/
-    /*%p*/
-    /*  = "*Tiene un máximo de #{current_user.preference.meetings_number} citas por día del evento"*/
     %p
       Las citas comerciales internacional no contarán con traductores, por lo que la reunión se realizará en el idioma del comprador. 
     %p
